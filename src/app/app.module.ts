@@ -12,6 +12,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { AuthService } from './shared/services';
+import { CarrosselHomeComponent } from './carrossel-home/carrossel-home.component';
+import { EventosComponent } from './eventos/eventos.component';
+import { NoticiasComponent } from './noticias/noticias.component';
+import { HistoricoComponent } from './historico/historico.component';
+import { LinhasPesquisaComponent } from './linhas-pesquisa/linhas-pesquisa.component';
+import { APP_BASE_HREF } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
+import { FooterComponent } from './footer/footer.component';
 
 export function appInitializerFactory(authService: AuthService) {
   return () => authService.checkTheUserOnTheFirstLoad();
@@ -23,8 +31,9 @@ export function appInitializerFactory(authService: AuthService) {
     HttpClientModule,
     SharedModule,
     AppRoutingModule,
+    TranslateModule.forRoot()
   ],
-  declarations: [AppComponent, HeaderComponent, HomeComponent],
+  declarations: [AppComponent, HeaderComponent, HomeComponent, CarrosselHomeComponent, EventosComponent, NoticiasComponent, HistoricoComponent, LinhasPesquisaComponent, FooterComponent],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
@@ -36,6 +45,7 @@ export function appInitializerFactory(authService: AuthService) {
       useClass: CatchErrorInterceptor,
       multi: true,
     },
+    { provide: APP_BASE_HREF, useValue: '/' },
     {
       provide: APP_INITIALIZER,
       useFactory: appInitializerFactory,
@@ -45,4 +55,4 @@ export function appInitializerFactory(authService: AuthService) {
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
