@@ -1,23 +1,31 @@
-<section id="hero" class="hero d-flex align-items-center section-bg">
+<section id="hero" style="padding: 0px 0px;">
+
     <div class="container">
-        <div class="row justify-content-between gy-5">
-            <div
-                class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start">
-                <h2 data-aos="fade-up">Enjoy Your Healthy<br>Delicious Food</h2>
-                <p data-aos="fade-up" data-aos-delay="100">Sed autem laudantium dolores. Voluptatem itaque ea
-                    consequatur
-                    eveniet. Eum quas beatae cumque eum quaerat.</p>
-                <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
-                    <a href="#book-a-table" class="btn-book-a-table">Book a Table</a>
-                    <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ"
-                        class="glightbox btn-watch-video d-flex align-items-center"><i
-                            class="bi bi-play-circle"></i><span>Watch
-                            Video</span></a>
-                </div>
-            </div>
-            <div class="col-lg-5 order-1 order-lg-2 text-center text-lg-start">
-                <img src="assets/img/hero-img.png" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="300">
-            </div>
+        <div data-aos="flip-left" style="margin-top: 15px;" data-aos-easing="ease-out-cubic" data-aos-duration="2000"
+            class="row justify-content-between gy-5 ">
+            <ngb-carousel class="">
+                <ng-template ngbSlide *ngFor="let image of images">
+                    <div class="wrapper">
+                        <img [src]="image.src" alt="Random first slide" class="w-100">
+                    </div>
+                    <div data-aos="fade-right">
+                        <div class="row" class="carousel-caption-container">
+                            <h3 class="carousel-caption-header">{{ image.title }}</h3>
+
+                            <div class="carousel-caption-description d-none d-sm-block">
+                                {{ image.short }}
+                                <a href="" class="carousel-caption-link">Leia mais</a>
+                            </div>
+
+                            <div class="carousel-caption-description-mobile d-sm-none">
+                                {{ image.short }}
+                                <a href="" class="carousel-caption-link">Leia mais</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </ng-template>
+            </ngb-carousel>
         </div>
     </div>
 </section>

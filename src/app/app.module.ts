@@ -20,6 +20,11 @@ import { LinhasPesquisaComponent } from './linhas-pesquisa/linhas-pesquisa.compo
 import { APP_BASE_HREF } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { FooterComponent } from './footer/footer.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SobreComponent } from './sobre/sobre.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ObrasPublicadasComponent } from './obras-publicadas/obras-publicadas.component';
+import { GruposComponent } from './grupos/grupos.component';
 
 export function appInitializerFactory(authService: AuthService) {
   return () => authService.checkTheUserOnTheFirstLoad();
@@ -31,9 +36,11 @@ export function appInitializerFactory(authService: AuthService) {
     HttpClientModule,
     SharedModule,
     AppRoutingModule,
-    TranslateModule.forRoot()
+    TranslateModule.forRoot(),
+    NgbModule,
+    FontAwesomeModule
   ],
-  declarations: [AppComponent, HeaderComponent, HomeComponent, CarrosselHomeComponent, EventosComponent, NoticiasComponent, HistoricoComponent, LinhasPesquisaComponent, FooterComponent],
+  declarations: [AppComponent, HeaderComponent, HomeComponent, CarrosselHomeComponent, EventosComponent, NoticiasComponent, HistoricoComponent, LinhasPesquisaComponent, FooterComponent, SobreComponent, ObrasPublicadasComponent, GruposComponent],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

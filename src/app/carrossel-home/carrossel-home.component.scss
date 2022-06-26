@@ -1,0 +1,90 @@
+ngb-carousel .wrapper {
+    position: relative;
+    height: 0;
+    padding-top: 55%;
+    /* Keep ratio for 900x500 images */
+}
+
+ngb-carousel .wrapper>img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+::ng-deep .carousel-item {
+    display: block !important;
+    position: absolute;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: all 1s;
+}
+
+::ng-deep .carousel-item.active {
+    position: relative;
+    transform: translateY(0);
+    opacity: 1;
+    top: 0;
+}
+
+.carousel-caption-container {
+    text-align: left !important;
+    background-color: #97d2f2;
+    max-width: 60vh;
+    border-top-right-radius: 20px 20px;
+    color: white;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.carousel-caption-header {
+    margin-left: 10px;
+    text-shadow: 2px 2px 4px #000000;
+    font-size: 1.8em;
+}
+
+.carousel-caption-description-mobile {
+
+    padding-left: 10px;
+    border-top-right-radius: 20px 20px;
+    background-color: #f98635;
+    font-size: 1.3em;
+    text-align: left;
+
+}
+
+.carousel-caption-description {
+
+    padding-left: 10px;
+    border-top-right-radius: 20px 20px;
+    width: 100vh;
+    background-color: #f98635;
+    font-size: 1.3em;
+    text-align: left;
+
+}
+
+.carousel-caption-link {
+    text-align: right;
+    color: #ffffff;
+    width: 20vh;
+    font-size: 1.0em;
+    display: block;
+    margin-left: auto;
+    margin-right: 10px;
+    text-decoration: underline;
+
+}
+
+.carousel-caption-link:hover {
+    text-align: right;
+    color: #97d2f2;
+    width: 20vh;
+    font-size: 1.0em;
+    display: block;
+    margin-left: auto;
+    margin-right: 10px;
+    text-decoration: underline;
+
+}
