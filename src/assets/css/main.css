@@ -950,7 +950,7 @@ section {
   margin-bottom: 5px;
 }
 
-.menu .tab-content .menu-item .price a {
+.menu .tab-content .menu-item .price {
   font-size: 24px;
   font-weight: 700;
   color: var(--color-primary);
@@ -1618,7 +1618,7 @@ section {
 --------------------------------------------------------------*/
 .footer {
   font-size: 14px;
-  background-color: #1f1f24;
+  background-color: #1d2b32;
   padding: 50px 0;
   color: rgba(255, 255, 255, 0.7);
 }

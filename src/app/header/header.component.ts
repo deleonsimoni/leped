@@ -14,6 +14,9 @@ import { TranslateService } from '@ngx-translate/core';
 export class HeaderComponent {
   @Input() user: User | null = null;
 
+  selectedCountryCode = 'br';
+  countryCodes = ['us', 'br'];
+
   constructor(
     private router: Router,
     private authService: AuthService,
@@ -22,11 +25,12 @@ export class HeaderComponent {
 
   }
 
+
   public loadScript() {
     let body = <HTMLDivElement>document.body;
     let script = document.createElement('script');
     script.innerHTML = '';
-    script.src = "../../assets/js/main.js";
+    script.src = "../../assets/js/leped2.js";
     script.async = true;
     script.defer = true;
     body.appendChild(script);
@@ -40,10 +44,9 @@ export class HeaderComponent {
     this.router.navigateByUrl('/auth/login');
   }
 
-  selectedCountryCode = 'br';
-  countryCodes = ['us', 'es', 'br'];
-
   changeSelectedCountryCode(value: string): void {
     this.translate.use(value);
+    this.selectedCountryCode = value;
+
   }
 }

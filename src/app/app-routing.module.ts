@@ -8,6 +8,7 @@ import { LinhasPesquisaComponent } from './linhas-pesquisa/linhas-pesquisa.compo
 import { EventosComponent } from './eventos/eventos.component';
 import { ObrasPublicadasComponent } from './obras-publicadas/obras-publicadas.component';
 import { GruposComponent } from './grupos/grupos.component';
+import { EndipeComponent } from './endipe/endipe.component';
 
 const routes: Routes = [
   {
@@ -36,7 +37,12 @@ const routes: Routes = [
     /*canActivate: [AuthGuard],*/
   },
   {
-    path: 'grupo/:id',
+    path: 'endipe',
+    component: EndipeComponent,
+    /*canActivate: [AuthGuard],*/
+  },
+  {
+    path: 'grupo/:grupo',
     component: GruposComponent,
     /*canActivate: [AuthGuard],*/
   },

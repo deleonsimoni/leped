@@ -12,6 +12,20 @@ export class ObrasPublicadasComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public loadScript() {
+    let body = <HTMLDivElement>document.body;
+    let script = document.createElement('script');
+    script.innerHTML = '';
+    script.src = "../../assets/js/swiper.js";
+    script.async = true;
+    script.defer = true;
+    body.appendChild(script);
+  }
+
+  ngAfterViewInit() {
+    this.loadScript();
+  }
+
 
 
 }

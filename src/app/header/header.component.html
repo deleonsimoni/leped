@@ -13,6 +13,8 @@
         <li><a routerLink="/linhas-pesquisa">Linhas</a></li>
         <li><a routerLink="/eventos">Eventos</a></li>
         <li><a routerLink="/obras-publicadas">Obras Publicadas</a></li>
+        <li><a routerLink="/endipe">XX ENDIPE RIO 2020</a></li>
+
         <li class="dropdown"><a><span>Grupos</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
           <ul>
             <li><a routerLink="/grupo/GECULT">GECULT</a></li>
@@ -44,6 +46,9 @@
         </li>-->
       </ul>
     </nav><!-- .navbar -->
+    <ngx-flag-picker [selectedCountryCode]="selectedCountryCode" [countryCodes]="countryCodes" [showArrow]="true"
+      [showFlags]="true" (changedCountryCode)="changeSelectedCountryCode($event)">
+    </ngx-flag-picker>
 
     <a class="btn-book-a-table" href="#book-a-table">COM.INDU</a>
     <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>

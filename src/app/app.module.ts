@@ -25,6 +25,9 @@ import { SobreComponent } from './sobre/sobre.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ObrasPublicadasComponent } from './obras-publicadas/obras-publicadas.component';
 import { GruposComponent } from './grupos/grupos.component';
+import { EndipeComponent } from './endipe/endipe.component';
+import { NgxFlagPickerModule } from 'ngx-flag-picker';
+
 
 export function appInitializerFactory(authService: AuthService) {
   return () => authService.checkTheUserOnTheFirstLoad();
@@ -38,9 +41,10 @@ export function appInitializerFactory(authService: AuthService) {
     AppRoutingModule,
     TranslateModule.forRoot(),
     NgbModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgxFlagPickerModule
   ],
-  declarations: [AppComponent, HeaderComponent, HomeComponent, CarrosselHomeComponent, EventosComponent, NoticiasComponent, HistoricoComponent, LinhasPesquisaComponent, FooterComponent, SobreComponent, ObrasPublicadasComponent, GruposComponent],
+  declarations: [AppComponent, HeaderComponent, HomeComponent, CarrosselHomeComponent, EventosComponent, NoticiasComponent, HistoricoComponent, LinhasPesquisaComponent, FooterComponent, SobreComponent, ObrasPublicadasComponent, GruposComponent, EndipeComponent],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
