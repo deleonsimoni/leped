@@ -27,6 +27,11 @@ import { ObrasPublicadasComponent } from './obras-publicadas/obras-publicadas.co
 import { GruposComponent } from './grupos/grupos.component';
 import { EndipeComponent } from './endipe/endipe.component';
 import { NgxFlagPickerModule } from 'ngx-flag-picker';
+import { GepedComponent } from './geped/geped.component';
+import { GepematComponent } from './gepemat/gepemat.component';
+import { GeprodComponent } from './geprod/geprod.component';
+import { GedocComponent } from './gedoc/gedoc.component';
+import { GecultComponent } from './gecult/gecult.component';
 
 
 export function appInitializerFactory(authService: AuthService) {
@@ -44,7 +49,7 @@ export function appInitializerFactory(authService: AuthService) {
     FontAwesomeModule,
     NgxFlagPickerModule
   ],
-  declarations: [AppComponent, HeaderComponent, HomeComponent, CarrosselHomeComponent, EventosComponent, NoticiasComponent, HistoricoComponent, LinhasPesquisaComponent, FooterComponent, SobreComponent, ObrasPublicadasComponent, GruposComponent, EndipeComponent],
+  declarations: [AppComponent, HeaderComponent, HomeComponent, CarrosselHomeComponent, EventosComponent, NoticiasComponent, HistoricoComponent, LinhasPesquisaComponent, FooterComponent, SobreComponent, ObrasPublicadasComponent, GruposComponent, EndipeComponent, GepedComponent, GepematComponent, GeprodComponent, GedocComponent, GecultComponent],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

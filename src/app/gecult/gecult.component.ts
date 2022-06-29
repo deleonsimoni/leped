@@ -1,11 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  selector: 'app-gecult',
+  templateUrl: './gecult.component.html',
+  styleUrls: ['./gecult.component.scss']
 })
-export class HomeComponent {
+export class GecultComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
 
   public loadScript() {
     let body = <HTMLDivElement>document.body;

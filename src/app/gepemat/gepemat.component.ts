@@ -1,11 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  selector: 'app-gepemat',
+  templateUrl: './gepemat.component.html',
+  styleUrls: ['./gepemat.component.scss']
 })
-export class HomeComponent {
+export class GepematComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
 
   public loadScript() {
     let body = <HTMLDivElement>document.body;

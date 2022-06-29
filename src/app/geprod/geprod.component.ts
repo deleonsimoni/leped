@@ -1,11 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  selector: 'app-geprod',
+  templateUrl: './geprod.component.html',
+  styleUrls: ['./geprod.component.scss']
 })
-export class HomeComponent {
+export class GeprodComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
 
   public loadScript() {
     let body = <HTMLDivElement>document.body;
@@ -20,4 +25,5 @@ export class HomeComponent {
   ngAfterViewInit() {
     this.loadScript();
   }
+
 }
