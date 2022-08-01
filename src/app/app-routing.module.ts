@@ -14,6 +14,7 @@ import { GedocComponent } from './gedoc/gedoc.component';
 import { GeprodComponent } from './geprod/geprod.component';
 import { GepematComponent } from './gepemat/gepemat.component';
 import { GepedComponent } from './geped/geped.component';
+import { RegisterComponent } from './auth/register/register.component';
 
 const routes: Routes = [
   {
@@ -77,6 +78,7 @@ const routes: Routes = [
     component: GecultComponent,
     /*canActivate: [AuthGuard],*/
   },
+
 
   {
     path: 'auth',

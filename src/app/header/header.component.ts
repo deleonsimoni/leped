@@ -41,7 +41,7 @@ export class HeaderComponent {
   }
   logout(): void {
     this.authService.signOut();
-    this.router.navigateByUrl('/auth/login');
+    this.router.navigate(['']);
   }
 
   changeSelectedCountryCode(value: string): void {

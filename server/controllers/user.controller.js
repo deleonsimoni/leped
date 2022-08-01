@@ -15,7 +15,6 @@ module.exports = {
 };
 
 async function insert(user) {
-  user = await userSchema.validateAsync(user, { abortEarly: false });
   user.hashedPassword = bcrypt.hashSync(user.password, 10);
   delete user.password;
   return await new User(user).save();

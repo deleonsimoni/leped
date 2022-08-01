@@ -33,10 +33,18 @@ import { GeprodComponent } from './geprod/geprod.component';
 import { GedocComponent } from './gedoc/gedoc.component';
 import { GecultComponent } from './gecult/gecult.component';
 
+import { ToastrModule } from 'ngx-toastr';
+import { DialogDeleteComponent } from './dialog/dialog-delete/dialog-delete.component';
+import { ModalTermoComponent } from './dialog/modal-termo/modal-termo.component';
+import { AngularEditorModule } from '@kolkov/angular-editor';
+
+
 
 export function appInitializerFactory(authService: AuthService) {
   return () => authService.checkTheUserOnTheFirstLoad();
 }
+
+
 
 @NgModule({
   imports: [
@@ -45,11 +53,33 @@ export function appInitializerFactory(authService: AuthService) {
     SharedModule,
     AppRoutingModule,
     TranslateModule.forRoot(),
+    ToastrModule.forRoot(),
     NgbModule,
     FontAwesomeModule,
-    NgxFlagPickerModule
+    NgxFlagPickerModule,
+    AngularEditorModule
   ],
-  declarations: [AppComponent, HeaderComponent, HomeComponent, CarrosselHomeComponent, EventosComponent, NoticiasComponent, HistoricoComponent, LinhasPesquisaComponent, FooterComponent, SobreComponent, ObrasPublicadasComponent, GruposComponent, EndipeComponent, GepedComponent, GepematComponent, GeprodComponent, GedocComponent, GecultComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    HomeComponent,
+    CarrosselHomeComponent,
+    EventosComponent,
+    NoticiasComponent,
+    HistoricoComponent,
+    LinhasPesquisaComponent,
+    FooterComponent,
+    SobreComponent,
+    ObrasPublicadasComponent,
+    GruposComponent,
+    EndipeComponent,
+    GepedComponent,
+    GepematComponent,
+    GeprodComponent,
+    GedocComponent,
+    GecultComponent,
+    DialogDeleteComponent,
+    ModalTermoComponent],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
@@ -61,6 +91,7 @@ export function appInitializerFactory(authService: AuthService) {
       useClass: CatchErrorInterceptor,
       multi: true,
     },
+
     { provide: APP_BASE_HREF, useValue: '/' },
     {
       provide: APP_INITIALIZER,

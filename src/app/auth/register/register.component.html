@@ -1,84 +1,138 @@
-<mat-card class="example-card">
-  <mat-card-header>
-    <mat-card-title>Register</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <form class="example-form">
-      <table cellspacing="0" [formGroup]="userForm">
-        <tr>
-          <td>
-            <mat-form-field>
-              <input
-                matInput
-                placeholder="Fullname"
-                formControlName="fullname"
-                name="fullname"
-                required
-              />
-            </mat-form-field>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <mat-form-field>
-              <input
-                matInput
-                placeholder="Email"
-                formControlName="email"
-                name="email"
-                required
-              />
-              <mat-error *ngIf="email.invalid && email.hasError('email')"
-                >Invalid email address</mat-error
-              >
-            </mat-form-field>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <mat-form-field>
-              <input
-                matInput
-                placeholder="Password"
-                formControlName="password"
-                type="password"
-                name="password"
-                required
-              />
-            </mat-form-field>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <mat-form-field>
-              <input
-                matInput
-                placeholder="Repeat Password"
-                formControlName="repeatPassword"
-                type="password"
-                name="repeatPassword"
-                required
-              />
-              <mat-error
-                *ngIf="
-                  repeatPassword.invalid &&
-                  repeatPassword.hasError('passwordMatch')
-                "
-                >Password mismatch</mat-error
-              >
-            </mat-form-field>
-          </td>
-        </tr>
-      </table>
-    </form>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-raised-button (click)="register()" color="primary">
-      Register
-    </button>
-    <span
-      >Allrady have an account ?
-      <a [routerLink]="['/auth/login']">login</a> here</span
-    >
-  </mat-card-actions>
-</mat-card>
+<!--==========================
+    Intro Section
+  ============================-->
+<main id="main" style="margin-top: 134px; background-color: #fffff5;">
+
+  <div class="container" id="register">
+    <div class="form">
+      <form [formGroup]="registerForm" (ngSubmit)="register()" role="form" class="contactForm">
+        <div class="section-header">
+        </div>
+
+        <div class="section-header">
+          <h2 mt-2>Dados Pessoais</h2>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <input type="text" name="name" class="form-control" id="name" placeholder="Nome Completo"
+              data-rule="minlen:4" data-msg="Please enter at least 4 chars" formControlName="fullname" />
+            <div class="validation"></div>
+          </div>
+          <div class="form-group col-md-6">
+            <input type="text" class="form-control" name="email" id="socialName"
+              placeholder="Como gostaria de ser chamado?" formControlName="socialname" />
+            <div class="validation"></div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <input type="email" class="form-control" name="email" id="email" placeholder="Email" data-rule="email"
+              data-msg="Please enter a valid email" formControlName="email" />
+            <div class="validation"></div>
+          </div>
+          <div class="form-group col-md-6">
+            <input type="email" class="form-control" name="repeatEmail" id="repeatEmail" placeholder="Repita o email"
+              data-rule="repeatEmail" data-msg="Please enter a valid email" formControlName="repeatEmail" />
+            <div class="validation"></div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <input type="text" name="birth-date" class="form-control" id="birth-date" placeholder="Data de nascimento"
+              formControlName="dateBirth" bsDatepicker [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY' }"
+              autocomplete="false" />
+
+          </div>
+          <div class="form-group col-md-4" formGroupName="phones">
+            <input type="text" name="telephone" class="form-control" id="telephone" placeholder="Telefone"
+              formControlName="telephone" [dropSpecialCharacters]="true" mask="(00) 0000-0000" />
+            <div class="validation"></div>
+          </div>
+          <div class="form-group col-md-4" formGroupName="phones">
+            <input type="text" class="form-control" name="cellphone" id="cellphone" placeholder="Celular"
+              formControlName="cellphone" [dropSpecialCharacters]="true" mask="(00) 00000-0000" />
+            <div class="validation"></div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <input type="password" name="password" class="form-control" id="password" placeholder="Senha"
+              formControlName="password" />
+            <div class="validation"></div>
+          </div>
+          <div class="form-group col-md-6">
+            <input type="password" class="form-control" name="cf-password" id="cf-password"
+              placeholder="Confirmar senha" formControlName="cfPassword" />
+            <div class="validation"></div>
+          </div>
+        </div>
+
+
+        <div class="section-header">
+          <h2 mt-2>Endereço</h2>
+        </div>
+        <div class="form-row" formGroupName="address">
+          <div class="form-group col-md-6">
+            <input type="text" name="street" class="form-control" id="street" placeholder="Endereço"
+              data-rule="minlen:4" data-msg="Please enter at least 4 chars" formControlName="street" />
+            <div class="validation"></div>
+          </div>
+          <div class="form-group col-md-6">
+            <input type="text" class="form-control" name="num" id="num" placeholder="Nº" data-rule="email"
+              data-msg="Please enter a valid email" formControlName="num" />
+            <div class="validation"></div>
+          </div>
+        </div>
+        <div class="form-row" formGroupName="address">
+          <div class="form-group col-md-6">
+            <input type="text" name="zip" class="form-control" id="zip" placeholder="Código postal"
+              formControlName="zip" [dropSpecialCharacters]="true" mask="00000-000" />
+            <div class="validation"></div>
+          </div>
+          <div class="form-group col-md-6">
+            <input type="text" class="form-control" name="city" id="city" placeholder="Cidade" data-rule="email"
+              data-msg="Please enter a valid email" formControlName="city" />
+            <div class="validation"></div>
+          </div>
+        </div>
+        <div class="form-row" formGroupName="address">
+          <div class="form-group col-md-4">
+            <input type="text" name="district" class="form-control" id="district" placeholder="Bairro"
+              data-rule="minlen:4" data-msg="Please enter at least 4 chars" formControlName="district" />
+            <div class="validation"></div>
+          </div>
+          <div class="form-group col-md-4">
+            <input type="text" class="form-control" name="country" id="country" placeholder="País" data-rule="email"
+              data-msg="Please enter a valid email" formControlName="country" />
+            <div class="validation"></div>
+          </div>
+          <div class="form-group col-md-4">
+            <input type="text" class="form-control" name="state" id="state" placeholder="Estado" data-rule="email"
+              data-msg="Please enter a valid email" formControlName="state" />
+            <div class="validation"></div>
+          </div>
+        </div>
+
+
+        <div class="col-md-12 pt-4">
+          <hr>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="id" id="termo" [value]="true"
+              formControlName="icAcceptTerms">
+            <label class="form-check-label" for="termo">
+              Li e concordo com o <a [routerLink]="" style="color:#0400ff;cursor:pointer;text-decoration: underline;"
+                (click)="openRules()">termo de
+                uso</a>
+            </label>
+          </div>
+        </div>
+        <div class="text-center pt-5">
+          <button mat-raised-button color="primary" type="submit">Enviar</button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+</main>

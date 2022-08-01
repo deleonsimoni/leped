@@ -21,6 +21,10 @@
         <li><a routerLink="/gecult">GECULT</a></li>
         <li><a routerLink="/eventos">Eventos</a></li>
         <li><a routerLink="/noticias">Notícias</a></li>
+        <li><a *ngIf="!user" routerLink="/auth/login">Login</a></li>
+
+        <li><a *ngIf="user?.isAdmin" routerLink="/admin">Administrador</a></li>
+        <li><a *ngIf="user" (click)="logout()">Sair</a></li>
 
         <!--<li class="dropdown"><a href="#"><span>Drop Down</span> <i
               class="bi bi-chevron-down dropdown-indicator"></i></a>
@@ -47,7 +51,7 @@
       [showFlags]="true" (changedCountryCode)="changeSelectedCountryCode($event)">
     </ngx-flag-picker>
 
-    <a class="btn-book-a-table" href="#book-a-table">COM.INDU</a>
+    <a class="btn-book-a-table" routerLink="/auth/register">COM.INDU</a>
     <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
     <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
 

@@ -8,7 +8,7 @@ import { AuthService } from '@app/shared/services';
 
 @Injectable()
 export class OnlyAdminUsersGuard implements CanActivate {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService) { }
 
   canActivate(): Observable<boolean> {
     return this.authService.getUser().pipe(map(user => !!user?.isAdmin));

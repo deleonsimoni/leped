@@ -17,6 +17,8 @@
     "module": "es2020",
     "moduleResolution": "node",
     "strict": true,
+    "strictPropertyInitialization": false,
+    "strictNullChecks": false,
     "sourceMap": true,
     "declaration": false,
     "importHelpers": true,

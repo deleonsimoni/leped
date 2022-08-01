@@ -6,6 +6,30 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    socialname: {
+      type: String
+    },
+    icAcceptTerms: {
+      type: Boolean,
+      default: false
+    },
+    dateBirth: {
+      type: Date
+    },
+    address: {
+      street: String,
+      complement: String,
+      num: String,
+      zip: String,
+      city: String,
+      district: String,
+      country: String,
+      state: String
+    },
+    phones: {
+      cellphone: String,
+      telephone: String
+    },
     email: {
       type: String,
       required: true,
