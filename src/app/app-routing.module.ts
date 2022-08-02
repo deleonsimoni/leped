@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
-import { AuthGuard } from './shared/guards';
 import { HomeComponent } from './home/home.component';
 import { HistoricoComponent } from './historico/historico.component';
 import { LinhasPesquisaComponent } from './linhas-pesquisa/linhas-pesquisa.component';
@@ -14,7 +13,6 @@ import { GedocComponent } from './gedoc/gedoc.component';
 import { GeprodComponent } from './geprod/geprod.component';
 import { GepematComponent } from './gepemat/gepemat.component';
 import { GepedComponent } from './geped/geped.component';
-import { RegisterComponent } from './auth/register/register.component';
 
 const routes: Routes = [
   {
@@ -79,7 +77,6 @@ const routes: Routes = [
     /*canActivate: [AuthGuard],*/
   },
 
-
   {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
@@ -91,7 +88,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
+  imports: [RouterModule.forRoot(routes, { enableTracing: true, relativeLinkResolution: 'legacy' })],
   exports: [RouterModule],
 })
 export class AppRoutingModule { }
