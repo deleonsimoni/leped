@@ -95,12 +95,12 @@ async function getQuemSomos(req, res) {
 }
 
 async function updateQuemSomos(req, res) {
-    let response = await lepedCtrl.updateQuemSomos(req.body, req.user._id);
+    let response = await lepedCtrl.updateQuemSomos(req, req.user._id);
     res.json(response);
 }
 
 async function insertQuemSomos(req, res) {
-    let response = await lepedCtrl.insertQuemSomos(req.body, req.user._id);
+    let response = await lepedCtrl.insertQuemSomos(req, req.user._id);
     res.json(response);
 }
 

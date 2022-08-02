@@ -18,7 +18,7 @@ export class LepedService {
     const formData: FormData = new FormData();
     formData.append('fileArray', file, `${file.name}`);
     formData.append('formulario', JSON.stringify(form));
-    return this.http.post(`/api/leped/quemsomos`, form);
+    return this.http.post(`/api/leped/quemsomos`, formData);
   }
 
   deletarQuemSomos(form: any) {
@@ -29,7 +29,7 @@ export class LepedService {
     const formData: FormData = new FormData();
     formData.append('fileArray', file, `${file.name}`);
     formData.append('formulario', JSON.stringify(form));
-    return this.http.put(`/api/leped/quemsomos/`, form);
+    return this.http.put(`/api/leped/quemsomos/`, formData);
   }
 
 

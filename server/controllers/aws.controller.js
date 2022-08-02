@@ -14,7 +14,7 @@ function uploadFile(key, file) {
   });
 
   var s3Config = {
-    Bucket: 'edocimage',
+    Bucket: 'leped',
     Key: key,
     Body: file
   };
