@@ -7,7 +7,7 @@ export class ImagePathComplement implements PipeTransform {
 
   transform(value: any, ...args: any[]) {
     if (typeof value == "string") {
-      return 'data:image/png;base64,'.concat(value)
+      return 'https://leped.s3.sa-east-1.amazonaws.com/'.concat(value)
     }
   }
 

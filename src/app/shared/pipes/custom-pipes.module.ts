@@ -7,6 +7,9 @@ import { ImagePathComplement } from "./image-path-complement.pipe";
   ],
   exports: [
     ImagePathComplement
+  ],
+  providers: [
+    ImagePathComplement
   ]
 })
 export class CustomPipesModule {}

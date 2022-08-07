@@ -14,7 +14,7 @@ import { iif, map, Observable, of, switchMap, take, tap } from 'rxjs';
 export class CoordenadorasComponent implements OnInit {
 
   public profileImage: any;
-  public coordenadores: Array<Coordenadora> = [];
+  public coordenadores: Array<any> = [];
 
   constructor(
     private coordenadoraService: CoordenadorasService,
@@ -49,9 +49,9 @@ export class CoordenadorasComponent implements OnInit {
   public register(): void {
     this.openDialog()
       .pipe(
-        switchMap(({ save, coordenador }: any) =>
+        switchMap(({ save, coordenador, file }: any) =>
           iif(() => save,
-            this.coordenadoraService.save(coordenador)
+            this.coordenadoraService.save(file, coordenador)
               .pipe(switchMap(_ => this.listAll())),
             of(null)
           )
@@ -63,9 +63,9 @@ export class CoordenadorasComponent implements OnInit {
   public edit(data: any): void {
     this.openDialog(data)
       .pipe(
-        switchMap(({ save, coordenador }: any) =>
+        switchMap(({ save, coordenador, file }: any) =>
           iif(() => save,
-            this.coordenadoraService.update({ ...coordenador, _id: data._id })
+            this.coordenadoraService.update(file, { ...coordenador, _id: data._id })
               .pipe(switchMap(_ => this.listAll())),
             of(null)
           )

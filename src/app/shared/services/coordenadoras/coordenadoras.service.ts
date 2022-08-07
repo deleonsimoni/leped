@@ -12,8 +12,15 @@ export class CoordenadorasService {
     private httpClient: HttpClient
   ) {}
 
-  public save(coordenadora: Coordenadora): Observable<any> {
-    return this.httpClient.post(this.url, coordenadora);
+  public save(file: any, coordenadora: Coordenadora): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('formulario', JSON.stringify(coordenadora));
+
+    if (file) {
+      formData.append('fileArray', file, `${file.name}`);
+    }
+
+    return this.httpClient.post(this.url, formData);
   }
 
   public listAll(): Observable<any> {
@@ -24,8 +31,15 @@ export class CoordenadorasService {
     return this.httpClient.get(this.url);
   }
 
-  public update(coordenadora: Coordenadora): Observable<any> {
-    return this.httpClient.put(this.url, coordenadora);
+  public update(file: any, coordenadora: Coordenadora): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('formulario', JSON.stringify(coordenadora));
+
+    if (file) {
+      formData.append('fileArray', file, `${file.name}`);
+    }
+
+    return this.httpClient.put(this.url, formData);
   }
 
   public delete(id: string): Observable<any> {

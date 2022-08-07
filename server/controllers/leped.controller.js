@@ -54,7 +54,7 @@ async function insertQuemSomos(req, idUser) {
   let fileName = 'images/' + req.files.fileArray.name;
   await S3Uploader.uploadBase64(fileName, buf).then(async fileData => {
     console.log('Arquivo submetido para AWS ' + fileName);
-    conferencista.imagePathS3 = fileName;
+    form.imagePathS3 = fileName;
     retorno.temErro = false;
     return await new QuemSomos(form).save();
   }, err => {
@@ -105,9 +105,22 @@ async function getCoordenadoras() {
     });
 }
 
-async function insertCoordenadoras(form, idUser) {
+async function insertCoordenadoras(req, idUser) {
+  let form = JSON.parse(req.body.formulario);
   form.user = idUser;
-  return await new Coordenadoras(form).save();
+  let fileName = 'images/' + req.files.fileArray.name;
+  let retorno = { temErro: true };
+
+  await S3Uploader.uploadBase64(fileName, req.files.fileArray.data).then(async fileData => {
+    console.log('Arquivo submetido para AWS ' + fileName);
+    form.imagePathS3 = fileName;
+    retorno.temErro = false;
+    return await new Coordenadoras(form).save();
+  }, err => {
+    console.log('Erro ao enviar imagem para AWS: ' + fileName);
+    retorno.temErro = true;
+    retorno.mensagem = 'Servidor momentaneamente inoperante. Tente novamente mais tarde.';
+  });
 }
 
 async function deleteCoordenadoras(id) {
@@ -116,14 +129,39 @@ async function deleteCoordenadoras(id) {
   });
 }
 
-async function updateCoordenadoras(form, idUser) {
+async function updateCoordenadoras(req, idUser) {
+  let form = JSON.parse(req.body.formulario);
   form.user = idUser;
-  return await Coordenadoras.findOneAndUpdate({
-    _id: form._id
-  },
-    form, {
-    upsert: true
-  });
+  let retorno = { temErro: true };
+
+  if (req.files) {
+
+    let fileName = 'images/' + req.files.fileArray.name;
+    await S3Uploader.uploadBase64(fileName, req.files.fileArray.data).then(async fileData => {
+      console.log('Arquivo submetido para AWS ' + fileName);
+      form.imagePathS3 = fileName;
+      retorno.temErro = false;
+
+      return await Coordenadoras.findOneAndUpdate({
+        _id: form._id
+      },
+        form, {
+        upsert: true
+      });
+    }, err => {
+      console.log('Erro ao enviar imagem para AWS: ' + fileName);
+      retorno.temErro = true;
+      retorno.mensagem = 'Servidor momentaneamente inoperante. Tente novamente mais tarde.';
+    });
+
+  } else {
+    return await Coordenadoras.findOneAndUpdate({
+      _id: form._id
+    },
+      form, {
+      upsert: true
+    });
+  }
 }
 
 async function getEventos() {

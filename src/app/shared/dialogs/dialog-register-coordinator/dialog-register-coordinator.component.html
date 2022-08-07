@@ -26,7 +26,7 @@
       </div>
       <div class="col-8 col-md-4 order-1 order-md-2 mb-3">
         <div class="profile">
-          <img [src]="logo ? (logo | imagePathComplement) : '../../../assets/img/placeholder-profile.png'"
+          <img [src]="logo ? logo : '../../../assets/img/placeholder-profile.png'"
             class="profile__image">
           <input type="file" name="logo" class="profile__input" id="logo" placeholder="Logo"
             (change)="getProfileImageCode($event)" />
@@ -67,7 +67,7 @@
       <div class="col-md-6">
         <div class="action">
           <a class="action__link" (click)="closeDialog()">Cancelar</a>
-          <button class="btn btn-primary action__btn" type="submit">Cadastrar</button>
+          <button class="btn btn-primary action__btn" type="submit">Salvar</button>
         </div>
       </div>
     </div>

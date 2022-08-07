@@ -115,12 +115,12 @@ async function getCoordenadoras(req, res) {
 }
 
 async function updateCoordenadoras(req, res) {
-    let response = await lepedCtrl.updateCoordenadoras(req.body, req.user._id);
+    let response = await lepedCtrl.updateCoordenadoras(req, req.user._id);
     res.json(response);
 }
 
 async function insertCoordenadoras(req, res) {
-    let response = await lepedCtrl.insertCoordenadoras(req.body, req.user._id);
+    let response = await lepedCtrl.insertCoordenadoras(req, req.user._id);
     res.json(response);
 }
 

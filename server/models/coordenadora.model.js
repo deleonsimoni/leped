@@ -26,7 +26,7 @@ const CoordenadoraSchema = new mongoose.Schema(
       type: String
     },
 
-    logo: {
+    imagePathS3: {
       type: String,
     },
 

@@ -1,6 +1,7 @@
 import { Component, Inject } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { ImagePathComplement } from "@app/shared/pipes/image-path-complement.pipe";
 import { Coordenadora } from "@app/shared/types";
 
 @Component({
@@ -11,12 +12,14 @@ import { Coordenadora } from "@app/shared/types";
 export class DialogRegisterCoordinatorComponent {
 
   public coordenadoraForm: FormGroup;
-  public logo: string;
+  public logo: any;
+  imagePathS3: any;
 
   constructor(
     private formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<DialogRegisterCoordinatorComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { coordenador: Coordenadora}
+    @Inject(MAT_DIALOG_DATA) public data: { coordenador: any},
+    private pipeImage: ImagePathComplement
   ) {
     this.coordenadoraForm = this.createForm();
 
@@ -30,7 +33,6 @@ export class DialogRegisterCoordinatorComponent {
       name: [null, [Validators.required]],
       group: [null, [Validators.required]],
       email: [null, [Validators.required]],
-      logo: [null, [Validators.required]],
       orcid: [null, [Validators.required]],
       lattes: [null, [Validators.required]],
       instagram: [null, [Validators.required]],
@@ -39,14 +41,13 @@ export class DialogRegisterCoordinatorComponent {
     });
   }
 
-  private fillForm(data: Coordenadora): void {
-    this.logo = data.logo;
+  private fillForm(data: any): void {
+    this.logo = this.pipeImage.transform(data.imagePathS3);
 
     this.coordenadoraForm.patchValue({
       name: data.name,
       group: data.group,
       email: data.email,
-      logo: data.logo,
       orcid: data.orcid,
       lattes: data.lattes,
       instagram: data.instagram,
@@ -60,31 +61,23 @@ export class DialogRegisterCoordinatorComponent {
     const FR = new FileReader();
     const files = event.target.files;
 
-    FR.addEventListener("load", function(data) {
-      const result = data.target.result as string;
-      that.logo = result.split(",")[1] as string;
-
-      that.coordenadoraForm.patchValue({ logo: that.logo })
+    FR.addEventListener("load", function(e) {
+      console.log(files[0]);
+      that.logo = e.target.result;
     });
 
     if (files && files[0]) {
+      that.imagePathS3 = files[0];
       FR.readAsDataURL(files[0]);
     } else {
       that.logo = null;
-      that.coordenadoraForm.patchValue({ logo: null })
+      that.imagePathS3 = null;
     }
-  }
-
-  public setProfileImage() {
-    const click = new Event("click");
-
-    document.querySelector("#logo")
-      .dispatchEvent(click);
   }
 
   public registerCoordinator(): void {
     if (this.coordenadoraForm.valid) {
-      this.dialogRef.close({ save: true, coordenador: this.coordenadoraForm.value })
+      this.dialogRef.close({ save: true, coordenador: this.coordenadoraForm.value, file: this.imagePathS3 })
     }
   }
 
