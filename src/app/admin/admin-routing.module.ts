@@ -17,6 +17,9 @@ const routes: Routes = [
     component: AdminComponent,
     children: [
       {
+        path: "", pathMatch: "full", redirectTo: "coordenadoras"
+      },
+      {
         path: 'quem-somos', component: QuemSomosComponent
       },
       {
@@ -34,7 +37,6 @@ const routes: Routes = [
       {
         path: 'noticias', component: NoticiasComponent
       },
-
     ],
   },
 ];

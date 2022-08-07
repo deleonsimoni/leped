@@ -6,14 +6,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  menu: any[];
-
-  private adminRoutes = [
-    {}
+  menu: any[] = [
+    { name: "Coordenadoras", path: "/admin/coordenadoras" },
+    { name: "Eventos", path: "/admin/eventos" },
   ];
 
-  ngOnInit() {
-    this.menu = this.adminRoutes;
-  }
+  ngOnInit() {}
+
+
 
 }
