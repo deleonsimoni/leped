@@ -30,6 +30,10 @@ if (config.frontend == 'react') {
 
 //
 app.use(express.static(path.join(__dirname, distDir)));
+
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+
 app.use(/^((?!(api)).)*/, (req, res) => {
   res.sendFile(path.join(__dirname, distDir + '/index.html'));
 });

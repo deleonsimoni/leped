@@ -21,11 +21,11 @@ const EventoSchema = new mongoose.Schema(
       type: String,
     },
 
-    período: {
+    period: {
       type: String,
     },
 
-    logo: {
+    imagePathS3: {
       type: String,
     },
     externalLink: {

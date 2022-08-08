@@ -21,6 +21,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { CustomComponentsModule } from './components/custom-components.module';
+import { CustomDialogsModule } from './dialogs/custom-dialogs.module';
 
 @NgModule({
   exports: [
@@ -46,7 +48,8 @@ import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
     MatProgressBarModule,
     MatDatepickerModule,
     MatNativeDateModule,
-
+    CustomComponentsModule,
+    CustomDialogsModule
   ],
   providers: [
     MatDatepickerModule,
