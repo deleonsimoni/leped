@@ -2,39 +2,40 @@ import { Component, Inject } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { ImagePathComplement } from "@app/shared/pipes/image-path-complement.pipe";
-import { Coordenadora } from "@app/shared/types";
 
 @Component({
-  selector: "dialog-register-coordinator-component",
-  templateUrl: "./dialog-register-coordinator.component.html",
-  styleUrls: ["./dialog-register-coordinator.component.scss"]
+  selector: 'app-dialog-events',
+  templateUrl: './dialog-events.component.html',
+  styleUrls: ['./dialog-events.component.scss']
 })
-export class DialogRegisterCoordinatorComponent {
+export class DialogEventsComponent {
 
-  public coordenadoraForm: FormGroup;
+  public form: FormGroup;
   public logo: any;
   imagePathS3: any;
 
   constructor(
     private formBuilder: FormBuilder,
-    private dialogRef: MatDialogRef<DialogRegisterCoordinatorComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { coordenador: any },
+    private dialogRef: MatDialogRef<DialogEventsComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { form: any },
     private pipeImage: ImagePathComplement
   ) {
-    this.coordenadoraForm = this.createForm();
+    this.form = this.createForm();
 
-    if (this.data.coordenador != null) {
-      this.fillForm(this.data.coordenador);
+    if (this.data.form != null) {
+      this.fillForm(this.data.form);
     }
   }
 
   private createForm(): FormGroup {
     return this.formBuilder.group({
-      name: [null, [Validators.required]],
-      group: [null, [Validators.required]],
-      email: [null, [Validators.required]],
-      orcid: [null, []],
-      lattes: [null, [Validators.required]],
+      title: [null, [Validators.required]],
+      subTitle: [null, [Validators.required]],
+      content: [null, [Validators.required]],
+      externalLink: [null, []],
+      period: [null, []],
+      isAcervo: [null, []],
+      youtube: [null, []],
       instagram: [null, []],
       twitter: [null, []],
       facebook: [null, []]
@@ -44,15 +45,17 @@ export class DialogRegisterCoordinatorComponent {
   private fillForm(data: any): void {
     this.logo = this.pipeImage.transform(data.imagePathS3);
 
-    this.coordenadoraForm.patchValue({
-      name: data.name,
-      group: data.group,
-      email: data.email,
-      orcid: data.orcid,
-      lattes: data.lattes,
+    this.form.patchValue({
+      title: data.title,
+      subTitle: data.subTitle,
+      content: data.title,
+      externalLink: data.externalLink,
+      period: data.period,
+      isAcervo: data.isAcervo,
+      youtube: data.youtube,
       instagram: data.instagram,
       twitter: data.twitter,
-      facebook: data.facebook
+      facebook: data.facebook,
     })
   }
 
@@ -62,7 +65,6 @@ export class DialogRegisterCoordinatorComponent {
     const files = event.target.files;
 
     FR.addEventListener("load", function (e) {
-      console.log(files[0]);
       that.logo = e.target.result;
     });
 
@@ -75,9 +77,9 @@ export class DialogRegisterCoordinatorComponent {
     }
   }
 
-  public registerCoordinator(): void {
-    if (this.coordenadoraForm.valid) {
-      this.dialogRef.close({ save: true, coordenador: this.coordenadoraForm.value, file: this.imagePathS3 })
+  public register(): void {
+    if (this.form.valid) {
+      this.dialogRef.close({ save: true, form: this.form.value, file: this.imagePathS3 })
     }
   }
 

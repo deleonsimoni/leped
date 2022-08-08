@@ -22,7 +22,7 @@ const NoticiaSchema = new mongoose.Schema(
       required: true
     },
 
-    logo: {
+    imagePathS3: {
       type: String,
     },
 

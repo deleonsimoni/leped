@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -37,16 +38,29 @@ export class LepedService {
     return this.http.get(`/api/leped/noticia`);
   }
 
-  cadastrarNoticia(form: any) {
-    return this.http.post(`/api/leped/noticia`, form);
+  cadastrarNoticia(file: any, form: any): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('formulario', JSON.stringify(form));
+
+    if (file) {
+      formData.append('fileArray', file, `${file.name}`);
+    }
+    return this.http.post(`/api/leped/noticia`, formData);
   }
 
-  deletarNoticia(form: any) {
-    return this.http.delete(`/api/leped/noticia/${form._id}`);
+  deletarNoticia(_id: any) {
+    return this.http.delete(`/api/leped/noticia/${_id}`);
   }
 
-  atualizarNoticia(form: any) {
-    return this.http.put(`/api/leped/noticia/`, form);
+  atualizarNoticia(file: any, form: any): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('formulario', JSON.stringify(form));
+
+    if (file) {
+      formData.append('fileArray', file, `${file.name}`);
+    }
+
+    return this.http.put(`/api/leped/noticia`, formData);
   }
 
 
@@ -54,16 +68,29 @@ export class LepedService {
     return this.http.get(`/api/leped/eventos`);
   }
 
-  cadastrarEvento(form: any) {
-    return this.http.post(`/api/leped/eventos`, form);
+  cadastrarEvento(file: any, form: any): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('formulario', JSON.stringify(form));
+
+    if (file) {
+      formData.append('fileArray', file, `${file.name}`);
+    }
+    return this.http.post(`/api/leped/eventos`, formData);
   }
 
-  deletarEvento(form: any) {
-    return this.http.delete(`/api/leped/eventos/${form._id}`);
+  deletarEvento(_id: any) {
+    return this.http.delete(`/api/leped/eventos/${_id}`);
   }
 
-  atualizarEvento(form: any) {
-    return this.http.put(`/api/leped/eventos/`, form);
+  atualizarEvento(file: any, form: any) {
+    const formData: FormData = new FormData();
+    formData.append('formulario', JSON.stringify(form));
+
+    if (file) {
+      formData.append('fileArray', file, `${file.name}`);
+    }
+
+    return this.http.put(`/api/leped/eventos/`, formData);
   }
 
 

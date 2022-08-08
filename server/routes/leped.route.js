@@ -136,12 +136,12 @@ async function getEventos(req, res) {
 }
 
 async function updateEventos(req, res) {
-    let response = await lepedCtrl.updateEventos(req.body, req.user._id);
+    let response = await lepedCtrl.updateEventos(req, req.user._id);
     res.json(response);
 }
 
 async function insertEventos(req, res) {
-    let response = await lepedCtrl.insertEventos(req.body, req.user._id);
+    let response = await lepedCtrl.insertEventos(req, req.user._id);
     res.json(response);
 }
 
@@ -201,12 +201,12 @@ async function getNoticia(req, res) {
 }
 
 async function updateNoticia(req, res) {
-    let response = await lepedCtrl.updateNoticia(req.body, req.user._id);
+    let response = await lepedCtrl.updateNoticia(req, req.user._id);
     res.json(response);
 }
 
 async function insertNoticia(req, res) {
-    let response = await lepedCtrl.insertNoticia(req.body, req.user._id);
+    let response = await lepedCtrl.insertNoticia(req, req.user._id);
     res.json(response);
 }
 

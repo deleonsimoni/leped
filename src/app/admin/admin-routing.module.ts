@@ -4,11 +4,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin.component';
 import { OnlyAdminUsersGuard } from './admin-user-guard';
 import { QuemSomosComponent } from './quem-somos/quem-somos.component';
-import { NoticiasComponent } from '@app/noticias/noticias.component';
 import { GruposPesquisaComponent } from './grupos-pesquisa/grupos-pesquisa.component';
 import { GaleriaComponent } from './galeria/galeria.component';
-import { EventosComponent } from './eventos/eventos.component';
 import { CoordenadorasComponent } from './coordenadoras/coordenadoras.component';
+import { NoticiasComponent } from '@app/admin/noticias/noticias.component';
+import { EventosComponent } from '@app/admin/eventos/eventos.component';
 
 const routes: Routes = [
   {
