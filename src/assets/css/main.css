@@ -1128,6 +1128,8 @@ section {
 
 .chefs .chef-member .member-img {
   position: relative;
+  max-height: 450px;
+  min-height: 500px;
   overflow: hidden;
 }
 

@@ -18,7 +18,7 @@ export class CarrosselHomeComponent implements OnInit {
   }
 
   images = [
-    { title: 'V SIMPÓSIO DO LEPED', short: 'Será realizado o V SIMPÓSIO DO LEPED...', src: "assets/img/carrosssel3.png" }
+    { title: 'V SIMPÓSIO DO LEPED', short: 'Será realizado o V SIMPÓSIO DO LEPED...', src: "assets/img/carrossel3.jpeg" }
   ];
 
 }
