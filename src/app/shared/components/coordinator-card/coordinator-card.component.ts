@@ -8,7 +8,7 @@ import { Coordenadora } from "@app/shared/types";
 })
 export class CoordinatorCardComponent {
 
-  @Input() coordinator: Coordenadora;
+  @Input() coordinator: any;
   @Output() delete: EventEmitter<Coordenadora> = new EventEmitter();
   @Output() edit: EventEmitter<boolean> = new EventEmitter();
 

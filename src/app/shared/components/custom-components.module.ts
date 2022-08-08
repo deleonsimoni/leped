@@ -7,7 +7,8 @@ import { CommonModule } from "@angular/common";
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    CustomPipesModule
   ],
   declarations: [
     CoordinatorCardComponent,
@@ -17,8 +18,7 @@ import { CommonModule } from "@angular/common";
   exports: [
     CoordinatorCardComponent,
     NewsCardComponent,
-    EventsCardComponent,
-    CustomPipesModule
+    EventsCardComponent
   ]
 })
 export class CustomComponentsModule { }
