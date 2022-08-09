@@ -8,6 +8,8 @@ import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 })
 export class CarrosselHomeComponent implements OnInit {
 
+  mobile: any;
+
   constructor(config: NgbCarouselConfig) {
     config.interval = 8000;
     config.keyboard = true;
@@ -15,6 +17,9 @@ export class CarrosselHomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (window.screen.width <= 400) { // 768px portrait
+      this.mobile = true;
+    }
   }
 
   images = [

@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GepedComponent implements OnInit {
 
+  publicacao = 'dissertacao';
+  pesquisas = 'realizada';
   constructor() { }
 
   ngOnInit(): void {
