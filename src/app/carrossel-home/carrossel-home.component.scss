@@ -5,6 +5,7 @@ ngb-carousel .wrapper {
     /* Keep ratio for 900x500 images */
 }
 
+
 ngb-carousel .wrapper>img {
     position: absolute;
     top: 0;
@@ -28,6 +29,14 @@ ngb-carousel .wrapper>img {
     top: 0;
 }
 
+.carouselCont {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
 .carousel-caption-container {
     text-align: left !important;
     background-color: #97d2f2;
@@ -35,7 +44,7 @@ ngb-carousel .wrapper>img {
     border-top-right-radius: 20px 20px;
     color: white;
     text-align: center;
-    margin-bottom: 50px;
+    margin-top: -167px;
 }
 
 .carousel-caption-header {

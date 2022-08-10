@@ -2,28 +2,23 @@
 
     <div class="container">
         <div data-aos="flip-left" style="margin-top: 15px;" data-aos-easing="ease-out-cubic" data-aos-duration="2000"
-            class="row justify-content-between gy-5 ">
-            <ngb-carousel class="">
-                <ng-template ngbSlide *ngFor="let image of images">
+            class=" carouselCont ">
+            <ngb-carousel>
+                <ng-template ngbSlide *ngFor="let image of images" class="imageSlider">
                     <div *ngIf="mobile" class="wrapper">
                         <img [src]="image.src" height="300px" alt="Random first slide" class="w-100">
                     </div>
-                    <div *ngIf="!mobile" class="wrapper">
-                        <img [src]="image.src" height="700px" alt="Random first slide" class="w-100">
+                    <div *ngIf="!mobile" class="picsum-img-wrapper">
+                        <img [src]="image.src" height="600px" width="800px" alt="Random first slide" class="img-fluid">
                     </div>
                     <div data-aos="fade-right">
                         <div class="row" class="carousel-caption-container">
-                            <!-- <h3 class="carousel-caption-header">{{ image.title }}</h3>
+                            <h3 class="carousel-caption-header">{{ image.title }}</h3>
 
                             <div class="carousel-caption-description d-none d-sm-block">
-                                {{ image.short }}
+                                Leia mais
                                 <a href="" class="carousel-caption-link">Leia mais</a>
                             </div>
-
-                         <div class="carousel-caption-description-mobile d-sm-none">
-                                {{ image.short }}
-                                <a href="" class="carousel-caption-link">Leia mais</a>
-                            </div>-->
 
                         </div>
                     </div>
