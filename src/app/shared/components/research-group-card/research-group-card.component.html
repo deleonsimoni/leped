@@ -1,0 +1,26 @@
+<div class="profile-card">
+  <div class="row profile-card--blur-content align-items-center">
+    <div class="col-md-4">
+      <img class="profile-card__image" src="{{ researchGroup.imagePathS3 ? (researchGroup.imagePathS3 | imagePathComplement) : '../../../assets/img/placeholder-profile.png' }}" alt="">
+    </div>
+    <div class="col-md-8">
+      <div class="profile-card__data">
+        <p class="profile-data__title">{{ researchGroup.title }}</p>
+        <p class="profile-data__group">Coordenador(a)</p>
+        <p class="profile-data__name">{{ researchGroup.coordenadoraName }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="row profile-card__action">
+    <div class="content-action">
+      <button class="btn btn-danger content-action__btn" (click)="delete.emit(researchGroup)">
+        <i class="fa-solid fa-trash"></i>
+        Deletar
+      </button>
+      <button class="btn btn-primary content-action__btn" (click)="edit.emit()">
+        <i class="fa-solid fa-pencil"></i>
+        Editar
+      </button>
+    </div>
+  </div>
+</div>

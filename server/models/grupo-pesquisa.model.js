@@ -32,7 +32,15 @@ const GrupoPesquisaSchema = new mongoose.Schema(
       required: true
     },
 
-    logo: {
+    imagePathS3: {
+      type: String,
+    },
+
+    coordenadoraName: {
+      type: String,
+    },
+
+    coordenadoraImage: {
       type: String,
     },
 
