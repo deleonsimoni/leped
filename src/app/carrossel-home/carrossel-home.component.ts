@@ -39,6 +39,7 @@ export class CarrosselHomeComponent implements OnInit {
   }
 
   visualizar(item) {
+    item.tipo = 'noticia';
     this.router.navigate(['visualizar'], { state: { data: item } });
   }
 
