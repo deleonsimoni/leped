@@ -4,25 +4,25 @@
             <div
                 class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start">
                 <h3 data-aos="fade-up"><b>Quem Somos</b></h3>
-                <p data-aos="fade-up" data-aos-delay="100">{{quemSomos.title}}</p>
-                <div style="text-align: justify;" [innerHTML]="quemSomos.content">
+                <p data-aos="fade-up" data-aos-delay="100">{{quemSomos?.title}}</p>
+                <div style="text-align: justify;" [innerHTML]="quemSomos?.content">
 
                 </div>
                 <br />
                 <div style="text-align: justify;" class="social-icons">
-                    <a class="social-icon social-icon--facebook" href="{{quemSomos.facebook}}" target="_blank">
+                    <a class="social-icon social-icon--facebook" href="{{quemSomos?.facebook}}" target="_blank">
                         <i class="fa-brands fa-facebook"></i>
                         <div class="tooltip">Facebook</div>
                     </a>
-                    <a class="social-icon social-icon--youtube" href="{{quemSomos.youtube}}" target="_blank">
+                    <a class="social-icon social-icon--youtube" href="{{quemSomos?.youtube}}" target="_blank">
                         <i class="fa-brands fa-youtube"></i>
                         <div class="tooltip">Youtube</div>
                     </a>
-                    <a class="social-icon social-icon--instagram" href="{{quemSomos.instagram}}" target="_blank">
+                    <a class="social-icon social-icon--instagram" href="{{quemSomos?.instagram}}" target="_blank">
                         <i class="fa-brands fa-instagram"></i>
                         <div class="tooltip">Instagram</div>
                     </a>
-                    <a class="social-icon social-icon--twitter" href="{{quemSomos.twitter}}" target="_blank">
+                    <a class="social-icon social-icon--twitter" href="{{quemSomos?.twitter}}" target="_blank">
                         <i class="fa-brands fa-twitter"></i>
                         <div class="tooltip">Twitter</div>
                     </a>
@@ -35,7 +35,7 @@
                 </div>-->
             </div>
             <div class="col-lg-6 order-1 order-lg-2 text-center text-lg-start">
-                <img src="{{quemSomos.logo | imagePathComplement}}" class="img-fluid" alt="" data-aos="zoom-out"
+                <img src="{{quemSomos?.logo | imagePathComplement}}" class="img-fluid" alt="" data-aos="zoom-out"
                     data-aos-delay="300">
 
 
