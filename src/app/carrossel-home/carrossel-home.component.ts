@@ -31,7 +31,7 @@ export class CarrosselHomeComponent implements OnInit {
 
     this.lepedService.listNoticia()
       .subscribe((res: any) => {
-        this.noticias.push(res[0]);
+        this.noticias = res;
       }, err => {
         console.log(err);
       });
@@ -41,9 +41,5 @@ export class CarrosselHomeComponent implements OnInit {
   visualizar(item) {
     this.router.navigate(['visualizar'], { state: { data: item } });
   }
-
-  images = [
-    { title: 'V SIMPÓSIO DO LEPED', short: 'Será realizado o V SIMPÓSIO DO LEPED...', src: "assets/img/carrossel34.jpeg" }
-  ];
 
 }

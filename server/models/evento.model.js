@@ -17,6 +17,10 @@ const EventoSchema = new mongoose.Schema(
       required: true
     },
 
+    content: {
+      type: String,
+    },
+
     subTitle: {
       type: String,
     },
@@ -30,9 +34,6 @@ const EventoSchema = new mongoose.Schema(
     },
     externalLink: {
       type: String,
-    },
-    isAcervo: {
-      type: Boolean
     },
     facebook: {
       type: String,

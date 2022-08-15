@@ -12,6 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 export class NoticiasComponent implements OnInit {
 
   noticias;
+  carregando = false;
 
   constructor(
     private lepedService: LepedService,
@@ -23,15 +24,17 @@ export class NoticiasComponent implements OnInit {
 
     this.lepedService.listNoticia()
       .subscribe((res: any) => {
-        this.toastr.success('Olhe as nossas últimas notícias', 'Sempre Atualizados');
+        this.carregando = false;
         this.noticias = res;
       }, err => {
+        this.carregando = false;
         this.toastr.success('Ocorreu um erro ao listar as notícias', 'Aguarde');
         console.log(err);
       });
   }
 
   visualizar(item) {
+    item.tipo = 'noticia';
     this.router.navigate(['visualizar'], { state: { data: item } });
   }
 

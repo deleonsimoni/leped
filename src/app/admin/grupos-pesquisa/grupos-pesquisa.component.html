@@ -4,11 +4,7 @@
       <div class="row">
         <ng-container *ngIf="grupos.length > 0">
           <div class="col-6 col-md-4 mb-3" *ngFor="let grupo of grupos">
-            <research-group-card-component
-              [researchGroup]="grupo"
-              (edit)="edit(grupo)"
-              (delete)="delete($event)"
-            >
+            <research-group-card-component [researchGroup]="grupo" (edit)="edit(grupo)" (delete)="delete($event)">
             </research-group-card-component>
           </div>
         </ng-container>
@@ -23,7 +19,6 @@
 </div>
 <div class="row justify-content-end mb-4">
   <div class="col-md-3 text-end">
-      <button mat-raised-button color="accent" class="btn coordinator-btn" (click)="register()">Cadastrar grupo</button>
+    <button mat-raised-button color="accent" class="btn coordinator-btn" (click)="register()">Cadastrar grupo</button>
   </div>
 </div>
-

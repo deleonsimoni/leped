@@ -16,7 +16,7 @@
           <div class="validation"></div>
         </div>
         <div class="form-group">
-          <input type="text" name="group" class="form-control" id="group" placeholder="Group" formControlName="group" />
+          <input type="text" name="group" class="form-control" id="group" placeholder="Grupo" formControlName="group" />
           <div class="validation"></div>
         </div>
         <div class="form-group">
@@ -26,8 +26,7 @@
       </div>
       <div class="col-8 col-md-4 order-1 order-md-2 mb-3">
         <div class="profile">
-          <img [src]="logo ? logo : '../../../assets/img/placeholder-profile.png'"
-            class="profile__image">
+          <img [src]="logo ? logo : '../../../assets/img/placeholder-profile.png'" class="profile__image">
           <input type="file" name="logo" class="profile__input" id="logo" placeholder="Logo"
             (change)="getProfileImageCode($event)" />
         </div>

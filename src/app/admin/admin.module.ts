@@ -12,10 +12,11 @@ import { NoticiasComponent } from './noticias/noticias.component';
 import { EventosComponent } from './eventos/eventos.component';
 import { GruposPesquisaComponent } from './grupos-pesquisa/grupos-pesquisa.component';
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import { CustomPipesModule } from '@app/shared/pipes/custom-pipes.module';
 
 @NgModule({
   declarations: [AdminComponent, QuemSomosComponent, CoordenadorasComponent, GaleriaComponent, NoticiasComponent, EventosComponent, GruposPesquisaComponent],
-  imports: [CommonModule, SharedModule, AdminRoutingModule, AngularEditorModule],
+  imports: [CommonModule, SharedModule, AdminRoutingModule, AngularEditorModule, CustomPipesModule],
   providers: [OnlyAdminUsersGuard],
 })
 export class AdminModule { }

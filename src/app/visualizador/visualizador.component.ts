@@ -21,7 +21,11 @@ export class VisualizadorComponent implements OnInit {
   }
 
   voltar() {
-    this.router.navigate(['noticias']);
+    if (this.item.tipo == 'noticia') {
+      this.router.navigate(['noticias']);
+    } else {
+      this.router.navigate(['eventos']);
+    }
 
   }
 

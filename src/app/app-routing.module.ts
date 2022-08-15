@@ -7,7 +7,6 @@ import { LinhasPesquisaComponent } from './linhas-pesquisa/linhas-pesquisa.compo
 import { EventosComponent } from './eventos/eventos.component';
 import { ObrasPublicadasComponent } from './obras-publicadas/obras-publicadas.component';
 import { GruposComponent } from './grupos/grupos.component';
-import { EndipeComponent } from './endipe/endipe.component';
 import { GecultComponent } from './gecult/gecult.component';
 import { GedocComponent } from './gedoc/gedoc.component';
 import { GeprodComponent } from './geprod/geprod.component';
@@ -45,11 +44,6 @@ const routes: Routes = [
   {
     path: 'obras-publicadas',
     component: ObrasPublicadasComponent,
-    /*canActivate: [AuthGuard],*/
-  },
-  {
-    path: 'endipe',
-    component: EndipeComponent,
     /*canActivate: [AuthGuard],*/
   },
   {
