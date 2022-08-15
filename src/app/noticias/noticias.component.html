@@ -1,1 +1,33 @@
-<p>noticias works!</p>
+<section id="about" class="about">
+    <div class="container" data-aos="fade-up">
+
+        <div class="page-header mt-2">
+            <h1 id="timeline">Notícias</h1>
+        </div>
+
+        <mat-card *ngFor="let noticia of noticias" class="example-card m-4">
+            <mat-card-title><b>{{noticia.title}}</b></mat-card-title>
+            <mat-card-content>
+                <div class="row">
+                    <div class="col-3">
+                        <img mat-card-xl-image class="img-fluid"
+                            src="{{ noticia.imagePathS3 ? (noticia.imagePathS3 | imagePathComplement) : '../../../assets/img/placeholder-profile.png' }}">
+                    </div>
+                    <div class="col-9">
+                        <p [innerHTML]="noticia.content  | truncateString:[1000, '...']"></p>
+                    </div>
+                </div>
+
+            </mat-card-content>
+            <mat-divider inset></mat-divider>
+            <mat-card-actions>
+                <button (click)="visualizar(noticia)" mat-button color="warn">LEIA MAIS</button>
+
+            </mat-card-actions>
+
+        </mat-card>
+
+
+
+    </div>
+</section>

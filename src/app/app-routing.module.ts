@@ -13,6 +13,8 @@ import { GedocComponent } from './gedoc/gedoc.component';
 import { GeprodComponent } from './geprod/geprod.component';
 import { GepematComponent } from './gepemat/gepemat.component';
 import { GepedComponent } from './geped/geped.component';
+import { NoticiasComponent } from './noticias/noticias.component';
+import { VisualizadorComponent } from './visualizador/visualizador.component';
 
 const routes: Routes = [
   {
@@ -33,6 +35,11 @@ const routes: Routes = [
   {
     path: 'eventos',
     component: EventosComponent,
+    /*canActivate: [AuthGuard],*/
+  },
+  {
+    path: 'noticias',
+    component: NoticiasComponent,
     /*canActivate: [AuthGuard],*/
   },
   {
@@ -74,6 +81,11 @@ const routes: Routes = [
   {
     path: 'gecult',
     component: GecultComponent,
+    /*canActivate: [AuthGuard],*/
+  },
+  {
+    path: 'visualizar',
+    component: VisualizadorComponent,
     /*canActivate: [AuthGuard],*/
   },
 

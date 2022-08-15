@@ -37,6 +37,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { DialogDeleteComponent } from './dialog/dialog-delete/dialog-delete.component';
 import { ModalTermoComponent } from './dialog/modal-termo/modal-termo.component';
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import { CustomPipesModule } from './shared/pipes/custom-pipes.module';
+import { VisualizadorComponent } from './visualizador/visualizador.component';
 
 
 
@@ -57,7 +59,8 @@ export function appInitializerFactory(authService: AuthService) {
     NgbModule,
     FontAwesomeModule,
     NgxFlagPickerModule,
-    AngularEditorModule
+    AngularEditorModule,
+    CustomPipesModule
   ],
   declarations: [
     AppComponent,
@@ -79,7 +82,10 @@ export function appInitializerFactory(authService: AuthService) {
     GedocComponent,
     GecultComponent,
     DialogDeleteComponent,
-    ModalTermoComponent],
+    ModalTermoComponent,
+    VisualizadorComponent,
+
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

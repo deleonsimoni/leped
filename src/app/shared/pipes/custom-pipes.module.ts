@@ -1,15 +1,19 @@
 import { NgModule } from "@angular/core";
 import { ImagePathComplement } from "./image-path-complement.pipe";
+import { TruncateStringPipe } from './truncate-string.pipe';
 
 @NgModule({
   declarations: [
-    ImagePathComplement
+    ImagePathComplement,
+    TruncateStringPipe
   ],
   exports: [
-    ImagePathComplement
+    ImagePathComplement,
+    TruncateStringPipe
   ],
   providers: [
-    ImagePathComplement
+    ImagePathComplement,
+    TruncateStringPipe
   ]
 })
-export class CustomPipesModule {}
+export class CustomPipesModule { }

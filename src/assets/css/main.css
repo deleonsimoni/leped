@@ -1117,6 +1117,13 @@ section {
 /*--------------------------------------------------------------
 # Chefs Section
 --------------------------------------------------------------*/
+
+.linkLEPED {
+  color: rgb(216, 57, 57);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .chefs .chef-member {
   overflow: hidden;
   text-align: center;
