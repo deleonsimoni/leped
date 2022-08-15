@@ -12,7 +12,7 @@ router.get('/quemSomos', asyncHandler(getQuemSomos));
 router.get('/coordenadoras', asyncHandler(getCoordenadoras));
 router.get('/eventos', asyncHandler(getEventos));
 router.get('/galeria', asyncHandler(getGaleria));
-router.get('/grupoPesquisa', asyncHandler(getGrupoPesquisa));
+router.get('/grupo-pesquisa', asyncHandler(getGrupoPesquisa));
 router.get('/noticia', asyncHandler(getNoticia));
 
 
@@ -179,12 +179,12 @@ async function getGrupoPesquisa(req, res) {
 }
 
 async function updateGrupoPesquisa(req, res) {
-    let response = await lepedCtrl.updateGrupoPesquisa(req.body, req.user._id);
+    let response = await lepedCtrl.updateGrupoPesquisa(req, req.user._id);
     res.json(response);
 }
 
 async function insertGrupoPesquisa(req, res) {
-    let response = await lepedCtrl.insertGrupoPesquisa(req.body, req.user._id);
+    let response = await lepedCtrl.insertGrupoPesquisa(req, req.user._id);
     res.json(response);
 }
 

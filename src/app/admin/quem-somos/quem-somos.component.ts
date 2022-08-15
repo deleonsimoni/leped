@@ -11,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 export class QuemSomosComponent implements OnInit {
 
   public form: FormGroup;
+  logo;
   carregando = false;
   data: any;
   @ViewChild('imageRender', { static: false }) imageRender: ElementRef;
@@ -38,6 +39,7 @@ export class QuemSomosComponent implements OnInit {
     this.lepedService.listQuemSomos().subscribe((res: any) => {
       this.carregando = false;
       this.data = res;
+      this.logo = res[0].logo;
       this.form.patchValue(res[0]);
     }, err => {
       this.carregando = false;

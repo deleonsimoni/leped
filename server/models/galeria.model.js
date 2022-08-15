@@ -12,7 +12,7 @@ const GaleriaSchema = new mongoose.Schema(
       default: Date.now
     },
 
-    logo: {
+    imagePathS3: {
       type: String,
       required: true
     },

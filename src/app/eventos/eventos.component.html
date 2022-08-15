@@ -7,65 +7,19 @@
 
 
         <div class="row ">
-            <div class="card-deck">
+            <div class="card-deck" *ngFor="let evento of eventos">
 
                 <div data-aos="fade-up" class="card border-0 col-sm-6 p-0">
-                    <img class="card-img-top" src="assets/img/carrossel3.jpeg" alt="Card image cap">
+                    <img class="card-img-top" *ngIf="evento.imagePathS3"
+                        src="{{evento.imagePathS3 | imagePathComplement}}" alt="Card image cap">
                     <div class="card-body">
-                        <h4 class="card-title h4">V SIMPÓSIO DO LEPED</h4>
-                        <h5 class="card-date">27 - 28 de Setembro</h5>
-                        <h5 class="card-date"><a href="https://www.instagram.com/simposio_leped_ufrj/?utm_source=qr"
+                        <h4 class="card-title h4">{{evento.title}}</h4>
+                        <p class="card-text" *ngIf="evento.subTitle">{{evento.subTitle}}</p>
+                        <h5 class="card-date" *ngIf="evento.period">{{evento.period}}</h5>
+                        <h5 class="card-date" *ngIf="evento.externalLink"><a href="{{evento.externalLink}}"
                                 target="_blank">Mais informações</a></h5>
-
-                    </div>
-                </div>
-
-                <div data-aos="fade-up" class="card border-0 col-sm-6 p-0">
-                    <img class="card-img-top" src="assets/img/endipe.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title h4">XX Endipe Rio 2020</h4>
-                        <p class="card-text">Congresso online</p>
-                        <h5 class="card-date">20/06/2020 - 20/08/2020</h5>
-                        <h5 class="card-date"><a routerLink="/endipe">Acervo</a></h5>
-
-                    </div>
-                </div>
-                <div data-aos="fade-up" class="card border-0 col-sm-6 p-0">
-
-                    <div class="card-body">
-                        <h4 class="card-title h4">IV Simpósio sobre Ensino de Didática do LEPED</h4>
-                        <h5 class="card-date">14-15 de maio de 2018</h5>
-
-                    </div>
-                </div>
-                <div data-aos="fade-up" class="card border-0 col-sm-6 p-0">
-                    <img class="card-img-top" src="assets/img/evento1.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title h4">III Simpósio sobre Ensino de Didática do LEPED</h4>
-                        <h5 class="card-date">17 -18 de maio de 2016</h5>
-                        <!--<h5 class="card-date"><a href="http://leped-feufrj.com.br/iiised" target="_blank">Mais
-                                informações</a></h5>-->
-
-                    </div>
-                </div>
-                <div data-aos="fade-up" class="card border-0 col-sm-6 p-0">
-                    <img class="card-img-top" src="assets/img/evento2.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title h4">II Simpósio sobre Ensino de Didática do LEPED</h4>
-                        <h5 class="card-date">06-07 de maio de 2014</h5>
-                        <!--<h5 class="card-date"><a
-                                href="http://www.leped-feufrj.com.br/pages/home/eventos/ii-simposio/home.php"
-                                target="_blank">Mais informações</a></h5>-->
-
-                    </div>
-                </div>
-                <div data-aos="fade-up" class="card border-0 col-sm-6 p-0">
-                    <img class="card-img-top" src="assets/img/evento3.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title h4">I Simpósio sobre Ensino de Didática do LEPED</h4>
-                        <h5 class="card-date">27-28 de março de 2012</h5>
-                        <!-- <h5 class="card-date"><a href="http://www.leped-feufrj.com.br/pages/home/eventos/i-simposio.php"
-                                target="_blank">Mais informações</a></h5>-->
+                        <h5 class="card-date" *ngIf="evento.content"><a class="linkLEPED" (click)="visualizar(evento)"
+                                target="_blank">Acervo</a></h5>
 
                     </div>
                 </div>

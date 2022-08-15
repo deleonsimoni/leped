@@ -30,11 +30,10 @@ export class DialogEventsComponent {
   private createForm(): FormGroup {
     return this.formBuilder.group({
       title: [null, [Validators.required]],
-      subTitle: [null, [Validators.required]],
-      content: [null, [Validators.required]],
+      subTitle: [null, []],
+      content: [null, []],
       externalLink: [null, []],
       period: [null, []],
-      isAcervo: [null, []],
       youtube: [null, []],
       instagram: [null, []],
       twitter: [null, []],
@@ -48,10 +47,9 @@ export class DialogEventsComponent {
     this.form.patchValue({
       title: data.title,
       subTitle: data.subTitle,
-      content: data.title,
+      content: data.content,
       externalLink: data.externalLink,
       period: data.period,
-      isAcervo: data.isAcervo,
       youtube: data.youtube,
       instagram: data.instagram,
       twitter: data.twitter,

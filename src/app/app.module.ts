@@ -25,7 +25,6 @@ import { SobreComponent } from './sobre/sobre.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ObrasPublicadasComponent } from './obras-publicadas/obras-publicadas.component';
 import { GruposComponent } from './grupos/grupos.component';
-import { EndipeComponent } from './endipe/endipe.component';
 import { NgxFlagPickerModule } from 'ngx-flag-picker';
 import { GepedComponent } from './geped/geped.component';
 import { GepematComponent } from './gepemat/gepemat.component';
@@ -75,7 +74,6 @@ export function appInitializerFactory(authService: AuthService) {
     SobreComponent,
     ObrasPublicadasComponent,
     GruposComponent,
-    EndipeComponent,
     GepedComponent,
     GepematComponent,
     GeprodComponent,

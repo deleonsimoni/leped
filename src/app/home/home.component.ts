@@ -1,11 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LepedService } from '@app/shared/services/leped.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+
+  coordenadoras;
+  carregando = false;
+
+  constructor(
+    private lepedService: LepedService,
+    private router: Router,
+  ) { }
+
+  ngOnInit(): void {
+    this.carregando = true;
+
+    this.lepedService.listCoordenadoras()
+      .subscribe((res: any) => {
+        this.carregando = false;
+        this.coordenadoras = res;
+      }, err => {
+        this.carregando = false;
+        console.log(err);
+      });
+  }
 
   public loadScript() {
     let body = <HTMLDivElement>document.body;

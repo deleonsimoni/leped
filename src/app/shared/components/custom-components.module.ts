@@ -4,6 +4,7 @@ import { CoordinatorCardComponent } from "./coordinator-card/coordinator-card.co
 import { NewsCardComponent } from './news-card/news-card.component';
 import { EventsCardComponent } from './events-card/events-card.component';
 import { CommonModule } from "@angular/common";
+import { ResearchGroupCardComponent } from "./research-group-card/research-group-card.component";
 
 @NgModule({
   imports: [
@@ -13,12 +14,14 @@ import { CommonModule } from "@angular/common";
   declarations: [
     CoordinatorCardComponent,
     NewsCardComponent,
-    EventsCardComponent
+    EventsCardComponent,
+    ResearchGroupCardComponent
   ],
   exports: [
     CoordinatorCardComponent,
     NewsCardComponent,
-    EventsCardComponent
+    EventsCardComponent,
+    ResearchGroupCardComponent
   ]
 })
 export class CustomComponentsModule { }
