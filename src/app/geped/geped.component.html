@@ -79,10 +79,10 @@
                 <label for="tab2">Pesquisas</label>
 
 
-                <!--  <input type="radio" name="tabset" id="tab3" aria-controls="ensino">
-                <label for="tab3">Ensino</label>
+                <input type="radio" name="tabset" id="tab3" aria-controls="ensino">
+                <label for="tab3">Ensino e Extensão</label>
 
-                <input type="radio" name="tabset" id="tab4" aria-controls="extensao">
+                <!--<input type="radio" name="tabset" id="tab4" aria-controls="extensao">
                 <label for="tab4">Extensão</label>
 
                 <input type="radio" name="tabset" id="tab5" aria-controls="pibid">
@@ -146,7 +146,7 @@
                                                 </div>
                                             </div>
                                             <div class="member-info">
-                                                <p>Alessandra do Nascimento Santos Morae<br />
+                                                <p>Alessandra do Nascimento Santos Moraes<br />
 
 
                                                     <a target="_blank"
@@ -287,7 +287,7 @@
                                                 </div>
                                             </div>
                                             <div class="member-info">
-                                                <p>Fernanda Lahtermaher lattes<br />
+                                                <p>Fernanda Lahtermaher<br />
 
                                                     <a target="_blank"
                                                         href="http://lattes.cnpq.br/6621147691893463">Lattes</a><br />
@@ -359,7 +359,7 @@
                                                 </div>
                                             </div>
                                             <div class="member-info">
-                                                <p>Giseli Barreto Cruz<br />
+                                                <p>Giseli Barreto da Cruz<br />
 
                                                     <a target="_blank"
                                                         href="http://lattes.cnpq.br/5755499489661099">Lattes</a><br />
@@ -557,8 +557,7 @@
                                     data-aos-delay="100">
                                     <div class="chef-member">
                                         <div class="member-img">
-                                            <img src="../assets/img/geped/parcerias/parceria1.png"
-                                                class="img-fluid img-parcerias-institucionais" alt="">
+                                            <img src="../assets/img/geped/parcerias/ufsc.png" class="img-fluid" alt="">
 
                                         </div>
                                         <div class="member-info">
@@ -580,11 +579,13 @@
                                     data-aos-delay="100">
                                     <div class="chef-member">
                                         <div class="member-img">
-                                            <img src="../assets/img/geped/parcerias/parceria2.png"
-                                                class="img-fluid img-parcerias-institucionais" alt="">
+                                            <img src="../assets/img/geped/parcerias/uec.png" class="img-fluid" alt="">
 
                                         </div>
                                         <div class="member-info">
+                                            <br />
+                                            <br />
+
                                             <p><strong>Universidade do Estado do Ceará – UECE</strong></p>
 
                                             <p>
@@ -601,17 +602,20 @@
                                     data-aos-delay="100">
                                     <div class="chef-member">
                                         <div class="member-img">
-                                            <img src="../assets/img/geped/parcerias/parceria3.png"
-                                                class="img-fluid img-parcerias-institucionais" alt="">
+                                            <img src="../assets/img/geped/parcerias/puc2.png" class="img-fluid" alt="">
 
                                         </div>
                                         <div class="member-info">
+
+                                            <br />
+                                            <br />
+
                                             <p><strong>Pontifícia Universidade Católica de São Paulo – PUC/SP</strong>
                                             </p>
 
                                             <p>
                                                 Núcleo de Estudos e Pesquisas sobre Desenvolvimento Profissional Docente
-                                                <br>
+
                                                 Coordenação do núcleo: Laurizete Ferragut Passos (PUC/SP)
                                             </p>
                                         </div>
@@ -622,8 +626,7 @@
                                     data-aos-delay="100">
                                     <div class="chef-member">
                                         <div class="member-img">
-                                            <img src="../assets/img/geped/parcerias/parceria4.png"
-                                                class="img-fluid img-parcerias-institucionais" alt="">
+                                            <img src="../assets/img/geped/parcerias/redep.png" class="img-fluid" alt="">
 
                                         </div>
                                         <div class="member-info">
@@ -643,11 +646,12 @@
                                     data-aos-delay="100">
                                     <div class="chef-member">
                                         <div class="member-img">
-                                            <img src="../assets/img/geped/parcerias/parceria5.png"
-                                                class="img-fluid img-parcerias-institucionais" alt="">
+                                            <img src="../assets/img/geped/parcerias/uc.png" class="img-fluid" alt="">
 
                                         </div>
                                         <div class="member-info">
+                                            <br />
+
                                             <p><strong>Universidade de Chile – U.Chile</strong></p>
 
                                             <p>
@@ -663,8 +667,7 @@
                                     data-aos-delay="100">
                                     <div class="chef-member">
                                         <div class="member-img">
-                                            <img src="../assets/img/geped/parcerias/parceria6.png"
-                                                class="img-fluid img-parcerias-institucionais" alt="">
+                                            <img src="../assets/img/geped/parcerias/ua.png" class="img-fluid" alt="">
 
                                         </div>
                                         <div class="member-info">
@@ -691,14 +694,17 @@
                         <div class="tabset2">
 
                             <button type="button" (click)="pesquisas = 'realizada'"
-                                class="btn btn-primary m-4">Pesquisas realizadas</button>
+                                class="btn btn-primary m-3">Pesquisas realizadas</button>
+
 
                             <button type="button" (click)="pesquisas = 'andamento'"
-                                class="btn btn-primary m-4">Pesquisas em andamento</button>
+                                class="btn btn-primary m-3">Pesquisas em andamento</button>
 
 
                         </div>
                         <div id="realizada" class="tabset2" *ngIf="pesquisas == 'realizada'">
+                            <br />
+                            <br />
                             <h4> Pesquisas Realizadas</h4>
                             <p style="text-align: justify;"><strong>Concepções e práticas didáticas de formadores
                                     de professores </strong>
@@ -796,8 +802,12 @@
                                 O Papel do Professor Formador e das práticas de Licenciatura sob o olhar avaliativo
                                 dos futuros professores. <br />
                                 Revista Portuguesa de Investigação Educacional, v. 12, p. 99-121, 2012.
+                                Disponível em:
+                                <a style="color:#499acd"
+                                    href="https://revistas.ucp.pt/index.php/investigacaoeducacional/article/view/3377">https://revistas.ucp.pt/index.php/investigacaoeducacional/article/view/3377</a>
 
                                 <br /><br />
+
                             </p>
 
                             <p style="text-align: justify;"><strong>A Didática e o aprendizado da docência no
@@ -888,8 +898,11 @@
                                 Didática na formação inicial de professores: concepções e práticas de professores
                                 formadores
                                 na visão de estudantes. <br />
-                                Revista internacional de formação de professores, v. 3, p. 3-17, 2018.<br /><br />
-
+                                Revista internacional de formação de professores, v. 3, p. 3-17, 2018.<br />
+                                Disponível em:
+                                <a style="color:#499acd"
+                                    href="https://periodicos.itp.ifsp.edu.br/index.php/RIFP/article/view/694">https://periodicos.itp.ifsp.edu.br/index.php/RIFP/article/view/694</a>
+                                <br /><br />
 
                             </p>
                             <p style="text-align: justify;"><strong>Concepções e práticas didáticas de egressos de
@@ -954,7 +967,7 @@
                                 didático-pedagógicos.<br />
                                 Profesorado (GRANADA), v. 23, p. 93-112, 2019. <br />
                                 Disponível em: <a style="color:#499acd"
-                                    href="https://digibug.ugr.es/handle/10481/60556"></a>https://digibug.ugr.es/handle/10481/60556<br /><br />
+                                    href="https://digibug.ugr.es/handle/10481/60556">https://digibug.ugr.es/handle/10481/60556</a><br /><br />
 
                                 CRUZ, G. B. da; BATALHA, C. S.; COSTA, E. C. S.; OLIVEIRA, F. L.; FERNANDES, I. C.
                                 B.; CASTRO, P. H. Z. C. <br />
@@ -962,6 +975,27 @@
                                 Retratos da escola, v. 16, p. 149-169, 2022. <br />
                                 Disponível em: <a style="color:#499acd"
                                     href="https://retratosdaescola.emnuvens.com.br/rde/article/view/1290">https://retratosdaescola.emnuvens.com.br/rde/article/view/1290</a><br /><br />
+
+
+                                CRUZ, G. B. da; LAHTERMAHER, F. <br />
+                                Perspectivas de indução docente: possibilidades às tensões e aos desafios de professores
+                                em inserção profissional. <br />
+                                In: MARCELO GARCÍA, C.; MARTINÉZ, P. Empezar con buen pie: experiencias de programas de
+                                inducción y acompañamiento
+                                a docentes de nuevo ingresso. <br />
+                                Barcelona/ES: Octaedro, 2022, p. 75-96. <br />
+                                Disponível em: <a style="color:#499acd"
+                                    href="https://octaedro.com/libro/empezar-con-buen-pie/">https://octaedro.com/libro/empezar-con-buen-pie/</a>
+                                <br /> <br />
+
+                                CRUZ, G. B. da; BATALHA, C. S.; LAHTERMAHER, F.; CAMPELO, T. da S. <br />
+                                Didática e docência em tempos incertos: desafios à educação democrática e à justiça
+                                social. <br />
+                                Perspectiva, Florianópolis, v. 40, n. 3, p. 01-21, jul/set, 2022.<br />
+                                Disponível em: <a style="color:#499acd"
+                                    href="https://periodicos.ufsc.br/index.php/perspectiva/issue/view/3337">https://periodicos.ufsc.br/index.php/perspectiva/issue/view/3337</a>
+                                <br /><br />
+
                             </p>
                             <p style="text-align: justify;"><strong>Inserção profissional de egressos de Programas
                                     de Iniciação à Docência
@@ -1018,11 +1052,17 @@
                                 OLIVEIRA, F. L.; CRUZ, G. B. da. <br />
                                 A inserção profissional de um egresso do PIBID: O caso de uma professora de
                                 matemática. <br />
-                                Revista Portuguesa de Educação, v. 32, p. 5-23, 2019.<br /><br />
+                                Revista Portuguesa de Educação, v. 32, p. 5-23, 2019.<br />
+                                Disponível em: <a style="color:#499acd"
+                                    href="https://revistas.rcaap.pt/rpe/article/view/18006">https://revistas.rcaap.pt/rpe/article/view/18006</a>
+                                <br /><br />
 
                                 OLIVEIRA, F. L.; CRUZ, G. B. da. <br />
                                 A inserção docente de uma professora de matemática egressa do PIBID.<br />
-                                Revista Contemporânea de Educação, v. 13, p. 222-240, 2018.<br /><br />
+                                Revista Contemporânea de Educação, v. 13, p. 222-240, 2018.<br />
+                                <a style="color:#499acd"
+                                    href="https://revistas.ufrj.br/index.php/rce/article/view/14060/pdf">https://revistas.ufrj.br/index.php/rce/article/view/14060/pdf</a>
+                                <br /><br />
 
                             </p>
                             <p style="text-align: justify;"><strong>Pesquisa com professores iniciantes: um estudo
@@ -1060,12 +1100,95 @@
                                 de um
                                 dispositivo de formação com marcas distintas daqueles já constituídos e
                                 prevalecentes no âmbito
-                                das políticas públicas vigentes.
+                                das políticas públicas vigentes. <br /> <br />
+                                <strong>Financiamento:</strong> FAPERJ (CNE) e CNPq (Edital Universal 2018)
+
+                                <strong>Publicações:</strong> <br /> <br />
+
+                                CRUZ, G. B. da; FARIAS, I. M. S. de; HOBOLD, M. de S.<br />
+                                Indução profissional e o início do
+                                trabalho docente: debates e necessidades <br />
+                                (Professional induction and the beginning of
+                                teaching work: debates and needs). <br />
+                                Revista Eletrônica de Educação (SÃO CARLOS), v. 14,
+                                p. 4149114-15, 2020. <br />
+                                Disponível em: <a style="color:#499acd"
+                                    href=" http://www.reveduc.ufscar.br/index.php/reveduc/article/view/4149">
+                                    http://www.reveduc.ufscar.br/index.php/reveduc/article/view/4149</a>
+
+
+                                <br /><br />
+
+                                CRUZ, G. B. da; PAIVA, M. M. S. ; TEIXEIRA, V. L.<br />
+                                A narrativa (auto)biográfica como
+                                dispositivo de pesquisa-formação na indução profissional docente.<br />
+                                Revista Brasileira de
+                                Pesquisa (Auto)Biográfica, v. 6, p. 956-972, 2021.<br />
+                                Disponível em: <a style="color:#499acd"
+                                    href="
+                                https://www.revistas.uneb.br/index.php/rbpab/article/view/12666">https://www.revistas.uneb.br/index.php/rbpab/article/view/12666</a>
+                                <br /><br />
+
+                            </p>
+
+                            <p style="text-align: justify;"><strong>Processos de indução de Professores Iniciantes na
+                                    Escola Básica
+                                </strong>
+                                <br />
+                                <strong>Coordenação:</strong> Marli André e Laurizete Ferragut Passos (PUC/SP)
+                                <br />
+                                <strong>Período:</strong> 2019-2022 <br /> <br />
+                                <strong>Resumo:</strong>
+
+                                Trata-se de um Programa Interinstitucional de pesquisas com foco nos processos de
+                                indução para professores iniciantes da Educação Básica. Os objetivos específicos
+                                foram: criar condições e um ambiente propício para o desenvolvimento de processos
+                                colaborativos de investigação; articular conhecimentos produzidos em diferentes
+                                contextos sobre processos de indução aos professores iniciantes; fomentar o desenho
+                                e implementação de processos formativos voltados aos professores e formadores das
+                                escolas
+                                públicas e das secretarias de educação; fomentar a criação de parcerias entre
+                                universidade,
+                                escolas públicas e Secretarias Municipais de Educação para proposição de programas de
+                                indução; incrementar a formação de pesquisadores centrada na temáticas dos processos de
+                                indução e propor indicativos para a constituição de Programas e Políticas de Indução.
+                                O projeto, de caráter interinstitucional, abarcou 10 subprojetos, desenvolvidos por
+                                pesquisadores de 13 Instituições de Educação Superior (IES), em diferentes contextos
+                                (diferentes municípios de diferentes estados do país), na perspectiva da pesquisa
+                                colaborativa. A metodologia básica foi do tipo colaborativo, em que os participantes
+                                se implicam em um processo de produzir conhecimentos e ao mesmo tempo formar-se.
+                                Os subprojetos compartilharão aspectos comuns no que tange à metodologia de pesquisa.
+
+                                <br /> <br />
+                                <strong>Financiamento:</strong> CNPq (Edital Universal 2018)
+
+                                <strong>Publicações:</strong> <br /> <br />
+
+                                ANDRÉ, M. E. D. A; PASSOS, L. F.; ALMEIDA, P. A. <br />
+                                Dossiê Formação e inserção profissional de professores iniciantes: conceitos e
+                                práticas.<br />
+                                Revista Eletrônica de Educação – REVEDUC (UFSCAR), 2020. <br />
+                                Disponível em: <a style="color:#499acd"
+                                    href="http://www.reveduc.ufscar.br/index.php/reveduc/article/view/4780">http://www.reveduc.ufscar.br/index.php/reveduc/article/view/4780</a>
+                                <br /><br />
+
+                                CRUZ, G. B. da; FARIAS, I. M. S. de; HOBOLD, M. de S.<br />
+                                Indução profissional e o início do trabalho docente: debates e necessidades <br />
+                                (Professional induction and the beginning of teaching work: debates and needs).<br />
+                                Revista Eletrônica de Educação (SÃO CARLOS), v. 14, p. 4149114-15, 2020. <br />
+                                Disponível em: <a style="color:#499acd"
+                                    href="http://www.reveduc.ufscar.br/index.php/reveduc/article/view/4149">
+                                    http://www.reveduc.ufscar.br/index.php/reveduc/article/view/4149</a>
+                                <br /> <br />
+
+
                             </p>
 
                         </div>
 
                         <div id="andamento" class="tabset2" *ngIf="pesquisas == 'andamento'">
+                            <br />
+                            <br />
                             <h4> Pesquisas em andamento</h4>
                             <p style="text-align: justify;"><strong>Universidade, Escola e formação na inserção
                                     profissional
@@ -1139,7 +1262,8 @@
 
                             </p>
 
-                            <p style="text-align: justify;"><strong>curriculares para a formação docente: demandas
+                            <p style="text-align: justify;"><strong>Desafios curriculares para a formação docente:
+                                    demandas
                                     insurgentes e experiências institucionais contemporâneas </strong>
                                 <br />
                                 <strong>Coordenação:</strong> Carmen Teresa Gabriel (UFRJ)
@@ -1240,6 +1364,12 @@
 
                             </p>
                         </div>
+                    </section>
+
+                    <section id="ensino" class="tab-panel">
+
+                        <p style="text-align: justify;">
+                        </p>
                     </section>
 
                     <section id="publicacoes" class="tab-panel">
