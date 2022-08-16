@@ -3,7 +3,8 @@
     <div class="form-row justify-content-center align-items-center">
       <div class="col-12 col-md-8 order-2 order-md-1">
         <div class="form-group">
-          <input type="text" name="title" class="form-control" id="title" placeholder="Título" formControlName="title" />
+          <input type="text" name="title" class="form-control" id="title" placeholder="Título"
+            formControlName="title" />
           <div class="validation"></div>
         </div>
         <div class="form-group">
@@ -11,7 +12,8 @@
           <div class="validation"></div>
         </div>
         <div class="form-group">
-          <input type="text" name="subTitle" class="form-control" id="subTitle" placeholder="Subtítulo" formControlName="subTitle" />
+          <input type="text" name="subTitle" class="form-control" id="subTitle" placeholder="Subtítulo"
+            formControlName="subTitle" />
           <div class="validation"></div>
         </div>
         <div class="form-group">
@@ -22,8 +24,7 @@
       </div>
       <div class="col-8 col-md-4 order-1 order-md-2 mb-3">
         <div class="profile">
-          <img [src]="logo ? logo : '../../../assets/img/placeholder-profile.png'"
-            class="profile__image">
+          <img [src]="logo ? logo : '../../../assets/img/placeholder-profile.png'" class="profile__image">
           <input type="file" name="logo" class="profile__input" id="logo" placeholder="Logo"
             (change)="getProfileImageCode($event)" />
         </div>
@@ -94,14 +95,14 @@
     <div class="form-row justify-content-center align-items-center">
       <div class="col-12 col-md-8 order-2 order-md-1">
         <div class="form-group">
-          <input type="text" name="coordenadoraName" class="form-control" id="coordenadoraName" placeholder="Nome" formControlName="coordenadoraName" />
+          <input type="text" name="coordenadoraName" class="form-control" id="coordenadoraName" placeholder="Nome"
+            formControlName="coordenadoraName" />
           <div class="validation"></div>
         </div>
       </div>
       <div class="col-8 col-md-4 order-1 order-md-2 mb-3">
         <div class="profile">
-          <img [src]="logo2 ? logo2 : '../../../assets/img/placeholder-profile.png'"
-            class="profile__image">
+          <img [src]="logo2 ? logo2 : '../../../assets/img/placeholder-profile.png'" class="profile__image">
           <input type="file" name="logo2" class="profile__input" id="logo2" placeholder="Logo"
             (change)="getProfileImageCode($event, 2)" />
         </div>
@@ -129,7 +130,7 @@
     <div class="row justify-content-center" mat-dialog-actions>
       <div class="col-md-6">
         <div class="action">
-          <a class="action__link" (click)="closeDialog()">Cancelar</a>
+          <a class="btn btn-primary action__btn" (click)="closeDialog()">Cancelar</a>
           <button class="btn btn-primary action__btn" type="submit">Salvar</button>
         </div>
       </div>
