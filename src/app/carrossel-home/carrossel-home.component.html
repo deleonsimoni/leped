@@ -3,23 +3,38 @@
     <div class="container">
         <div data-aos="flip-left" style="margin-top: 15px;" data-aos-easing="ease-out-cubic" data-aos-duration="2000"
             class=" carouselCont ">
-            <ngb-carousel>
+            <ngb-carousel [showNavigationArrows]="true" [showNavigationIndicators]="false" interval="12000"
+                [keyboard]="true" [pauseOnHover]="true" [wrap]="true">
                 <ng-template ngbSlide *ngFor="let noticia of noticias" class="imageSlider">
                     <div *ngIf="noticia.imagePathS3">
-                        <div *ngIf="mobile" class="picsum-img-wrapper-mobile">
-                            <img [src]="noticia.imagePathS3 | imagePathComplement" height="300px"
-                                alt="Random first slide" class="img-fluid">
-                        </div>
-                        <div *ngIf="!mobile" class="picsum-img-wrapper">
+
+                        <div class="d-none d-md-block picsum-img-wrapper">
                             <img [src]="noticia.imagePathS3 | imagePathComplement" alt="Random first slide"
                                 class="img-fluid">
                         </div>
-                        <div data-aos="fade-right">
+                        <div class="d-block d-md-none picsum-img-wrapper-mobile">
+                            <img [src]="noticia.imagePathS3 | imagePathComplement" alt="Random first slide"
+                                class="img-fluid">
+                        </div>
+                        <div class="d-block d-md-none" data-aos="fade-right">
+                            <div class="row" class="carousel-caption-container-mobile">
+                                <h3 class="carousel-caption-header-mobile">{{noticia.title}} </h3>
+
+
+                                <div class="carousel-caption-description-mobile  ">
+                                    <div (click)="visualizar(noticia)" style="cursor:pointer;"
+                                        class="carousel-caption-link-mobile">Leia mais</div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="d-none d-md-block" data-aos="fade-right">
                             <div class="row" class="carousel-caption-container">
                                 <h3 class="carousel-caption-header">{{noticia.title}} </h3>
 
 
-                                <div class="carousel-caption-description d-none d-sm-block">
+                                <div class="carousel-caption-description  ">
                                     <div (click)="visualizar(noticia)" style="cursor:pointer;"
                                         class="carousel-caption-link">Leia mais</div>
                                 </div>

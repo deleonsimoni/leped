@@ -14,20 +14,6 @@ ngb-carousel .wrapper>img {
     right: 0;
 }
 
-::ng-deep .carousel-item {
-    display: block !important;
-    position: absolute;
-    transform: translateY(100%);
-    opacity: 0;
-    transition: all 1s;
-}
-
-::ng-deep .carousel-item.active {
-    position: relative;
-    transform: translateY(0);
-    opacity: 1;
-    top: 0;
-}
 
 .carouselCont {
     display: flex;
@@ -43,7 +29,7 @@ ngb-carousel .wrapper>img {
 
 .picsum-img-wrapper-mobile {
     margin-top: 50px;
-    height: 326px;
+    height: 445px;
 }
 
 .carousel-caption-container {
@@ -56,19 +42,31 @@ ngb-carousel .wrapper>img {
     margin-top: -167px;
 }
 
+.carousel-caption-container-mobile {
+    text-align: left !important;
+    background-color: #97d2f2;
+    max-width: 60vh;
+    color: white;
+    text-align: center;
+    margin-top: -167px;
+}
+
 .carousel-caption-header {
     margin-left: 10px;
     text-shadow: 2px 2px 4px #000000;
     font-size: 1.8em;
 }
 
+.carousel-caption-header-mobile {
+    margin-left: 10px;
+    text-shadow: 2px 2px 4px #000000;
+    font-size: 1.5em;
+}
+
 .carousel-caption-description-mobile {
 
-    padding-left: 10px;
-    border-top-right-radius: 20px 20px;
     background-color: #f98635;
     font-size: 1.3em;
-    text-align: right;
 
 }
 
@@ -76,8 +74,6 @@ ngb-carousel .wrapper>img {
 
     background-color: #f98635;
     font-size: 1.3em;
-    text-align: right;
-    text-align: left !important;
 
 }
 
@@ -94,6 +90,30 @@ ngb-carousel .wrapper>img {
 }
 
 .carousel-caption-link:hover {
+    text-align: left;
+    color: #ffffff;
+    width: 20vh;
+    font-size: 1.0em;
+    display: block;
+    margin-left: auto;
+    margin-right: 10px;
+    text-decoration: underline;
+
+}
+
+.carousel-caption-link-mobile {
+    text-align: left;
+    color: #ffffff;
+    width: 20vh;
+    font-size: 1.0em;
+    display: block;
+    margin-left: auto;
+    margin-right: 10px;
+    text-decoration: underline;
+
+}
+
+.carousel-caption-link-mobile:hover {
     text-align: left;
     color: #ffffff;
     width: 20vh;

@@ -9,21 +9,21 @@
             <mat-card-title><b>{{noticia.title}}</b></mat-card-title>
             <mat-card-content>
                 <div class="row">
-                    <div class="col-3">
-                        <img class="img-fluid"
+                    <div class="mb-4">
+                        <img (click)="visualizar(noticia)" class="img-fluid" style="max-height: 38vh;"
                             src="{{ noticia.imagePathS3 ? (noticia.imagePathS3 | imagePathComplement) : '../../../assets/img/placeholder-profile.png' }}">
                     </div>
-                    <div class="col-9">
-                        <p [innerHTML]="noticia.content  | truncateString:[1000, '...']"></p>
+
+                </div>
+                <div class="row">
+
+                    <div class="">
+                        <p [innerHTML]="noticia.content  | truncateString:[500, '...']"></p><a
+                            (click)="visualizar(noticia)" class="linkLEPED">LEIA MAIS</a>
                     </div>
                 </div>
 
             </mat-card-content>
-            <mat-divider inset></mat-divider>
-            <mat-card-actions>
-                <button (click)="visualizar(noticia)" mat-button color="warn">LEIA MAIS</button>
-
-            </mat-card-actions>
 
         </mat-card>
 
