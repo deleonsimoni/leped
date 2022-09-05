@@ -38,7 +38,9 @@ module.exports = {
   getNoticia,
   insertNoticia,
   deleteNoticia,
-  updateNoticia
+  updateNoticia,
+
+
 };
 
 async function getQuemSomos() {
