@@ -16,6 +16,9 @@
                         <p class="card-text" [innerHTML]="item.content">
 
                         </p>
+                        <p class="card-text" *ngIf="item.externalLink">
+                            <a target="_blank" href="{{item.externalLink}}">Acesse aqui</a>
+                        </p>
 
 
                     </div>
