@@ -38,6 +38,10 @@ export class LepedService {
     return this.http.get(`/api/leped/noticia`);
   }
 
+  listNoticiaCarrossel() {
+    return this.http.get(`/api/leped/noticiaCarrossel`);
+  }
+
   cadastrarNoticia(file: any, form: any): Observable<any> {
     const formData: FormData = new FormData();
     formData.append('formulario', JSON.stringify(form));

@@ -14,6 +14,7 @@ router.get('/eventos', asyncHandler(getEventos));
 router.get('/galeria', asyncHandler(getGaleria));
 router.get('/grupo-pesquisa', asyncHandler(getGrupoPesquisa));
 router.get('/noticia', asyncHandler(getNoticia));
+router.get('/noticiaCarrossel', asyncHandler(getNoticiaCarrossel));
 
 
 router.post('/quemSomos', [passport.authenticate('jwt', {
@@ -194,6 +195,10 @@ async function deleteGrupoPesquisa(req, res) {
 }
 
 
+async function getNoticiaCarrossel(req, res) {
+    let response = await lepedCtrl.getNoticiaCarrossel();
+    res.json(response);
+}
 
 async function getNoticia(req, res) {
     let response = await lepedCtrl.getNoticia();
