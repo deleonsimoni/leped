@@ -6,6 +6,12 @@ import { CustomComponentsModule } from "../components/custom-components.module";
 import { CustomPipesModule } from "../pipes/custom-pipes.module";
 
 import { DialogEventsComponent } from "./dialog-events/dialog-events.component";
+import { DialogGroupArtigosComponent } from "./dialog-group-artigos/dialog-group-artigos.component";
+import { DialogGroupCapituloComponent } from "./dialog-group-capitulo/dialog-group-capitulo.component";
+import { DialogGroupLivrosComponent } from "./dialog-group-livros/dialog-group-livros.component";
+import { DialogGroupPesquisasComponent } from "./dialog-group-pesquisas/dialog-group-pesquisas.component";
+import { DialogGroupQuemsomosComponent } from "./dialog-group-quemsomos/dialog-group-quemsomos.component";
+import { DialogGroupTesesComponent } from "./dialog-group-teses/dialog-group-teses.component";
 import { DialogNewsComponent } from "./dialog-news/dialog-news.component";
 import { DialogRegisterCoordinatorComponent } from "./dialog-register-coordinator/dialog-register-coordinator.component";
 import { DialogResearchGroupComponent } from "./dialog-research-group/dialog-research-group.component";
@@ -15,7 +21,13 @@ import { DialogResearchGroupComponent } from "./dialog-research-group/dialog-res
     DialogRegisterCoordinatorComponent,
     DialogResearchGroupComponent,
     DialogNewsComponent,
-    DialogEventsComponent
+    DialogEventsComponent,
+    DialogGroupQuemsomosComponent,
+    DialogGroupArtigosComponent,
+    DialogGroupCapituloComponent,
+    DialogGroupLivrosComponent,
+    DialogGroupPesquisasComponent,
+    DialogGroupTesesComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +41,13 @@ import { DialogResearchGroupComponent } from "./dialog-research-group/dialog-res
     DialogRegisterCoordinatorComponent,
     DialogResearchGroupComponent,
     DialogNewsComponent,
-    DialogEventsComponent
+    DialogEventsComponent,
+    DialogGroupQuemsomosComponent,
+    DialogGroupArtigosComponent,
+    DialogGroupCapituloComponent,
+    DialogGroupLivrosComponent,
+    DialogGroupPesquisasComponent,
+    DialogGroupTesesComponent
   ]
 })
 export class CustomDialogsModule { }

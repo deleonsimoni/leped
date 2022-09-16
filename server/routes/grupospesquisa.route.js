@@ -2,6 +2,7 @@ const express = require('express');
 const passport = require('passport');
 const asyncHandler = require('express-async-handler');
 const grupospesquisaCtrl = require('../controllers/grupospesquisa.controller');
+const gruposcapituloCtrl = require('../controllers/gruposcapitulo.controller');
 const requireAdmin = require('../middleware/require-admin');
 const fileUpload = require('express-fileupload');
 
@@ -9,109 +10,83 @@ const router = express.Router();
 module.exports = router;
 
 
-router.get('/quemSomos', asyncHandler(getQuemSomosgp));
-router.get('/pesquisasgp', asyncHandler(getPesquisasgp));
-router.get('/participantesgp', asyncHandler(getParticipantesgp));
-router.get('/galeriagp', asyncHandler(getGaleriagp));
-router.get('/tesesgp', asyncHandler(getTesesgp));
-router.get('/artigosgp', asyncHandler(getArtigosgp));
-router.get('/livrosgp', asyncHandler(getLivrosgp));
-router.get('/capitulosgp', asyncHandler(getCapitulosgp));
+router.get('/grupos-pesquisa/quem-somos-grupo', asyncHandler(getQuemSomosgp));
+router.get('/grupos-pesquisa/pesquisas', asyncHandler(getPesquisasgp));
+router.get('/grupos-pesquisa/teses', asyncHandler(getTesesgp));
+router.get('/grupos-pesquisa/artigos', asyncHandler(getArtigosgp));
+router.get('/grupos-pesquisa/livros', asyncHandler(getLivrosgp));
+router.get('/grupos-pesquisa/capitulos', asyncHandler(getCapitulosgp));
 
 
-router.post('/quemSomosgp', [passport.authenticate('jwt', {
+router.post('/grupos-pesquisa/quem-somos-grupo', [passport.authenticate('jwt', {
     session: false
 }), requireAdmin, fileUpload()], asyncHandler(insertQuemSomosgp));
 
-router.put('/quemSomosgp', [passport.authenticate('jwt', {
+router.put('/grupos-pesquisa/quem-somos-grupo', [passport.authenticate('jwt', {
     session: false
 }), requireAdmin, fileUpload()], asyncHandler(updateQuemSomosgp));
 
-router.delete('/quemSomosgp/:id', [passport.authenticate('jwt', {
+router.delete('/grupos-pesquisa/quem-somos-grupo/:id', [passport.authenticate('jwt', {
     session: false
 }), requireAdmin, fileUpload()], asyncHandler(deleteQuemSomosgp));
 
-router.post('/pesquisasgp', [passport.authenticate('jwt', {
+router.post('/grupos-pesquisa/pesquisas', [passport.authenticate('jwt', {
     session: false
 }), requireAdmin, fileUpload()], asyncHandler(insertPesquisasgp));
 
-router.put('/pesquisasgp', [passport.authenticate('jwt', {
+router.put('/grupos-pesquisa/pesquisas', [passport.authenticate('jwt', {
     session: false
 }), requireAdmin, fileUpload()], asyncHandler(updatePesquisasgp));
 
-router.delete('/pesquisasgp/:id', [passport.authenticate('jwt', {
+router.delete('/grupos-pesquisa/pesquisas:id', [passport.authenticate('jwt', {
     session: false
 }), requireAdmin, fileUpload()], asyncHandler(deletePesquisasgp));
 
-router.post('/participantesgp', [passport.authenticate('jwt', {
-    session: false
-}), requireAdmin, fileUpload()], asyncHandler(insertParticipantesgp));
-
-router.put('/participantesgp', [passport.authenticate('jwt', {
-    session: false
-}), requireAdmin, fileUpload()], asyncHandler(updateParticipantesgp));
-
-router.delete('/participantesgp/:id', [passport.authenticate('jwt', {
-    session: false
-}), requireAdmin, fileUpload()], asyncHandler(deleteParticipantesgp));
-
-router.post('/galeriagp', [passport.authenticate('jwt', {
-    session: false
-}), requireAdmin, fileUpload()], asyncHandler(insertGaleriagp));
-
-router.put('/galeriagp', [passport.authenticate('jwt', {
-    session: false
-}), requireAdmin, fileUpload()], asyncHandler(updateGaleriagp));
-
-router.delete('/galeriagp/:id', [passport.authenticate('jwt', {
-    session: false
-}), requireAdmin, fileUpload()], asyncHandler(deleteGaleriagp));
-
-router.post('/artigosgp', [passport.authenticate('jwt', {
+router.post('/grupos-pesquisa/artigos', [passport.authenticate('jwt', {
     session: false
 }), requireAdmin, fileUpload()], asyncHandler(insertArtigosgp));
 
-router.put('/artigosgp', [passport.authenticate('jwt', {
+router.put('/grupos-pesquisa/artigos', [passport.authenticate('jwt', {
     session: false
 }), requireAdmin, fileUpload()], asyncHandler(updateArtigosgp));
 
-router.delete('/artigosgp/:id', [passport.authenticate('jwt', {
+router.delete('/grupos-pesquisa/artigos/:id', [passport.authenticate('jwt', {
     session: false
 }), requireAdmin, fileUpload()], asyncHandler(deleteArtigosgp));
 
-router.post('/livrosgp', [passport.authenticate('jwt', {
+router.post('/grupos-pesquisa/livros', [passport.authenticate('jwt', {
     session: false
 }), requireAdmin, fileUpload()], asyncHandler(insertLivrosgp));
 
-router.put('/livrosgp', [passport.authenticate('jwt', {
+router.put('/grupos-pesquisa/livros', [passport.authenticate('jwt', {
     session: false
 }), requireAdmin, fileUpload()], asyncHandler(updateLivrosgp));
 
-router.delete('/livros/:id', [passport.authenticate('jwt', {
+router.delete('/grupos-pesquisa/livros/:id', [passport.authenticate('jwt', {
     session: false
 }), requireAdmin, fileUpload()], asyncHandler(deleteLivrosgp));
 
-router.post('/capitulosgp', [passport.authenticate('jwt', {
+router.post('/grupos-pesquisa/capitulos', [passport.authenticate('jwt', {
     session: false
 }), requireAdmin, fileUpload()], asyncHandler(insertCapitulosgp));
 
-router.put('/capitulosgp', [passport.authenticate('jwt', {
+router.put('/grupos-pesquisa/capitulos', [passport.authenticate('jwt', {
     session: false
 }), requireAdmin, fileUpload()], asyncHandler(updateCapitulosgp));
 
-router.delete('/capitulosgp/:id', [passport.authenticate('jwt', {
+router.delete('/grupos-pesquisa/capitulos/:id', [passport.authenticate('jwt', {
     session: false
 }), requireAdmin, fileUpload()], asyncHandler(deleteCapitulosgp));
 
-router.post('/tesesgp', [passport.authenticate('jwt', {
+router.post('/grupos-pesquisa/teses', [passport.authenticate('jwt', {
     session: false
 }), requireAdmin, fileUpload()], asyncHandler(insertTesesgp));
 
-router.put('/tesesgp', [passport.authenticate('jwt', {
+router.put('/grupos-pesquisa/teses', [passport.authenticate('jwt', {
     session: false
 }), requireAdmin, fileUpload()], asyncHandler(updateTesesgp));
 
-router.delete('/tesesgp/:id', [passport.authenticate('jwt', {
+router.delete('/grupos-pesquisa/teses/:id', [passport.authenticate('jwt', {
     session: false
 }), requireAdmin, fileUpload()], asyncHandler(deleteTesesgp));
 
@@ -179,30 +154,9 @@ async function deleteArtigosgp(req, res) {
 }
 
 
-async function getGaleriagp(req, res) {
-    let response = await grupospesquisaCtrl.getGaleriagp();
-    res.json(response);
-}
-
-async function updateGaleriagp(req, res) {
-    let response = await grupospesquisaCtrl.updateGaleriagp(req.body, req.user._id);
-    res.json(response);
-}
-
-async function insertGaleriagp(req, res) {
-    let response = await grupospesquisaCtrl.insertGaleriagp(req.body, req.user._id);
-    res.json(response);
-}
-
-async function deleteGaleriagp(req, res) {
-    let response = await grupospesquisaCtrl.deleteGaleriagp(req.params.id);
-    res.json(response);
-}
-
-
 
 async function getPesquisasgp(req, res) {
-    let response = await grupospesquisaCtrlCtrl.getPesquisasgp();
+    let response = await grupospesquisaCtrl.getPesquisasgp();
     res.json(response);
 }
 
@@ -244,22 +198,22 @@ async function deleteTesesgp(req, res) {
 }
 
 async function getCapitulosgp(req, res) {
-    let response = await grupospesquisaCtrl.getCapitulosgp();
+    let response = await gruposcapituloCtrl.getCapitulosgp();
     res.json(response);
 }
 
 async function updateCapitulosgp(req, res) {
-    let response = await grupospesquisaCtrl.updateCapitulosgp(req, req.user._id);
+    let response = await gruposcapituloCtrl.updateCapitulosgp(req, req.user._id);
     res.json(response);
 }
 
 async function insertCapitulosgp(req, res) {
-    let response = await grupospesquisaCtrl.insertCapitulosgp(req, req.user._id);
+    let response = await gruposcapituloCtrl.insertCapitulosgp(req, req.user._id);
     res.json(response);
 }
 
 async function deleteCapitulosgp(req, res) {
-    let response = await grupospesquisaCtrl.deleteCapitulosgp(req.params.id);
+    let response = await gruposcapituloCtrl.deleteCapitulosgp(req.params.id);
     res.json(response);
 }
 

@@ -1,7 +1,7 @@
 import { Component, Inject } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
-import { ImagePathComplement } from "@app/shared/pipes/image-path-complement.pipe";
+
 
 @Component({
   selector: "dialog-group-teses-component",
@@ -12,13 +12,13 @@ export class DialogGroupTesesComponent {
 
   public grupoForm: FormGroup;
 
-  private participantToSend: any = [];
+
 
   constructor(
     private formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<DialogGroupTesesComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { grupo: any },
-    private pipeImage: ImagePathComplement
+
   ) {
     this.grupoForm = this.createForm();
 

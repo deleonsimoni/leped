@@ -13,9 +13,15 @@ import { EventosComponent } from './eventos/eventos.component';
 import { GruposPesquisaComponent } from './grupos-pesquisa/grupos-pesquisa.component';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { CustomPipesModule } from '@app/shared/pipes/custom-pipes.module';
+import { PesquisasComponent } from './grupos-pesquisa/pesquisas/pesquisas.component';
+import { TesesComponent } from './grupos-pesquisa/teses/teses.component';
+import { ArtigosComponent } from './grupos-pesquisa/artigos/artigos.component';
+import { LivrosComponent } from './grupos-pesquisa/livros/livros.component';
+import { CapitulosComponent } from './grupos-pesquisa/capitulos/capitulos.component';
+import { QuemSomosGrupoComponent } from './grupos-pesquisa/quem-somos-grupo/quem-somos-grupo.component';
 
 @NgModule({
-  declarations: [AdminComponent, QuemSomosComponent, CoordenadorasComponent, GaleriaComponent, NoticiasComponent, EventosComponent, GruposPesquisaComponent],
+  declarations: [AdminComponent, QuemSomosComponent, CoordenadorasComponent, GaleriaComponent, NoticiasComponent, EventosComponent, GruposPesquisaComponent, PesquisasComponent, TesesComponent, ArtigosComponent, LivrosComponent, CapitulosComponent, QuemSomosGrupoComponent],
   imports: [CommonModule, SharedModule, AdminRoutingModule, AngularEditorModule, CustomPipesModule],
   providers: [OnlyAdminUsersGuard],
 })

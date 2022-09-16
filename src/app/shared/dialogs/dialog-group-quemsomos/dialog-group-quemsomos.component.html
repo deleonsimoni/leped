@@ -9,49 +9,48 @@
 
       <div class="form-row">
         <div class="form-group col-12 col-md-12">
-          <angular-editor placeholder="Conteúdo..." formControlName="quemsomosDesc"></angular-editor>
-        </div>
-      </div>
+          <angular-editor placeholder="'Conteúdo...'" formControlName="quemsomosDesc"></angular-editor>
 
-      <div class="section">
-        <h3 class="section__title">Participantes</h3>
-      </div>
-
-      <div class="form-row justify-content-center align-items-center">
-        <div class="form-group col-12 col-md-12">
-          <div class="form-group">
-            <input type="text" name="participantName" class="form-control" id="participantName" placeholder="Nome"
-              formControlName="participantName" />
-            <div class="validation"></div>
-          </div>
-        </div>
-        <div class="form-group col-12 col-md-12">
-          <div class="form-group">
-            <input type="text" name="participantLattes" class="form-control" id="participantLattes" placeholder="Lattes"
-              formControlName="participantLattes" />
-            <div class="validation"></div>
-          </div>
-        </div>
-        <div class="col-8 col-md-4 order-1 order-md-2 mb-3">
-          <div class="profile">
-            <img [src]="logo2 ? logo2 : '../../../assets/img/placeholder-profile.png'" class="profile__image">
-            <input type="file" name="participantImage" class="profile__input" id="participantImage" placeholder="Foto"
-              (change)="getProfileImageCode($event, 2)" />
-          </div>
-        </div>
-      </div>
-
-
-
-
-      <div class="row justify-content-center" mat-dialog-actions>
-        <div class="col-md-6">
-          <div class="action">
-            <a class="btn btn-primary action__btn" (click)="closeDialog()">Cancelar</a>
-            <button class="btn btn-primary action__btn" type="submit">Salvar</button>
-          </div>
         </div>
       </div>
     </div>
+    <!--<div class="section">
+        <h3 class="section__title">Participantes</h3>
+      </div>>-->
+
+    <div class="form-row justify-content-center align-items-center">
+      <div class="form-group col-12 col-md-12">
+        <div class="form-group">
+          <input type="text" name="participantName" class="form-control" id="participantName"
+            placeholder="Nome do Participante" formControlName="participantName" />
+          <div class="validation"></div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-12 col-md-12">
+      <div class="form-group">
+        <input type="text" name="participantLattes" class="form-control" id="participantLattes" placeholder="Lattes"
+          formControlName="participantLattes" />
+        <div class="validation"></div>
+      </div>
+    </div>
+    <div class="col-8 col-md-4 order-1 order-md-2 mb-3">
+      <div class="profile">
+        <img [src]="logo2 ? logo2 : '../../../assets/img/placeholder-profile.png'" class="profile__image">
+        <input type="file" name="participantImage" class="profile__input" id="participantImage" placeholder="Foto"
+          (change)="getProfileImageCode($event, 2)" />
+      </div>
+    </div>
+
+
+    <div class="row justify-content-center" mat-dialog-actions>
+      <div class="col-md-6">
+        <div class="action">
+          <a class="btn btn-primary action__btn" (click)="closeDialog()">Cancelar</a>
+          <button class="btn btn-primary action__btn" type="submit">Salvar</button>
+        </div>
+      </div>
+    </div>
+
   </form>
 </div>

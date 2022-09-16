@@ -29,6 +29,7 @@ export class DialogGroupCapituloComponent {
 
   private createForm(): FormGroup {
     return this.formBuilder.group({
+      /*  type: [null, [Validators.required]],*/
       titleChapter: [null, [Validators.required]],
       authorsChapter: [null, [Validators.required]],
       titleBook: [null, [Validators.required]],
@@ -47,7 +48,7 @@ export class DialogGroupCapituloComponent {
 
 
     this.grupoForm.patchValue({
-
+      /* type: data.type,*/
       titleChapter: data.titleChapter,
       authorsChapter: data.authorsChapter,
       titleBook: data.titleBook,

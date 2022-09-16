@@ -173,6 +173,9 @@ const GrupoPesquisaSchema = new mongoose.Schema(
         publicationResearch: {
           type: String,
         },
+        periodic: {
+          type: String,
+        },
         researchlink: {
           type: String,
         }

@@ -5,6 +5,12 @@ import { NewsCardComponent } from './news-card/news-card.component';
 import { EventsCardComponent } from './events-card/events-card.component';
 import { CommonModule } from "@angular/common";
 import { ResearchGroupCardComponent } from "./research-group-card/research-group-card.component";
+import { GruposPesquisaPesquisasCardComponent } from './grupos-pesquisa-pesquisas-card/grupos-pesquisa-pesquisas-card.component';
+import { GruposPesquisaTesesCardComponent } from './grupos-pesquisa-teses-card/grupos-pesquisa-teses-card.component';
+import { GruposPesquisaArtigosCardComponent } from './grupos-pesquisa-artigos-card/grupos-pesquisa-artigos-card.component';
+import { GruposPesquisaLivrosCardComponent } from './grupos-pesquisa-livros-card/grupos-pesquisa-livros-card.component';
+import { GruposPesquisaCapitulosCardComponent } from './grupos-pesquisa-capitulos-card/grupos-pesquisa-capitulos-card.component';
+import { GruposPesquisaQuemSomosCardComponent } from './grupos-pesquisa-quem-somos-card/grupos-pesquisa-quem-somos-card.component';
 
 @NgModule({
   imports: [
@@ -15,7 +21,13 @@ import { ResearchGroupCardComponent } from "./research-group-card/research-group
     CoordinatorCardComponent,
     NewsCardComponent,
     EventsCardComponent,
-    ResearchGroupCardComponent
+    ResearchGroupCardComponent,
+    GruposPesquisaPesquisasCardComponent,
+    GruposPesquisaTesesCardComponent,
+    GruposPesquisaArtigosCardComponent,
+    GruposPesquisaLivrosCardComponent,
+    GruposPesquisaCapitulosCardComponent,
+    GruposPesquisaQuemSomosCardComponent
   ],
   exports: [
     CoordinatorCardComponent,

@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
+  nomeMenu;
+
   public menu = [
     { name: 'QUEM SOMOS', path: '/admin/quem-somos' },
     { name: 'COORDENADORAS', path: '/admin/coordenadoras' },
@@ -15,6 +17,16 @@ export class AdminComponent implements OnInit {
     { name: 'NOTÍCIAS', path: '/admin/noticias' },
   ];
 
+
+  public menuGroup = [
+    { name: 'QUEM SOMOS', path: '/admin/grupos-pesquisa/quem-somos-grupo' },
+    { name: 'PESQUISAS', path: '/admin/grupos-pesquisa/pesquisas' },
+    { name: 'DISSERTAÇÃO E TESES', path: '/admin/grupos-pesquisa/teses' },
+    { name: 'ARTIGOS', path: '/admin/grupos-pesquisa/artigos' },
+    { name: 'LIVROS', path: '/admin/grupos-pesquisa/livros' },
+    { name: 'CAPÍTULO DE LIVROS', path: '/admin/grupos-pesquisa/capitulos' },
+
+  ];
 
   ngOnInit() { }
 

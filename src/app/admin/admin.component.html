@@ -10,13 +10,22 @@
                     <div [ngClass]="{'section-header': menu.length > 1}">
                         <ul class="nav nav-pills">
                             <li class="nav-item m-2" *ngFor="let item of menu">
+                                <button mat-raised-button color="accent" (click)="nomeMenu=item.name"
+                                    [routerLink]="[item.path]">
+                                    {{item.name}}
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div *ngIf="nomeMenu=='GRUPOS DE PESQUISA'" [ngClass]="{'section-header': menu.length > 1}">
+                        <ul class="nav nav-pills">
+                            <li class="nav-item m-2" *ngFor="let item of menuGroup">
                                 <button mat-raised-button color="accent" [routerLink]="[item.path]">
                                     {{item.name}}
                                 </button>
                             </li>
                         </ul>
                     </div>
-
                     <div>
                         <router-outlet></router-outlet>
                     </div>
