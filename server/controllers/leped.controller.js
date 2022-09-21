@@ -36,6 +36,7 @@ module.exports = {
   updateGrupoPesquisa,
 
   getNoticia,
+  getNoticiaCarrossel,
   insertNoticia,
   deleteNoticia,
   updateNoticia,
@@ -406,6 +407,14 @@ async function updateGrupoPesquisa(req, idUser) {
 async function getNoticia() {
   return await Noticia.find()
     .sort({
+      createAt: -1
+    });
+}
+
+async function getNoticiaCarrossel() {
+  return await Noticia.find()
+    .sort({
+      ordem: -1,
       createAt: -1
     });
 }

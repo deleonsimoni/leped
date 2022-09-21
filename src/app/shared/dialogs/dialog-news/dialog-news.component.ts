@@ -30,6 +30,7 @@ export class DialogNewsComponent {
   private createForm(): FormGroup {
     return this.formBuilder.group({
       title: [null, [Validators.required]],
+      ordem: [null, [Validators.required]],
       content: [null, [Validators.required]],
       externalLink: [null, []]
     });
@@ -41,6 +42,7 @@ export class DialogNewsComponent {
     this.form.patchValue({
       title: data.title,
       content: data.content,
+      ordem: data.ordem,
       externalLink: data.externalLink
     })
   }

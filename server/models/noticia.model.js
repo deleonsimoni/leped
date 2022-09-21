@@ -26,6 +26,10 @@ const NoticiaSchema = new mongoose.Schema(
       type: String,
     },
 
+    ordem: {
+      type: Number,
+    },
+
     externalLink: {
       type: String,
     },

@@ -29,7 +29,7 @@ export class CarrosselHomeComponent implements OnInit {
       this.mobile = true;
     }
 
-    this.lepedService.listNoticia()
+    this.lepedService.listNoticiaCarrossel()
       .subscribe((res: any) => {
         this.noticias = res;
       }, err => {

@@ -44,6 +44,9 @@ export class GaleriaComponent implements OnInit {
     })
   }
 
+  closeDialog() {
+
+  }
 
   setGalleryImage(event: any, index: number) {
     const that = this;
