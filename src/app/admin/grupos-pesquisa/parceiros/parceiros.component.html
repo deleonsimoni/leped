@@ -1,13 +1,14 @@
 <div class="row justify-content-center">
     <div class="col-md-12">
         <h3>
-            {{type | uppercase}} - Artigos
+            {{type | uppercase}} - Parceiros
         </h3>
         <div class="forms">
             <div class="row" *ngFor="let item of itens">
-                <div class="col-6 col-md-4 mb-3" *ngFor="let artigo of item.artigos">
-                    <app-grupos-pesquisa-artigos-card [forms]="artigo" (edit)="edit(artigo)" (delete)="delete($event)">
-                    </app-grupos-pesquisa-artigos-card>
+                <div class="col-6 col-md-4 mb-3" *ngFor="let parceiro of item.parceiros">
+                    <app-grupos-pesquisa-parceiros-card [forms]="parceiro" (edit)="edit(parceiro)"
+                        (delete)="delete($event)">
+                    </app-grupos-pesquisa-parceiros-card>
                 </div>
             </div>
         </div>
@@ -16,6 +17,6 @@
 <div class="row justify-content-end mb-4">
     <div class="col-md-3 text-end">
         <button mat-raised-button color="accent" class="btn coordinator-btn" (click)="register()">Cadastrar
-            Artigo</button>
+            Parceiro</button>
     </div>
 </div>

@@ -1,9 +1,12 @@
 <div class="row justify-content-center">
     <div class="col-md-12">
+        <h3>
+            {{type | uppercase}} - Livros
+        </h3>
         <div class="forms">
-            <div class="row">
-                <div class="col-6 col-md-4 mb-3" *ngFor="let item of itens">
-                    <app-grupos-pesquisa-livros-card [forms]="item" (edit)="edit(item)" (delete)="delete($event)">
+            <div class="row" *ngFor="let item of itens">
+                <div class="col-6 col-md-4 mb-3" *ngFor="let livro of item.livros">
+                    <app-grupos-pesquisa-livros-card [forms]="livro" (edit)="edit(livro)" (delete)="delete($event)">
                     </app-grupos-pesquisa-livros-card>
                 </div>
             </div>

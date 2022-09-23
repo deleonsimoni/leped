@@ -67,98 +67,158 @@ export class GrupoPesquisaService {
     return this.httpClient.delete(`${this.url}/${id}`);
   }
 
-  listPesquisa() {
-    return this.httpClient.get(`/api/grupos-pesquisa/pesquisas`);
+  listPesquisa(type) {
+    return this.httpClient.get(`/api/grupos-pesquisa/pesquisas?type=${type}`);
   }
 
-  cadastrarPesquisa(form: any) {
-    return this.httpClient.post(`/api/grupos-pesquisa/pesquisas`, form);
+  cadastrarPesquisa(form: any, type) {
+    return this.httpClient.post(`/api/grupos-pesquisa/pesquisas?type=${type}`, form);
   }
 
-  deletarPesquisa(form: any) {
-    return this.httpClient.delete(`/api/grupos-pesquisa/pesquisas/${form._id}`);
+  deletarPesquisa(form: any, type) {
+    return this.httpClient.delete(`/api/grupos-pesquisa/pesquisas/${form}?type=${type}`);
   }
 
-  atualizarPesquisa(form: any) {
-    return this.httpClient.put(`/api/grupos-pesquisa/pesquisas/`, form);
+  atualizarPesquisa(form: any, type) {
+    return this.httpClient.put(`/api/grupos-pesquisa/pesquisas?type=${type}`, form);
   }
 
-  listTese() {
-    return this.httpClient.get(`/api/grupos-pesquisa/teses`);
+  listTese(type) {
+    return this.httpClient.get(`/api/grupos-pesquisa/teses?type=${type}`);
   }
 
-  cadastrarTese(form: any) {
-    return this.httpClient.post(`/api/grupos-pesquisa/teses`, form);
+  cadastrarTese(form: any, type) {
+    return this.httpClient.post(`/api/grupos-pesquisa/teses?type=${type}`, form);
   }
 
-  deletarTese(form: any) {
-    return this.httpClient.delete(`/api/grupos-pesquisa/teses/${form._id}`);
+  deletarTese(form: any, type) {
+    return this.httpClient.delete(`/api/grupos-pesquisa/teses/${form}?type=${type}`);
   }
 
-  atualizarTese(form: any) {
-    return this.httpClient.put(`/api/grupos-pesquisa/teses/`, form);
+  atualizarTese(form: any, type) {
+    return this.httpClient.put(`/api/grupos-pesquisa/teses?type=${type}`, form);
   }
 
-  listArtigo() {
-    return this.httpClient.get(`/api/grupos-pesquisa/artigos`);
+  listArtigo(type) {
+    return this.httpClient.get(`/api/grupos-pesquisa/artigos?type=${type}`);
   }
 
-  cadastrarArtigo(form: any) {
-    return this.httpClient.post(`/api/grupos-pesquisa/artigos`, form);
+  cadastrarArtigo(form: any, type) {
+    return this.httpClient.post(`/api/grupos-pesquisa/artigos?type=${type}`, form);
   }
 
-  deletarArtigo(form: any) {
-    return this.httpClient.delete(`/api/grupos-pesquisa/artigos/${form._id}`);
+  deletarArtigo(form: any, type) {
+    return this.httpClient.delete(`/api/grupos-pesquisa/artigos/${form}?type=${type}`);
   }
 
-  atualizarArtigo(form: any) {
-    return this.httpClient.put(`/api/grupos-pesquisa/artigos/`, form);
-  }
-  listLivro() {
-    return this.httpClient.get(`/api/grupos-pesquisa/livros`);
+  atualizarArtigo(form: any, type) {
+    return this.httpClient.put(`/api/grupos-pesquisa/artigos?type=${type}`, form);
   }
 
-  cadastrarLivro(form: any) {
-    return this.httpClient.post(`/api/grupos-pesquisa/livros`, form);
+  listCapitulo(type) {
+    return this.httpClient.get(`/api/grupos-pesquisa/capitulos?type=${type}`);
   }
 
-  deletarLivro(form: any) {
-    return this.httpClient.delete(`/api/grupos-pesquisa/livros/${form._id}`);
+  cadastrarCapitulo(form: any, type) {
+    return this.httpClient.post(`/api/grupos-pesquisa/capitulos?type=${type}`, form);
   }
 
-  atualizarLivro(form: any) {
-    return this.httpClient.put(`/api/grupos-pesquisa/livros/`, form);
+  deletarCapitulo(form: any, type) {
+    return this.httpClient.delete(`/api/grupos-pesquisa/capitulos/${form}?type=${type}`);
   }
 
-  listCapitulo() {
-    return this.httpClient.get(`/api/grupos-pesquisa/capitulos`);
+  atualizarCapitulo(form: any, type) {
+    return this.httpClient.put(`/api/grupos-pesquisa/capitulos?type=${type}`, form);
+  }
+  listParticipantesGrupo(type) {
+    return this.httpClient.get(`/api/grupos-pesquisa/participantes-grupo?type=${type}`);
   }
 
-  cadastrarCapitulo(form: any) {
-    return this.httpClient.post(`/api/grupos-pesquisa/capitulos`, form);
+  cadastrarParticipantesGrupo(file: any, form: any, type) {
+    const formData: FormData = new FormData();
+    formData.append('formulario', JSON.stringify(form));
+
+    if (file) {
+      formData.append('fileArray', file, `${file.name}`);
+    }
+
+    return this.httpClient.post(`/api/grupos-pesquisa/participantes-grupo?type=${type}`, formData);
   }
 
-  deletarCapitulo(form: any) {
-    return this.httpClient.delete(`/api/grupos-pesquisa/capitulos/${form._id}`);
+  deletarParticipantesGrupo(id: any, type) {
+    return this.httpClient.delete(`/api/grupos-pesquisa/participantes-grupo/${id}?type=${type}`);
   }
 
-  atualizarCapitulo(form: any) {
-    return this.httpClient.put(`/api/grupos-pesquisa/capitulos/`, form);
-  }
-  listQuemSomosGrupo() {
-    return this.httpClient.get(`/api/grupos-pesquisa/quem-somos-grupo`);
+  atualizarParticipantesGrupo(file: any, form: any, type) {
+    const formData: FormData = new FormData();
+    formData.append('formulario', JSON.stringify(form));
+
+    if (file) {
+      formData.append('fileArray', file, `${file.name}`);
+    }
+
+    return this.httpClient.put(`/api/grupos-pesquisa/participantes-grupo?type=${type}`, formData);
   }
 
-  cadastrarQuemSomosGrupo(form: any) {
-    return this.httpClient.post(`/api/grupos-pesquisa/quem-somos-grupo`, form);
+
+  listLivro(type) {
+    return this.httpClient.get(`/api/grupos-pesquisa/livro?type=${type}`);
   }
 
-  deletarQuemSomosGrupo(form: any) {
-    return this.httpClient.delete(`/api/grupos-pesquisa/quem-somos-grupo/${form._id}`);
+  cadastrarLivro(file: any, form: any, type) {
+    const formData: FormData = new FormData();
+    formData.append('formulario', JSON.stringify(form));
+
+    if (file) {
+      formData.append('fileArray', file, `${file.name}`);
+    }
+
+    return this.httpClient.post(`/api/grupos-pesquisa/livro?type=${type}`, formData);
   }
 
-  atualizarQuemSomosGrupo(form: any) {
-    return this.httpClient.put(`/api/grupos-pesquisa/quem-somos-grupo/`, form);
+  deletarLivro(id: any, type) {
+    return this.httpClient.delete(`/api/grupos-pesquisa/livro/${id}?type=${type}`);
+  }
+
+  atualizarLivro(file: any, form: any, type) {
+    const formData: FormData = new FormData();
+    formData.append('formulario', JSON.stringify(form));
+
+    if (file) {
+      formData.append('fileArray', file, `${file.name}`);
+    }
+
+    return this.httpClient.put(`/api/grupos-pesquisa/livro?type=${type}`, formData);
+  }
+
+  listParceiro(type) {
+    return this.httpClient.get(`/api/grupos-pesquisa/parceiros?type=${type}`);
+  }
+
+  cadastrarParceiro(file: any, form: any, type) {
+    const formData: FormData = new FormData();
+    formData.append('formulario', JSON.stringify(form));
+
+    if (file) {
+      formData.append('fileArray', file, `${file.name}`);
+    }
+
+    return this.httpClient.post(`/api/grupos-pesquisa/parceiros?type=${type}`, formData);
+  }
+
+  deletarParceiro(id: any, type) {
+    return this.httpClient.delete(`/api/grupos-pesquisa/parceiros/${id}?type=${type}`);
+  }
+
+  atualizarParceiro(file: any, form: any, type) {
+    const formData: FormData = new FormData();
+    formData.append('formulario', JSON.stringify(form));
+
+    if (file) {
+      formData.append('fileArray', file, `${file.name}`);
+    }
+
+    return this.httpClient.put(`/api/grupos-pesquisa/parceiros?type=${type}`, formData);
   }
 
 }

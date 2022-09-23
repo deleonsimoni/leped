@@ -53,7 +53,7 @@ export class QuemSomosComponent implements OnInit {
 
       if (this.form.value._id) {
 
-        this.lepedService.atualizarQuemSomos(this.image[0], this.form.value)
+        this.lepedService.atualizarQuemSomos(this.image == null ? null : this.image[0], this.form.value)
           .subscribe((res: any) => {
             this.toastr.success('Quem Somos alterado com sucesso', 'Sucesso');
           }, (err: any) => {

@@ -24,7 +24,7 @@ export class DialogResearchGroupComponent {
   constructor(
     private formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<DialogResearchGroupComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { grupo: any},
+    @Inject(MAT_DIALOG_DATA) public data: { grupo: any },
     private pipeImage: ImagePathComplement
   ) {
     this.grupoForm = this.createForm();
@@ -39,18 +39,18 @@ export class DialogResearchGroupComponent {
     return this.formBuilder.group({
       type: [null, [Validators.required]],
       title: [null, [Validators.required]],
-      subTitle: [null, [Validators.required]],
+      subTitle: [null, []],
       content: [null, [Validators.required]],
-      endereco: [null, [Validators.required]],
-      enderecoGoogle: [null, [Validators.required]],
-      telefone: [null, [Validators.required]],
-      funcionamento: [null, [Validators.required]],
-      email: [null, [Validators.required]],
-      facebook: [null, [Validators.required]],
-      youtube: [null, [Validators.required]],
-      instagram: [null, [Validators.required]],
-      twitter: [null, [Validators.required]],
-      coordenadoraName: [null, [Validators.required]],
+      endereco: [null, []],
+      enderecoGoogle: [null, []],
+      telefone: [null, []],
+      funcionamento: [null, []],
+      email: [null, []],
+      facebook: [null, []],
+      youtube: [null, []],
+      instagram: [null, []],
+      twitter: [null, []],
+      coordenadoraName: [null, []],
       galeria: [null]
     });
   }
@@ -87,7 +87,7 @@ export class DialogResearchGroupComponent {
     const FR = new FileReader();
     const files: Array<any> = event.target.files;
 
-    FR.addEventListener("load", function(e) {
+    FR.addEventListener("load", function (e) {
       if (index) {
         that[`logo${index}`] = e.target.result;
       } else {
@@ -116,7 +116,7 @@ export class DialogResearchGroupComponent {
     const FR = new FileReader();
     const files = event.target.files;
 
-    FR.addEventListener("load", function(e) {
+    FR.addEventListener("load", function (e) {
       if (index == 0) {
         that.gallery.push({ base64: e.target.result });
         that.galleryToSend.push(files[0]);

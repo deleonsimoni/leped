@@ -15,6 +15,7 @@ import { ArtigosComponent } from './grupos-pesquisa/artigos/artigos.component';
 import { LivrosComponent } from './grupos-pesquisa/livros/livros.component';
 import { CapitulosComponent } from './grupos-pesquisa/capitulos/capitulos.component';
 import { QuemSomosGrupoComponent } from './grupos-pesquisa/quem-somos-grupo/quem-somos-grupo.component';
+import { ParceirosComponent } from './grupos-pesquisa/parceiros/parceiros.component';
 
 const routes: Routes = [
   {
@@ -59,7 +60,10 @@ const routes: Routes = [
         path: 'grupos-pesquisa/capitulos', component: CapitulosComponent
       },
       {
-        path: 'grupos-pesquisa/quem-somos-grupo', component: QuemSomosGrupoComponent
+        path: 'grupos-pesquisa/participantes-grupo', component: QuemSomosGrupoComponent
+      },
+      {
+        path: 'grupos-pesquisa/parceiros', component: ParceirosComponent
       },
     ],
   },

@@ -4,38 +4,40 @@ import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { ImagePathComplement } from "@app/shared/pipes/image-path-complement.pipe";
 
 @Component({
-  selector: "dialog-group-quemsomos-component",
-  templateUrl: "./dialog-group-quemsomos.component.html",
-  styleUrls: ["./dialog-group-quemsomos.component.scss"]
+  selector: 'app-dialog-group-parceiros',
+  templateUrl: './dialog-group-parceiros.component.html',
+  styleUrls: ['./dialog-group-parceiros.component.scss']
 })
-export class DialogGroupQuemsomosComponent {
+export class DialogGroupParceirosComponent {
 
-  public participantesForm: FormGroup;
+  public grupoForm: FormGroup;
   public logo: any;
-  imagePathS3: any;
+  public logo2: any;
+  public imagePathS3: File = null;
+
+  public imageBook: any[] = [
+    { base64: null }
+  ];
+
 
   constructor(
     private formBuilder: FormBuilder,
-    private dialogRef: MatDialogRef<DialogGroupQuemsomosComponent>,
+    private dialogRef: MatDialogRef<DialogGroupParceirosComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { form: any },
     private pipeImage: ImagePathComplement
   ) {
-    this.participantesForm = this.createForm();
+    this.grupoForm = this.createForm();
 
     if (this.data.form != null) {
       this.fillForm(this.data.form);
     }
+
   }
 
   private createForm(): FormGroup {
     return this.formBuilder.group({
-      name: [null, [Validators.required]],
-      email: [null, []],
-      orcid: [null, []],
-      lattes: [null, []],
-      instagram: [null, []],
-      twitter: [null, []],
-      facebook: [null, []],
+      parceriaName: [null, [Validators.required]],
+      parceriaDesc: [null],
       imagePathS3: [null, []],
     });
   }
@@ -43,19 +45,13 @@ export class DialogGroupQuemsomosComponent {
   private fillForm(data: any): void {
     this.logo = this.pipeImage.transform(data.imagePathS3);
 
-    this.participantesForm.patchValue({
-      name: data.name,
-      group: data.group,
-      email: data.email,
-      orcid: data.orcid,
-      lattes: data.lattes,
-      instagram: data.instagram,
-      twitter: data.twitter,
-      facebook: data.facebook,
+    this.grupoForm.patchValue({
+      parceriaName: data.parceriaName,
+      parceriaDesc: data.parceriaDesc,
       imagePathS3: data.imagePathS3
+
     })
   }
-
   public getProfileImageCode(event: any): void {
     const that = this;
     const FR = new FileReader();
@@ -74,13 +70,14 @@ export class DialogGroupQuemsomosComponent {
     }
   }
 
-  public registerParticipante(): void {
-    if (this.participantesForm.valid) {
-      this.dialogRef.close({ save: true, participante: this.participantesForm.value, file: this.imagePathS3 })
+  public registerBook(): void {
+    if (this.grupoForm.valid) {
+      this.dialogRef.close({ save: true, form: this.grupoForm.value, file: this.imagePathS3 })
     }
   }
 
   public closeDialog(): void {
     this.dialogRef.close({ save: false });
   }
+
 }

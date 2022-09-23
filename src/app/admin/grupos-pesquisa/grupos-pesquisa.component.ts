@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DialogResearchGroupComponent } from '@app/shared/dialogs/dialog-research-group/dialog-research-group.component';
 import { GrupoPesquisaService } from '@app/shared/services/grupo-pesquisa/grupo-pesquisa.service';
 import { iif, map, Observable, of, switchMap, take } from 'rxjs';
@@ -15,7 +16,9 @@ export class GruposPesquisaComponent implements OnInit {
 
   constructor(
     private grupoPesquisaService: GrupoPesquisaService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public router: Router
+
   ) { }
 
   ngOnInit(): void {
@@ -80,6 +83,41 @@ export class GruposPesquisaComponent implements OnInit {
         switchMap(_ => this.listAll())
       )
       .subscribe()
+  }
+
+  public participante(data: any): void {
+    this.router.navigate(['/admin/grupos-pesquisa/participantes-grupo'], { queryParams: { type: data.type } })
+
+  }
+
+  public pesquisa(data: any): void {
+    this.router.navigate(['/admin/grupos-pesquisa/pesquisas'], { queryParams: { type: data.type } })
+
+  }
+
+  public dissertacao(data: any): void {
+    this.router.navigate(['/admin/grupos-pesquisa/teses'], { queryParams: { type: data.type } })
+
+  }
+
+  public artigo(data: any): void {
+    this.router.navigate(['/admin/grupos-pesquisa/artigos'], { queryParams: { type: data.type } })
+
+  }
+
+  public livro(data: any): void {
+    this.router.navigate(['/admin/grupos-pesquisa/livros'], { queryParams: { type: data.type } })
+
+  }
+
+  public capitulo(data: any): void {
+    this.router.navigate(['/admin/grupos-pesquisa/capitulos'], { queryParams: { type: data.type } })
+
+  }
+
+  public parceiros(data: any): void {
+    this.router.navigate(['/admin/grupos-pesquisa/parceiros'], { queryParams: { type: data.type } })
+
   }
 
 }

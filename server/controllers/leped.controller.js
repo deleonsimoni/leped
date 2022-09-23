@@ -77,27 +77,36 @@ async function updateQuemSomos(req, idUser) {
 
   let form = JSON.parse(req.body.formulario);
   form.user = idUser;
-  let fileName = 'images/' + req.files.fileArray.name;
   let retorno = { temErro: true };
 
-  await S3Uploader.uploadBase64(fileName, req.files.fileArray.data).then(async fileData => {
+  if (req.files) {
+    let fileName = 'images/' + req.files.fileArray.name;
+    await S3Uploader.uploadBase64(fileName, req.files.fileArray.data).then(async fileData => {
 
-    console.log('Arquivo submetido para AWS ' + fileName);
-    form.logo = fileName;
-    retorno.temErro = false;
+      console.log('Arquivo submetido para AWS ' + fileName);
+      form.logo = fileName;
+      retorno.temErro = false;
 
+      return await QuemSomos.findOneAndUpdate({
+        _id: form._id
+      },
+        form, {
+        upsert: true
+      });
+
+    }, err => {
+      console.log('Erro ao enviar imagem para AWS: ' + fileName);
+      retorno.temErro = true;
+      retorno.mensagem = 'Servidor momentaneamente inoperante. Tente novamente mais tarde.';
+    });
+  } else {
     return await QuemSomos.findOneAndUpdate({
       _id: form._id
     },
       form, {
       upsert: true
     });
-
-  }, err => {
-    console.log('Erro ao enviar imagem para AWS: ' + fileName);
-    retorno.temErro = true;
-    retorno.mensagem = 'Servidor momentaneamente inoperante. Tente novamente mais tarde.';
-  });
+  }
 
 }
 

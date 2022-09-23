@@ -16,13 +16,13 @@ export class DialogGroupPesquisasComponent {
   constructor(
     private formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<DialogGroupPesquisasComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { grupo: any },
+    @Inject(MAT_DIALOG_DATA) public data: { form: any },
     private pipeImage: ImagePathComplement
   ) {
     this.form = this.createForm();
 
-    if (this.data.grupo != null) {
-      this.fillForm(this.data.grupo);
+    if (this.data.form != null) {
+      this.fillForm(this.data.form);
     }
 
   }
@@ -33,9 +33,10 @@ export class DialogGroupPesquisasComponent {
       coordination: [null, [Validators.required]],
       period: [null, [Validators.required]],
       resume: [null, [Validators.required]],
-      financing: [null, [Validators.required]],
+      financing: [null, []],
+      icPesquisa: [null, [Validators.required]],
       /*  publicationResearch: [null, [Validators.required]],*/
-      researchLink: [null, [Validators.required]]
+      researchLink: [null, []]
     });
   }
 
@@ -49,6 +50,7 @@ export class DialogGroupPesquisasComponent {
       period: data.period,
       resume: data.resume,
       financing: data.financing,
+      icPesquisa: data.icPesquisa,
       /*publicationResearch: data.publicationResearch,*/
       researchLink: data.researchLink
 
@@ -60,7 +62,7 @@ export class DialogGroupPesquisasComponent {
   public register(): void {
     if (this.form.valid) {
       const files = [];
-      this.dialogRef.close({ save: true, grupo: this.form.value, files })
+      this.dialogRef.close({ save: true, form: this.form.value, files })
     }
   }
 

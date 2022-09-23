@@ -12,4 +12,12 @@ export class ResearchGroupCardComponent {
   @Output() delete: EventEmitter<Coordenadora> = new EventEmitter();
   @Output() edit: EventEmitter<boolean> = new EventEmitter();
 
+  @Output() participante: EventEmitter<any> = new EventEmitter();
+  @Output() pesquisa: EventEmitter<any> = new EventEmitter();
+  @Output() dissertacao: EventEmitter<any> = new EventEmitter();
+  @Output() artigo: EventEmitter<any> = new EventEmitter();
+  @Output() livro: EventEmitter<any> = new EventEmitter();
+  @Output() capitulo: EventEmitter<any> = new EventEmitter();
+  @Output() parceiros: EventEmitter<any> = new EventEmitter();
+
 }

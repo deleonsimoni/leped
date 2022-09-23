@@ -10,6 +10,7 @@ module.exports = {
   insertTesesgp,
   deleteTesesgp,
   updateTesesgp,
+
   getPesquisasgp,
   insertPesquisasgp,
   deletePesquisasgp,
@@ -30,208 +31,530 @@ module.exports = {
   deleteCapitulosgp,
   updateCapitulosgp,
 
-  getQuemSomosgp,
-  insertQuemSomosgp,
-  deleteQuemSomosgp,
-  updateQuemSomosgp,
+  getParticipantesgp,
+  insertParticipantesgp,
+  deleteParticipantesgp,
+  updateParticipantesgp,
+
+  getParceirosgp,
+  insertParceirosgp,
+  deleteParceirosgp,
+  updateParceirosgp,
 };
 
 
 
-async function getTesesgp() {
-  return await GrupoPesquisa.find()
-    .select('publicacoes.teses')
+async function getTesesgp(req) {
+
+  return await GrupoPesquisa.find({ type: req.query.type })
+    .select('teses')
     .sort({
       createAt: -1
     });
 }
 
-async function insertTesesgp(form, idUser) {
+async function insertTesesgp(req, idUser) {
 
-  await GrupoPesquisa.findOneAndUpdate({ type: 'GEPED' }, {
-    '$set': {
-      'publicacoes.teses': form
+  let form = req.body;
+  form.user = idUser;
+
+  return await GrupoPesquisa.findOneAndUpdate({ type: req.query.type }, {
+    '$push': {
+      'teses': form
     }
   })
+
 }
 
-async function deleteTesesgp(id) {
-  return await GrupoPesquisa.findOneAndRemove({
-    'publicacoes.teses._id': id
-  });
+async function deleteTesesgp(id, req) {
+  return await GrupoPesquisa.findOneAndUpdate(
+    { type: req.query.type },
+    { $pull: { teses: { _id: id } } },
+    { new: true },
+  )
+
 }
 
-async function updateTesesgp(form) {
+async function updateTesesgp(req, idUser) {
+
+  let form = req.body;
+  form.user = idUser;
 
   return await GrupoPesquisa.findOneAndUpdate({
-    'publicacoes.teses._id': form._id
+    type: req.query.type,
+    'teses._id': form._id
   },
-    form, {
-    upsert: true
-  });
+    {
+      $set: {
+        "teses.$": form
+      }
+    }
+  );
+
 }
 
-async function getPesquisasgp() {
-  return await GrupoPesquisa.find()
+
+
+
+
+async function getPesquisasgp(req) {
+
+  return await GrupoPesquisa.find({ type: req.query.type })
     .select('pesquisas')
     .sort({
       createAt: -1
     });
 }
 
-async function insertPesquisasgp(form, idUser) {
+async function insertPesquisasgp(req, idUser) {
 
-  await GrupoPesquisa.findOneAndUpdate({ type: 'GEPED' }, {
-    '$set': {
+  let form = req.body;
+  form.user = idUser;
+
+  return await GrupoPesquisa.findOneAndUpdate({ type: req.query.type }, {
+    '$push': {
       'pesquisas': form
     }
   })
+
 }
 
-async function deletePesquisasgp(id) {
-  return await GrupoPesquisa.findOneAndRemove({
-    'pesquisas._id': id
-  });
+async function deletePesquisasgp(id, req) {
+  return await GrupoPesquisa.findOneAndUpdate(
+    { type: req.query.type },
+    { $pull: { pesquisas: { _id: id } } },
+    { new: true },
+  )
+
 }
 
-async function updatePesquisasgp(form) {
+async function updatePesquisasgp(req, idUser) {
+
+  let form = req.body;
+  form.user = idUser;
 
   return await GrupoPesquisa.findOneAndUpdate({
+    type: req.query.type,
     'pesquisas._id': form._id
   },
-    form, {
-    upsert: true
-  });
+    {
+      $set: {
+        "pesquisas.$": form
+      }
+    }
+  );
+
 }
 
-async function getArtigosgp() {
-  return await GrupoPesquisa.find()
-    .select('publicacoes.artigos')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+async function getArtigosgp(req) {
+
+  return await GrupoPesquisa.find({ type: req.query.type })
+    .select('artigos')
     .sort({
       createAt: -1
     });
 }
 
-async function insertArtigosgp(form, idUser) {
+async function insertArtigosgp(req, idUser) {
 
-  await GrupoPesquisa.findOneAndUpdate({ type: 'GEPED' }, {
-    '$set': {
-      'publicacoes.artigos': form
+  let form = req.body;
+  form.user = idUser;
+
+  return await GrupoPesquisa.findOneAndUpdate({ type: req.query.type }, {
+    '$push': {
+      'artigos': form
     }
   })
+
 }
 
-async function deleteArtigosgp(id) {
-  return await GrupoPesquisa.findOneAndRemove({
-    'publicacoes.artigos._id': id
-  });
+async function deleteArtigosgp(id, req) {
+  return await GrupoPesquisa.findOneAndUpdate(
+    { type: req.query.type },
+    { $pull: { artigos: { _id: id } } },
+    { new: true },
+  )
+
 }
 
-async function updateArtigosgp(form) {
+async function updateArtigosgp(req, idUser) {
+
+  let form = req.body;
+  form.user = idUser;
 
   return await GrupoPesquisa.findOneAndUpdate({
-    'publicacoes.artigos._id': form._id
+    type: req.query.type,
+    'artigos._id': form._id
   },
-    form, {
-    upsert: true
-  });
+    {
+      $set: {
+        "artigos.$": form
+      }
+    }
+  );
+
 }
 
-async function getLivrosgp() {
-  return await GrupoPesquisa.find()
-    .select('publicacoes.livros')
+
+
+
+
+
+async function getLivrosgp(req) {
+
+  return await GrupoPesquisa.find({ type: req.query.type })
+    .select('livros')
     .sort({
       createAt: -1
     });
 }
 
-async function insertLivrosgp(form, idUser) {
+async function insertLivrosgp(req, idUser) {
 
-  await GrupoPesquisa.findOneAndUpdate({ type: 'GEPED' }, {
-    '$set': {
-      'publicacoes.livros': form
-    }
-  })
+  let form = JSON.parse(req.body.formulario);
+  form.user = idUser;
+  console.log(form)
+  let fileName = 'images/grupo-geped/livros/' + req.files.fileArray.name;
+  let retorno = { temErro: true };
+
+  await S3Uploader.uploadBase64(fileName, req.files.fileArray.data)
+    .then(async fileData => {
+      console.log('Arquivo submetido para AWS ' + fileName);
+      form.imagePathS3 = fileName;
+      retorno.temErro = false;
+      return await GrupoPesquisa.findOneAndUpdate({ type: req.query.type }, {
+        '$push': {
+          'livros': form
+        }
+      })
+    }, err => {
+      console.log('Erro ao enviar imagem para AWS: ' + fileName);
+      retorno.temErro = true;
+      retorno.mensagem = 'Servidor momentaneamente inoperante. Tente novamente mais tarde.';
+    });
 }
 
-async function deleteLivrosgp(id) {
-  return await GrupoPesquisa.findOneAndRemove({
-    'publicacoes.livros._id': id
-  });
+async function deleteLivrosgp(id, req) {
+  return await GrupoPesquisa.findOneAndUpdate(
+    { type: req.query.type },
+    { $pull: { livros: { _id: id } } },
+    { new: true },
+  )
+
 }
 
-async function updateLivrosgp(form) {
+async function updateLivrosgp(req, idUser) {
 
-  return await GrupoPesquisa.findOneAndUpdate({
-    'publicacoes.livros._id': form._id
-  },
-    form, {
-    upsert: true
-  });
+  let form = JSON.parse(req.body.formulario);
+  form.user = idUser;
+  let retorno = { temErro: true };
+  if (req.files) {
+    let fileName = 'images/grupo-geped/livros/' + req.files.fileArray.name;
+    await S3Uploader.uploadBase64(fileName, req.files.fileArray.data)
+      .then(async fileData => {
+        console.log('Arquivos submetidos para AWS ' + fileName);
+        form.imagePathS3 = fileName;
+        retorno.temErro = false;
+
+        return await GrupoPesquisa.findOneAndUpdate({
+          type: req.query.type,
+          'livros._id': form._id
+        },
+          {
+            "livros.$": form
+          },
+          {
+            upsert: true
+          }
+        );
+      }, err => {
+        console.log('Erro ao enviar imagem para AWS: ' + fileName);
+        retorno.temErro = true;
+        retorno.mensagem = 'Servidor momentaneamente inoperante. Tente novamente mais tarde.';
+      });
+
+  } else {
+    return await GrupoPesquisa.findOneAndUpdate({
+      type: req.query.type,
+      'livros._id': form._id
+    },
+      {
+        $set: {
+          "livros.$": form
+        }
+      }
+    );
+  }
 }
 
-async function getCapitulosgp() {
-  return await GrupoPesquisa.find()
-    .select('publicacoes.capitulos')
+
+
+
+
+
+
+
+
+
+
+async function getParceirosgp(req) {
+
+  return await GrupoPesquisa.find({ type: req.query.type })
+    .select('parceiros')
     .sort({
       createAt: -1
     });
 }
 
-async function insertCapitulosgp(form, idUser) {
+async function insertParceirosgp(req, idUser) {
 
-  await GrupoPesquisa.findOneAndUpdate({ type: 'GEPED' }, {
-    '$set': {
-      'publicacoes.capitulos': form
-    }
-  })
+  let form = JSON.parse(req.body.formulario);
+  form.user = idUser;
+  console.log(form)
+  let fileName = 'images/grupo-geped/parceiros/' + req.files.fileArray.name;
+  let retorno = { temErro: true };
+
+  await S3Uploader.uploadBase64(fileName, req.files.fileArray.data)
+    .then(async fileData => {
+      console.log('Arquivo submetido para AWS ' + fileName);
+      form.imagePathS3 = fileName;
+      retorno.temErro = false;
+      return await GrupoPesquisa.findOneAndUpdate({ type: req.query.type }, {
+        '$push': {
+          'parceiros': form
+        }
+      })
+    }, err => {
+      console.log('Erro ao enviar imagem para AWS: ' + fileName);
+      retorno.temErro = true;
+      retorno.mensagem = 'Servidor momentaneamente inoperante. Tente novamente mais tarde.';
+    });
 }
 
-async function deleteCapitulosgp(id) {
-  return await GrupoPesquisa.findOneAndRemove({
-    'publicacoes.capitulos._id': id
-  });
+async function deleteParceirosgp(id, req) {
+  return await GrupoPesquisa.findOneAndUpdate(
+    { type: req.query.type },
+    { $pull: { parceiros: { _id: id } } },
+    { new: true },
+  )
+
 }
 
-async function updateCapitulosgp(form) {
+async function updateParceirosgp(req, idUser) {
 
-  return await GrupoPesquisa.findOneAndUpdate({
-    'publicacoes.capitulos._id': form._id
-  },
-    form, {
-    upsert: true
-  });
+  let form = JSON.parse(req.body.formulario);
+  form.user = idUser;
+  let retorno = { temErro: true };
+  if (req.files) {
+    let fileName = 'images/grupo-geped/parceiros/' + req.files.fileArray.name;
+    await S3Uploader.uploadBase64(fileName, req.files.fileArray.data)
+      .then(async fileData => {
+        console.log('Arquivos submetidos para AWS ' + fileName);
+        form.imagePathS3 = fileName;
+        retorno.temErro = false;
+
+        return await GrupoPesquisa.findOneAndUpdate({
+          type: req.query.type,
+          'parceiros._id': form._id
+        },
+          {
+            "parceiros.$": form
+          },
+          {
+            upsert: true
+          }
+        );
+      }, err => {
+        console.log('Erro ao enviar imagem para AWS: ' + fileName);
+        retorno.temErro = true;
+        retorno.mensagem = 'Servidor momentaneamente inoperante. Tente novamente mais tarde.';
+      });
+
+  } else {
+    return await GrupoPesquisa.findOneAndUpdate({
+      type: req.query.type,
+      'parceiros._id': form._id
+    },
+      {
+        $set: {
+          "parceiros.$": form
+        }
+      }
+    );
+  }
 }
 
-async function getQuemSomosgp() {
-  return await GrupoPesquisa.find()
-    .select('quemsomos')
+
+
+
+
+
+
+
+
+
+
+
+
+async function getCapitulosgp(req) {
+
+  return await GrupoPesquisa.find({ type: req.query.type })
+    .select('capitulos')
     .sort({
       createAt: -1
     });
 }
 
-async function insertQuemSomosgp(form, idUser) {
+async function insertCapitulosgp(req, idUser) {
 
-  await GrupoPesquisa.findOneAndUpdate({ type: 'GEPED' }, {
-    '$set': {
-      'quemsomos': form
+  let form = req.body;
+  form.user = idUser;
+
+  return await GrupoPesquisa.findOneAndUpdate({ type: req.query.type }, {
+    '$push': {
+      'capitulos': form
     }
   })
+
 }
 
-async function deleteQuemSomosgp(id) {
-  return await GrupoPesquisa.findOneAndRemove({
-    'quemsomos._id': id
-  });
+async function deleteCapitulosgp(id, req) {
+  return await GrupoPesquisa.findOneAndUpdate(
+    { type: req.query.type },
+    { $pull: { capitulos: { _id: id } } },
+    { new: true },
+  )
+
 }
 
-async function updateQuemSomosgp(form) {
+async function updateCapitulosgp(req, idUser) {
+
+  let form = req.body;
+  form.user = idUser;
 
   return await GrupoPesquisa.findOneAndUpdate({
-    'quemsomos._id': form._id
+    type: req.query.type,
+    'capitulos._id': form._id
   },
-    form, {
-    upsert: true
-  });
+    {
+      $set: {
+        "capitulos.$": form
+      }
+    }
+  );
+
+}
+
+
+
+
+
+
+
+
+
+
+
+async function getParticipantesgp(req) {
+
+  return await GrupoPesquisa.find({ type: req.query.type })
+    .select('participantes')
+    .sort({
+      createAt: -1
+    });
+}
+
+async function insertParticipantesgp(req, idUser) {
+
+  let form = JSON.parse(req.body.formulario);
+  form.user = idUser;
+  let fileName = 'images/grupo-geped/participante/' + req.files.fileArray.name;
+  let retorno = { temErro: true };
+
+  await S3Uploader.uploadBase64(fileName, req.files.fileArray.data)
+    .then(async fileData => {
+      console.log('Arquivo submetido para AWS ' + fileName);
+      form.imagePathS3 = fileName;
+      retorno.temErro = false;
+      return await GrupoPesquisa.findOneAndUpdate({ type: req.query.type }, {
+        '$push': {
+          'participantes': form
+        }
+      })
+    }, err => {
+      console.log('Erro ao enviar imagem para AWS: ' + fileName);
+      retorno.temErro = true;
+      retorno.mensagem = 'Servidor momentaneamente inoperante. Tente novamente mais tarde.';
+    });
+}
+
+async function deleteParticipantesgp(id, req) {
+  return await GrupoPesquisa.findOneAndUpdate(
+    { type: req.query.type },
+    { $pull: { participantes: { _id: id } } },
+    { new: true },
+  )
+
+}
+
+async function updateParticipantesgp(req, idUser) {
+
+  let form = JSON.parse(req.body.formulario);
+  form.user = idUser;
+  let retorno = { temErro: true };
+  if (req.files) {
+    let fileName = 'images/grupo-geped/livros/' + req.files.fileArray.name;
+    await S3Uploader.uploadBase64(fileName, req.files.fileArray.data)
+      .then(async fileData => {
+        console.log('Arquivos submetidos para AWS ' + fileName);
+        form.imagePathS3 = fileName;
+        retorno.temErro = false;
+
+        return await GrupoPesquisa.findOneAndUpdate({
+          type: req.query.type,
+          'participantes._id': form._id
+        },
+          {
+            "participantes.$": form
+          },
+          {
+            upsert: true
+          }
+        );
+      }, err => {
+        console.log('Erro ao enviar imagem para AWS: ' + fileName);
+        retorno.temErro = true;
+        retorno.mensagem = 'Servidor momentaneamente inoperante. Tente novamente mais tarde.';
+      });
+
+  } else {
+    return await GrupoPesquisa.findOneAndUpdate({
+      type: req.query.type,
+      'participantes._id': form._id
+    },
+      {
+        $set: {
+          "participantes.$": form
+        }
+      }
+    );
+  }
+
+
 }

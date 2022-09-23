@@ -7,8 +7,8 @@
         </div>
         <div class="col-md-8">
             <div class="profile-card__data">
-                <p class="profile-data__group">{{ forms.titleResearch }}</p>
-                <p class="profile-data__name">{{ forms.createdAt | date: 'dd/MM/yyyy' }}</p>
+                <p class="profile-data__group">{{ forms.name | titlecase }}</p>
+                <p class="profile-data__name">{{ forms.email }}</p>
             </div>
         </div>
     </div>

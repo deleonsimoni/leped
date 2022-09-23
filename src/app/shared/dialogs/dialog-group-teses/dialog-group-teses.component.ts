@@ -17,13 +17,13 @@ export class DialogGroupTesesComponent {
   constructor(
     private formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<DialogGroupTesesComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { grupo: any },
+    @Inject(MAT_DIALOG_DATA) public data: { form: any },
 
   ) {
     this.grupoForm = this.createForm();
 
-    if (this.data.grupo != null) {
-      this.fillForm(this.data.grupo);
+    if (this.data.form != null) {
+      this.fillForm(this.data.form);
     }
 
   }
@@ -57,7 +57,7 @@ export class DialogGroupTesesComponent {
   public registerTesis(): void {
     if (this.grupoForm.valid) {
       const files = [];
-      this.dialogRef.close({ save: true, grupo: this.grupoForm.value, files })
+      this.dialogRef.close({ save: true, form: this.grupoForm.value, files })
     }
   }
 

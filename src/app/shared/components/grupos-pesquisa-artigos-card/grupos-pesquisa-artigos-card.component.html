@@ -1,11 +1,7 @@
 <div class="profile-card">
     <div class="row profile-card--blur-content">
-        <div class="col-md-4">
-            <img class="profile-card__image"
-                src="{{ forms.imagePathS3 ? (forms.imagePathS3 | imagePathComplement) : '../../../assets/img/placeholder-profile.png' }}"
-                alt="" srcset="">
-        </div>
-        <div class="col-md-8">
+
+        <div class="col-md-12">
             <div class="profile-card__data">
                 <p class="profile-data__group">{{ forms.titleArticle }}</p>
                 <p class="profile-data__name">{{ forms.createdAt | date: 'dd/MM/yyyy' }}</p>

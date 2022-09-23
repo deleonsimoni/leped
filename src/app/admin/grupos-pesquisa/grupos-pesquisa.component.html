@@ -4,7 +4,10 @@
       <div class="row">
         <ng-container *ngIf="grupos.length > 0">
           <div class="col-6 col-md-4 mb-3" *ngFor="let grupo of grupos">
-            <research-group-card-component [researchGroup]="grupo" (edit)="edit(grupo)" (delete)="delete($event)">
+            <research-group-card-component [researchGroup]="grupo" (edit)="edit(grupo)"
+              (participante)="participante(grupo)" (pesquisa)="pesquisa(grupo)" (dissertacao)="dissertacao(grupo)"
+              (artigo)="artigo(grupo)" (livro)="livro(grupo)" (capitulo)="capitulo(grupo)"
+              (parceiros)="parceiros(grupo)" (delete)="delete($event)">
             </research-group-card-component>
           </div>
         </ng-container>

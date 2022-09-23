@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
 import { DialogGroupArtigosComponent } from '@app/shared/dialogs/dialog-group-artigos/dialog-group-artigos.component';
 import { GrupoPesquisaService } from '@app/shared/services/grupo-pesquisa/grupo-pesquisa.service';
 import { iif, map, Observable, of, switchMap, take } from 'rxjs';
@@ -13,19 +14,26 @@ export class ArtigosComponent implements OnInit {
 
   public profileImage: any;
   public itens: Array<any> = [];
+  public type;
 
   constructor(
     private grupoPesquisaService: GrupoPesquisaService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    this.listAll()
-      .subscribe();
+    this.route
+      .queryParams
+      .subscribe(params => {
+        this.type = params['type'];
+        this.listAll()
+          .subscribe();
+      });
   }
 
   private listAll(): Observable<any> {
-    return this.grupoPesquisaService.listArtigo()
+    return this.grupoPesquisaService.listArtigo(this.type)
       .pipe(
         map((itens: any) => this.itens = itens)
       )
@@ -49,7 +57,7 @@ export class ArtigosComponent implements OnInit {
       .pipe(
         switchMap(({ save, form, file }: any) =>
           iif(() => save,
-            this.grupoPesquisaService.cadastrarArtigo(form)
+            this.grupoPesquisaService.cadastrarArtigo(form, this.type)
               .pipe(switchMap(_ => this.listAll())),
             of(null)
           )
@@ -63,7 +71,7 @@ export class ArtigosComponent implements OnInit {
       .pipe(
         switchMap(({ save, form }: any) =>
           iif(() => save,
-            this.grupoPesquisaService.atualizarArtigo({ ...form, _id: data._id })
+            this.grupoPesquisaService.atualizarArtigo({ ...form, _id: data._id }, this.type)
               .pipe(switchMap(_ => this.listAll())),
             of(null)
           )
@@ -73,7 +81,7 @@ export class ArtigosComponent implements OnInit {
   }
 
   public delete(item: any): void {
-    this.grupoPesquisaService.deletarArtigo(item._id)
+    this.grupoPesquisaService.deletarArtigo(item._id, this.type)
       .pipe(
         take(1),
         switchMap(_ => this.listAll())

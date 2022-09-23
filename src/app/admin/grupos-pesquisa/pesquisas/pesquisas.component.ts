@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
 import { DialogGroupPesquisasComponent } from '@app/shared/dialogs/dialog-group-pesquisas/dialog-group-pesquisas.component';
 
 import { GrupoPesquisaService } from '@app/shared/services/grupo-pesquisa/grupo-pesquisa.service';
@@ -14,19 +15,26 @@ export class PesquisasComponent implements OnInit {
 
   public profileImage: any;
   public itens: Array<any> = [];
+  public type;
 
   constructor(
     private grupoPesquisaService: GrupoPesquisaService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    this.listAll()
-      .subscribe();
+    this.route
+      .queryParams
+      .subscribe(params => {
+        this.type = params['type'];
+        this.listAll()
+          .subscribe();
+      });
   }
 
   private listAll(): Observable<any> {
-    return this.grupoPesquisaService.listPesquisa()
+    return this.grupoPesquisaService.listPesquisa(this.type)
       .pipe(
         map((itens: any) => this.itens = itens)
       )
@@ -50,7 +58,7 @@ export class PesquisasComponent implements OnInit {
       .pipe(
         switchMap(({ save, form, file }: any) =>
           iif(() => save,
-            this.grupoPesquisaService.cadastrarPesquisa(form)
+            this.grupoPesquisaService.cadastrarPesquisa(form, this.type)
               .pipe(switchMap(_ => this.listAll())),
             of(null)
           )
@@ -64,7 +72,7 @@ export class PesquisasComponent implements OnInit {
       .pipe(
         switchMap(({ save, form }: any) =>
           iif(() => save,
-            this.grupoPesquisaService.atualizarPesquisa({ ...form, _id: data._id })
+            this.grupoPesquisaService.atualizarPesquisa({ ...form, _id: data._id }, this.type)
               .pipe(switchMap(_ => this.listAll())),
             of(null)
           )
@@ -74,7 +82,7 @@ export class PesquisasComponent implements OnInit {
   }
 
   public delete(item: any): void {
-    this.grupoPesquisaService.deletarPesquisa(item._id)
+    this.grupoPesquisaService.deletarPesquisa(item._id, this.type)
       .pipe(
         take(1),
         switchMap(_ => this.listAll())

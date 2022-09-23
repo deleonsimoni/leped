@@ -1,12 +1,11 @@
-
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from "@angular/core";
 
 @Component({
-  selector: 'app-grupos-pesquisa-pesquisas-card',
-  templateUrl: './grupos-pesquisa-pesquisas-card.component.html',
-  styleUrls: ['./grupos-pesquisa-pesquisas-card.component.scss']
+  selector: 'app-grupos-pesquisa-parceiros-card',
+  templateUrl: './grupos-pesquisa-parceiros-card.component.html',
+  styleUrls: ['./grupos-pesquisa-parceiros-card.component.scss']
 })
-export class GruposPesquisaPesquisasCardComponent {
+export class GruposPesquisaParceirosCardComponent {
 
   @Input() forms: any;
   @Output() delete: EventEmitter<any> = new EventEmitter();

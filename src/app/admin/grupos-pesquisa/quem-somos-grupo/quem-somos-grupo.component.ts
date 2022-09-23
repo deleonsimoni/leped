@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
 
 import { DialogGroupQuemsomosComponent } from '@app/shared/dialogs/dialog-group-quemsomos/dialog-group-quemsomos.component';
 
@@ -15,19 +16,27 @@ export class QuemSomosGrupoComponent implements OnInit {
 
   public profileImage: any;
   public itens: Array<any> = [];
+  public type;
 
   constructor(
     private grupoPesquisaService: GrupoPesquisaService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    this.listAll()
-      .subscribe();
+    this.route
+      .queryParams
+      .subscribe(params => {
+        this.type = params['type'];
+        this.listAll()
+          .subscribe();
+      });
+
   }
 
   private listAll(): Observable<any> {
-    return this.grupoPesquisaService.listQuemSomosGrupo()
+    return this.grupoPesquisaService.listParticipantesGrupo(this.type)
       .pipe(
         map((itens: any) => this.itens = itens)
       )
@@ -49,9 +58,9 @@ export class QuemSomosGrupoComponent implements OnInit {
   public register(): void {
     this.openDialog()
       .pipe(
-        switchMap(({ save, form, file }: any) =>
+        switchMap(({ save, participante, file }: any) =>
           iif(() => save,
-            this.grupoPesquisaService.cadastrarQuemSomosGrupo(form)
+            this.grupoPesquisaService.cadastrarParticipantesGrupo(file, participante, this.type)
               .pipe(switchMap(_ => this.listAll())),
             of(null)
           )
@@ -63,9 +72,9 @@ export class QuemSomosGrupoComponent implements OnInit {
   public edit(data: any): void {
     this.openDialog(data)
       .pipe(
-        switchMap(({ save, form }: any) =>
+        switchMap(({ save, participante, file }: any) =>
           iif(() => save,
-            this.grupoPesquisaService.atualizarQuemSomosGrupo({ ...form, _id: data._id })
+            this.grupoPesquisaService.atualizarParticipantesGrupo(file, { ...participante, _id: data._id }, this.type)
               .pipe(switchMap(_ => this.listAll())),
             of(null)
           )
@@ -75,7 +84,7 @@ export class QuemSomosGrupoComponent implements OnInit {
   }
 
   public delete(item: any): void {
-    this.grupoPesquisaService.deletarQuemSomosGrupo(item._id)
+    this.grupoPesquisaService.deletarParticipantesGrupo(item._id, this.type)
       .pipe(
         take(1),
         switchMap(_ => this.listAll())

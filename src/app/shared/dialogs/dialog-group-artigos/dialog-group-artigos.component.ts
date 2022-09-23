@@ -17,13 +17,13 @@ export class DialogGroupArtigosComponent {
   constructor(
     private formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<DialogGroupArtigosComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { grupo: any },
+    @Inject(MAT_DIALOG_DATA) public data: { form: any },
     private pipeImage: ImagePathComplement
   ) {
     this.grupoForm = this.createForm();
 
-    if (this.data.grupo != null) {
-      this.fillForm(this.data.grupo);
+    if (this.data.form != null) {
+      this.fillForm(this.data.form);
     }
 
   }
@@ -55,7 +55,7 @@ export class DialogGroupArtigosComponent {
   public registerArticle(): void {
     if (this.grupoForm.valid) {
       const files = [];
-      this.dialogRef.close({ save: true, grupo: this.grupoForm.value, files })
+      this.dialogRef.close({ save: true, form: this.grupoForm.value, files })
     }
   }
 

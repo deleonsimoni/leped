@@ -85,58 +85,57 @@ const GrupoPesquisaSchema = new mongoose.Schema(
         type: String
       }
     ],
-    quemsomos: {
 
-      content: {
+    participantes: [{
+
+      name: {
+        type: String,
+
+      },
+      email: {
         type: String,
       },
 
-      participantes: [{
+      orcid: {
+        type: String
+      },
 
-        participantName: {
-          type: String,
+      lattes: {
+        type: String,
+      },
 
-        },
-        participantlattes: {
-          type: String,
-        },
+      instagram: {
+        type: String,
+      },
 
-        participantEmail: {
-          type: String
-        },
+      twitter: {
+        type: String,
+      },
 
-        participantImage: {
-          type: String,
-        },
+      facebook: {
+        type: String,
+      },
+      imagePathS3: {
+        type: String,
+      },
 
-        participantInstagram: {
-          type: String,
-        },
 
-        participantTwitter: {
-          type: String,
-        },
+    }],
+    parceiros: [{
 
-        participantFacebook: {
-          type: String,
-        },
+      parceriaName: {
+        type: String,
 
-      }],
-      parcerias: [{
+      },
+      parceriaDesc: {
+        type: String,
 
-        parceriaName: {
-          type: String,
+      },
+      imagePathS3: {
+        type: String,
+      }
+    }],
 
-        },
-        parceriaDesc: {
-          type: String,
-
-        },
-        imagePathS3: {
-          type: String,
-        }
-      }]
-    },
 
     pesquisas: [{
 
@@ -169,114 +168,110 @@ const GrupoPesquisaSchema = new mongoose.Schema(
         type: String,
       },
 
-      publications: [{
-        publicationResearch: {
-          type: String,
-        },
-        periodic: {
-          type: String,
-        },
-        researchlink: {
-          type: String,
-        }
+      researchLink: {
+        type: String,
+      },
 
+      publications: [{
+        type: String,
       }]
     }],
-    publicacoes: {
 
-      artigos: [{
+    artigos: [{
 
-        titleArticle: {
-          type: String,
-        },
-        authorsArticle: {
+      titleArticle: {
+        type: String,
+      },
+      authorsArticle: {
 
-          type: String,
-        },
-        journalArticle: {
-          type: String,
-        },
+        type: String,
+      },
+      journalArticle: {
+        type: String,
+      },
 
-        linkArticle: {
-          type: String,
-        }
+      linkArticle: {
+        type: String,
+      }
 
-      }],
-      teses: [{
+    }],
+    teses: [{
 
-        icTese: {
-          type: String,
-        },
-        titleTesis: {
-          type: String,
-        },
-        authorTesis: {
+      icTese: {
+        type: String,
+      },
+      titleTesis: {
+        type: String,
+      },
+      authorTesis: {
 
-          type: String,
-        },
+        type: String,
+      },
 
-        dateTesis: {
-          type: String,
-        },
-        linkTesis: {
-          type: String,
-        }
-      }],
-      livros: [{
+      dateTesis: {
+        type: String,
+      },
+      linkTesis: {
+        type: String,
+      }
+    }],
 
-        titleBook: {
-          type: String,
-        },
-        authorsBook: {
+    livros: [{
 
-          type: String,
-        },
+      titleBook: {
+        type: String,
+      },
+      authorsBook: {
 
-        linkBook: {
-          type: String,
-        },
-        imageBook: {
-          type: String,
-        }
-      }],
+        type: String,
+      },
 
-      capitulos: [{
+      linkBook: {
+        type: String,
+      },
 
-        titleChapter: {
-          type: String,
-        },
-        authorsChapter: {
+      imagePathS3: {
+        type: String,
+      },
+    }],
 
-          type: String,
-        },
+    capitulos: [{
 
-        titleBook: {
-          type: String,
-        },
-        eds: {
-          type: String,
-        },
-        publisher: {
-          type: String,
-        },
-        edition: {
-          type: String,
-        },
-        location: {
-          type: String,
-        },
-        vol: {
-          type: String,
-        },
-        pages: {
-          type: String,
-        },
-        year: {
-          type: String,
-        }
+      titleChapter: {
+        type: String,
+      },
+      authorsChapter: {
 
-      }],
-    }
+        type: String,
+      },
+
+      titleBook: {
+        type: String,
+      },
+      eds: {
+        type: String,
+      },
+      publisher: {
+        type: String,
+      },
+      edition: {
+        type: String,
+      },
+      location: {
+        type: String,
+      },
+      vol: {
+        type: String,
+      },
+      pages: {
+        type: String,
+      },
+      year: {
+        type: String,
+      }
+
+    }],
+
 
 
 
