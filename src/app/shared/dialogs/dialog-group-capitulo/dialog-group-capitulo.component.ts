@@ -39,7 +39,8 @@ export class DialogGroupCapituloComponent {
       location: [null, [Validators.required]],
       vol: [null, [Validators.required]],
       pages: [null, [Validators.required]],
-      year: [null, [Validators.required]]
+      year: [null, [Validators.required]],
+      ordem: []
 
     });
   }
@@ -58,7 +59,9 @@ export class DialogGroupCapituloComponent {
       location: data.location,
       vol: data.vol,
       pages: data.pages,
-      year: data.year
+      year: data.year,
+      ordem: data.ordem
+
     })
   }
 

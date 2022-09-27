@@ -13,7 +13,12 @@ router.get('/livro', asyncHandler(getLivro));
 router.get('/artigo', asyncHandler(getArtigo));
 router.get('/capitulos', asyncHandler(getCapitulos));
 router.get('/teses', asyncHandler(getTeses));
+router.get('/extensao-ensino', asyncHandler(getExtensaoEnsino));
 
+async function getExtensaoEnsino(req, res) {
+    let response = await gepedUserController.getExtensaoEnsino(req);
+    res.json(response);
+}
 
 async function getHome(req, res) {
     let response = await gepedUserController.getHome(req);

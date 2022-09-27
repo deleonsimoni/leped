@@ -37,7 +37,9 @@ export class GepedService {
   public listPesquisa(type, typePesquisa): Observable<any> {
     return this.httpClient.get(`${this.url}/pesquisa?type=${type}&typePesquisa=${typePesquisa}`);
   }
-
+  public listExtensaoEnsino(type): Observable<any> {
+    return this.httpClient.get(`${this.url}/extensao-ensino?type=${type}`);
+  }
 
 
 }

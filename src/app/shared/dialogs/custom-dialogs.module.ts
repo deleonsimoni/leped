@@ -16,6 +16,7 @@ import { DialogNewsComponent } from "./dialog-news/dialog-news.component";
 import { DialogRegisterCoordinatorComponent } from "./dialog-register-coordinator/dialog-register-coordinator.component";
 import { DialogResearchGroupComponent } from "./dialog-research-group/dialog-research-group.component";
 import { DialogGroupParceirosComponent } from './dialog-group-parceiros/dialog-group-parceiros.component';
+import { DialogExtensaoEnsinoGroupComponent } from './dialog-extensao-ensino-group/dialog-extensao-ensino-group.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { DialogGroupParceirosComponent } from './dialog-group-parceiros/dialog-g
     DialogGroupLivrosComponent,
     DialogGroupPesquisasComponent,
     DialogGroupTesesComponent,
-    DialogGroupParceirosComponent
+    DialogGroupParceirosComponent,
+    DialogExtensaoEnsinoGroupComponent
   ],
   imports: [
     CommonModule,

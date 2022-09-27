@@ -118,6 +118,10 @@ const GrupoPesquisaSchema = new mongoose.Schema(
       imagePathS3: {
         type: String,
       },
+      createAt: {
+        type: Date,
+        default: Date.now
+      },
 
 
     }],
@@ -136,6 +140,28 @@ const GrupoPesquisaSchema = new mongoose.Schema(
       }
     }],
 
+    extensaoEnsino: [{
+
+      title: {
+        type: String,
+
+      },
+      type: {
+        type: String,
+
+      },
+      link: {
+        type: String,
+      },
+      linkYoutube: {
+        type: String,
+      },
+      createAt: {
+        type: Date,
+        default: Date.now
+      },
+
+    }],
 
     pesquisas: [{
 
@@ -174,7 +200,13 @@ const GrupoPesquisaSchema = new mongoose.Schema(
 
       publications: [{
         type: String,
-      }]
+      }],
+
+      createAt: {
+        type: Date,
+        default: Date.now
+      },
+
     }],
 
     artigos: [{
@@ -192,6 +224,14 @@ const GrupoPesquisaSchema = new mongoose.Schema(
 
       linkArticle: {
         type: String,
+      },
+      ordem: {
+        type: String,
+      },
+
+      createAt: {
+        type: Date,
+        default: Date.now
       }
 
     }],
@@ -213,7 +253,12 @@ const GrupoPesquisaSchema = new mongoose.Schema(
       },
       linkTesis: {
         type: String,
-      }
+      },
+
+      createAt: {
+        type: Date,
+        default: Date.now
+      },
     }],
 
     livros: [{
@@ -233,6 +278,15 @@ const GrupoPesquisaSchema = new mongoose.Schema(
       imagePathS3: {
         type: String,
       },
+      ordem: {
+        type: String,
+      },
+
+      createAt: {
+        type: Date,
+        default: Date.now
+      },
+
     }],
 
     capitulos: [{
@@ -268,12 +322,17 @@ const GrupoPesquisaSchema = new mongoose.Schema(
       },
       year: {
         type: String,
-      }
+      },
+      ordem: {
+        type: String,
+      },
+
+      createAt: {
+        type: Date,
+        default: Date.now
+      },
 
     }],
-
-
-
 
 
   },

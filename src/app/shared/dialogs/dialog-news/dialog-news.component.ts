@@ -30,9 +30,10 @@ export class DialogNewsComponent {
   private createForm(): FormGroup {
     return this.formBuilder.group({
       title: [null, [Validators.required]],
-      ordem: [null, [Validators.required]],
+      ordem: [null, []],
       content: [null, [Validators.required]],
-      externalLink: [null, []]
+      externalLink: [null, []],
+      isCarrossel: []
     });
   }
 
@@ -43,7 +44,8 @@ export class DialogNewsComponent {
       title: data.title,
       content: data.content,
       ordem: data.ordem,
-      externalLink: data.externalLink
+      externalLink: data.externalLink,
+      isCarrossel: data.isCarrossel
     })
   }
 

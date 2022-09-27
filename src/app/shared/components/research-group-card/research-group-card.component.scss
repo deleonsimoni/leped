@@ -8,12 +8,13 @@ $main-class: ".profile-card";
 
 .profile-card {
   padding: 16px;
+  min-height: 528px;
+  max-height: 600px;
   box-shadow: 0px 0px 14px 2px #00000038;
   border-radius: 4px;
   background-color: #fff;
   cursor: pointer;
   position: relative;
-  min-height: 120px;
   display: flex;
 
   &__image {
@@ -69,15 +70,14 @@ $main-class: ".profile-card";
   }
 
   &__title {
-    @include text-properties(14px, 500,  2px);
+    @include text-properties(14px, 500, 2px);
   }
 
   &__name {
-    @include text-properties(12px, 400,  2px);
+    @include text-properties(12px, 400, 2px);
   }
 
   &__email {
     word-break: break-word;
   }
 }
-

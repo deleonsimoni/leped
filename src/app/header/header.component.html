@@ -18,7 +18,7 @@
         <li><a routerLink="/gepemat">GEPEMAT</a></li>
         <li><a routerLink="/geprod">GEPROD</a></li>
         <li><a routerLink="/gedoc">GEDOC</a></li>
-        <li><a routerLink="/gecult">GECULT</a></li>
+        <li><a routerLink="/gecult" (click)="navbar.toggle()">GECULT</a></li>
         <li><a routerLink="/eventos">Eventos</a></li>
         <li><a routerLink="/noticias">Notícias</a></li>
         <li><a *ngIf="!user" routerLink="/auth/login">Login</a></li>

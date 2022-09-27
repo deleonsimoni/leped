@@ -115,6 +115,22 @@ export class GrupoPesquisaService {
     return this.httpClient.put(`/api/grupos-pesquisa/artigos?type=${type}`, form);
   }
 
+  listExtensaoEnsino(type) {
+    return this.httpClient.get(`/api/grupos-pesquisa/extensao-ensino?type=${type}`);
+  }
+
+  cadastrarExtensaoEnsino(form: any, type) {
+    return this.httpClient.post(`/api/grupos-pesquisa/extensao-ensino?type=${type}`, form);
+  }
+
+  deletarExtensaoEnsino(form: any, type) {
+    return this.httpClient.delete(`/api/grupos-pesquisa/extensao-ensino/${form}?type=${type}`);
+  }
+
+  atualizarExtensaoEnsino(form: any, type) {
+    return this.httpClient.put(`/api/grupos-pesquisa/extensao-ensino?type=${type}`, form);
+  }
+
   listCapitulo(type) {
     return this.httpClient.get(`/api/grupos-pesquisa/capitulos?type=${type}`);
   }

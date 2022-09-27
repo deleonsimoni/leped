@@ -120,4 +120,9 @@ export class GruposPesquisaComponent implements OnInit {
 
   }
 
+  public extensaoEnsino(data: any): void {
+    this.router.navigate(['/admin/grupos-pesquisa/extensao-ensino'], { queryParams: { type: data.type } })
+
+  }
+
 }

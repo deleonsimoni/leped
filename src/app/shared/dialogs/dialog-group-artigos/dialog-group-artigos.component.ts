@@ -33,7 +33,8 @@ export class DialogGroupArtigosComponent {
       titleArticle: [null, [Validators.required]],
       authorsArticle: [null, [Validators.required]],
       journalArticle: [null, [Validators.required]],
-      linkArticle: [null, [Validators.required]]
+      linkArticle: [null, [Validators.required]],
+      ordem: []
 
     });
   }
@@ -46,7 +47,9 @@ export class DialogGroupArtigosComponent {
       titleArticle: data.titleArticle,
       authorsArticle: data.authorsArticle,
       journalArticle: data.journalArticle,
-      linkArticle: data.linkArticle
+      linkArticle: data.linkArticle,
+      ordem: data.ordem
+
     })
   }
 

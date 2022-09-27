@@ -34,6 +34,10 @@ const NoticiaSchema = new mongoose.Schema(
       type: String,
     },
 
+    isCarrossel: {
+      type: Boolean
+    }
+
   },
   {
     versionKey: false,

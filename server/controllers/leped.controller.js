@@ -421,10 +421,9 @@ async function getNoticia() {
 }
 
 async function getNoticiaCarrossel() {
-  return await Noticia.find()
+  return await Noticia.find({ isCarrossel: true })
     .sort({
-      ordem: -1,
-      createAt: -1
+      ordem: 1
     });
 }
 

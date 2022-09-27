@@ -19,5 +19,6 @@ export class ResearchGroupCardComponent {
   @Output() livro: EventEmitter<any> = new EventEmitter();
   @Output() capitulo: EventEmitter<any> = new EventEmitter();
   @Output() parceiros: EventEmitter<any> = new EventEmitter();
+  @Output() extensaoEnsino: EventEmitter<any> = new EventEmitter();
 
 }

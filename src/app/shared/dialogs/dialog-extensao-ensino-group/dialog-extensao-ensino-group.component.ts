@@ -1,24 +1,23 @@
 import { Component, Inject } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
-
+import { ImagePathComplement } from "@app/shared/pipes/image-path-complement.pipe";
 
 @Component({
-  selector: "dialog-group-teses-component",
-  templateUrl: "./dialog-group-teses.component.html",
-  styleUrls: ["./dialog-group-teses.component.scss"]
+  selector: 'app-dialog-extensao-ensino-group',
+  templateUrl: './dialog-extensao-ensino-group.component.html',
+  styleUrls: ['./dialog-extensao-ensino-group.component.scss']
 })
-export class DialogGroupTesesComponent {
+export class DialogExtensaoEnsinoGroupComponent {
 
   public grupoForm: FormGroup;
 
 
-
   constructor(
     private formBuilder: FormBuilder,
-    private dialogRef: MatDialogRef<DialogGroupTesesComponent>,
+    private dialogRef: MatDialogRef<DialogExtensaoEnsinoGroupComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { form: any },
-
+    private pipeImage: ImagePathComplement
   ) {
     this.grupoForm = this.createForm();
 
@@ -30,10 +29,10 @@ export class DialogGroupTesesComponent {
 
   private createForm(): FormGroup {
     return this.formBuilder.group({
-      titleTesis: [null, [Validators.required]],
-      authorTesis: [null, [Validators.required]],
-      dateTesis: [null, [Validators.required]],
-      linkTesis: [null, []]
+      title: [null, [Validators.required]],
+      type: [null, [Validators.required]],
+      link: [null, []],
+      linkYoutube: [null, []]
 
     });
   }
@@ -43,18 +42,16 @@ export class DialogGroupTesesComponent {
 
     this.grupoForm.patchValue({
 
-      titleTesis: data.titleTesis,
-      resume: data.resume,
-      authorTesis: data.authorTesis,
-      dateTesis: data.dateTesis,
-      linkTesis: data.linkTesis
-
+      title: data.title,
+      type: data.type,
+      link: data.link,
+      linkYoutube: data.linkYoutube
     })
   }
 
 
 
-  public registerTesis(): void {
+  public registerArticle(): void {
     if (this.grupoForm.valid) {
       const files = [];
       this.dialogRef.close({ save: true, form: this.grupoForm.value, files })

@@ -11,10 +11,10 @@ module.exports = {
   getLivro,
   getArtigos,
   getCapitulos,
-  getTeses
+  getTeses,
+  getExtensaoEnsino
 
 };
-
 
 
 async function getHome(req) {
@@ -28,39 +28,47 @@ async function getHome(req) {
 
 async function getPesquisa(req) {
   let tipo = req.query.typePesquisa == 1 ? 'Realizada' : 'Em Andamento'
-  console.log(tipo)
-  return await GrupoPesquisa.find({ $and: [{ type: req.query.type }, { "pesquisas.icPesquisa": tipo }] })
-    .select('pesquisas')
+  return await GrupoPesquisa.aggregate([
+    { $match: { type: req.query.type } },
+    { $unwind: '$pesquisas' },
+    { $match: { 'pesquisas.icPesquisa': tipo } },
+    { $sort: { 'pesquisas.ordem': -1 } },
+    { $group: { _id: '$_id', pesquisas: { $push: '$pesquisas' } } }]);
+
+}
+
+
+async function getExtensaoEnsino(req) {
+
+  return await GrupoPesquisa.find({ type: req.query.type })
+    .select('extensaoEnsino')
     .sort({
       createAt: -1
     });
 }
 
 async function getLivro(req) {
-
-  return await GrupoPesquisa.find({ type: req.query.type })
-    .select('livros')
-    .sort({
-      createAt: -1
-    });
+  return await GrupoPesquisa.aggregate([
+    { $match: { type: req.query.type } },
+    { $unwind: '$livros' },
+    { $sort: { 'livros.ordem': -1 } },
+    { $group: { _id: '$_id', livros: { $push: '$livros' } } }]);
 }
 
 async function getArtigos(req) {
-
-  return await GrupoPesquisa.find({ type: req.query.type })
-    .select('artigos')
-    .sort({
-      createAt: -1
-    });
+  return await GrupoPesquisa.aggregate([
+    { $match: { type: req.query.type } },
+    { $unwind: '$artigos' },
+    { $sort: { 'artigos.ordem': -1 } },
+    { $group: { _id: '$_id', artigos: { $push: '$artigos' } } }]);
 }
 
 async function getCapitulos(req) {
-
-  return await GrupoPesquisa.find({ type: req.query.type })
-    .select('capitulos')
-    .sort({
-      createAt: -1
-    });
+  return await GrupoPesquisa.aggregate([
+    { $match: { type: req.query.type } },
+    { $unwind: '$capitulos' },
+    { $sort: { 'capitulos.ordem': -1 } },
+    { $group: { _id: '$_id', capitulos: { $push: '$capitulos' } } }]);
 }
 
 async function getTeses(req) {

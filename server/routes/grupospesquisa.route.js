@@ -16,7 +16,19 @@ router.get('/artigos', asyncHandler(getArtigosgp));
 router.get('/livro', asyncHandler(getLivrosgp));
 router.get('/capitulos', asyncHandler(getCapitulosgp));
 router.get('/parceiros', asyncHandler(getParceirosgp));
+router.get('/extensao-ensino', asyncHandler(getExtensaoEnsinogp));
 
+router.post('/extensao-ensino', [passport.authenticate('jwt', {
+    session: false
+}), requireAdmin, fileUpload()], asyncHandler(insertExtensaoEnsinogp));
+
+router.put('/extensao-ensino', [passport.authenticate('jwt', {
+    session: false
+}), requireAdmin, fileUpload()], asyncHandler(updateExtensaoEnsinogp));
+
+router.delete('/extensao-ensino/:id', [passport.authenticate('jwt', {
+    session: false
+}), requireAdmin, fileUpload()], asyncHandler(deletarExtensaoEnsinogp));
 
 router.post('/participantes-grupo', [passport.authenticate('jwt', {
     session: false
@@ -149,6 +161,25 @@ async function deleteParceirosgp(req, res) {
     res.json(response);
 }
 
+async function getExtensaoEnsinogp(req, res) {
+    let response = await grupospesquisaCtrl.getExtensaoEnsinogp(req);
+    res.json(response);
+}
+
+async function updateExtensaoEnsinogp(req, res) {
+    let response = await grupospesquisaCtrl.updateExtensaoEnsinogp(req, req.user._id);
+    res.json(response);
+}
+
+async function insertExtensaoEnsinogp(req, res) {
+    let response = await grupospesquisaCtrl.insertExtensaoEnsinogp(req, req.user._id);
+    res.json(response);
+}
+
+async function deletarExtensaoEnsinogp(req, res) {
+    let response = await grupospesquisaCtrl.deleteExtensaoEnsinogp(req.params.id, req);
+    res.json(response);
+}
 
 async function getArtigogps(req, res) {
     let response = await grupospesquisaCtrl.getArtigosgp(req);

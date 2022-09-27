@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GepedService } from '@app/shared/services/geped.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-geped',
@@ -16,9 +17,11 @@ export class GepedComponent implements OnInit {
   teses;
   artigos;
   capitulos;
+  extensaoEnsino;
 
   constructor(
     private gepedService: GepedService,
+    private _sanitizer: DomSanitizer
 
   ) { }
 
@@ -37,11 +40,30 @@ export class GepedComponent implements OnInit {
 
   }
 
+  sanitizeVideo(link) {
+    if (link.includes('watch')) {
+      link = link.replace('watch?v=', 'embed/');
+    }
+
+    return this._sanitizer.bypassSecurityTrustResourceUrl(link);
+  }
+
   public getPesquisas(type, typePesquisa) {
 
     this.gepedService.listPesquisa(type, typePesquisa)
       .subscribe((res: any) => {
         this.pesquisasServer = res[0];
+      }, err => {
+        console.log(err);
+      });
+
+  }
+
+  public getExtensaoEnsino(type) {
+
+    this.gepedService.listExtensaoEnsino(type)
+      .subscribe((res: any) => {
+        this.extensaoEnsino = res[0];
       }, err => {
         console.log(err);
       });

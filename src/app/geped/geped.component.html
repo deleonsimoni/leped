@@ -76,7 +76,7 @@
                 <label for="tab2">Pesquisas</label>
 
 
-                <input type="radio" name="tabset" id="tab3" aria-controls="ensino">
+                <input type="radio" (click)="getExtensaoEnsino('geped')" name="tabset" id="tab3" aria-controls="ensino">
                 <label for="tab3">Ensino e Extensão</label>
 
                 <!--<input type="radio" name="tabset" id="tab4" aria-controls="extensao">
@@ -85,7 +85,7 @@
                 <input type="radio" name="tabset" id="tab5" aria-controls="pibid">
                 <label for="tab5">PIBID</label>-->
                 <input type="radio" name="tabset" id="tab6" aria-controls="publicacoes">
-                <label for="tab6">Publicações</label>
+                <label for="tab6" (click)="getTeses('geped');publicacao = 'dissertacao'">Publicações</label>
                 <!--<input type="radio" name="tabset" id="tab7" aria-controls="painel">
                 <label for="tab7">Galeria</label>-->
 
@@ -228,9 +228,21 @@
                     </section>
 
                     <section id="ensino" class="tab-panel">
+                        <h4> Ensino e Extensão</h4><br />
+                        <div *ngFor="let extensao of extensaoEnsino?.extensaoEnsino">
+                            Título: {{extensao.title}} <br />
+                            Tipo: {{extensao.type}}<br />
+                            <a style="color:#499acd" target="_blank" href="{{extensao.link}}">
+                                Link de acesso </a>
+                            <br />
+                            <iframe [src]="sanitizeVideo(extensao.linkYoutube)" width="560" height="315"
+                                style="border: none; overflow: hidden;" scrolling="no" frameborder="0"
+                                allowTransparency="true" allowFullScreen="true" allowfullscreen></iframe>
 
-                        <p style="text-align: justify;">
-                        </p>
+                            <br />
+                            <br />
+
+                        </div>
                     </section>
 
                     <section id="publicacoes" class="tab-panel">
@@ -274,8 +286,8 @@
 
                             <div *ngFor="let artigo of artigos?.artigos">
                                 <strong>{{artigo.titleArticle}}.</strong><br />
-                                <strong> Autor(es):</strong> <br />
-                                {{artigo.authorsArticle}}
+                                <strong> Autor(es):</strong><br />
+                                {{artigo.authorsArticle}}<br />
                                 <strong>Periódico:</strong> {{artigo.journalArticle}}<br />
                                 <strong>Disponível em: </strong> <a style="color:#499acd" target="_blank"
                                     href="{{artigo.linkArticle}}">Clique aqui para acessar</a>

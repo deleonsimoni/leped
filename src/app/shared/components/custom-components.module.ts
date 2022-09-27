@@ -12,6 +12,7 @@ import { GruposPesquisaLivrosCardComponent } from './grupos-pesquisa-livros-card
 import { GruposPesquisaCapitulosCardComponent } from './grupos-pesquisa-capitulos-card/grupos-pesquisa-capitulos-card.component';
 import { GruposPesquisaQuemSomosCardComponent } from './grupos-pesquisa-quem-somos-card/grupos-pesquisa-quem-somos-card.component';
 import { GruposPesquisaParceirosCardComponent } from './grupos-pesquisa-parceiros-card/grupos-pesquisa-parceiros-card.component';
+import { GruposExtensaoEnsinoCardComponent } from './grupos-extensao-ensino-card/grupos-extensao-ensino-card.component';
 
 @NgModule({
   imports: [
@@ -30,6 +31,7 @@ import { GruposPesquisaParceirosCardComponent } from './grupos-pesquisa-parceiro
     GruposPesquisaCapitulosCardComponent,
     GruposPesquisaQuemSomosCardComponent,
     GruposPesquisaParceirosCardComponent,
+    GruposExtensaoEnsinoCardComponent,
 
   ],
   exports: [
@@ -43,7 +45,8 @@ import { GruposPesquisaParceirosCardComponent } from './grupos-pesquisa-parceiro
     GruposPesquisaLivrosCardComponent,
     GruposPesquisaCapitulosCardComponent,
     GruposPesquisaQuemSomosCardComponent,
-    GruposPesquisaParceirosCardComponent
+    GruposPesquisaParceirosCardComponent,
+    GruposExtensaoEnsinoCardComponent
 
   ]
 })

@@ -40,8 +40,62 @@ module.exports = {
   insertParceirosgp,
   deleteParceirosgp,
   updateParceirosgp,
+
+  getExtensaoEnsinogp,
+  insertExtensaoEnsinogp,
+  deleteExtensaoEnsinogp,
+  updateExtensaoEnsinogp,
 };
 
+
+async function getExtensaoEnsinogp(req) {
+
+  return await GrupoPesquisa.find({ type: req.query.type })
+    .select('extensaoEnsino')
+    .sort({
+      createAt: -1
+    });
+}
+
+async function insertExtensaoEnsinogp(req, idUser) {
+
+  let form = req.body;
+  form.user = idUser;
+
+  return await GrupoPesquisa.findOneAndUpdate({ type: req.query.type }, {
+    '$push': {
+      'extensaoEnsino': form
+    }
+  })
+
+}
+
+async function deleteExtensaoEnsinogp(id, req) {
+  return await GrupoPesquisa.findOneAndUpdate(
+    { type: req.query.type },
+    { $pull: { extensaoEnsino: { _id: id } } },
+    { new: true },
+  )
+
+}
+
+async function updateExtensaoEnsinogp(req, idUser) {
+
+  let form = req.body;
+  form.user = idUser;
+
+  return await GrupoPesquisa.findOneAndUpdate({
+    type: req.query.type,
+    'extensaoEnsino._id': form._id
+  },
+    {
+      $set: {
+        "extensaoEnsino.$": form
+      }
+    }
+  );
+
+}
 
 
 async function getTesesgp(req) {

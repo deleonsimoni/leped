@@ -16,6 +16,7 @@ import { LivrosComponent } from './grupos-pesquisa/livros/livros.component';
 import { CapitulosComponent } from './grupos-pesquisa/capitulos/capitulos.component';
 import { QuemSomosGrupoComponent } from './grupos-pesquisa/quem-somos-grupo/quem-somos-grupo.component';
 import { ParceirosComponent } from './grupos-pesquisa/parceiros/parceiros.component';
+import { ExtensaoEnsinoComponent } from './grupos-pesquisa/extensao-ensino/extensao-ensino.component';
 
 const routes: Routes = [
   {
@@ -64,6 +65,9 @@ const routes: Routes = [
       },
       {
         path: 'grupos-pesquisa/parceiros', component: ParceirosComponent
+      },
+      {
+        path: 'grupos-pesquisa/extensao-ensino', component: ExtensaoEnsinoComponent
       },
     ],
   },
