@@ -12,7 +12,9 @@ router.get('/quemSomos', asyncHandler(getQuemSomos));
 router.get('/coordenadoras', asyncHandler(getCoordenadoras));
 router.get('/eventos', asyncHandler(getEventos));
 router.get('/galeria', asyncHandler(getGaleria));
-router.get('/grupo-pesquisa', asyncHandler(getGrupoPesquisa));
+router.get('/grupo-pesquisa', [passport.authenticate('jwt', {
+    session: false
+})], asyncHandler(getGrupoPesquisa));
 router.get('/noticia', asyncHandler(getNoticia));
 router.get('/noticiaCarrossel', asyncHandler(getNoticiaCarrossel));
 
@@ -175,7 +177,7 @@ async function deleteGaleria(req, res) {
 
 
 async function getGrupoPesquisa(req, res) {
-    let response = await lepedCtrl.getGrupoPesquisa();
+    let response = await lepedCtrl.getGrupoPesquisa(req.user);
     res.json(response);
 }
 

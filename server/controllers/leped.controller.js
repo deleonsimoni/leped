@@ -276,8 +276,9 @@ async function updateGaleria(form, idUser) {
   });
 }
 
-async function getGrupoPesquisa() {
-  return await GrupoPesquisa.find()
+async function getGrupoPesquisa(user) {
+  console.log(user.roles)
+  return await GrupoPesquisa.find({ type: { $in: user.roles } })
     .sort({
       createAt: -1
     });

@@ -46,6 +46,8 @@ export class AuthService {
   setUser(user: User | null): void {
     if (user) {
       user.isAdmin = user.roles.includes('admin');
+      user.isGeped = user.roles.includes('geped');
+      user.isGeprod = user.roles.includes('geprod');
     }
 
     this.user$.next(user);

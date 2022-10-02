@@ -24,9 +24,7 @@ const routes: Routes = [
     canActivate: [OnlyAdminUsersGuard],
     component: AdminComponent,
     children: [
-      {
-        path: "", pathMatch: "full", redirectTo: "coordenadoras"
-      },
+
       {
         path: 'quem-somos', component: QuemSomosComponent
       },

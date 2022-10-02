@@ -23,7 +23,7 @@
         <li><a routerLink="/noticias">Notícias</a></li>
         <li><a *ngIf="!user" routerLink="/auth/login">Login</a></li>
 
-        <li><a *ngIf="user?.isAdmin" routerLink="/admin">Administrador</a></li>
+        <li><a *ngIf="user?.isAdmin || user?.isGeped || user?.isGeprod" routerLink="/admin">Administrador</a></li>
         <li><a *ngIf="user" (click)="logout()">Sair</a></li>
 
         <!--<li class="dropdown"><a href="#"><span>Drop Down</span> <i
