@@ -41,7 +41,7 @@ export class GepedComponent implements OnInit {
   }
 
   sanitizeVideo(link) {
-    if (link.includes('watch')) {
+    if (link && link.includes('watch')) {
       link = link.replace('watch?v=', 'embed/');
     }
 

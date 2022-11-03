@@ -235,8 +235,8 @@
                             <a style="color:#499acd" target="_blank" href="{{extensao.link}}">
                                 Link de acesso </a>
                             <br />
-                            <iframe [src]="sanitizeVideo(extensao.linkYoutube)" width="560" height="315"
-                                style="border: none; overflow: hidden;" scrolling="no" frameborder="0"
+                            <iframe *ngIf="extensao.linkYoutube" [src]="sanitizeVideo(extensao.linkYoutube)" width="560"
+                                height="315" style="border: none; overflow: hidden;" scrolling="no" frameborder="0"
                                 allowTransparency="true" allowFullScreen="true" allowfullscreen></iframe>
 
                             <br />

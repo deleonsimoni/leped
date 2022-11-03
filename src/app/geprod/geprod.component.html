@@ -72,11 +72,13 @@
                 <input type="radio" name="tabset" id="tab1" aria-controls="quemSomos" checked>
                 <label for="tab1">Quem Somos</label>
 
-                <input (click)="getPesquisas('geped', 1)" type="radio" name="tabset" id="tab2" aria-controls="projetos">
+                <input (click)="getPesquisas('geprod', 1)" type="radio" name="tabset" id="tab2"
+                    aria-controls="projetos">
                 <label for="tab2">Pesquisas</label>
 
 
-                <input type="radio" (click)="getExtensaoEnsino('geped')" name="tabset" id="tab3" aria-controls="ensino">
+                <input type="radio" (click)="getExtensaoEnsino('geprod')" name="tabset" id="tab3"
+                    aria-controls="ensino">
                 <label for="tab3">Ensino e Extensão</label>
 
                 <!--<input type="radio" name="tabset" id="tab4" aria-controls="extensao">
@@ -85,7 +87,7 @@
                 <input type="radio" name="tabset" id="tab5" aria-controls="pibid">
                 <label for="tab5">PIBID</label>-->
                 <input type="radio" name="tabset" id="tab6" aria-controls="publicacoes">
-                <label for="tab6" (click)="getTeses('geped');publicacao = 'dissertacao'">Publicações</label>
+                <label for="tab6" (click)="getTeses('geprod');publicacao = 'dissertacao'">Publicações</label>
                 <!--<input type="radio" name="tabset" id="tab7" aria-controls="painel">
                 <label for="tab7">Galeria</label>-->
 
@@ -187,11 +189,11 @@
                     <section id="projetos" class="tab-panel">
                         <div class="tabset2">
 
-                            <button type="button" (click)="getPesquisas('geped', 1);pesquisas = 'Pesquisas Realizadas'"
+                            <button type="button" (click)="getPesquisas('geprod', 1);pesquisas = 'Pesquisas Realizadas'"
                                 class="btn btn-primary m-3">Pesquisas realizadas</button>
 
 
-                            <button type="button" (click)="getPesquisas('geped', 2);pesquisas = 'Em Andamento'"
+                            <button type="button" (click)="getPesquisas('geprod', 2);pesquisas = 'Em Andamento'"
                                 class="btn btn-primary m-3">Pesquisas em andamento</button>
 
 
@@ -249,17 +251,17 @@
 
                         <div class="tabset3">
 
-                            <button type="button" (click)="getTeses('geped');publicacao = 'dissertacao'"
+                            <button type="button" (click)="getTeses('geprod');publicacao = 'dissertacao'"
                                 class="btn btn-primary m-4">Dissertações e Teses</button>
 
-                            <button type="button" (click)="getArtigos('geped');publicacao = 'artigos'"
+                            <button type="button" (click)="getArtigos('geprod');publicacao = 'artigos'"
                                 class="btn btn-primary m-4">Artigos
                                 Científicos</button>
 
-                            <button type="button" (click)="getLivros('geped');publicacao = 'livros'"
+                            <button type="button" (click)="getLivros('geprod');publicacao = 'livros'"
                                 class="btn btn-primary m-4">Livros</button>
 
-                            <button type="button" (click)="getCapitulos('geped');publicacao = 'caplivros'"
+                            <button type="button" (click)="getCapitulos('geprod');publicacao = 'caplivros'"
                                 class="btn btn-primary m-4">Capítulo de
                                 Livros</button>
 
@@ -391,7 +393,7 @@
                                             <i class="icon bi bi-envelope flex-shrink-0"></i>
                                             <div>
                                                 <h3>Email</h3>
-                                                <p>geped.feufrj@gmail.com</p>
+                                                <p>geprod.feufrj@gmail.com</p>
                                             </div>
                                         </div>
                                     </div><!-- End Info Item -->
