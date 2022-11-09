@@ -5,5 +5,6 @@ export interface User {
   roles: string[];
   isAdmin: boolean;
   isGeped: boolean;
-  isGeprod: boolean
+  isGeprod: boolean;
+  isGedoc: boolean
 }

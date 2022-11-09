@@ -48,6 +48,7 @@ export class AuthService {
       user.isAdmin = user.roles.includes('admin');
       user.isGeped = user.roles.includes('geped');
       user.isGeprod = user.roles.includes('geprod');
+      user.isGedoc = user.roles.includes('gedoc');
     }
 
     this.user$.next(user);

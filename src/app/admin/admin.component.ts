@@ -22,7 +22,10 @@ export class AdminComponent implements OnInit {
         { name: 'EVENTOS', path: '/admin/eventos', show: this.user?.isAdmin },
         { name: 'GALERIA', path: '/admin/galeria', show: this.user?.isAdmin },
         { name: 'NOTÍCIAS', path: '/admin/noticias', show: this.user?.isAdmin },
-        { name: 'GRUPOS DE PESQUISA', path: '/admin/grupos-pesquisa', show: this.user?.isGeped || this.user?.isGeprod },
+        {
+          name: 'GRUPOS DE PESQUISA', path: '/admin/grupos-pesquisa', show: this.user?.isGeped || this.user?.isGeprod
+            || this.user?.isGedoc
+        },
       ];
     });
 

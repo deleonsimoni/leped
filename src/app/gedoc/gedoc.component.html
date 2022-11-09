@@ -3,192 +3,475 @@
         <div class="container">
             <div class="row justify-content-between gy-5">
                 <div
-                    class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start">
-                    <h2 data-aos="fade-up">Grupo de Extensão e Pesquisa em Docência e Formação de Professores</h2>
+                    class="col-lg-7 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start">
+                    <h2 data-aos="fade-up"> {{home?.title}}
+                    </h2>
+                    <p data-aos="fade-up" data-aos-delay="100">
+                        {{home?.subTitle}}
+                        <br>
+                    </p>
+
+                    <!-- <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+                        <div class="chef-member">
+                            <div class="member-img">
+                                <img src="../assets/img/grupos pesquisa/g2.jpg" class="img-fluid" alt="">
+
+                            </div>
+                            <div class="member-info">
+                                <p><strong>Coordenadora:</strong> <br />
+                                    Profª Drª Giseli Barreto da Cruz
+                                    <a style="color:#499acd" href=" mailto:giselicruz@ufrj.br">giselicruz@ufrj.br</a>
+                                    <br />
+
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>End Chefs Member -->
+
+
 
                     <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
                         <div class="social-icons">
-                            <a class="social-icon social-icon--facebook">
+                            <a href="{{home?.facebook}}" target="_blank" class="social-icon social-icon--facebook">
                                 <i class="fa-brands fa-facebook"></i>
                                 <div class="tooltip">Facebook</div>
                             </a>
-                            <a class="social-icon social-icon--youtube">
+                            <!--<a class="social-icon social-icon--youtube">
                                 <i class="fa-brands fa-youtube"></i>
                                 <div class="tooltip">Youtube</div>
-                            </a>
-                            <a href="https://www.instagram.com/geped.ufrj/?hl=pt" target="_blank"
-                                class="social-icon social-icon--instagram">
+                            </a>-->
+                            <a href="{{home?.instagram}}" target="_blank" class="social-icon social-icon--instagram">
                                 <i class="fa-brands fa-instagram"></i>
                                 <div class="tooltip">Instagram</div>
                             </a>
-                            <a class="social-icon social-icon--twitter">
+                            <!-- <a class="social-icon social-icon--twitter">
                                 <i class="fa-brands fa-twitter"></i>
                                 <div class="tooltip">Twitter</div>
-                            </a>
+                            </a>-->
                         </div>
                     </div>
                 </div>
+
                 <div class="col-lg-5 order-1 order-lg-2 text-center text-lg-start">
-                    <img src="../assets/img/grupos pesquisa/d1.jpg" class="img-fluid" alt="" data-aos="zoom-out"
+                    <br />
+                    <br />
+                    <img src="{{home?.imagePathS3 | imagePathComplement}}" class="img-fluid" alt="" data-aos="zoom-out"
                         data-aos-delay="300">
                 </div>
             </div>
-        </div>
-    </section>
-    <section id="chefs" class="chefs section-bg">
-        <div class="container" data-aos="fade-up">
-
-            <div class="section-header">
-                <h2>COORDENAÇÃO</h2>
-                <p>GEDOC</p>
-            </div>
-
-            <div class="row gy-4">
-
-
-
-                <div class="col-lg-12 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
-                    <div class="justify-content-between">
-
-                        <h3 data-aos="fade-up"><b>Grupo de Extensão e Pesquisa em Docência e Formação de Professores</b>
-                        </h3>
-
-
-
-                    </div>
-                </div><!-- End Chefs Member -->
-
-
-
-            </div>
 
         </div>
     </section>
 
-    <section id="gallery" class="gallery section-bg">
-        <div class="container" data-aos="fade-up">
 
-            <div class="section-header">
-                <h2>Imagens</h2>
-                <p><span>nossa galeria</span></p>
-            </div>
+    <section id="chefs" style="padding: 0px;" class="">
+        <div class="container">
+            <div class="tabset">
 
-            <div class="gallery-slider swiper">
-                <div class="swiper-wrapper align-items-center">
+                <input type="radio" name="tabset" id="tab1" aria-controls="quemSomos" checked>
+                <label for="tab1">Quem Somos</label>
 
-                    <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
-                            href="../assets/img/gallery/gallery-2.jpg"><img src="../assets/img/gallery/gallery-2.jpg"
-                                class="img-fluid" alt=""></a></div>
-                    <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
-                            href="../assets/img/gallery/gallery-3.jpg"><img src="../assets/img/gallery/gallery-3.jpg"
-                                class="img-fluid" alt=""></a></div>
-                    <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
-                            href="../assets/img/gallery/gallery-4.jpg"><img src="../assets/img/gallery/gallery-4.jpg"
-                                class="img-fluid" alt=""></a></div>
-                    <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
-                            href="../assets/img/gallery/gallery-5.jpg"><img src="../assets/img/gallery/gallery-5.jpg"
-                                class="img-fluid" alt=""></a></div>
-                    <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
-                            href="../assets/img/gallery/gallery-6.jpg"><img src="../assets/img/gallery/gallery-6.jpg"
-                                class="img-fluid" alt=""></a></div>
-                    <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
-                            href="../assets/img/gallery/gallery-7.jpg"><img src="../assets/img/gallery/gallery-7.jpg"
-                                class="img-fluid" alt=""></a></div>
-                    <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
-                            href="../assets/img/gallery/gallery-8.jpg"><img src="../assets/img/gallery/gallery-8.jpg"
-                                class="img-fluid" alt=""></a></div>
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>
+                <input (click)="getPesquisas('gedoc', 1)" type="radio" name="tabset" id="tab2" aria-controls="projetos">
+                <label for="tab2">Pesquisas</label>
 
-        </div>
-    </section>
 
-    <section id="contact" class="contact">
-        <div class="container" data-aos="fade-up">
+                <input type="radio" (click)="getExtensaoEnsino('gedoc')" name="tabset" id="tab3" aria-controls="ensino">
+                <label for="tab3">Ensino e Extensão</label>
 
-            <div class="section-header">
-                <h1>Contato</h1>
+                <!--<input type="radio" name="tabset" id="tab4" aria-controls="extensao">
+                <label for="tab4">Extensão</label>
 
-            </div>
+                <input type="radio" name="tabset" id="tab5" aria-controls="pibid">
+                <label for="tab5">PIBID</label>-->
+                <input type="radio" name="tabset" id="tab6" aria-controls="publicacoes">
+                <label for="tab6" (click)="getTeses('gedoc');publicacao = 'dissertacao'">Publicações</label>
+                <!--<input type="radio" name="tabset" id="tab7" aria-controls="painel">
+                <label for="tab7">Galeria</label>-->
 
-            <div class="mb-3">
-                <iframe style="border:0; width: 100%; height: 350px;"
-                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14695.770657127821!2d-43.1744735!3d-22.9523386!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x6817eb587a3627a9!2sUFRJ%20-%20Campus%20Praia%20Vermelha!5e0!3m2!1spt-BR!2sbr!4v1656298509370!5m2!1spt-BR!2sbr"
-                    frameborder="0" allowfullscreen></iframe>
-            </div><!-- End Google Maps -->
+                <input type="radio" name="tabset" id="tab8" aria-controls="contato">
+                <label for="tab8">Contato</label>
 
-            <div class="row gy-4">
+                <div class="tab-panels">
 
-                <div class="col-md-6">
-                    <div class="info-item  d-flex align-items-center">
-                        <i class="icon bi bi-map flex-shrink-0"></i>
-                        <div>
-                            <h3>Endereço</h3>
-                            <p>UFRJ Praia vermelha</p>
+                    <section id="quemSomos" class="tab-panel">
+
+                        <p [innerHTML]="home?.content" style="text-align: justify;">
+
+                        </p>
+
+
+                        <div class="container" data-aos="fade-up">
+
+                            <div class="section-header">
+                                <p>Participantes atuais</p>
+
+                            </div>
+                            <section id="chefs" class="chefs">
+
+                                <div class="row gy-4 mb-4 align-items-center justify-content-center">
+
+                                    <div class=" col-lg-4 col-md-6 d-flex align-items-stretch"
+                                        *ngFor="let participante of home?.participantes" data-aos="fade-up"
+                                        data-aos-delay="100">
+                                        <div class="chef-member">
+                                            <div class="member-img">
+                                                <img src="{{participante.imagePathS3 | imagePathComplement}}"
+                                                    class="img-fluid img-participantes" alt="">
+                                                <div class="social">
+                                                    <a target="_blank" href="{{participante.twitter}}"><i
+                                                            class="bi bi-twitter"></i></a>
+                                                    <a target="_blank" href="{{participante.facebook}}"><i
+                                                            class="bi bi-facebook"></i></a>
+                                                    <a target="_blank" href="{{participante.instagram}}"><i
+                                                            class="bi bi-instagram"></i></a>
+                                                    <a target="_blank" href="{{participante.email}}"><i
+                                                            class="bi bi-globe"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="member-info">
+                                                <p>{{participante.name}}<br />
+
+
+                                                    <a target="_blank" href="{{participante.lattes}}">Lattes</a><br />
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div><!-- End Chefs Member -->
+
+
+                                </div>
+                            </section>
+
+
                         </div>
-                    </div>
-                </div><!-- End Info Item -->
 
-                <div class="col-md-6">
-                    <div class="info-item d-flex align-items-center">
-                        <i class="icon bi bi-envelope flex-shrink-0"></i>
-                        <div>
-                            <h3>Email</h3>
-                            <p>gedoc.ufrj@gmail.com</p>
-                        </div>
-                    </div>
-                </div><!-- End Info Item -->
 
-                <!--<div class="col-md-6">
-                    <div class="info-item  d-flex align-items-center">
-                        <i class="icon bi bi-telephone flex-shrink-0"></i>
-                        <div>
-                            <h3>Telefone</h3>
-                            <p>21 98562 3265</p>
-                        </div>
-                    </div>
-                </div>End Info Item -->
+                        <div class="container" data-aos="fade-up">
 
-                <div class="col-md-6">
-                    <div class="info-item  d-flex align-items-center">
-                        <i class="icon bi bi-share flex-shrink-0"></i>
-                        <div>
-                            <h3>Horários</h3>
-                            <div><strong>Segunda-Sexta:</strong> 9AM - 20PM;
-                                <strong>Domingo:</strong> Fechado
+                            <div class="section-header">
+                                <p>Parcerias Institucionais</p>
+
+                            </div>
+
+                            <div class="row gy-4 mb-4">
+
+                                <div class="col-lg-4 col-md-6 d-flex align-items-stretch"
+                                    *ngFor="let parceria of home?.parceiros" data-aos="fade-up" data-aos-delay="100">
+                                    <div class="chef-member">
+                                        <div class="member-img">
+                                            <img src="{{parceria.imagePathS3 | imagePathComplement}}" class="img-fluid"
+                                                alt="">
+
+                                        </div>
+                                        <div class="member-info">
+                                            <p><strong>{{parceria.parceriaName}}</strong></p>
+
+                                            <p>
+                                                {{parceria.parceriaDesc}}
+
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div><!-- End Chefs Member -->
+
+
+
+
                             </div>
                         </div>
-                    </div>
-                </div><!-- End Info Item -->
+                    </section>
+
+
+
+                    <section id="projetos" class="tab-panel">
+                        <div class="tabset2">
+
+                            <button type="button" (click)="getPesquisas('gedoc', 1);pesquisas = 'Pesquisas Realizadas'"
+                                class="btn btn-primary m-3">Pesquisas realizadas</button>
+
+
+                            <button type="button" (click)="getPesquisas('gedoc', 2);pesquisas = 'Em Andamento'"
+                                class="btn btn-primary m-3">Pesquisas em andamento</button>
+
+
+                        </div>
+                        <div id="realizada" class="tabset2" *ngIf="pesquisasServer">
+                            <br />
+                            <br />
+                            <h4> {{pesquisas}}</h4>
+                            <p *ngFor="let pesquisa of pesquisasServer.pesquisas" style="text-align: justify;">
+                                <strong>{{pesquisa.titleResearch}} </strong>
+                                <br />
+                                <strong>Coordenação:</strong> {{pesquisa.titleResearch}}
+                                <br />
+                                <strong>Período:</strong> {{pesquisa.period}}<br /> <br />
+                                <strong>Resumo:</strong>
+                                <span [innerHTML]="pesquisa.resume"></span>
+                                <br /> <br />
+
+                                <strong>Financiamento:</strong> {{pesquisa.financing}}
+
+                                <br /> <br />
+
+                                <strong>Publicações:</strong> <br /> <br />
+                                <span [innerHTML]="pesquisa.researchLink"></span>
+
+
+                            </p>
+
+
+
+                        </div>
+
+
+                    </section>
+
+                    <section id="ensino" class="tab-panel">
+                        <h4> Ensino e Extensão</h4><br />
+                        <div *ngFor="let extensao of extensaoEnsino?.extensaoEnsino">
+                            Título: {{extensao.title}} <br />
+                            Tipo: {{extensao.type}}<br />
+                            <a style="color:#499acd" target="_blank" href="{{extensao.link}}">
+                                Link de acesso </a>
+                            <br />
+                            <iframe [src]="sanitizeVideo(extensao.linkYoutube)" width="560" height="315"
+                                style="border: none; overflow: hidden;" scrolling="no" frameborder="0"
+                                allowTransparency="true" allowFullScreen="true" allowfullscreen></iframe>
+
+                            <br />
+                            <br />
+
+                        </div>
+                    </section>
+
+                    <section id="publicacoes" class="tab-panel">
+
+                        <div class="tabset3">
+
+                            <button type="button" (click)="getTeses('gedoc');publicacao = 'dissertacao'"
+                                class="btn btn-primary m-4">Dissertações e Teses</button>
+
+                            <button type="button" (click)="getArtigos('gedoc');publicacao = 'artigos'"
+                                class="btn btn-primary m-4">Artigos
+                                Científicos</button>
+
+                            <button type="button" (click)="getLivros('gedoc');publicacao = 'livros'"
+                                class="btn btn-primary m-4">Livros</button>
+
+                            <button type="button" (click)="getCapitulos('gedoc');publicacao = 'caplivros'"
+                                class="btn btn-primary m-4">Capítulo de
+                                Livros</button>
+
+                        </div>
+
+                        <div id="dissertacao" class="tabset3" *ngIf="publicacao == 'dissertacao'">
+                            <h4> Dissertações e Teses</h4>
+
+                            <div *ngFor="let tese of teses?.teses">
+                                Título:
+                                <a style="color:#499acd" target="_blank" href="{{tese.linkTesis}}">
+                                    {{tese.titleTesis}} </a>
+
+                                <br />
+                                Autor: {{tese.authorTesis}} <br />
+                                Data de defesa: {{tese.dateTesis}}<br /><br />
+                            </div>
+
+
+                        </div>
+
+                        <div id="artigos" class="tabset3" *ngIf="publicacao == 'artigos'">
+                            <h4> Artigos</h4>
+
+                            <div *ngFor="let artigo of artigos?.artigos">
+                                <strong>{{artigo.titleArticle}}.</strong><br />
+                                <strong> Autor(es):</strong><br />
+                                {{artigo.authorsArticle}}<br />
+                                <strong>Periódico:</strong> {{artigo.journalArticle}}<br />
+                                <strong>Disponível em: </strong> <a style="color:#499acd" target="_blank"
+                                    href="{{artigo.linkArticle}}">Clique aqui para acessar</a>
+                                <br /><br />
+                            </div>
+
+
+                        </div>
+
+                        <div id="livros" class="tabset3" *ngIf="publicacao == 'livros'">
+                            <h4>Livros</h4>
+
+
+
+
+                            <div class="row gy-4 mb-4">
+
+                                <div *ngFor="let livro of livros?.livros"
+                                    class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up"
+                                    data-aos-delay="100">
+                                    <div class="chef-member">
+                                        <div class="member-img">
+                                            <img width="304" height="236"
+                                                src="{{livro.imagePathS3 | imagePathComplement}}" class="img-fluid"
+                                                alt="">
+
+                                        </div>
+
+                                        <div class="col-8">
+
+                                            <p><b>{{livro.titleBook}}</b></p>
+                                            <div style="text-align: justify; text-justify: inter-word;" class="mb-4">
+                                                <p>{{livro.authorsBook}}</p>
+                                                <p><a href="{{livro.linkBook}}" target="_blank">+ Saiba mais</a></p>
+
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <div id="caplivros" class="tabset3" *ngIf="publicacao == 'caplivros'">
+                            <h4> Capítulos de livros</h4>
+
+                            <p *ngFor="let capitulo of capitulos?.capitulos" style="text-align: justify;"> <br />
+
+                                <strong>{{capitulo.titleChapter}}</strong> <br />
+                                <strong> Autor(es): </strong><br />
+                                {{capitulo.authorsChapter}}<br />
+                                <strong>Livro: </strong>{{capitulo.titleBook}}<br />
+                                <strong>Organizador(es): </strong><br />
+                                {{capitulo.eds}}<br />
+                                <strong>Editora: </strong>{{capitulo.publisher}}<br />
+                                <strong>Edição: </strong>{{capitulo.edition}}<br />
+                                <strong>Local: </strong>{{capitulo.location}}<br />
+                                <strong>Volume: </strong>{{capitulo.vol}}<br />
+                                <strong>Páginas: </strong>{{capitulo.pages}}<br />
+                                <strong>Ano: </strong>{{capitulo.year}}<br /><br />
+                            </p>
+
+
+
+                        </div>
+                    </section>
+
+
+                    <section id="contato" class="tab-panel">
+                        <section id="contact" class="contact">
+                            <div class="container" data-aos="fade-up">
+
+                                <div class="section-header">
+                                    <h1>Contato</h1>
+
+                                </div>
+
+                                <div class="mb-3">
+                                    <iframe style="border:0; width: 100%; height: 350px;"
+                                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14695.770657127821!2d-43.1744735!3d-22.9523386!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x6817eb587a3627a9!2sUFRJ%20-%20Campus%20Praia%20Vermelha!5e0!3m2!1spt-BR!2sbr!4v1656298509370!5m2!1spt-BR!2sbr"
+                                        frameborder="0" allowfullscreen></iframe>
+                                </div><!-- End Google Maps -->
+
+                                <div class="row gy-4">
+
+                                    <div class="col-md-6">
+                                        <div class="info-item  d-flex align-items-center">
+                                            <i class="icon bi bi-map flex-shrink-0"></i>
+                                            <div>
+                                                <h3>Endereço</h3>
+                                                <p>UFRJ Praia vermelha</p>
+                                            </div>
+                                        </div>
+                                    </div><!-- End Info Item -->
+
+                                    <div class="col-md-6">
+                                        <div class="info-item d-flex align-items-center">
+                                            <i class="icon bi bi-envelope flex-shrink-0"></i>
+                                            <div>
+                                                <h3>Email</h3>
+                                                <p>gedoc.feufrj@gmail.com</p>
+                                            </div>
+                                        </div>
+                                    </div><!-- End Info Item -->
+
+
+                                    <div class="col-md-6">
+                                        <div class="info-item  d-flex align-items-center">
+                                            <i class="icon bi bi-share flex-shrink-0"></i>
+                                            <div>
+                                                <h3>Horários</h3>
+                                                <div><strong>Segunda-Sexta:</strong> 9AM - 20PM;
+                                                    <strong>Domingo:</strong> Fechado
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!-- End Info Item -->
+
+                                </div>
+
+                                <form action="forms/contact.php" method="post" role="form"
+                                    class="php-email-form p-3 p-md-4">
+                                    <div class="row">
+                                        <div class="col-xl-6 form-group">
+                                            <input type="text" name="name" class="form-control" id="name"
+                                                placeholder="Seu Nome" required>
+                                        </div>
+                                        <div class="col-xl-6 form-group">
+                                            <input type="email" class="form-control" name="email" id="email"
+                                                placeholder="Seu Email" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="subject" id="subject"
+                                            placeholder="Assunto" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea class="form-control" name="message" rows="5" placeholder="Mensagem"
+                                            required></textarea>
+                                    </div>
+                                    <div class="my-3">
+                                        <div class="loading">Loading</div>
+                                        <div class="error-message"></div>
+                                        <div class="sent-message">Mensagem enviada. Obrigado!</div>
+                                    </div>
+                                    <div class="text-center"><button type="submit">Enviar mensagem</button></div>
+                                </form>
+                                <!--End Contact Form -->
+
+                            </div>
+                        </section>
+                    </section>
+
+                </div>
 
             </div>
-
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form p-3 p-md-4">
-                <div class="row">
-                    <div class="col-xl-6 form-group">
-                        <input type="text" name="name" class="form-control" id="name" placeholder="Seu Nome" required>
-                    </div>
-                    <div class="col-xl-6 form-group">
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Seu Email"
-                            required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Assunto" required>
-                </div>
-                <div class="form-group">
-                    <textarea class="form-control" name="message" rows="5" placeholder="Mensagem" required></textarea>
-                </div>
-                <div class="my-3">
-                    <div class="loading">Loading</div>
-                    <div class="error-message"></div>
-                    <div class="sent-message">Mensagem enviada. Obrigado!</div>
-                </div>
-                <div class="text-center"><button type="submit">Enviar mensagem</button></div>
-            </form>
-            <!--End Contact Form -->
-
         </div>
     </section>
+
 </div>
+
+<section id="galeria" class="gallery section-bg">
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+
+            <p><span>nossa galeria</span></p>
+        </div>
+
+        <div class="gallery-slider swiper">
+            <div class="swiper-wrapper align-items-center img-coordenadores">
+
+                <div *ngFor="let galeria of home?.galeria" class="swiper-slide"><a class="glightbox"
+                        data-gallery="images-gallery" href="{{galeria | imagePathComplement}}"><img
+                            src="{{galeria | imagePathComplement}}" class="img-fluid" alt=""></a></div>
+
+
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+
+
+    </div>
+</section>
