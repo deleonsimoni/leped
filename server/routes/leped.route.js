@@ -165,7 +165,7 @@ async function updateGaleria(req, res) {
 }
 
 async function insertGaleria(req, res) {
-    let response = await lepedCtrl.insertGaleria(req.body, req.user._id);
+    let response = await lepedCtrl.insertGaleria(req, req.user._id);
     res.json(response);
 }
 

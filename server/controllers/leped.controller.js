@@ -255,9 +255,46 @@ async function getGaleria() {
     });
 }
 
-async function insertGaleria(form, idUser) {
-  form.user = idUser;
-  return await new Galeria(form).save();
+async function insertGaleria(req, idUser) {
+  let retorno = { temErro: true };
+  let form = {
+    user: idUser
+  }
+  let fileName = [];
+
+  if (req.files?.galeria1) {
+    let promises = [];
+
+    Object.keys(req.files).forEach(el => {
+      if (el.includes("galeria")) {
+        fileName.push('images/' + req.files[el].name);
+        promises.push(S3Uploader.uploadBase64('images/' + req.files[el].name, req.files[el].data));
+      }
+    });
+
+    try {
+      await Promise.all(promises);
+      retorno.temErro = false;
+    } catch (error) {
+      fileName.forEach(name => {
+        console.log('Erro ao enviar imagens para AWS: ' + name);
+      });
+
+      retorno.temErro = true;
+      retorno.mensagem = 'Servidor momentaneamente inoperante. Tente novamente mais tarde.';
+    }
+  }
+
+  if (!retorno.temErro) {
+    const promises = [];
+
+    fileName.forEach(name => {
+      form["imagePathS3"] = name;
+      promises.push(new Galeria(form).save());
+    });
+
+    return await Promise.all(promises)
+  }
 }
 
 async function deleteGaleria(id) {

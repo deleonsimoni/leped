@@ -1,59 +1,56 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component } from '@angular/core';
 import { ImagePathComplement } from '@app/shared/pipes/image-path-complement.pipe';
+import { GaleriaService } from '@app/shared/services/galeria/galeria.service';
+
+import { mergeMap, map, switchMap } from "rxjs/operators";
 
 @Component({
   selector: 'app-galeria',
   templateUrl: './galeria.component.html',
   styleUrls: ['./galeria.component.scss']
 })
-export class GaleriaComponent implements OnInit {
+export class GaleriaComponent {
 
-  public grupoForm: FormGroup;
-  public gallery: any[] = [
-    { base64: null }
-  ];
+  public gallery: any[] = [];
   private galleryToSend: any = [];
-
+  public theresNewPhoto = false;
 
   constructor(
-    private formBuilder: FormBuilder,
+    public galeriaService: GaleriaService,
     private pipeImage: ImagePathComplement
-  ) {
-    this.grupoForm = this.createForm();
+  ) {}
+
+  ngOnInit() {
+    this.listAllImages()
+      .subscribe();
   }
 
-  ngOnInit(): void {
+  private listAllImages() {
+    this.gallery = [
+      { base64: null }
+    ];
+    this.theresNewPhoto = false;
+
+    return this.galeriaService.retrieveImages()
+      .pipe(
+        mergeMap(gallery => gallery),
+        map((gallery: any) => {
+          this.gallery.push({
+            id: gallery._id,
+            base64: this.pipeImage.transform(gallery.imagePathS3)
+          });
+        })
+      );
   }
 
-
-  private createForm(): FormGroup {
-    return this.formBuilder.group({
-      galeria: [null]
-    });
-  }
-
-  private fillForm(data: any): void {
-    data.galeria.forEach((el: any) => {
-      this.gallery.push({ base64: this.pipeImage.transform(el) })
-    });
-
-    this.grupoForm.patchValue({
-
-      galeria: data.galeria
-    })
-  }
-
-  closeDialog() {
-
-  }
-
-  setGalleryImage(event: any, index: number) {
+  public setGalleryImage(event: any, index: number) {
     const that = this;
     const FR = new FileReader();
     const files = event.target.files;
 
     FR.addEventListener("load", function (e) {
+      that.theresNewPhoto = true;
+
       if (index == 0) {
         that.gallery.push({ base64: e.target.result });
         that.galleryToSend.push(files[0]);
@@ -68,12 +65,30 @@ export class GaleriaComponent implements OnInit {
     }
   }
 
-  public deleteImage(index: number) {
-    this.gallery.splice(index, 1);
-
-    if (this.galleryToSend && this.galleryToSend.length > 0) {
-      this.galleryToSend.splice(index, 1);
-    }
+  public deleteImage(image: any) {
+    this.galeriaService.deleteImage(image.id)
+      .pipe(
+        switchMap(_ => this.listAllImages()),
+        map(_ => this.galleryToSend = [])
+      )
+      .subscribe();
   }
 
+  public saveImages() {
+    this.theresNewPhoto = false;
+    this.galeriaService.registerImages(this.galleryToSend)
+      .subscribe();
+  }
+
+  public unselectedImage() {
+    this.gallery.splice(this.gallery.length - this.galleryToSend.length, this.galleryToSend.length);
+    this.galleryToSend = [];
+    this.theresNewPhoto = false;
+  }
+
+  canSelect(event: any, index: number): void {
+    if (index > 0) {
+      event.preventDefault();
+    }
+  }
 }
