@@ -30,19 +30,17 @@ export class DialogExtensaoEnsinoGroupComponent {
   private createForm(): FormGroup {
     return this.formBuilder.group({
       title: [null, [Validators.required]],
+      date: [null, [Validators.required]],
       type: [null, [Validators.required]],
       link: [null, []],
       linkYoutube: [null, []]
-
     });
   }
 
   private fillForm(data: any): void {
-
-
     this.grupoForm.patchValue({
-
       title: data.title,
+      date: data.date,
       type: data.type,
       link: data.link,
       linkYoutube: data.linkYoutube
