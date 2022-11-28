@@ -14,6 +14,8 @@ import { GepematComponent } from './gepemat/gepemat.component';
 import { GepedComponent } from './geped/geped.component';
 import { NoticiasComponent } from './noticias/noticias.component';
 import { VisualizadorComponent } from './visualizador/visualizador.component';
+import { HomeCominduComponent } from './comindu/home-comindu/home-comindu.component';
+import { ComunidadeCominduComponent } from './comindu/comunidade-comindu/comunidade-comindu.component';
 
 const routes: Routes = [
   {
@@ -80,6 +82,16 @@ const routes: Routes = [
   {
     path: 'visualizar',
     component: VisualizadorComponent,
+    /*canActivate: [AuthGuard],*/
+  },
+  {
+    path: 'home-indu',
+    component: HomeCominduComponent,
+    /*canActivate: [AuthGuard],*/
+  },
+  {
+    path: 'comunidade-indu',
+    component: ComunidadeCominduComponent,
     /*canActivate: [AuthGuard],*/
   },
 

@@ -22,6 +22,8 @@
         <li><a routerLink="/eventos">Eventos</a></li>
         <li><a routerLink="/noticias">Notícias</a></li>
         <li><a *ngIf="!user" routerLink="/auth/login">Login</a></li>
+        <li><a *ngIf="!user" routerLink="/auth/register">Cadastre-se</a></li>
+
 
         <li><a *ngIf="user?.isAdmin || user?.isGeped || user?.isGeprod || user?.isGedoc"
             routerLink="/admin">Administrador</a></li>
@@ -52,7 +54,7 @@
       [showFlags]="true" (changedCountryCode)="changeSelectedCountryCode($event)">
     </ngx-flag-picker>
 
-    <a class="btn-book-a-table" routerLink="/auth/register">COM.INDU</a>
+    <a class="btn-book-a-table" routerLink="/home-indu">COM.INDU</a>
     <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
     <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
 

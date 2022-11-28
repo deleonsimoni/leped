@@ -38,7 +38,13 @@ import { ModalTermoComponent } from './dialog/modal-termo/modal-termo.component'
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { CustomPipesModule } from './shared/pipes/custom-pipes.module';
 import { VisualizadorComponent } from './visualizador/visualizador.component';
+import { HomeCominduComponent } from './comindu/home-comindu/home-comindu.component';
 
+import { MatCardModule } from '@angular/material/card';
+import { RegisterCominduComponent } from './comindu/dialog/register-comindu/register-comindu.component';
+import { ComunidadeCominduComponent } from './comindu/comunidade-comindu/comunidade-comindu.component';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatListModule } from '@angular/material/list';
 
 
 export function appInitializerFactory(authService: AuthService) {
@@ -59,7 +65,10 @@ export function appInitializerFactory(authService: AuthService) {
     FontAwesomeModule,
     NgxFlagPickerModule,
     AngularEditorModule,
-    CustomPipesModule
+    CustomPipesModule,
+    MatCardModule,
+    MatChipsModule,
+    MatListModule
   ],
   declarations: [
     AppComponent,
@@ -82,6 +91,9 @@ export function appInitializerFactory(authService: AuthService) {
     DialogDeleteComponent,
     ModalTermoComponent,
     VisualizadorComponent,
+    HomeCominduComponent,
+    RegisterCominduComponent,
+    ComunidadeCominduComponent,
 
   ],
   providers: [
