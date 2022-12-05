@@ -59,9 +59,9 @@ export class GepedComponent implements OnInit {
 
   }
 
-  public getExtensaoEnsino(type) {
+  public getExtensaoEnsino(type, typeExtensao) {
 
-    this.gepedService.listExtensaoEnsino(type)
+    this.gepedService.listExtensaoEnsino(type, typeExtensao)
       .subscribe((res: any) => {
         this.extensaoEnsino = res[0];
       }, err => {

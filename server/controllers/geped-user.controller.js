@@ -38,14 +38,31 @@ async function getPesquisa(req) {
 }
 
 
-async function getExtensaoEnsino(req) {
 
-  return await GrupoPesquisa.find({ type: req.query.type })
-    .select('extensaoEnsino')
-    .sort({
-      createAt: -1
-    });
+async function getExtensaoEnsino(req) {
+  if (req.query.type == 'gedoc') {
+
+    let tipo = req.query.typeExtensao == 1 ? 'Realizados' : 'Em Andamento'
+    return await GrupoPesquisa.aggregate([
+      { $match: { type: req.query.type } },
+      { $unwind: '$extensaoEnsino' },
+      { $match: { 'extensaoEnsino.icEnsino': tipo } },
+      { $sort: { 'extensaoEnsino.ordem': -1 } },
+      { $group: { _id: '$_id', extensaoEnsino: { $push: '$extensaoEnsino' } } }]);
+
+  }
+  else {
+    return await GrupoPesquisa.find({ type: req.query.type })
+      .select('extensaoEnsino')
+      .sort({
+        createAt: -1
+      });
+
+  }
+
+
 }
+
 
 async function getLivro(req) {
   return await GrupoPesquisa.aggregate([

@@ -230,19 +230,20 @@
                     <section id="ensino" class="tab-panel">
                         <div class="tabset2">
 
-                            <button type="button" (click)="getExtensaoEnsino('gedoc', 1);extensoes = 'Realizados'"
-                                class="btn btn-primary m-3">Ensino e Extensão realizadas</button>
+                            <button type="button" (click)="getExtensaoEnsino('gedoc', 1);extensaoEnsino = 'Realizados'"
+                                class="btn btn-primary m-3">Ensino e Extensão realizados</button>
 
 
-                            <button type="button" (click)="getExtensaoEnsino('gedoc', 2);extensoes = 'Em Andamento'"
+                            <button type="button"
+                                (click)="getExtensaoEnsino('gedoc', 2);extensaoEnsino = 'Em Andamento'"
                                 class="btn btn-primary m-3">Ensino e Extensão em andamento</button>
 
 
                         </div>
-                        <div id="realizada" class="tabset2" *ngIf="extensaoEnsinoServer">
+                        <div id="realizado" class="tabset2" *ngIf="extensaoEnsinoServer">
                             <br />
                             <br />
-                            <h4> {{extensoes}}</h4>
+                            <h4> {{extensaoEnsino}}</h4>
                             <p *ngFor="let extensao of extensaoEnsinoServer.extensaoEnsino"
                                 style="text-align: justify;">
 
