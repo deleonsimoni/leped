@@ -32,6 +32,11 @@ export class DialogExtensaoEnsinoGroupComponent {
       title: [null, [Validators.required]],
       date: [null, [Validators.required]],
       type: [null, [Validators.required]],
+      coordination: [null, [Validators.required]],
+      resume: [null, [Validators.required]],
+      financing: [null, []],
+      icEnsino: [null, [Validators.required]],
+      researchLink: [null, []],
       link: [null, []],
       linkYoutube: [null, []]
     });
@@ -42,6 +47,11 @@ export class DialogExtensaoEnsinoGroupComponent {
       title: data.title,
       date: data.date,
       type: data.type,
+      coordination: data.coordination,
+      resume: data.resume,
+      financing: data.financing,
+      icEnsino: data.icPesquisa,
+      researchLink: data.researchLink,
       link: data.link,
       linkYoutube: data.linkYoutube
     })

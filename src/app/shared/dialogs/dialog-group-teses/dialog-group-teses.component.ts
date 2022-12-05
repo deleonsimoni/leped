@@ -9,7 +9,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
   styleUrls: ["./dialog-group-teses.component.scss"]
 })
 export class DialogGroupTesesComponent {
-
+  grupo = '';
   public grupoForm: FormGroup;
 
 
@@ -28,9 +28,11 @@ export class DialogGroupTesesComponent {
 
   }
 
+
   private createForm(): FormGroup {
     return this.formBuilder.group({
       titleTesis: [null, [Validators.required]],
+      categoryId: [null, [Validators.required]],
       authorTesis: [null, [Validators.required]],
       dateTesis: [null, [Validators.required]],
       linkTesis: [null, []]
@@ -44,6 +46,7 @@ export class DialogGroupTesesComponent {
     this.grupoForm.patchValue({
 
       titleTesis: data.titleTesis,
+      category: data.categoryId,
       resume: data.resume,
       authorTesis: data.authorTesis,
       dateTesis: data.dateTesis,

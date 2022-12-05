@@ -141,6 +141,11 @@ const GrupoPesquisaSchema = new mongoose.Schema(
 
     extensaoEnsino: [{
 
+      icEnsino: {
+        type: String,
+        required: true
+      },
+
       title: {
         type: String,
 
@@ -152,6 +157,28 @@ const GrupoPesquisaSchema = new mongoose.Schema(
         type: String,
 
       },
+      resume: {
+        type: String,
+        required: true
+      },
+
+      coordination: {
+        type: String,
+        required: true
+      },
+
+      financing: {
+        type: String,
+      },
+
+      researchLink: {
+        type: String,
+      },
+
+      publications: [{
+        type: String,
+      }],
+
       link: {
         type: String,
       },
@@ -240,6 +267,9 @@ const GrupoPesquisaSchema = new mongoose.Schema(
     teses: [{
 
       icTese: {
+        type: String,
+      },
+      categoryId: {
         type: String,
       },
       titleTesis: {

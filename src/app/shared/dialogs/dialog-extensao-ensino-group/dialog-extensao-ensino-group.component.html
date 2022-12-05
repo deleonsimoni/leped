@@ -15,15 +15,56 @@
                     <div class="validation"></div>
                 </div>
                 <div class="form-group">
-                  <input type="text" name="dataArticle" class="form-control" id="dataArticle" placeholder="Data"
-                      formControlName="date" />
-                  <div class="validation"></div>
-              </div>
+
+                    <label>
+                        <input type="radio" value="Realizada" formControlName="icEnsino">
+                        <span> Realizada</span>
+                    </label>
+
+                </div>
+
+                <div class="form-group">
+
+
+                    <label>
+                        <input type="radio" value="Em Andamento" formControlName="icEnsino">
+                        <span> Em Andamento</span>
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" name="dataArticle" class="form-control" id="dataArticle" placeholder="Data"
+                        formControlName="date" />
+                    <div class="validation"></div>
+                </div>
                 <div class="form-group">
                     <input type="text" name="authorsArticle" class="form-control" id="authorsArticle"
                         placeholder="Tipo de material" formControlName="type" />
                     <div class="validation"></div>
                 </div>
+                <div class="form-group">
+                    <input type="text" name="coordination" class="form-control" id="coordination"
+                        placeholder="Coordenação" formControlName="coordination" />
+                    <div class="validation"></div>
+                </div>
+
+                <div class="form-group">
+                    <angular-editor [placeholder]="'Resumo...'" formControlName="resume"></angular-editor>
+                    <div class="validation"></div>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="financing" class="form-control" id="financing" placeholder="Financiamento"
+                        formControlName="financing" />
+                    <div class="validation"></div>
+                </div>
+
+
+                <div class="form-group">
+                    <angular-editor [placeholder]="'Publicações...'" formControlName="researchLink"></angular-editor>
+                    <div class="validation"></div>
+                </div>
+
+
                 <div class="form-group">
                     <input type="text" name="journalArticle" class="form-control" id="journalArticle"
                         placeholder="Link de acesso" formControlName="link" />

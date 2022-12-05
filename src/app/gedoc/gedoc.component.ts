@@ -11,8 +11,10 @@ export class GedocComponent implements OnInit {
 
   publicacao = 'dissertacao';
   pesquisas = 'Pesquisas Realizadas';
+  extensoes = 'Realizados'
   home;
   pesquisasServer;
+  extensaoEnsinoServer;
   livros;
   teses;
   artigos;
@@ -63,7 +65,7 @@ export class GedocComponent implements OnInit {
 
     this.gepedService.listExtensaoEnsino(type)
       .subscribe((res: any) => {
-        this.extensaoEnsino = res[0];
+        this.extensaoEnsinoServer = res[0];
       }, err => {
         console.log(err);
       });

@@ -4,7 +4,12 @@
 
 
     <div class="section">
-      <h3 class="section__title">Dissertações e Teses</h3>
+      <div *ngIf="grupo=='GEDOC'">
+        <h3 class="section__title">TCC, Dissertações e Teses</h3>
+      </div>
+      <div *ngIf="grupo!='GEDOC'">
+        <h3 class="section__title">Dissertações e Teses</h3>
+      </div>
     </div>
 
     <div class="form-row justify-content-center align-items-center">
@@ -14,6 +19,34 @@
             formControlName="titleTesis" />
           <div class="validation"></div>
         </div>
+
+        <div class="form-group">
+
+          <label>
+            <input type="radio" value="TCC" formControlName="categoryId">
+            <span> TCC</span>
+          </label>
+
+        </div>
+
+        <div class="form-group">
+
+
+          <label>
+            <input type="radio" value="mestrado" formControlName="categoryId">
+            <span> Mestrado</span>
+          </label>
+        </div>
+
+        <div class="form-group">
+
+
+          <label>
+            <input type="radio" value="doutorado" formControlName="categoryId">
+            <span> Doutorado</span>
+          </label>
+        </div>
+
         <div class="form-group">
           <input type="text" name="authorTesis" class="form-control" id="authorTesis" placeholder="Autor(a)"
             formControlName="authorTesis" />

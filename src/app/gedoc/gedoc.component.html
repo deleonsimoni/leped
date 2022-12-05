@@ -203,7 +203,7 @@
                             <p *ngFor="let pesquisa of pesquisasServer.pesquisas" style="text-align: justify;">
                                 <strong>{{pesquisa.titleResearch}} </strong>
                                 <br />
-                                <strong>Coordenação:</strong> {{pesquisa.titleResearch}}
+                                <strong>Coordenação:</strong> {{pesquisa.coordination}}
                                 <br />
                                 <strong>Período:</strong> {{pesquisa.period}}<br /> <br />
                                 <strong>Resumo:</strong>
@@ -228,29 +228,58 @@
                     </section>
 
                     <section id="ensino" class="tab-panel">
-                        <h4> Ensino e Extensão</h4><br />
-                        <div *ngFor="let extensao of extensaoEnsino?.extensaoEnsino">
-                            Título: {{extensao.title}} <br />
-                            Tipo: {{extensao.type}}<br />
-                            <a style="color:#499acd" target="_blank" href="{{extensao.link}}">
-                                Link de acesso </a>
-                            <br />
-                            <iframe [src]="sanitizeVideo(extensao.linkYoutube)" width="560" height="315"
-                                style="border: none; overflow: hidden;" scrolling="no" frameborder="0"
-                                allowTransparency="true" allowFullScreen="true" allowfullscreen></iframe>
+                        <div class="tabset2">
 
+                            <button type="button" (click)="getExtensaoEnsino('gedoc', 1);extensoes = 'Realizados'"
+                                class="btn btn-primary m-3">Ensino e Extensão realizadas</button>
+
+
+                            <button type="button" (click)="getExtensaoEnsino('gedoc', 2);extensoes = 'Em Andamento'"
+                                class="btn btn-primary m-3">Ensino e Extensão em andamento</button>
+
+
+                        </div>
+                        <div id="realizada" class="tabset2" *ngIf="extensaoEnsinoServer">
                             <br />
                             <br />
+                            <h4> {{extensoes}}</h4>
+                            <p *ngFor="let extensao of extensaoEnsinoServer.extensaoEnsino"
+                                style="text-align: justify;">
+
+                                <!--  <div *ngFor="let extensao of extensaoEnsino?.extensaoEnsino">-->
+                                <strong>Título:</strong> {{extensao.title}} <br />
+                                <strong>Tipo:</strong> {{extensao.type}}<br />
+                                <strong>Coordenação:</strong> {{extensao.coordination}}
+                                <br />
+                                <strong>Período: </strong> {{extensao.date}}<br /> <br />
+                                <strong>Resumo: </strong>
+                                <span [innerHTML]="extensao.resume"></span>
+                                <br /> <br />
+
+                                <strong>Financiamento:</strong> {{extensao.financing}}
+
+                                <br /> <br />
+
+                                <strong>Publicações:</strong> <br /> <br />
+                                <span [innerHTML]="extensao.researchLink"></span>
+                                <a style="color:#499acd" target="_blank" href="{{extensao.link}}">
+                                    Link de acesso </a>
+                                <br />
+                                <iframe [src]="sanitizeVideo(extensao.linkYoutube)" width="560" height="315"
+                                    style="border: none; overflow: hidden;" scrolling="no" frameborder="0"
+                                    allowTransparency="true" allowFullScreen="true" allowfullscreen></iframe>
+
+                                <br />
+                                <br />
 
                         </div>
                     </section>
-
                     <section id="publicacoes" class="tab-panel">
 
                         <div class="tabset3">
 
                             <button type="button" (click)="getTeses('gedoc');publicacao = 'dissertacao'"
-                                class="btn btn-primary m-4">Dissertações e Teses</button>
+                                class="btn btn-primary m-4">TCC, Dissertações e Teses</button>
 
                             <button type="button" (click)="getArtigos('gedoc');publicacao = 'artigos'"
                                 class="btn btn-primary m-4">Artigos
@@ -266,9 +295,13 @@
                         </div>
 
                         <div id="dissertacao" class="tabset3" *ngIf="publicacao == 'dissertacao'">
-                            <h4> Dissertações e Teses</h4>
+                            <h4> TCC, Dissertações e Teses</h4>
 
                             <div *ngFor="let tese of teses?.teses">
+
+                                Categoria: {{tese.categoryId}}
+                                <br />
+
                                 Título:
                                 <a style="color:#499acd" target="_blank" href="{{tese.linkTesis}}">
                                     {{tese.titleTesis}} </a>
