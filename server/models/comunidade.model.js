@@ -28,7 +28,8 @@ const ComunidadeSchema = new mongoose.Schema(
 
     owners: [
       {
-        type: mongoose.Schema.Types.ObjectId
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
       }
     ],
 

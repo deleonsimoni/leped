@@ -14,11 +14,12 @@
             <div class="col-2" data-aos="fade-left">
                 <div>
                     <mat-list>
-                        <div mat-subheader>Com.você</div>
+                        <div mat-subheader>com.você</div>
 
                         <mat-list-item *ngFor="let subscriber of comunidade?.subscribers">
                             <div [popper]="popper1Content" [popperShowOnStart]="false" [popperTrigger]="'hover'"
-                                [popperHideOnClickOutside]="true" [popperHideOnScroll]="true" [popperPlacement]="'top'">
+                                [popperHideOnClickOutside]="false" [popperHideOnScroll]="false"
+                                [popperPlacement]="'top'">
                                 <div class="user-avatar">
                                     <div matListItemLine style="cursor: pointer;">
                                         <img *ngIf="user?.image" class="mr-2" src="{{user.image | imagePathComplement}}"
@@ -107,13 +108,27 @@
 
 
 
-            <div class="col-2 chat-container" *ngIf="chats?.length > 0" data-aos="fade-top">
+            <div class="col-2 chat-container" *ngIf="postSelect" data-aos="fade-top">
                 <h3 class="text-center publique">Publique</h3>
                 <div class="chat" *ngFor="let chat of chats;let indexOfelement=index;">
+                    <div [popper]="popper2Content" [popperShowOnStart]="false" [popperTrigger]="'hover'"
+                        [popperHideOnClickOutside]="true" [popperHideOnScroll]="true" [popperPlacement]="'right'">
 
-                    <div [ngClass]="( indexOfelement % 2 === 0 ) ? 'mine messages' : 'yours messages' ">
-                        <div class="message last">
-                            {{chat.message}}
+                        <div [ngClass]="( indexOfelement % 2 === 0 ) ? 'mine messages' : 'yours messages' ">
+                            <div class="message last">
+
+                                <div class="user-avatar">
+                                    <div matListItemLine style="cursor: pointer;">
+                                        {{chat.message}}
+                                    </div>
+
+                                </div>
+                            </div>
+                            <popper-content #popper2Content>
+                                <p>@{{chat.user.socialname}}
+                                    {{chat.createAt | date: 'dd/MM HH:mm'}}</p>
+
+                            </popper-content>
                         </div>
                     </div>
 

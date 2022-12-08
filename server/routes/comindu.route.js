@@ -12,6 +12,9 @@ router.get('/tags', asyncHandler(getTags));
 router.get('/comunidades', asyncHandler(getComunidades));
 router.get('/comunidadesById/:comunidade', asyncHandler(getComunidadesById));
 router.get('/comunidade/:comunidade/chats/:post', asyncHandler(getChats));
+router.get('/listAdmins', [passport.authenticate('jwt', {
+    session: false
+}), requireAdmin,], asyncHandler(listAdmins));
 
 router.get('/user/getInscricoes', passport.authenticate('jwt', {
     session: false
@@ -49,6 +52,12 @@ async function getChats(req, res) {
     let response = await cominduCtrl.getChats(req.params.comunidade, req.params.post);
     res.json(response);
 }
+
+async function listAdmins(req, res) {
+    let response = await cominduCtrl.listAdmins();
+    res.json(response);
+}
+
 
 async function postSend(req, res) {
     let response = await cominduCtrl.postSend(req.params.comunidade, req.user._id, req.body);

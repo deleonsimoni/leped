@@ -13,6 +13,10 @@ export class CominduService {
     return this.http.get(`/api/comindu/comunidades`);
   }
 
+  listAdmins() {
+    return this.http.get(`/api/comindu/listAdmins`);
+  }
+
   listComunidadeById(id) {
     return this.http.get(`/api/comindu/comunidadesById/${id}`);
   }

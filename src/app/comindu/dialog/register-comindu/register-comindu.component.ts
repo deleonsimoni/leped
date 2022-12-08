@@ -1,16 +1,17 @@
-import { Component, Inject } from "@angular/core";
+import { Component, Inject, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { ImagePathComplement } from "@app/shared/pipes/image-path-complement.pipe";
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
+import { CominduService } from "@app/comindu.service";
 
 @Component({
   selector: 'app-register-comindu',
   templateUrl: './register-comindu.component.html',
   styleUrls: ['./register-comindu.component.scss']
 })
-export class RegisterCominduComponent {
+export class RegisterCominduComponent implements OnInit {
 
   public form: FormGroup;
   public logo: any;
@@ -22,9 +23,12 @@ export class RegisterCominduComponent {
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
   tags = [];
   cor;
+  carregando;
+  admins;
 
   constructor(
     private formBuilder: FormBuilder,
+    private cominduService: CominduService,
     private dialogRef: MatDialogRef<RegisterCominduComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { form: any },
     private pipeImage: ImagePathComplement
@@ -36,11 +40,28 @@ export class RegisterCominduComponent {
     }
   }
 
+  ngOnInit(): void {
+    this.listAdmins();
+  }
+
+  public listAdmins() {
+    this.carregando = true;
+    this.cominduService.listAdmins()
+      .subscribe((res: any) => {
+        this.carregando = false;
+        this.admins = res;
+      }, err => {
+        this.carregando = false;
+      });
+  }
+
+
   private createForm(): FormGroup {
     return this.formBuilder.group({
       name: [null, [Validators.required]],
       content: [null, []],
       image: [null, []],
+      owners: [null, []],
       tags: [null, []]
     });
   }

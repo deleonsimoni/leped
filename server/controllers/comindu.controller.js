@@ -1,7 +1,6 @@
 
 const Tag = require('../models/tag.model');
 const Comunidade = require('../models/comunidade.model');
-const USer = require('../models/user.model');
 
 const User = require('../models/user.model');
 const S3Uploader = require('./aws.controller');
@@ -23,7 +22,9 @@ module.exports = {
   getChats,
   postChat,
 
-  minhasComunidades
+  minhasComunidades,
+
+  listAdmins
 };
 
 async function getTags() {
@@ -56,6 +57,12 @@ async function getChats(idComunidade, idPost) {
     //.select("posts.chats")
     .populate('posts.chats.user', 'socialname bio image')
 
+}
+
+async function listAdmins() {
+  return await User
+    .find({ roles: { $in: 'admin' } })
+    .select("email")
 }
 
 async function postChat(comunidade, post, userId, body) {

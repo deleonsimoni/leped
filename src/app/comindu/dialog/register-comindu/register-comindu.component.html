@@ -27,6 +27,17 @@
                 </div>
 
                 <div class="form-group">
+                    <mat-form-field style="display: block;" appearance="fill">
+                        <mat-label>Administradores</mat-label>
+                        <mat-select formControlName="owners" multiple>
+                            <mat-option *ngFor="let admin of admins" [value]="admin._id">{{admin.email}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                </div>
+
+
+                <div class="form-group">
                     Cor que represente esta comunidade
                     <input [(colorPicker)]="color" [style.background]="color" (colorPickerChange)="cor=$event" />
                 </div>
@@ -56,8 +67,13 @@
             <div class="col-md-6">
                 <div class="action">
                     <a class="btn btn-primary action__btn" (click)="closeDialog()">Cancelar</a>
-                    <button class="btn btn-primary action__btn" type="submit">Salvar</button>
+                    <button *ngIf="!carregando" class="btn btn-primary action__btn" type="submit">Salvar</button>
+                    <button *ngIf="carregando" class="btn btn-primary action__btn" type="submit">Aguarde</button>
+
                 </div>
+
+
+
             </div>
         </div>
     </form>
