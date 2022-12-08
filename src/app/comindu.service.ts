@@ -21,6 +21,10 @@ export class CominduService {
     return this.http.post(`/api/comindu/unsubscribe/${id}`, {});
   }
 
+  listMyComunidades() {
+    return this.http.get(`/api/comindu/minhascomunidades`);
+  }
+
   listTags() {
     return this.http.get(`/api/comindu/tags`);
   }

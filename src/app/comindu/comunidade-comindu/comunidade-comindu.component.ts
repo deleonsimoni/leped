@@ -34,8 +34,9 @@ export class ComunidadeCominduComponent implements OnInit {
 
   ngOnInit(): void {
     this.getComunidade();
-    this.user = this.authService.getUser().subscribe(user => this.user = user);
-
+    this.authService.getUser().subscribe(user => {
+      this.user = user;
+    });
   }
 
   public inscrever() {
@@ -66,7 +67,6 @@ export class ComunidadeCominduComponent implements OnInit {
       .subscribe((res: any) => {
         this.carregando = false;
         this.comunidade = res;
-        console.log(this.comunidade)
       }, err => {
         this.carregando = false;
       });

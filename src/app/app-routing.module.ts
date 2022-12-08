@@ -16,6 +16,7 @@ import { NoticiasComponent } from './noticias/noticias.component';
 import { VisualizadorComponent } from './visualizador/visualizador.component';
 import { HomeCominduComponent } from './comindu/home-comindu/home-comindu.component';
 import { ComunidadeCominduComponent } from './comindu/comunidade-comindu/comunidade-comindu.component';
+import { MeuCominduComponent } from './comindu/meu-comindu/meu-comindu.component';
 
 const routes: Routes = [
   {
@@ -87,6 +88,11 @@ const routes: Routes = [
   {
     path: 'home-indu',
     component: HomeCominduComponent,
+    /*canActivate: [AuthGuard],*/
+  },
+  {
+    path: 'meu-indu',
+    component: MeuCominduComponent,
     /*canActivate: [AuthGuard],*/
   },
   {

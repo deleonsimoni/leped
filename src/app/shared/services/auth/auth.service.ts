@@ -43,6 +43,15 @@ export class AuthService {
       );
   }
 
+  updateBio(file: File, form: any) {
+    const formData: FormData = new FormData();
+    if (file) {
+      formData.append('fileArray', file, `${file.name}`);
+    }
+    formData.append('formulario', JSON.stringify(form));
+    return this.http.put(`/api/user/updateBio`, formData);
+  }
+
   setUser(user: User | null): void {
     if (user) {
       user.isAdmin = user.roles.includes('admin');

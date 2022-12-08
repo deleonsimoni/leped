@@ -39,6 +39,7 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
 import { CustomPipesModule } from './shared/pipes/custom-pipes.module';
 import { VisualizadorComponent } from './visualizador/visualizador.component';
 import { HomeCominduComponent } from './comindu/home-comindu/home-comindu.component';
+import { NgxPopperModule } from 'ngx-popper';
 
 import { MatCardModule } from '@angular/material/card';
 import { RegisterCominduComponent } from './comindu/dialog/register-comindu/register-comindu.component';
@@ -48,6 +49,7 @@ import { MatListModule } from '@angular/material/list';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { registerLocaleData } from '@angular/common';
 import localePT from '@angular/common/locales/pt';
+import { MeuCominduComponent } from './comindu/meu-comindu/meu-comindu.component';
 
 registerLocaleData(localePT);
 
@@ -73,7 +75,8 @@ export function appInitializerFactory(authService: AuthService) {
     MatCardModule,
     MatChipsModule,
     MatListModule,
-    ColorPickerModule
+    ColorPickerModule,
+    NgxPopperModule.forRoot(),
 
   ],
   declarations: [
@@ -100,6 +103,7 @@ export function appInitializerFactory(authService: AuthService) {
     HomeCominduComponent,
     RegisterCominduComponent,
     ComunidadeCominduComponent,
+    MeuCominduComponent,
 
   ],
   providers: [

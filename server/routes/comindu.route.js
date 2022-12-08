@@ -17,6 +17,10 @@ router.get('/user/getInscricoes', passport.authenticate('jwt', {
     session: false
 }), asyncHandler(getUserInscricoes));
 
+router.get('/minhascomunidades', passport.authenticate('jwt', {
+    session: false
+}), asyncHandler(minhasComunidades));
+
 router.post('/comunidade/:comunidade/postChat/:post/chat', [passport.authenticate('jwt', {
     session: false
 }), requireAdmin, fileUpload()], asyncHandler(postChat));
@@ -74,6 +78,11 @@ async function getTags(req, res) {
 
 async function getComunidades(req, res) {
     let response = await cominduCtrl.getComunidades();
+    res.json(response);
+}
+
+async function minhasComunidades(req, res) {
+    let response = await cominduCtrl.minhasComunidades(req.user._id);
     res.json(response);
 }
 

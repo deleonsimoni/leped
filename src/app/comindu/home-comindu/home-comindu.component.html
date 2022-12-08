@@ -20,12 +20,19 @@
         </div>
 
         <div class="row">
-            <div class="example-button-row">
+            <div *ngIf="user?.isAdmin" class="col-2 example-button-row">
                 <button mat-raised-button color="primary" (click)="register()">
                     <mat-icon>mediation</mat-icon> Criar Comunidade
                 </button>
             </div>
+            <div *ngIf="user" class="col-2 example-button-row">
+                <a></a><button mat-raised-button color="accent" routerLink="/meu-indu">
+                    <mat-icon>home</mat-icon> Meu com.indu
+                </button>
+            </div>
         </div>
+
+
 
         <div>
             <mat-chip-list aria-label="Fish selection" class="p-2" data-aos="fade-right">
@@ -58,8 +65,8 @@
 
                             <button mat-raised-button color="accent"
                                 [routerLink]="['../comunidade-indu', comunidade._id]">ENTRAR</button>
-                            <button mat-button color="basic"><i title="Compartilhar"
-                                    class="bi bi-share fa-2x"></i></button>
+                            <!--<button mat-button color="basic"><i title="Compartilhar"
+                                    class="bi bi-share fa-2x"></i></button>-->
                         </mat-card-actions>
                     </mat-card>
                 </div>

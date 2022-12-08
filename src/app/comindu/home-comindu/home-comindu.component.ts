@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CominduService } from '@app/comindu.service';
 import { DialogNewsComponent } from '@app/shared/dialogs/dialog-news/dialog-news.component';
+import { AuthService } from '@app/shared/services';
 import { LepedService } from '@app/shared/services/leped.service';
 import { iif, map, Observable, of, switchMap, take } from 'rxjs';
 import { RegisterCominduComponent } from '../dialog/register-comindu/register-comindu.component';
@@ -16,16 +17,20 @@ export class HomeCominduComponent implements OnInit {
   comunidades;
   carregando;
   tags;
+  user;
 
   constructor(
     private cominduService: CominduService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public authService: AuthService
   ) { }
 
   ngOnInit(): void {
     this.listarTags();
     this.listAll().subscribe();
-
+    this.authService.getUser().subscribe(user => {
+      this.user = user;
+    });
   }
 
   public openDialog(form: any = null): Observable<any> {
@@ -47,7 +52,6 @@ export class HomeCominduComponent implements OnInit {
         map((comunidades: any) => this.comunidades = comunidades)
       )
   }
-
 
   public listarTags() {
     this.carregando = true;

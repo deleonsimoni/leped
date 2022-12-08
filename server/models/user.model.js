@@ -15,6 +15,9 @@ const UserSchema = new mongoose.Schema(
     bio: {
       type: String
     },
+    image: {
+      type: String
+    },
 
     icAcceptTerms: {
       type: Boolean,

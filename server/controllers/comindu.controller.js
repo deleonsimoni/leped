@@ -1,6 +1,8 @@
 
 const Tag = require('../models/tag.model');
 const Comunidade = require('../models/comunidade.model');
+const USer = require('../models/user.model');
+
 const User = require('../models/user.model');
 const S3Uploader = require('./aws.controller');
 
@@ -19,7 +21,9 @@ module.exports = {
   postSend,
 
   getChats,
-  postChat
+  postChat,
+
+  minhasComunidades
 };
 
 async function getTags() {
@@ -30,12 +34,19 @@ async function getComunidades() {
   return await Comunidade.find().select("name content cor tags");
 }
 
+async function minhasComunidades(id) {
+  return await User.findById(id)
+    .select("name bio socialname image")
+    .populate('comunidades.idComunidade');
+}
+
+
 async function getComunidadesById(id) {
   return await Comunidade
     .findById(id)
     .select("name content cor tags imagePathS3 posts.content posts.createAt posts._id")
-    .populate('subscribers.userId', 'nick bio')
-    .populate('posts.user', 'nick');
+    .populate('subscribers.userId', 'socialname bio')
+    .populate('posts.user', 'socialname image');
 
 }
 
@@ -43,7 +54,7 @@ async function getChats(idComunidade, idPost) {
   return await Comunidade
     .find({ "_id": idComunidade, "posts._id": idPost }, { "posts.$": 1 })
     //.select("posts.chats")
-    .populate('posts.chats.user', 'nick bio')
+    .populate('posts.chats.user', 'socialname bio image')
 
 }
 

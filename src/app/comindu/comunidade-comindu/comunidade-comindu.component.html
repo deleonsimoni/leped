@@ -15,11 +15,28 @@
                 <div>
                     <mat-list>
                         <div mat-subheader>Com.você</div>
+
                         <mat-list-item *ngFor="let subscriber of comunidade?.subscribers">
-                            <div matListItemLine>@{{subscriber.userId.nick}}</div>
+                            <div [popper]="popper1Content" [popperShowOnStart]="false" [popperTrigger]="'hover'"
+                                [popperHideOnClickOutside]="true" [popperHideOnScroll]="true" [popperPlacement]="'top'">
+                                <div class="user-avatar">
+                                    <div matListItemLine style="cursor: pointer;">
+                                        <img *ngIf="user?.image" class="mr-2" src="{{user.image | imagePathComplement}}"
+                                            alt="Seu avatar" id="imageRender">
+                                        {{subscriber.userId.socialname}}
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <popper-content #popper1Content>
+                                <p>{{subscriber.userId.bio}}</p>
+                            </popper-content>
+
+
                         </mat-list-item>
 
-                        <mat-list-item>
+                        <mat-list-item *ngIf="user">
                             <button *ngIf="!isSubscribe()" mat-raised-button color="accent" class="btn coordinator-btn"
                                 (click)="inscrever()">Inscreva-se</button>
                             <button *ngIf="isSubscribe()" mat-raised-button color="accent" class="btn coordinator-btn"
@@ -51,7 +68,7 @@
                             <div class='card'>
                                 <header class='cardHeader'>
                                     <i class='fab fa-instagram cardHeader_type'></i>
-                                    <span class='cardHeader_account'>{{post.user.nick}}</span>
+                                    <span class='cardHeader_account'>{{post.user.socialname}}</span>
                                     <span class='cardHeader_date'>{{post.createAt | date: 'MMM d HH:mm'}}</span>
                                 </header>
                                 <div class='cardBody'>
@@ -73,7 +90,7 @@
                     </div>
                 </div>
 
-                <div class="mensagem" data-aos="fade-right">
+                <div *ngIf="user?.isAdmin" class="mensagem" data-aos="fade-right">
                     <div class="form-group">
                         <angular-editor [(ngModel)]="postSend" [config]="editorConfig" [placeholder]="'Descrição...'">
                         </angular-editor>
@@ -102,7 +119,7 @@
 
 
                 </div>
-                <div class="mensagem" data-aos="fade-right">
+                <div *ngIf="user" class="mensagem" data-aos="fade-right">
                     <textarea rows="4" maxlength="124" placeholder="Deixe seu comentário..." cols="20" type="text"
                         [(ngModel)]="chatSend"></textarea>
                     <div class="text-center" style="justify-content: center;">
