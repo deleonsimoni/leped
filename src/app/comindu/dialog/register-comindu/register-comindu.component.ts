@@ -2,6 +2,8 @@ import { Component, Inject } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { ImagePathComplement } from "@app/shared/pipes/image-path-complement.pipe";
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { MatChipInputEvent } from '@angular/material/chips';
 
 @Component({
   selector: 'app-register-comindu',
@@ -13,6 +15,13 @@ export class RegisterCominduComponent {
   public form: FormGroup;
   public logo: any;
   imagePathS3: any;
+  visible = true;
+  selectable = true;
+  removable = true;
+  addOnBlur = true;
+  readonly separatorKeysCodes = [ENTER, COMMA] as const;
+  tags = [];
+  cor;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -29,10 +38,10 @@ export class RegisterCominduComponent {
 
   private createForm(): FormGroup {
     return this.formBuilder.group({
-      title: [null, [Validators.required]],
-      description: [null, []],
+      name: [null, [Validators.required]],
+      content: [null, []],
       image: [null, []],
-      metadados: [null, []]
+      tags: [null, []]
     });
   }
 
@@ -40,9 +49,9 @@ export class RegisterCominduComponent {
     this.logo = this.pipeImage.transform(data.imagePathS3);
 
     this.form.patchValue({
-      title: data.title,
-      description: data.description,
-      metadados: data.metadados
+      name: data.name,
+      content: data.content,
+      tags: data.tags
     })
   }
 
@@ -66,6 +75,8 @@ export class RegisterCominduComponent {
 
   public register(): void {
     if (this.form.valid) {
+      this.form.value.tags = this.tags;
+      this.form.value.cor = this.cor;
       this.dialogRef.close({ save: true, form: this.form.value, file: this.imagePathS3 })
     }
   }
@@ -73,4 +84,28 @@ export class RegisterCominduComponent {
   public closeDialog(): void {
     this.dialogRef.close({ save: false });
   }
+
+  add(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
+
+    if ((value || "").trim()) {
+      this.tags.push(value.trim());
+    }
+
+    // Reset the input value
+    if (input) {
+      input.value = "";
+    }
+  }
+
+  remove(tag): void {
+    const index = this.tags.indexOf(tag);
+
+    if (index >= 0) {
+      this.tags.splice(index, 1);
+    }
+  }
+
+
 }

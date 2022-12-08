@@ -9,7 +9,7 @@
             <h1>Apresentação</h1>
         </div>
 
-        <div style="text-align: justify;">
+        <div style="text-align: justify;" class="mt-4 mb-4">
             Plataforma criada para criar conexões e propagar conhecimentos da área de educação. A ideia principal do
             conceito da plataforma é compartilhar conhecimento entre as pessoas através de comunidades e informações
             contruídas no ensino. Acesse as comunidades e através delas conhecerá pessoas, conexões e conhecimentos.
@@ -27,46 +27,37 @@
             </div>
         </div>
 
-        <section>
+        <div>
+            <mat-chip-list aria-label="Fish selection" class="p-2" data-aos="fade-right">
+
+                <mat-chip color="accent" selected *ngFor="let tag of tags">
+                    {{tag.name | lowercase}}
+                </mat-chip>
+
+            </mat-chip-list>
+
+        </div>
+
+        <div>
             <div class="row">
 
-                <div class="card-wrapper col-4">
+                <div *ngFor="let comunidade of comunidades" class="card-wrapper col-4">
                     <mat-card>
-                        <mat-card-header class="purple">
+                        <mat-card-header class="purple" [style.background]="comunidade.cor">
                             <button mat-button>
-                                <mat-card-title>Escolas em área de risco</mat-card-title>
-                                <mat-card-subtitle>área de risco + escolas + alunos + ensino</mat-card-subtitle>
+                                <mat-card-title>{{comunidade.name | titlecase}}</mat-card-title>
+                                <mat-card-subtitle><span *ngFor="let tag of comunidade.tags">{{tag}} + </span>
+                                </mat-card-subtitle>
                             </button>
                         </mat-card-header>
                         <mat-card-content>
-                            <p>Abordaremos informações sobre ensino acerca de escolas em área de risco</p>
+                            <p>{{comunidade.content}}</p>
                             <mat-divider></mat-divider>
                         </mat-card-content>
                         <mat-card-actions align="end" class="pb-2">
 
                             <button mat-raised-button color="accent"
-                                [routerLink]="['../comunidade-indu']">ENTRAR</button>
-                            <button mat-button color="basic"><i title="Compartilhar"
-                                    class="bi bi-share fa-2x"></i></button>
-                        </mat-card-actions>
-                    </mat-card>
-                </div>
-
-                <div class="card-wrapper col-4">
-                    <mat-card>
-                        <mat-card-header class="pink">
-                            <button mat-button>
-                                <mat-card-title>Educação para ribeirinhos</mat-card-title>
-                                <mat-card-subtitle>ribeirinhos + escolas + alunos + ensino</mat-card-subtitle>
-                            </button>
-                        </mat-card-header>
-                        <mat-card-content>
-                            <p>Abordaremos informações sobre ensino acerca de escolas </p>
-                            <mat-divider></mat-divider>
-
-                        </mat-card-content>
-                        <mat-card-actions align="end" class="pb-2">
-                            <button mat-raised-button color="accent">ENTRAR</button>
+                                [routerLink]="['../comunidade-indu', comunidade._id]">ENTRAR</button>
                             <button mat-button color="basic"><i title="Compartilhar"
                                     class="bi bi-share fa-2x"></i></button>
                         </mat-card-actions>
@@ -74,49 +65,8 @@
                 </div>
 
 
-                <div class="card-wrapper col-4">
-                    <mat-card class="">
-                        <mat-card-header class="blue">
-                            <button mat-button>
-                                <mat-card-title>Desafio na educação indigena</mat-card-title>
-                                <mat-card-subtitle>indigena + escolas + alunos + ensino</mat-card-subtitle>
-                            </button>
-                        </mat-card-header>
-                        <mat-card-content>
-                            <p>Abordaremos informações sobre ensino acerca de escolas em área de risco</p>
-                            <mat-divider></mat-divider>
-
-                        </mat-card-content>
-                        <mat-card-actions align="end" class="pb-2">
-                            <button mat-raised-button color="accent">ENTRAR</button>
-                            <button mat-button color="basic"><i title="Compartilhar"
-                                    class="bi bi-share fa-2x"></i></button>
-                        </mat-card-actions>
-                    </mat-card>
-                </div>
-
-                <div class="card-wrapper col-4">
-                    <mat-card>
-                        <mat-card-header class="red">
-                            <button mat-button>
-                                <mat-card-title>Bullying em risco</mat-card-title>
-                                <mat-card-subtitle>bullying + escolas + alunos + ensino</mat-card-subtitle>
-                            </button>
-                        </mat-card-header>
-                        <mat-card-content>
-                            <p>Abordaremos informações sobre ensino acerca de escolas </p>
-                            <mat-divider></mat-divider>
-
-                        </mat-card-content>
-                        <mat-card-actions align="end" class="pb-2">
-                            <button mat-raised-button color="accent">ENTRAR</button>
-                            <button mat-button color="basic"><i title="Compartilhar"
-                                    class="bi bi-share fa-2x"></i></button>
-                        </mat-card-actions>
-                    </mat-card>
-                </div>
             </div>
-        </section>
+        </div>
 
 
     </div>

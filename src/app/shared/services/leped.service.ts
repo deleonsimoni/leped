@@ -11,6 +11,10 @@ export class LepedService {
     private http: HttpClient
   ) { }
 
+  montarHomeLeped() {
+    return this.http.get(`/api/leped/montarHomeLeped`);
+  }
+
   listQuemSomos() {
     return this.http.get(`/api/leped/quemsomos`);
   }

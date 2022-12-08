@@ -1,0 +1,190 @@
+
+const Tag = require('../models/tag.model');
+const Comunidade = require('../models/comunidade.model');
+const User = require('../models/user.model');
+const S3Uploader = require('./aws.controller');
+
+
+module.exports = {
+  getUserInscricoes,
+  getTags,
+  getComunidades,
+  getComunidadesById,
+
+  insertComunidade,
+
+  subscribeComunidade,
+  unsubscribeComunidade,
+
+  postSend,
+
+  getChats,
+  postChat
+};
+
+async function getTags() {
+  return await Tag.find().select("name");
+}
+
+async function getComunidades() {
+  return await Comunidade.find().select("name content cor tags");
+}
+
+async function getComunidadesById(id) {
+  return await Comunidade
+    .findById(id)
+    .select("name content cor tags imagePathS3 posts.content posts.createAt posts._id")
+    .populate('subscribers.userId', 'nick bio')
+    .populate('posts.user', 'nick');
+
+}
+
+async function getChats(idComunidade, idPost) {
+  return await Comunidade
+    .find({ "_id": idComunidade, "posts._id": idPost }, { "posts.$": 1 })
+    //.select("posts.chats")
+    .populate('posts.chats.user', 'nick bio')
+
+}
+
+async function postChat(comunidade, post, userId, body) {
+
+  let data = {
+    user: userId,
+    message: body.post
+  };
+
+  return Comunidade.findOneAndUpdate({
+    "_id": comunidade,
+    "posts._id": post
+  }, {
+    $addToSet: {
+      'posts.$.chats': data
+    }
+  }, {
+    new: true
+  });
+
+}
+
+async function getUserInscricoes(user) {
+  return await Tag.find();
+}
+
+async function insertComunidade(req, idUser) {
+  let form = JSON.parse(req.body.formulario);
+  form.user = idUser;
+  let retorno = { temErro: true };
+  let tagSave;
+
+  if (req.files) {
+    let fileName = 'images/comindu/comunidades' + req.files.fileArray.name;
+    await S3Uploader.uploadBase64(fileName, req.files.fileArray.data).then(async fileData => {
+      console.log('Arquivo submetido para AWS ' + fileName);
+      form.imagePathS3 = fileName;
+      retorno.temErro = false;
+      return await new Comunidade(form).save();
+    }, err => {
+      console.log('Erro ao enviar imagem para AWS: ' + fileName);
+      retorno.temErro = true;
+      retorno.mensagem = 'Servidor momentaneamente inoperante. Tente novamente mais tarde.';
+    });
+
+  } else {
+    await new Comunidade(form).save();
+  }
+
+  if (form.tags) {
+    form.tags.forEach(tag => {
+      tagSave = { user: idUser, name: tag };
+      new Tag(tagSave).save();
+    });
+  }
+
+  return "Ok";
+
+}
+
+async function postSend(comunidade, userId, body) {
+
+  let data = {
+    user: userId,
+    content: body.post
+  };
+
+  return Comunidade.findOneAndUpdate({
+    _id: comunidade
+  }, {
+    $addToSet: {
+      'posts': data
+    }
+  }, {
+    new: true
+  });
+
+}
+
+async function subscribeComunidade(comunidade, userId) {
+  /* let checkIsDup = await checkSubscribeDup(comunidade, userId);
+ 
+   if (checkIsDup && checkIsDup.isDup) {
+ 
+     return checkIsDup;
+ 
+   } else {*/
+
+  let userInsert = {
+    userId: userId,
+  }
+
+  await User.findOneAndUpdate({
+    _id: userId
+  }, {
+    $addToSet: {
+      'comunidades': {
+        idComunidade: comunidade
+      }
+    }
+  }, {
+    upsert: true,
+    new: true
+  });
+
+  return Comunidade.findOneAndUpdate({
+    _id: comunidade
+  }, {
+    $addToSet: {
+      'subscribers': userInsert
+    }
+  }, {
+    new: true
+  });
+
+  // }
+}
+
+async function unsubscribeComunidade(comunidade, userId) {
+
+  await User.findOneAndUpdate({
+    _id: userId
+  }, {
+    $pull: {
+      comunidades: {
+        'idComunidade': comunidade
+      }
+
+    }
+  });
+
+  return await Comunidade.findOneAndUpdate({
+    _id: comunidade
+  }, {
+    $pull: {
+      subscribers: {
+        userId: userId
+      }
+    }
+  }, {
+    new: true
+  });
+}

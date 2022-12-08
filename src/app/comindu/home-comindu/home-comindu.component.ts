@@ -14,6 +14,8 @@ import { RegisterCominduComponent } from '../dialog/register-comindu/register-co
 export class HomeCominduComponent implements OnInit {
 
   comunidades;
+  carregando;
+  tags;
 
   constructor(
     private cominduService: CominduService,
@@ -21,6 +23,9 @@ export class HomeCominduComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.listarTags();
+    this.listAll().subscribe();
+
   }
 
   public openDialog(form: any = null): Observable<any> {
@@ -37,10 +42,22 @@ export class HomeCominduComponent implements OnInit {
   }
 
   private listAll(): Observable<any> {
-    return this.cominduService.listComunidade()
+    return this.cominduService.listComunidades()
       .pipe(
         map((comunidades: any) => this.comunidades = comunidades)
       )
+  }
+
+
+  public listarTags() {
+    this.carregando = true;
+    this.cominduService.listTags()
+      .subscribe((res: any) => {
+        this.carregando = false;
+        this.tags = res;
+      }, err => {
+        this.carregando = false;
+      });
   }
 
   public register(): void {

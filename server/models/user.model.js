@@ -9,6 +9,13 @@ const UserSchema = new mongoose.Schema(
     socialname: {
       type: String
     },
+    nick: {
+      type: String
+    },
+    bio: {
+      type: String
+    },
+
     icAcceptTerms: {
       type: Boolean,
       default: false
@@ -16,6 +23,15 @@ const UserSchema = new mongoose.Schema(
     dateBirth: {
       type: Date
     },
+    comunidades: [
+      {
+        idComunidade: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Comunidade'
+        }
+      }
+    ],
+
     address: {
       street: String,
       complement: String,

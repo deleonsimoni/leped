@@ -10,6 +10,8 @@ const S3Uploader = require('./aws.controller');
 
 
 module.exports = {
+  montarHomeLeped,
+
   getQuemSomos,
   insertQuemSomos,
   deleteQuemSomos,
@@ -43,6 +45,16 @@ module.exports = {
 
 
 };
+
+async function montarHomeLeped() {
+  let response = {};
+
+  response.coordenadoras = await Coordenadoras.find();
+
+  response.galeria = await Galeria.find().select('imagePathS3');
+
+  return response;
+}
 
 async function getQuemSomos() {
   return await QuemSomos.find()

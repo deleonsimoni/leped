@@ -12,6 +12,7 @@ router.get('/quemSomos', asyncHandler(getQuemSomos));
 router.get('/coordenadoras', asyncHandler(getCoordenadoras));
 router.get('/eventos', asyncHandler(getEventos));
 router.get('/galeria', asyncHandler(getGaleria));
+router.get('/montarHomeLeped', asyncHandler(montarHomeLeped));
 router.get('/grupo-pesquisa', [passport.authenticate('jwt', {
     session: false
 })], asyncHandler(getGrupoPesquisa));
@@ -153,6 +154,10 @@ async function deleteEventos(req, res) {
     res.json(response);
 }
 
+async function montarHomeLeped(req, res) {
+    let response = await lepedCtrl.montarHomeLeped();
+    res.json(response);
+}
 
 async function getGaleria(req, res) {
     let response = await lepedCtrl.getGaleria();

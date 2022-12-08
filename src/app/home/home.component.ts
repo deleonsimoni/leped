@@ -10,6 +10,7 @@ import { LepedService } from '@app/shared/services/leped.service';
 export class HomeComponent implements OnInit {
 
   coordenadoras;
+  galerias;
   carregando = false;
 
   constructor(
@@ -20,10 +21,11 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.carregando = true;
 
-    this.lepedService.listCoordenadoras()
+    this.lepedService.montarHomeLeped()
       .subscribe((res: any) => {
         this.carregando = false;
-        this.coordenadoras = res;
+        this.coordenadoras = res.coordenadoras;
+        this.galerias = res.galeria;
       }, err => {
         this.carregando = false;
         console.log(err);

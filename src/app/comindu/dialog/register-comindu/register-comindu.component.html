@@ -1,40 +1,53 @@
-<div class="row" mat-dialog-content>
+<div class="row" style="width: 800px;" mat-dialog-content>
     <div class="section-header">
         <p>COM.INDU - Cadastro</p>
     </div>
     <form [formGroup]="form" (ngSubmit)="register()">
 
         <div class="form-row justify-content-center align-items-center">
-            <div class="col-12 col-md-8 order-2 order-md-1">
+            <div class="col-12  order-2 order-md-1">
+
+                <div class="form-group">
+                    <div class="profile">
+                        <img [src]="logo ? logo : '../../../assets/img/placeholder-banner.png'" class="">
+                        <input type="file" name="logo" class="profile__input" id="logo" placeholder="Logo"
+                            (change)="getProfileImageCode($event)" />
+                    </div>
+                </div>
 
                 <div class="form-group">
                     <input type="text" name="name" class="form-control" id="name" placeholder="Titulo"
-                        formControlName="title" />
+                        formControlName="name" />
                     <div class="validation"></div>
                 </div>
                 <div class="form-group">
-                    <angular-editor [placeholder]="'Descrição...'" formControlName="description"></angular-editor>
-                    <div class="validation"></div>
-                </div>
-                <div class="form-group">
-                    <input type="text" name="group" class="form-control" id="group" placeholder="Organizadores"
-                        formControlName="owners" />
-                    <div class="validation"></div>
-                </div>
-                <div class="form-group">
-                    <input type="text" name="group" class="form-control" id="group"
-                        placeholder="Área de Interesse (separe por ; )" formControlName="metadados" />
+                    <input type="text" name="content" class="form-control" id="content" placeholder="Descrição"
+                        formControlName="content" />
                     <div class="validation"></div>
                 </div>
 
-            </div>
-            <div class="col-8 col-md-4 order-1 order-md-2 mb-3">
-                <div class="profile">
-                    <img [src]="logo ? logo : '../../../assets/img/placeholder-profile.png'" class="profile__image">
-                    <input type="file" name="logo" class="profile__input" id="logo" placeholder="Logo"
-                        (change)="getProfileImageCode($event)" />
+                <div class="form-group">
+                    Cor que represente esta comunidade
+                    <input [(colorPicker)]="color" [style.background]="color" (colorPickerChange)="cor=$event" />
                 </div>
+
+                <div class="form-group">
+                    <mat-form-field class="example-chip-list">
+                        <mat-chip-list #chipList>
+                            <mat-chip class="custom-chip-size" *ngFor="let tag of tags" [selectable]="selectable"
+                                [removable]="removable" (removed)="remove(tag)">
+                                {{tag}}
+                                <mat-icon matChipRemove *ngIf="removable">X</mat-icon>
+                            </mat-chip>
+                            <input placeholder="Trilhas da comunidade (digite ENTER a cada trilha)"
+                                [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
+                        </mat-chip-list>
+                    </mat-form-field>
+                </div>
+
             </div>
+
         </div>
 
 

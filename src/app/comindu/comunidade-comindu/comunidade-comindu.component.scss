@@ -225,7 +225,7 @@ h1 em {
 }
 
 .cardHeader .cardHeader_date {
-    margin: 10px;
+    margin: 8px;
     color: #C6E1ED;
     font-size: .85em;
     font-weight: 600;
@@ -249,9 +249,6 @@ h1 em {
     margin: 0;
     padding: 0;
 }
-
-
-
 
 
 
@@ -305,7 +302,12 @@ h1 em {
 .mine .message {
     color: white;
     margin-left: 25%;
-    background: linear-gradient(to bottom, #00D0EA 0%, #0085D1 100%);
+    background: linear-gradient(to bottom, #539299 0%, #0085D1 100%);
     background-attachment: fixed;
     position: relative;
+}
+
+.publique {
+    padding-top: 10px;
+    color: black;
 }

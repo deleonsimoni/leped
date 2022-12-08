@@ -5,18 +5,25 @@
             <p>COM.INDU</p>
         </div>
 
-
+        <div class=" text-center">
+            <img src="{{comunidade?.imagePathS3 | imagePathComplement}}" style="max-width: 500px; max-height: 400px;"
+                class="p-1">
+        </div>
 
         <div class="row" style="min-height: 800px;">
             <div class="col-2" data-aos="fade-left">
                 <div>
                     <mat-list>
                         <div mat-subheader>Com.você</div>
-                        <mat-list-item>
-                            <div matListItemLine>@tatistofella</div>
+                        <mat-list-item *ngFor="let subscriber of comunidade?.subscribers">
+                            <div matListItemLine>@{{subscriber.userId.nick}}</div>
                         </mat-list-item>
+
                         <mat-list-item>
-                            <div matListItemLine>@giselicruz</div>
+                            <button *ngIf="!isSubscribe()" mat-raised-button color="accent" class="btn coordinator-btn"
+                                (click)="inscrever()">Inscreva-se</button>
+                            <button *ngIf="isSubscribe()" mat-raised-button color="accent" class="btn coordinator-btn"
+                                (click)="desinscrever()">Cancelar Inscrição</button>
                         </mat-list-item>
 
                     </mat-list>
@@ -25,73 +32,37 @@
 
             <div class="col-8">
                 <div class="twelve purple" data-aos="flip-left">
-                    <h1>Escolas em área de risco</h1>
+                    <h1>{{comunidade?.name | titlecase}}</h1>
                 </div>
                 <mat-chip-list aria-label="Fish selection" class="p-2" data-aos="fade-right">
 
-                    <mat-chip color="accent" selected>
-                        Escolas
+                    <mat-chip color="accent" selected *ngFor="let tag of comunidade?.tags">
+                        {{tag}}
                     </mat-chip>
 
-                    <mat-chip color="accent" selected>
-                        risco
-                    </mat-chip>
-
-                    <mat-chip color="accent" selected>
-                        ensino
-                    </mat-chip>
-
-                    <mat-chip color="accent" selected>
-                        problemas sociais
-                    </mat-chip>
                 </mat-chip-list>
 
                 <div id="chefs" class="content p-2" data-aos="zoom-in-down">
 
 
-                    <div class="message">
+                    <div class="message" *ngFor="let post of comunidade?.posts">
 
                         <div class='deck' data-aos="fade-right">
                             <div class='card'>
                                 <header class='cardHeader'>
                                     <i class='fab fa-instagram cardHeader_type'></i>
-                                    <span class='cardHeader_account'>@giselicruz</span>
-                                    <span class='cardHeader_date'>Jul 1 16:03</span>
+                                    <span class='cardHeader_account'>{{post.user.nick}}</span>
+                                    <span class='cardHeader_date'>{{post.createAt | date: 'MMM d HH:mm'}}</span>
                                 </header>
                                 <div class='cardBody'>
-                                    <p class='cardText'>Atenção pessoal, nesta terça feira ocorrerá um evento muito
-                                        importante para ajudar no suporte a escolas em área de risco neste youtube ...
+                                    <p class='cardText' [innerHTML]="post.content">
                                     </p>
 
                                 </div>
-                            </div>
-                        </div>
-
-                        <div class='deck' data-aos="fade-left">
-                            <div class='card'>
-                                <header class='cardHeader'>
-                                    <i class='fab fa-instagram cardHeader_type'></i>
-                                    <span class='cardHeader_account'>@talitaribeiro</span>
-                                    <span class='cardHeader_date'>Jul 1 10:03</span>
-                                </header>
-                                <div class='cardBody'>
-                                    <p class='cardText'>Leiam o livro: "Era uma vez na escola" muito bom para ensinar
-                                    </p>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class='deck' data-aos="fade-left">
-                            <div class='card'>
-                                <header class='cardHeader'>
-                                    <i class='fab fa-instagram cardHeader_type'></i>
-                                    <span class='cardHeader_account'>@talitaribeiro</span>
-                                    <span class='cardHeader_date'>Jul 1 10:03</span>
-                                </header>
-                                <div class='cardBody'>
-                                    <p class='cardText'>Leiam o livro: "Era uma vez na escola" muito bom para ensinar
-                                    </p>
+                                <div class='cardFooter'>
+                                    <button mat-button color="basic" (click)="getChat(post._id, comunidade._id)"><i
+                                            style="color: white;" title="Interagir"
+                                            class="bi bi-chat-left-text-fill fa-2x"></i></button>
 
                                 </div>
                             </div>
@@ -104,41 +75,42 @@
 
                 <div class="mensagem" data-aos="fade-right">
                     <div class="form-group">
-                        <angular-editor [config]="editorConfig" [placeholder]="'Descrição...'"></angular-editor>
+                        <angular-editor [(ngModel)]="postSend" [config]="editorConfig" [placeholder]="'Descrição...'">
+                        </angular-editor>
+                        <div class="text-center" style="justify-content: center;">
+                            <button mat-raised-button color="accent" style="width: 500px;" class="btn text-center"
+                                (click)="sendPost()">Postar</button>
+                        </div>
                     </div>
+
+
                 </div>
 
             </div>
 
 
 
-            <div class="col-2 chat-container" data-aos="fade-right">
-                <h3 style="color:rgb(255, 255, 255)" class="text-center">Comunidade</h3>
-                <div class="chat">
-                    <div class="mine messages">
+            <div class="col-2 chat-container" *ngIf="chats?.length > 0" data-aos="fade-top">
+                <h3 class="text-center publique">Publique</h3>
+                <div class="chat" *ngFor="let chat of chats;let indexOfelement=index;">
+
+                    <div [ngClass]="( indexOfelement % 2 === 0 ) ? 'mine messages' : 'yours messages' ">
                         <div class="message last">
-                            Esse vídeo me ajudou muito!
+                            {{chat.message}}
                         </div>
                     </div>
-                    <div class="yours messages">
-                        <div class="message">
-                            Hey!
-                        </div>
-                        <div class="message">
-                            Meus alunos são muito afrontosos
-                        </div>
-                        <div class="message last">
-                            Falem sobre este conteúdo?
-                        </div>
+
+
+                </div>
+                <div class="mensagem" data-aos="fade-right">
+                    <textarea rows="4" maxlength="124" placeholder="Deixe seu comentário..." cols="20" type="text"
+                        [(ngModel)]="chatSend"></textarea>
+                    <div class="text-center" style="justify-content: center;">
+                        <button mat-raised-button color="primary" style="width: 100px;" class="btn text-center"
+                            (click)="sendChat()">Comentar</button>
                     </div>
-                    <div class="mine messages">
-                        <div class="message">
-                            Muito bom!
-                        </div>
-                        <div class="message last">
-                            Vocês são demais
-                        </div>
-                    </div>
+
+
                 </div>
             </div>
 

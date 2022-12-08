@@ -1,5 +1,5 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule, APP_INITIALIZER } from '@angular/core';
+import { NgModule, APP_INITIALIZER, LOCALE_ID } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { SharedModule } from './shared/shared.module';
@@ -45,7 +45,11 @@ import { RegisterCominduComponent } from './comindu/dialog/register-comindu/regi
 import { ComunidadeCominduComponent } from './comindu/comunidade-comindu/comunidade-comindu.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatListModule } from '@angular/material/list';
+import { ColorPickerModule } from 'ngx-color-picker';
+import { registerLocaleData } from '@angular/common';
+import localePT from '@angular/common/locales/pt';
 
+registerLocaleData(localePT);
 
 export function appInitializerFactory(authService: AuthService) {
   return () => authService.checkTheUserOnTheFirstLoad();
@@ -68,7 +72,9 @@ export function appInitializerFactory(authService: AuthService) {
     CustomPipesModule,
     MatCardModule,
     MatChipsModule,
-    MatListModule
+    MatListModule,
+    ColorPickerModule
+
   ],
   declarations: [
     AppComponent,
@@ -97,6 +103,7 @@ export function appInitializerFactory(authService: AuthService) {
 
   ],
   providers: [
+    { provide: LOCALE_ID, useValue: 'pt-br' },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthHeaderInterceptor,

@@ -50,43 +50,12 @@
         </div>
 
         <div class="gallery-slider swiper">
-            <div class="swiper-wrapper align-items-center">
+            <div class="swiper-wrapper align-items-center img-coordenadores">
 
-                <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
-                        href="../assets/img/gallery/gallery-1-leped.jpeg"><img
-                            src="../assets/img/gallery/gallery-1-leped.jpeg" class="img-fluid img-swipe" alt=""></a>
-                </div>
-                <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
-                        href="../assets/img/gallery/gallery-2-leped.jpeg"><img
-                            src="../assets/img/gallery/gallery-2-leped.jpeg" class="img-fluid img-swipe" alt=""></a>
-                </div>
-                <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
-                        href="../assets/img/gallery/gallery-3-leped.jpeg"><img
-                            src="../assets/img/gallery/gallery-3-leped.jpeg" class="img-fluid img-swipe" alt=""></a>
-                </div>
+                <div *ngFor="let galeria of galerias" class="swiper-slide"><a class="glightbox"
+                        data-gallery="images-gallery" href="{{galeria.imagePathS3 | imagePathComplement}}"><img
+                            src="{{galeria.imagePathS3 | imagePathComplement}}" class="img-fluid" alt=""></a></div>
 
-
-
-                <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
-                        href="../assets/img/gallery/gallery-4-leped.jpg"><img
-                            src="../assets/img/gallery/gallery-4-leped.jpg" class="img-fluid img-swipe" alt=""></a>
-                </div>
-                <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
-                        href="../assets/img/gallery/gallery-5-leped.jpg"><img
-                            src="../assets/img/gallery/gallery-5-leped.jpg" class="img-fluid img-swipe" alt=""></a>
-                </div>
-                <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
-                        href="../assets/img/gallery/gallery-6-leped.jpg"><img
-                            src="../assets/img/gallery/gallery-6-leped.jpg" class="img-fluid img-swipe" alt=""></a>
-                </div>
-                <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
-                        href="../assets/img/gallery/gallery-7-leped.jpg"><img
-                            src="../assets/img/gallery/gallery-7-leped.jpg" class="img-fluid img-swipe" alt=""></a>
-                </div>
-                <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
-                        href="../assets/img/gallery/gallery-8-leped.jpg"><img
-                            src="../assets/img/gallery/gallery-8-leped.jpg" class="img-fluid img-swipe" alt=""></a>
-                </div>
 
             </div>
             <div class="swiper-pagination"></div>

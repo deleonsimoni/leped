@@ -219,7 +219,7 @@
     "symbol-observable" "4.0.0"
     "uuid" "8.3.2"
 
-"@angular/common@^12.0.0", "@angular/common@^13.0.0", "@angular/common@^13.0.0 || ^14.0.0-0", "@angular/common@^13.0.2", "@angular/common@>=10.0.0", "@angular/common@>=12.0.0-0", "@angular/common@>=13", "@angular/common@13.0.2":
+"@angular/common@^12.0.0", "@angular/common@^13.0.0", "@angular/common@^13.0.0 || ^14.0.0-0", "@angular/common@^13.0.2", "@angular/common@>=10.0.0", "@angular/common@>=12.0.0-0", "@angular/common@>=13", "@angular/common@>=9.0.0", "@angular/common@13.0.2":
   "integrity" "sha512-UxWzNAU/o9pP02AYB5MrnIlShirfO631NolmvP0jTSEmym1nAeDOwZIYlkgfcJMHFXFc7DBnE2XOGaTZ8if3kw=="
   "resolved" "https://registry.npmjs.org/@angular/common/-/common-13.0.2.tgz"
   "version" "13.0.2"
@@ -250,14 +250,14 @@
   dependencies:
     "tslib" "^2.3.0"
 
-"@angular/core@^12.0.0", "@angular/core@^13.0.0", "@angular/core@^13.0.0 || ^14.0.0-0", "@angular/core@^13.0.2", "@angular/core@>=10.0.0", "@angular/core@>=12.0.0-0", "@angular/core@>=13", "@angular/core@>=13.0.0", "@angular/core@13.0.2":
+"@angular/core@^12.0.0", "@angular/core@^13.0.0", "@angular/core@^13.0.0 || ^14.0.0-0", "@angular/core@^13.0.2", "@angular/core@>=10.0.0", "@angular/core@>=12.0.0-0", "@angular/core@>=13", "@angular/core@>=13.0.0", "@angular/core@>=9.0.0", "@angular/core@13.0.2":
   "integrity" "sha512-6Jbct50lncMqzwLILzfmwQRK8eOEMv0quCL3pQptEpYPSlPqKz6QRxD76BykSUOs7XYJ/KdZmu3uGcT2Q/DUVg=="
   "resolved" "https://registry.npmjs.org/@angular/core/-/core-13.0.2.tgz"
   "version" "13.0.2"
   dependencies:
     "tslib" "^2.3.0"
 
-"@angular/forms@^13.0.0", "@angular/forms@^13.0.0 || ^14.0.0-0", "@angular/forms@^13.0.2", "@angular/forms@>=10.0.0":
+"@angular/forms@^13.0.0", "@angular/forms@^13.0.0 || ^14.0.0-0", "@angular/forms@^13.0.2", "@angular/forms@>=10.0.0", "@angular/forms@>=9.0.0":
   "integrity" "sha512-JGgEOTH/OYr7/RlqJUPSzKQF/a55UM5PD6CgpUjAXKrCV18+zhofO05g+ibIZH3OfONntthcbKEXxMTX2EEQqg=="
   "resolved" "https://registry.npmjs.org/@angular/forms/-/forms-13.0.2.tgz"
   "version" "13.0.2"
@@ -5779,6 +5779,13 @@
   "version" "8.0.0"
   dependencies:
     "tslib" "^2.0.0"
+
+"ngx-color-picker@^12.0.1":
+  "integrity" "sha512-ODLePeqN7dnhTmjHGJrxFHaEXb3o2vH4n8qUzkUAIFmz5vOOxCCEYY4/bg+5VK62PonaK7j0fFf8AjnwrqhFHQ=="
+  "resolved" "https://registry.npmjs.org/ngx-color-picker/-/ngx-color-picker-12.0.1.tgz"
+  "version" "12.0.1"
+  dependencies:
+    "tslib" "^2.3.0"
 
 "ngx-flag-picker@^12.0.0":
   "integrity" "sha512-KAaBdjEtxzF9ZIgmRfkezXSsH8VuLXtp/7J4LSqmwCeDAQPBaaGtkYPnFpcK4cFK6nkFJoNHve8DUPbdUzVp2A=="

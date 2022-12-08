@@ -90,7 +90,7 @@ const routes: Routes = [
     /*canActivate: [AuthGuard],*/
   },
   {
-    path: 'comunidade-indu',
+    path: 'comunidade-indu/:id',
     component: ComunidadeCominduComponent,
     /*canActivate: [AuthGuard],*/
   },
