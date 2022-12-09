@@ -30,8 +30,12 @@
                     <mat-icon>home</mat-icon> Meu com.indu
                 </button>
             </div>
+            <div *ngIf="!user" class="col-2 example-button-row">
+                <a></a><button mat-raised-button color="accent" routerLink="/auth/register">
+                    <mat-icon>emoji_people</mat-icon> Cadastre-se com.indu
+                </button>
+            </div>
         </div>
-
 
 
         <div>

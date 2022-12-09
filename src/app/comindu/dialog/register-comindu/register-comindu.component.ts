@@ -25,6 +25,7 @@ export class RegisterCominduComponent implements OnInit {
   cor;
   carregando;
   admins;
+  color;
 
   constructor(
     private formBuilder: FormBuilder,

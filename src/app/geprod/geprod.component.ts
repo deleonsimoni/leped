@@ -34,11 +34,24 @@ export class GeprodComponent implements OnInit {
     this.gepedService.listHome('geprod')
       .subscribe((res: any) => {
         this.home = res[0];
+        this.ordenarParticipantes();
       }, err => {
         console.log(err);
       });
 
   }
+
+  ordenarParticipantes() {
+
+    this.home.participantes.sort(function (a, b) {
+      if (a.name < b.name) { return -1; }
+      if (a.name > b.name) { return 1; }
+      return 0;
+    })
+
+  }
+
+
 
   sanitizeVideo(link) {
     if (link.includes('watch')) {

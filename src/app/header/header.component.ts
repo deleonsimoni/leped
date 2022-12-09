@@ -16,6 +16,7 @@ export class HeaderComponent {
 
   selectedCountryCode = 'br';
   countryCodes = ['us', 'br'];
+  navbar;
 
   constructor(
     private router: Router,
