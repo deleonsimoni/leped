@@ -54,7 +54,7 @@
       [showFlags]="true" (changedCountryCode)="changeSelectedCountryCode($event)">
     </ngx-flag-picker>
 
-    <a class="btn-book-a-table" routerLink="/home-indu">COM.INDU</a>
+    <a *ngIf="user?.isAdmin" class=" btn-book-a-table" routerLink="/home-indu">COM.INDU</a>
     <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
     <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
 
