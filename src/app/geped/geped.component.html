@@ -251,7 +251,7 @@
                         <div class="tabset3">
 
                             <button type="button" (click)="getTeses();publicacao = 'dissertacao'"
-                                class="btn btn-primary m-4">Dissertações e Teses</button>
+                                class="btn btn-primary m-4">TCC, Dissertações e Teses</button>
 
                             <button type="button" (click)="getArtigos();publicacao = 'artigos'"
                                 class="btn btn-primary m-4">Artigos
@@ -267,9 +267,13 @@
                         </div>
 
                         <div id="dissertacao" class="tabset3" *ngIf="publicacao == 'dissertacao'">
-                            <h4> Dissertações e Teses</h4>
+                            <h4> TCC, Dissertações e Teses</h4>
 
                             <div *ngFor="let tese of teses?.teses">
+
+                                Categoria: {{tese.categoryId}}
+                                <br />
+
                                 Título:
                                 <a style="color:#499acd" target="_blank" href="{{tese.linkTesis}}">
                                     {{tese.titleTesis}} </a>
