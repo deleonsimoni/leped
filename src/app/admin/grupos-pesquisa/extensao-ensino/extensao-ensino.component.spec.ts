@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExtensaoEnsinoComponent } from './extensao-ensino.component';
+import { ExtensaoEnsinoComponent } from './.component';
 
 describe('ExtensaoEnsinoComponent', () => {
   let component: ExtensaoEnsinoComponent;
@@ -8,9 +8,9 @@ describe('ExtensaoEnsinoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ExtensaoEnsinoComponent ]
+      declarations: [ExtensaoEnsinoComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

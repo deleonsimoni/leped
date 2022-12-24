@@ -52,6 +52,31 @@ export class GepedComponent implements OnInit {
 
   }
 
+
+  stringtoDate(a: any, b: any) {
+
+
+    // converto a data recebida em array
+    let data1 = a.dateTesis.split("/");
+    let data2 = b.dateTesis.split("/");
+    // converto os valores em objeto data
+    var d1 = new Date(data1[0], data1[1], data1[2]);
+    var d2 = new Date(data2[0], data2[1], data2[2]);
+    // retorna o objeto
+
+    return d1 > d2;
+
+
+  }
+
+
+
+  ordenarTeses() {
+
+    this.teses.sort(this.stringtoDate, -1);
+
+  }
+
   sanitizeVideo(link) {
     if (link && link.includes('watch')) {
       link = link.replace('watch?v=', 'embed/');
@@ -122,6 +147,7 @@ export class GepedComponent implements OnInit {
     this.gepedService.getTeses('geped')
       .subscribe((res: any) => {
         this.teses = res[0];
+        //   this.ordenarTeses();
       }, err => {
         console.log(err);
       });

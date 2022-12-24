@@ -46,7 +46,8 @@ export class ExtensaoEnsinoComponent implements OnInit {
       minWidth: "40%",
       maxWidth: "100%",
       data: {
-        form
+        form,
+        type: this.type
       }
     });
 

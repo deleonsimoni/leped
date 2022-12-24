@@ -46,7 +46,7 @@ export class DialogGroupTesesComponent {
     this.grupoForm.patchValue({
 
       titleTesis: data.titleTesis,
-      category: data.categoryId,
+      categoryId: data.categoryId,
       resume: data.resume,
       authorTesis: data.authorTesis,
       dateTesis: data.dateTesis,

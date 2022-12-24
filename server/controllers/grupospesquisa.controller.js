@@ -49,11 +49,11 @@ module.exports = {
 
 
 async function getExtensaoEnsinogp(req) {
-
+  console.log('a');
   return await GrupoPesquisa.find({ type: req.query.type })
     .select('extensaoEnsino')
     .sort({
-      createAt: -1
+      'extensaoEnsino.$.createAt': -1,
     });
 }
 
@@ -100,11 +100,13 @@ async function updateExtensaoEnsinogp(req, idUser) {
 
 async function getTesesgp(req) {
 
-  return await GrupoPesquisa.find({ type: req.query.type })
-    .select('teses')
-    .sort({
-      createAt: -1
-    });
+  return await GrupoPesquisa.aggregate([
+    { $match: { type: req.query.type } },
+    { $unwind: '$teses' },
+    { $sort: { 'teses.createAt': -1 } },
+    { $group: { _id: '$_id', teses: { $push: '$teses' } } }]);
+
+
 }
 
 async function insertTesesgp(req, idUser) {

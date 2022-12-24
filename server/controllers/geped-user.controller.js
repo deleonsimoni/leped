@@ -47,16 +47,16 @@ async function getExtensaoEnsino(req) {
       { $match: { type: req.query.type } },
       { $unwind: '$extensaoEnsino' },
       { $match: { 'extensaoEnsino.icEnsino': tipo } },
-      { $sort: { 'extensaoEnsino.ordem': -1 } },
+      { $sort: { 'extensaoEnsino.createAt': -1 } },
       { $group: { _id: '$_id', extensaoEnsino: { $push: '$extensaoEnsino' } } }]);
 
   }
   else {
-    return await GrupoPesquisa.find({ type: req.query.type })
-      .select('extensaoEnsino')
-      .sort({
-        createAt: -1
-      });
+    return await GrupoPesquisa.aggregate([
+      { $match: { type: req.query.type } },
+      { $unwind: '$extensaoEnsino' },
+      { $sort: { 'extensaoEnsino.createAt': -1 } },
+      { $group: { _id: '$_id', extensaoEnsino: { $push: '$extensaoEnsino' } } }]);
 
   }
 
@@ -90,10 +90,16 @@ async function getCapitulos(req) {
 
 async function getTeses(req) {
 
-  return await GrupoPesquisa.find({ type: req.query.type })
-    .select('teses')
-    .sort({
-      createAt: -1
-    });
-}
+  /* return await GrupoPesquisa.find({ type: req.query.type })
+     .select('teses')
+     .sort({
+       createAt: -1
+     });*/
 
+
+  return await GrupoPesquisa.aggregate([
+    { $match: { type: req.query.type } },
+    { $unwind: '$teses' },
+    { $sort: { 'teses.createAt': -1 } },
+    { $group: { _id: '$_id', teses: { $push: '$teses' } } }]);
+}

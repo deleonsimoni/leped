@@ -2,6 +2,8 @@ import { Component, Inject } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { ImagePathComplement } from "@app/shared/pipes/image-path-complement.pipe";
+import { ActivatedRoute } from '@angular/router';
+import { type } from "os";
 
 @Component({
   selector: 'app-dialog-extensao-ensino-group',
@@ -11,12 +13,13 @@ import { ImagePathComplement } from "@app/shared/pipes/image-path-complement.pip
 export class DialogExtensaoEnsinoGroupComponent {
 
   public grupoForm: FormGroup;
-
+  type;
 
   constructor(
     private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
     private dialogRef: MatDialogRef<DialogExtensaoEnsinoGroupComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { form: any },
+    @Inject(MAT_DIALOG_DATA) public data: { form: any, type: any },
     private pipeImage: ImagePathComplement
   ) {
     this.grupoForm = this.createForm();
@@ -24,23 +27,28 @@ export class DialogExtensaoEnsinoGroupComponent {
     if (this.data.form != null) {
       this.fillForm(this.data.form);
     }
+    this.type = this.data.type;
 
   }
+
 
   private createForm(): FormGroup {
     return this.formBuilder.group({
       title: [null, [Validators.required]],
-      date: [null, [Validators.required]],
-      type: [null, [Validators.required]],
-      coordination: [null, [Validators.required]],
-      resume: [null, [Validators.required]],
+      date: [null, []],
+      type: [null, []],
+      coordination: [null, []],
+      resume: [null, []],
       financing: [null, []],
-      icEnsino: [null, [Validators.required]],
+      icEnsino: [null, []],
       researchLink: [null, []],
       link: [null, []],
       linkYoutube: [null, []]
     });
+
   }
+
+
 
   private fillForm(data: any): void {
     this.grupoForm.patchValue({
@@ -50,7 +58,7 @@ export class DialogExtensaoEnsinoGroupComponent {
       coordination: data.coordination,
       resume: data.resume,
       financing: data.financing,
-      icEnsino: data.icPesquisa,
+      icEnsino: data.icEnsino,
       researchLink: data.researchLink,
       link: data.link,
       linkYoutube: data.linkYoutube

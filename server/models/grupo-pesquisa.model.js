@@ -143,7 +143,6 @@ const GrupoPesquisaSchema = new mongoose.Schema(
 
       icEnsino: {
         type: String,
-        required: true
       },
 
       title: {
@@ -159,12 +158,12 @@ const GrupoPesquisaSchema = new mongoose.Schema(
       },
       resume: {
         type: String,
-        required: true
+
       },
 
       coordination: {
         type: String,
-        required: true
+
       },
 
       financing: {
