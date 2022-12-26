@@ -90,13 +90,6 @@ async function getCapitulos(req) {
 
 async function getTeses(req) {
 
-  /* return await GrupoPesquisa.find({ type: req.query.type })
-     .select('teses')
-     .sort({
-       createAt: -1
-     });*/
-
-
   return await GrupoPesquisa.aggregate([
     { $match: { type: req.query.type } },
     { $unwind: '$teses' },

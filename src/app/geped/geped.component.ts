@@ -41,6 +41,14 @@ export class GepedComponent implements OnInit {
 
   }
 
+  ordenarTeses() {
+    this.teses.teses.sort(function (a: any, b: any) {
+      let date1 = b.dateTesis.split('/');
+      let date2 = a.dateTesis.split('/');
+      return new Date(date1[2], date1[1] - 1, date1[0]).getTime() - new Date(date2[2], date2[1] - 1, date2[0]).getTime();
+    });
+
+  }
 
   ordenarParticipantes() {
 
@@ -49,31 +57,6 @@ export class GepedComponent implements OnInit {
       if (a.name > b.name) { return 1; }
       return 0;
     })
-
-  }
-
-
-  stringtoDate(a: any, b: any) {
-
-
-    // converto a data recebida em array
-    let data1 = a.dateTesis.split("/");
-    let data2 = b.dateTesis.split("/");
-    // converto os valores em objeto data
-    var d1 = new Date(data1[0], data1[1], data1[2]);
-    var d2 = new Date(data2[0], data2[1], data2[2]);
-    // retorna o objeto
-
-    return d1 > d2;
-
-
-  }
-
-
-
-  ordenarTeses() {
-
-    this.teses.sort(this.stringtoDate, -1);
 
   }
 
@@ -147,7 +130,7 @@ export class GepedComponent implements OnInit {
     this.gepedService.getTeses('geped')
       .subscribe((res: any) => {
         this.teses = res[0];
-        //   this.ordenarTeses();
+        this.ordenarTeses();
       }, err => {
         console.log(err);
       });

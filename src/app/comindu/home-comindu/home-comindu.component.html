@@ -1,8 +1,8 @@
 <section id="chefs" class="chefs">
     <div class="container" data-aos="fade-up">
 
-        <div class="section-header">
-            <p>COM.INDU</p>
+        <div class="hero section-header" style="min-height: 0;">
+            <h2>COM.INDU</h2>
         </div>
 
         <div class="twelve" data-aos="fade-right">
@@ -20,6 +20,12 @@
         </div>
 
         <div class="row">
+
+            <div class="col-2 example-button-row">
+                <button mat-raised-button color="primary" [routerLink]="['/auth/register']">
+                    <mat-icon>accessibility_new</mat-icon> Cadastre-se Agora
+                </button>
+            </div>
             <div *ngIf="user?.isAdmin" class="col-2 example-button-row">
                 <button mat-raised-button color="primary" (click)="register()">
                     <mat-icon>mediation</mat-icon> Criar Comunidade
@@ -41,7 +47,7 @@
         <div>
             <mat-chip-list aria-label="Fish selection" class="p-2" data-aos="fade-right">
 
-                <mat-chip color="accent" selected *ngFor="let tag of tags">
+                <mat-chip color="warn" selected *ngFor="let tag of tags">
                     {{tag.name | lowercase}}
                 </mat-chip>
 
@@ -53,7 +59,7 @@
             <div class="row">
 
                 <div *ngFor="let comunidade of comunidades" class="card-wrapper col-4">
-                    <mat-card>
+                    <mat-card style="cursor: pointer;" [routerLink]="['../comunidade-indu', comunidade._id]">
                         <mat-card-header class="purple" [style.background]="comunidade.cor">
                             <button mat-button>
                                 <mat-card-title>{{comunidade.name | titlecase}}</mat-card-title>
@@ -67,9 +73,9 @@
                         </mat-card-content>
                         <mat-card-actions align="end" class="pb-2">
 
-                            <button mat-raised-button color="accent"
+                            <!--<button mat-raised-button color="accent"
                                 [routerLink]="['../comunidade-indu', comunidade._id]">ENTRAR</button>
-                            <!--<button mat-button color="basic"><i title="Compartilhar"
+                            <button mat-button color="basic"><i title="Compartilhar"
                                     class="bi bi-share fa-2x"></i></button>-->
                         </mat-card-actions>
                     </mat-card>

@@ -43,6 +43,13 @@ export class GedocComponent implements OnInit {
 
   }
 
+  ordenarTeses() {
+    this.teses.sort(function (a: any, b: any) {
+      return new Date(b.dateTesis).getTime() - new Date(a.dateTesis).getTime();
+    });
+
+  }
+
   ordenarParticipantes() {
 
     this.home.participantes.sort(function (a, b) {
@@ -123,6 +130,7 @@ export class GedocComponent implements OnInit {
     this.gepedService.getTeses('gedoc')
       .subscribe((res: any) => {
         this.teses = res[0];
+
       }, err => {
         console.log(err);
       });
