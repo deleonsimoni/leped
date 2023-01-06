@@ -48,13 +48,24 @@ module.exports = {
 };
 
 
-async function getExtensaoEnsinogp(req) {
-  console.log('a');
+/*async function getExtensaoEnsinogp(req) {
+
   return await GrupoPesquisa.find({ type: req.query.type })
     .select('extensaoEnsino')
     .sort({
       'extensaoEnsino.$.createAt': -1,
     });
+}*/
+
+async function getExtensaoEnsinogp(req) {
+
+  return await GrupoPesquisa.aggregate([
+    { $match: { type: req.query.type } },
+    { $unwind: '$extensaoEnsino' },
+    { $sort: { 'extensaoEnsino.createAt': -1 } },
+    { $group: { _id: '$_id', extensaoEnsino: { $push: '$extensaoEnsino' } } }]);
+
+
 }
 
 async function insertExtensaoEnsinogp(req, idUser) {
