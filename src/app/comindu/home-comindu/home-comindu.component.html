@@ -19,72 +19,90 @@
             <h1><u>Com</u>unidades</h1>
         </div>
 
+        <div style="text-align: justify;" class="mt-4 mb-4" *ngIf="!user?.icComprovanteValido">
+            Para participar das comunidade é necessário criar sua conta no botão "Cadastre-se Agora" e aguardar a
+            análise dos administradores.
+            Caso já possua uma conta aguarde a validação da mesma.
+        </div>
         <div class="row">
-
-            <div class="col-2 example-button-row">
+            <div *ngIf="!user" class="col-2 example-button-row">
                 <button mat-raised-button color="primary" [routerLink]="['/auth/register']">
                     <mat-icon>accessibility_new</mat-icon> Cadastre-se Agora
                 </button>
             </div>
-            <div *ngIf="user?.isAdmin" class="col-2 example-button-row">
-                <button mat-raised-button color="primary" (click)="register()">
-                    <mat-icon>mediation</mat-icon> Criar Comunidade
-                </button>
-            </div>
-            <div *ngIf="user" class="col-2 example-button-row">
-                <a></a><button mat-raised-button color="accent" routerLink="/meu-indu">
-                    <mat-icon>home</mat-icon> Meu com.indu
-                </button>
-            </div>
+
             <div *ngIf="!user" class="col-2 example-button-row">
-                <a></a><button mat-raised-button color="accent" routerLink="/auth/register">
-                    <mat-icon>emoji_people</mat-icon> Cadastre-se com.indu
+                <button mat-raised-button color="accent" [routerLink]="['/auth/login']">
+                    <mat-icon>login</mat-icon> Login
                 </button>
             </div>
         </div>
 
-
-        <div>
-            <mat-chip-list aria-label="Fish selection" class="p-2" data-aos="fade-right">
-
-                <mat-chip color="warn" selected *ngFor="let tag of tags">
-                    {{tag.name | lowercase}}
-                </mat-chip>
-
-            </mat-chip-list>
-
-        </div>
-
-        <div>
+        <div *ngIf="user?.isAdmin || user?.icComprovanteValido">
             <div class="row">
 
-                <div *ngFor="let comunidade of comunidades" class="card-wrapper col-4">
-                    <mat-card style="cursor: pointer;" [routerLink]="['../comunidade-indu', comunidade._id]">
-                        <mat-card-header class="purple" [style.background]="comunidade.cor">
-                            <button mat-button>
-                                <mat-card-title>{{comunidade.name | titlecase}}</mat-card-title>
-                                <mat-card-subtitle><span *ngFor="let tag of comunidade.tags">{{tag}} + </span>
-                                </mat-card-subtitle>
-                            </button>
-                        </mat-card-header>
-                        <mat-card-content>
-                            <p>{{comunidade.content}}</p>
-                            <mat-divider></mat-divider>
-                        </mat-card-content>
-                        <mat-card-actions align="end" class="pb-2">
 
-                            <!--<button mat-raised-button color="accent"
+
+                <div *ngIf="user" class="col-2 example-button-row">
+                    <a></a><button mat-raised-button color="accent" routerLink="/meu-indu">
+                        <mat-icon>home</mat-icon> Meu com.indu
+                    </button>
+                </div>
+                <div *ngIf="user?.isAdmin" class="col-2 example-button-row">
+                    <a></a><button mat-raised-button color="accent" routerLink="/com-indu/admin/usuarios">
+                        <mat-icon>home</mat-icon> Analisar Incrições
+                    </button>
+                </div>
+                <div *ngIf="user?.isAdmin" class="col-2 example-button-row">
+                    <button mat-raised-button color="primary" (click)="register()">
+                        <mat-icon>mediation</mat-icon> Criar Comunidade
+                    </button>
+                </div>
+
+            </div>
+
+
+            <div>
+                <mat-chip-list aria-label="Fish selection" class="p-2" data-aos="fade-right">
+
+                    <mat-chip color="warn" selected *ngFor="let tag of tags">
+                        {{tag.name | lowercase}}
+                    </mat-chip>
+
+                </mat-chip-list>
+
+            </div>
+
+            <div>
+                <div class="row">
+
+                    <div *ngFor="let comunidade of comunidades" class="card-wrapper col-4">
+                        <mat-card style="cursor: pointer;" [routerLink]="['../comunidade-indu', comunidade._id]">
+                            <mat-card-header class="purple" [style.background]="comunidade.cor">
+                                <button mat-button>
+                                    <mat-card-title>{{comunidade.name | titlecase}}</mat-card-title>
+                                    <mat-card-subtitle><span *ngFor="let tag of comunidade.tags">{{tag}} + </span>
+                                    </mat-card-subtitle>
+                                </button>
+                            </mat-card-header>
+                            <mat-card-content>
+                                <p>{{comunidade.content}}</p>
+                                <mat-divider></mat-divider>
+                            </mat-card-content>
+                            <mat-card-actions align="end" class="pb-2">
+
+                                <!--<button mat-raised-button color="accent"
                                 [routerLink]="['../comunidade-indu', comunidade._id]">ENTRAR</button>
                             <button mat-button color="basic"><i title="Compartilhar"
                                     class="bi bi-share fa-2x"></i></button>-->
-                        </mat-card-actions>
-                    </mat-card>
+                            </mat-card-actions>
+                        </mat-card>
+                    </div>
+
+
                 </div>
-
-
             </div>
         </div>
-
 
     </div>
 </section>

@@ -50,6 +50,9 @@ import { ColorPickerModule } from 'ngx-color-picker';
 import { registerLocaleData } from '@angular/common';
 import localePT from '@angular/common/locales/pt';
 import { MeuCominduComponent } from './comindu/meu-comindu/meu-comindu.component';
+import { InscritosComponent } from './comindu/admin/inscritos/inscritos.component';
+import { InscritosCardComponent } from './comindu/admin/inscritos-card/inscritos-card.component';
+import { InscritosDataComponent } from './comindu/admin/inscritos-data/inscritos-data.component';
 
 registerLocaleData(localePT);
 
@@ -78,6 +81,7 @@ export function appInitializerFactory(authService: AuthService) {
     ColorPickerModule,
     NgxPopperModule.forRoot(),
 
+
   ],
   declarations: [
     AppComponent,
@@ -104,6 +108,9 @@ export function appInitializerFactory(authService: AuthService) {
     RegisterCominduComponent,
     ComunidadeCominduComponent,
     MeuCominduComponent,
+    InscritosComponent,
+    InscritosCardComponent,
+    InscritosDataComponent,
 
   ],
   providers: [

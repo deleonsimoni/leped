@@ -13,6 +13,18 @@ export class CominduService {
     return this.http.get(`/api/comindu/comunidades`);
   }
 
+  confirmComprovante(id) {
+    return this.http.post(`/api/user/confirmComprovante/${id}`, {});
+  }
+
+  negarComprovante(id) {
+    return this.http.post(`/api/user/negarComprovante/${id}`, {});
+  }
+
+  retrieveUsers(page, search) {
+    return this.http.get(`/api/user/usrs?page=${page}&search=${search}`);
+  }
+
   listAdmins() {
     return this.http.get(`/api/comindu/listAdmins`);
   }
@@ -23,6 +35,14 @@ export class CominduService {
 
   desinscrever(id) {
     return this.http.post(`/api/comindu/unsubscribe/${id}`, {});
+  }
+
+  inativarComunidade(id) {
+    return this.http.post(`/api/comindu/inativarComunidade/${id}`, {});
+  }
+
+  ativarComunidade(id) {
+    return this.http.post(`/api/comindu/ativarComunidade/${id}`, {});
   }
 
   listMyComunidades() {

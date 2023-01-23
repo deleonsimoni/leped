@@ -3,6 +3,16 @@
 
         <div class="section-header">
             <p>COM.INDU</p>
+            <div class="row">
+                <div *ngIf="user?.isAdmin && comunidade" class="example-button-row">
+                    <button *ngIf="comunidade.isAtiva" mat-raised-button color="warn" (click)="inativarComunidade()">
+                        <mat-icon>auto_delete</mat-icon> Inativar Comunidade
+                    </button>
+                    <button *ngIf="!comunidade.isAtiva" mat-raised-button color="primary" (click)="ativarComunidade()">
+                        <mat-icon>power</mat-icon> Ativar Comunidade
+                    </button>
+                </div>
+            </div>
         </div>
 
         <div class=" text-center">

@@ -31,9 +31,15 @@ export class AuthService {
       );
   }
 
-  register(form: any): Observable<User> {
+  register(form: any, comprovante: any): Observable<User> {
+
+
+    const formData: FormData = new FormData();
+    formData.append('comprovante', comprovante, comprovante.name);
+    formData.append('formulario', JSON.stringify(form));
+
     return this.http
-      .post<AuthResponse>('/api/auth/register', form)
+      .post<AuthResponse>('/api/auth/register', formData)
       .pipe(
         tap(({ token, user }) => {
           this.setUser(user);

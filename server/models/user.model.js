@@ -26,6 +26,11 @@ const UserSchema = new mongoose.Schema(
     dateBirth: {
       type: Date
     },
+
+    comprovanteProfessorPath: {
+      type: String
+    },
+
     comunidades: [
       {
         idComunidade: {
@@ -34,6 +39,10 @@ const UserSchema = new mongoose.Schema(
         }
       }
     ],
+
+    icComprovanteValido: {
+      type: Boolean
+    },
 
     address: {
       street: String,

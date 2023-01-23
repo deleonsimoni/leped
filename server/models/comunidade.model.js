@@ -13,6 +13,11 @@ const ComunidadeSchema = new mongoose.Schema(
       default: Date.now
     },
 
+    isAtiva: {
+      type: Boolean,
+      default: true
+    },
+
     name: {
       type: String,
       required: true

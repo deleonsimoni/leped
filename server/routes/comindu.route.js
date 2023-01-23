@@ -9,7 +9,9 @@ const router = express.Router();
 module.exports = router;
 
 router.get('/tags', asyncHandler(getTags));
-router.get('/comunidades', asyncHandler(getComunidades));
+router.get('/comunidades', passport.authenticate('jwt', {
+    session: false
+}), asyncHandler(getComunidades));
 router.get('/comunidadesById/:comunidade', asyncHandler(getComunidadesById));
 router.get('/comunidade/:comunidade/chats/:post', asyncHandler(getChats));
 router.get('/listAdmins', [passport.authenticate('jwt', {
@@ -31,16 +33,38 @@ router.post('/comunidade/:comunidade/postChat/:post/chat', [passport.authenticat
 router.post('/comunidade', [passport.authenticate('jwt', {
     session: false
 }), requireAdmin, fileUpload()], asyncHandler(insertComunidade));
+
 router.post('/subscribe/:comunidade', passport.authenticate('jwt', {
     session: false
 }), asyncHandler(subscribeComunidade));
+
 router.post('/unsubscribe/:comunidade', passport.authenticate('jwt', {
     session: false
 }), asyncHandler(unsubscribeComunidade));
+
 router.post('/postSend/:comunidade', passport.authenticate('jwt', {
     session: false
 }), asyncHandler(postSend));
 
+router.post('/inativarComunidade/:comunidade', [passport.authenticate('jwt', {
+    session: false
+}), requireAdmin], asyncHandler(inativarComunidade));
+
+router.post('/ativarComunidade/:comunidade', [passport.authenticate('jwt', {
+    session: false
+}), requireAdmin], asyncHandler(ativarComunidade));
+
+
+
+async function inativarComunidade(req, res) {
+    let response = await cominduCtrl.inativarComunidade(req.params.comunidade);
+    res.json(response);
+}
+
+async function ativarComunidade(req, res) {
+    let response = await cominduCtrl.ativarComunidade(req.params.comunidade);
+    res.json(response);
+}
 
 
 async function postChat(req, res) {
@@ -86,7 +110,7 @@ async function getTags(req, res) {
 }
 
 async function getComunidades(req, res) {
-    let response = await cominduCtrl.getComunidades();
+    let response = await cominduCtrl.getComunidades(req.user);
     res.json(response);
 }
 

@@ -20,6 +20,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { CustomComponentsModule } from './components/custom-components.module';
 import { CustomDialogsModule } from './dialogs/custom-dialogs.module';
@@ -47,6 +48,7 @@ import { CustomDialogsModule } from './dialogs/custom-dialogs.module';
     MatFormFieldModule,
     MatProgressBarModule,
     MatDatepickerModule,
+    MatPaginatorModule,
     MatNativeDateModule,
     CustomComponentsModule,
     CustomDialogsModule

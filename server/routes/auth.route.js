@@ -4,11 +4,13 @@ const passport = require('passport');
 const userCtrl = require('../controllers/user.controller');
 const authCtrl = require('../controllers/auth.controller');
 const config = require('../config/config');
+const fileUpload = require('express-fileupload');
 
 const router = express.Router();
 module.exports = router;
 
-router.post('/register', asyncHandler(register), login);
+router.post('/register', [fileUpload()], asyncHandler(register), login);
+
 router.post(
   '/login',
   passport.authenticate('local', { session: false }),
@@ -17,7 +19,7 @@ router.post(
 router.get('/me', passport.authenticate('jwt', { session: false }), login);
 
 async function register(req, res, next) {
-  let user = await userCtrl.insert(req.body);
+  let user = await userCtrl.insert(req);
   user = user.toObject();
   delete user.hashedPassword;
   req.user = user;

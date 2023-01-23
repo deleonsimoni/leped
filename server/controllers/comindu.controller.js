@@ -24,15 +24,43 @@ module.exports = {
 
   minhasComunidades,
 
+  inativarComunidade,
+  ativarComunidade,
+
   listAdmins
 };
+
+async function inativarComunidade(id) {
+  return await Comunidade.findByIdAndUpdate(id,
+    {
+      isAtiva: false
+    },
+    {
+      upsert: true
+    }
+  );
+
+}
+
+async function ativarComunidade(id) {
+  return await Comunidade.findByIdAndUpdate(id,
+    {
+      isAtiva: true
+    }
+  );
+
+}
 
 async function getTags() {
   return await Tag.find().select("name");
 }
 
-async function getComunidades() {
-  return await Comunidade.find().select("name content cor tags");
+async function getComunidades(user) {
+  if (user.roles.includes('admin')) {
+    return await Comunidade.find().select("name content cor tags isAtiva");
+  } else {
+    return await Comunidade.find({ isAtiva: true }).select("name content cor tags isAtiva");
+  }
 }
 
 async function minhasComunidades(id) {
@@ -45,7 +73,7 @@ async function minhasComunidades(id) {
 async function getComunidadesById(id) {
   return await Comunidade
     .findById(id)
-    .select("name content cor tags imagePathS3 posts.content posts.createAt posts._id")
+    .select("name content cor tags imagePathS3 posts.content posts.createAt posts._id isAtiva")
     .populate('subscribers.userId', 'socialname bio')
     .populate('posts.user', 'socialname image');
 

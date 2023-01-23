@@ -1,0 +1,51 @@
+<div class="card-works">
+    <div class="row">
+        <div class="col-sm-3 border-right">
+            <small>NOME</small>
+            <h4>{{ subscribed.fullname.toLowerCase() }}</h4>
+        </div>
+        <div class="col-sm-3 border-right">
+            <small>EMAIL</small>
+            <h4>{{ subscribed.email.toLowerCase() }}</h4>
+        </div>
+
+        <div class="col-sm-3 border-right">
+            <small>COMPROVANTE</small>
+            <h4><a style="color:white;" href="{{ baixarComprovante(subscribed.comprovanteProfessorPath) }}"> CLIQUE PARA
+                    BAIXAR </a></h4>
+        </div>
+
+
+        <div class="col-sm-2">
+
+            <div class="row ">
+
+                <div class="col-sm-12">
+                    <small>STATUS</small>
+                    <h4>{{ subscribed.icComprovanteValido ? 'Comprovante válido' : 'Aguardando comprovação'}}</h4>
+
+                    <small>Validar</small>
+                    <div>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button (click)="confirmComprovante(subscribed)"
+                                [ngStyle]="{'background-color: green;color:white':  subscribed.icComprovanteValido, 'background-color: white;color: black': subscribed.icComprovanteValido}"
+                                type="button" [ngClass]="{'btn btn-success': subscribed.icComprovanteValido}"
+                                class="btn">Sim</button>
+                            <button (click)="negarComprovante(subscribed)"
+                                [ngStyle]="{'background-color: red;color:white':  !subscribed.icComprovanteValido, 'background-color: white;color: black': subscribed.icComprovanteValido}"
+                                type="button" [ngClass]="{'btn btn-danger': !subscribed.icComprovanteValido}"
+                                class="btn">Não</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-sm-1 text-center align-self-center pointer" style="cursor: pointer;"
+            (click)="selectUser(subscribed);">
+            <i class="fa fa-chevron-down"></i>
+        </div>
+    </div>
+</div>

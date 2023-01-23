@@ -125,8 +125,27 @@ export class ComunidadeCominduComponent implements OnInit {
   }
 
 
+  inativarComunidade() {
+    if (confirm("Tem certeza que deseja inativar essa comunidade?")) {
+      this.cominduService.inativarComunidade(this.comunidade._id)
+        .subscribe((res: any) => {
+          this.carregando = false;
+          this.getComunidade();
+        }, err => {
+          this.carregando = false;
+        });
+    }
+  }
 
-
+  ativarComunidade() {
+    this.cominduService.ativarComunidade(this.comunidade._id)
+      .subscribe((res: any) => {
+        this.carregando = false;
+        this.getComunidade();
+      }, err => {
+        this.carregando = false;
+      });
+  }
 
 
 

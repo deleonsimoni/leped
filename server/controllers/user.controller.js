@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt');
 const Joi = require('joi');
 const User = require('../models/user.model');
 const S3Uploader = require('./aws.controller');
+const paginate = require("jw-paginate");
 
 
 const userSchema = Joi.object({
@@ -14,13 +15,85 @@ const userSchema = Joi.object({
 
 module.exports = {
   insert,
-  updateBio
+  updateBio,
+  getUsers,
+  negarComprovante,
+  confirmComprovante
 };
 
-async function insert(user) {
+async function confirmComprovante(id) {
+  return await User.findByIdAndUpdate(id,
+    {
+      icComprovanteValido: true
+    },
+    {
+      upsert: true
+    }
+  );
+}
+
+async function negarComprovante(id) {
+  return await User.findByIdAndUpdate(id,
+    {
+      icComprovanteValido: false,
+    },
+    {
+      upsert: true
+    }
+  );
+}
+
+
+async function getUsers(req) {
+  const pageSize = 10;
+  const page = req.query.page || 1;
+  let usersFound = [];
+  let search = JSON.parse(req.query.search);
+
+  usersFound = await User.find(search)
+
+    .sort({
+      createdAt: -1,
+    })
+    .skip(pageSize * page - pageSize)
+    .limit(pageSize);
+
+  numbOfUsers = await User.count(search);
+
+  const pager = paginate(numbOfUsers, page, pageSize);
+
+  return {
+    usersFound,
+    pager,
+  };
+}
+
+async function insert(req) {
+
+  let user = JSON.parse(req.body.formulario);
   user.hashedPassword = bcrypt.hashSync(user.password, 10);
   delete user.password;
-  return await new User(user).save();
+  let retorno = {};
+
+  if (req.files) {
+    let fileName = 'comprovantes/usuarios/' + user.email + '/' + req.files.comprovante.name;
+    await S3Uploader.uploadFile(fileName, req.files.comprovante.data).then(async fileData => {
+      console.log('Arquivo submetido para AWS ' + fileName);
+      user.comprovanteProfessorPath = fileName;
+      retorno.temErro = false;
+    }, err => {
+      console.log('Erro ao enviar imagem para AWS: ' + fileName);
+      retorno.temErro = true;
+      retorno.mensagem = 'Servidor momentaneamente inoperante. Tente novamente mais tarde.';
+    });
+  }
+
+
+  if (retorno.temErro) {
+    return 'Ocorreu um erro ao registrar';
+  } else {
+    return await new User(user).save();
+  }
 }
 
 async function updateBio(req) {

@@ -1,0 +1,73 @@
+<section id="chefs" class="chefs">
+    <div class="container" data-aos="fade-up">
+
+        <div class="hero section-header" style="min-height: 0;">
+            <h2>COM.INDU</h2>
+        </div>
+
+        <div class="twelve" data-aos="fade-right">
+            <h1>Usuários</h1>
+        </div>
+
+        <div>
+            <div *ngIf="pager.totalItems">Total de {{ pager.totalItems }} usuários
+
+                <!-- <button *ngIf="status == '5' && !gerandoRelatorio" (click)="export()" class="btn btn-primary">
+              <i class="fa fa-file-excel-o"></i> Exportar
+              Excel
+          </button>-->
+
+                <div *ngIf="gerandoRelatorio">
+                    <i class="fas fa-spinner fa-pulse"></i>Aguarde...
+                </div>
+
+            </div>
+
+            <div class="row" *ngIf="user && user.icAdmin">
+                <div class="col-md-8">
+
+                </div>
+                <div class="col-md-4">
+                    <select class="form-control" [(ngModel)]="status" (change)="clearEmail()">
+                        <option value="5">Todos </option>
+
+                        <option value="7">Aguardando validação de pagamento</option>
+                        <option value="6">Pagamento Válido</option>
+                        <option value="3">Deficientes</option>
+                        <option disabled="disabled">-----------------------</option>
+                        <option value="4">Trabalhos Submetidos</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="row" style="padding-bottom: 6px;" *ngIf="user && user.isAdmin">
+
+
+                <!--  <div *ngIf="status == '6' && !gerandoRelatorio" style="padding-left: 50%;" class="col-md-8 float-right pull-right">
+        <button class="btn-danger" (click)="gerarRelatorio()">Gerar Relatório</button>
+      </div>-->
+            </div>
+
+            <div *ngFor="let subscribed of users; let i = index" [ngClass]="{'mb-3': users.length > 1}">
+
+                <app-inscritos-card data-aos="fade-up" [subscribed]="subscribed"
+                    (selected)="receiverSelectedUser($event)">
+                </app-inscritos-card>
+
+                <app-inscritos-data data-aos="fade-up" [subscribed]="subscribed" (update)="updateUser($event)"
+                    *ngIf="subscribed && subscribed._id == userSelect">
+                </app-inscritos-data>
+
+            </div>
+
+            <div *ngIf="pager.totalItems" class="pagination justify-content-center">
+
+                <mat-paginator [length]="pager.totalItems" [pageSize]="pager.pageSize"
+                    (page)="pageEvent = retrieveAdminData($event)">
+                </mat-paginator>
+
+            </div>
+        </div>
+    </div>
+</section>
