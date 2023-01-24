@@ -61,6 +61,18 @@ export class CominduService {
     return this.http.get(`/api/comindu/comunidade/${idComunidade}/chats/${idPost}`);
   }
 
+  blokChat(idComunidade, idPost) {
+    return this.http.post(`/api/comindu/comunidade/${idComunidade}/chats/${idPost}/block`, {});
+  }
+
+  unblokChat(idComunidade, idPost) {
+    return this.http.post(`/api/comindu/comunidade/${idComunidade}/chats/${idPost}/unblock`, {});
+  }
+
+  deletePost(idComunidade, idPost) {
+    return this.http.delete(`/api/comindu/comunidade/${idComunidade}/chats/${idPost}`);
+  }
+
   postChat(post, idPost, idComunidade) {
     return this.http.post(`/api/comindu/comunidade/${idComunidade}/postChat/${idPost}/chat`, { post: post });
   }

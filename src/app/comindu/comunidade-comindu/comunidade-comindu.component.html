@@ -58,7 +58,7 @@
                 </div>
             </div>
 
-            <div class="col-8">
+            <div class="col-10">
                 <div class="twelve purple" data-aos="flip-left">
                     <h1>{{comunidade?.name | titlecase}}</h1>
                 </div>
@@ -70,35 +70,88 @@
 
                 </mat-chip-list>
 
-                <div id="chefs" class="content p-2" data-aos="zoom-in-down">
 
 
-                    <div class="message" *ngFor="let post of comunidade?.posts">
 
-                        <div class='deck' data-aos="fade-right">
-                            <div class='card'>
-                                <header class='cardHeader'>
-                                    <i class='fab fa-instagram cardHeader_type'></i>
-                                    <span class='cardHeader_account'>{{post.user.socialname}}</span>
-                                    <span class='cardHeader_date'>{{post.createAt | date: 'MMM d HH:mm'}}</span>
-                                </header>
-                                <div class='cardBody'>
-                                    <p class='cardText' [innerHTML]="post.content">
-                                    </p>
+                <div id="chefs" class="content p-2">
 
+                    <ul id="comments-list" class="comments-list">
+                        <div class="message" *ngFor="let post of comunidade?.posts">
+                            <li>
+                                <div class='deck' data-aos="fade-right">
+                                    <div class='card'>
+                                        <header class='cardHeader'>
+                                            <i class='fab fa-instagram cardHeader_type'></i>
+                                            <span class='cardHeader_account'>{{post.user.socialname}}</span>
+                                            <span class='cardHeader_date'>{{post.createAt | date: 'MMM d HH:mm'}}</span>
+                                        </header>
+                                        <div class='cardBody'>
+                                            <p class='cardText' [innerHTML]="post.content">
+                                            </p>
+
+                                        </div>
+                                        <div class='cardFooter'>
+                                            <button mat-button color="basic"
+                                                (click)="getChat(post._id, comunidade._id)"><i style="color: white;"
+                                                    title="Interagir"
+                                                    class="bi bi-chat-left-text-fill fa-2x"></i></button>
+
+                                            <button *ngIf="user.isAdmin && !post.blockComment" mat-button color="basic"
+                                                (click)="blokChat(post._id, comunidade._id)"><i
+                                                    style="color: rgb(214, 0, 0);" title="Bloquear comentários"
+                                                    class="bi bi-x-octagon fa-2x"></i></button>
+
+                                            <button *ngIf="user.isAdmin && post.blockComment" mat-button color="basic"
+                                                (click)="unblokChat(post._id, comunidade._id)"><i
+                                                    style="color: rgb(57, 255, 7);" title="Liberar Comentários"
+                                                    class="bi bi bi-check-circle-fill fa-2x"></i></button>
+
+                                            <button *ngIf="user.isAdmin" mat-button color="basic"
+                                                (click)="deletePost(post._id, comunidade._id)"><i
+                                                    style="color: rgb(253, 0, 0);" title="Deletar Postagem"
+                                                    class="bi bi-trash3-fill fa-2x"></i></button>
+
+                                        </div>
+                                        <ul *ngIf="postSelect && postSelect == post._id"
+                                            class="comments-list reply-list">
+                                            <li>
+                                                <!-- Avatar 
+                                                <div class="comment-avatar"><img
+                                                        src="http://i9.photobucket.com/albums/a88/creaticode/avatar_2_zps7de12f8b.jpg"
+                                                        alt=""></div>-->
+                                                <!-- Contenedor del Comentario -->
+                                                <div class="comment-box">
+                                                    <div class="comment-head">
+                                                        <h6 class="comment-name"><a
+                                                                href="http://creaticode.com/blog">Lorena
+                                                                Rojero</a></h6>
+                                                        <span>hace 10 minutos</span>
+                                                        <!--<i class="fa fa-reply"></i>
+                                                        <i class="fa fa-heart"></i>-->
+                                                    </div>
+                                                    <div class="comment-content">
+                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit
+                                                        omnis animi
+                                                        et iure laudantium vitae, praesentium optio, sapiente distinctio
+                                                        illo?
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <div class="comment-push">
+                                                <button mat-raised-button color="primary" style="width: 100px;"
+                                                    class="btn text-center" (click)="sendChat()">Comentar</button>
+                                                <textarea maxlength="124" placeholder="Deixe seu comentário..."
+                                                    cols="20" type="text" [(ngModel)]="chatSend"></textarea>
+                                            </div>
+
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div class='cardFooter'>
-                                    <button mat-button color="basic" (click)="getChat(post._id, comunidade._id)"><i
-                                            style="color: white;" title="Interagir"
-                                            class="bi bi-chat-left-text-fill fa-2x"></i></button>
 
-                                </div>
-                            </div>
+
+                            </li>
                         </div>
-
-
-
-                    </div>
+                    </ul>
                 </div>
 
                 <div *ngIf="user?.isAdmin" class="mensagem" data-aos="fade-right">
@@ -117,7 +170,7 @@
             </div>
 
 
-
+            <!--
             <div class="col-2 chat-container" *ngIf="postSelect" data-aos="fade-top">
                 <h3 class="text-center publique">Publique</h3>
                 <div class="chat" *ngFor="let chat of chats;let indexOfelement=index;">
@@ -154,7 +207,7 @@
 
 
                 </div>
-            </div>
+            </div>-->
 
         </div><!-- end ROW-->
     </div>

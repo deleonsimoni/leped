@@ -67,6 +67,10 @@ const ComunidadeSchema = new mongoose.Schema(
             type: Date,
             default: Date.now
           },
+          blockComment: {
+            type: Boolean,
+            default: false
+          },
           title: {
             type: String
           },

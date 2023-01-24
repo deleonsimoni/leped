@@ -67,9 +67,22 @@ export class ComunidadeCominduComponent implements OnInit {
       .subscribe((res: any) => {
         this.carregando = false;
         this.comunidade = res;
+        if (this.comunidade.posts) {
+          this.ordenarPosts();
+        }
       }, err => {
         this.carregando = false;
       });
+  }
+
+  ordenarPosts() {
+
+    this.comunidade.posts.sort(function (a, b) {
+      if (a.createAt < b.createAt) { return 1; }
+      if (a.createAt > b.createAt) { return -1; }
+      return 0;
+    })
+
   }
 
   public getChat(idPost, idComunidade) {
@@ -88,6 +101,42 @@ export class ComunidadeCominduComponent implements OnInit {
       });
   }
 
+  public blokChat(idPost, idComunidade) {
+    this.carregando = true;
+    this.cominduService.blokChat(idComunidade, idPost)
+      .subscribe((res: any) => {
+        this.carregando = false;
+        this.getComunidade();
+
+      }, err => {
+        this.carregando = false;
+      });
+  }
+
+  public unblokChat(idPost, idComunidade) {
+    this.carregando = true;
+    this.cominduService.unblokChat(idComunidade, idPost)
+      .subscribe((res: any) => {
+        this.carregando = false;
+        this.getComunidade();
+
+      }, err => {
+        this.carregando = false;
+      });
+  }
+
+  public deletePost(idPost, idComunidade) {
+    if (confirm("Tem certeza que deseja excluir essa postagem?")) {
+      this.carregando = true;
+      this.cominduService.deletePost(idComunidade, idPost)
+        .subscribe((res: any) => {
+          this.carregando = false;
+          this.getComunidade();
+        }, err => {
+          this.carregando = false;
+        });
+    }
+  }
   public sendChat() {
     this.carregando = true;
     this.cominduService.postChat(this.chatSend, this.postSelect, this.idComunidade)

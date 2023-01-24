@@ -12,14 +12,7 @@
         <div>
             <div *ngIf="pager.totalItems">Total de {{ pager.totalItems }} usuários
 
-                <!-- <button *ngIf="status == '5' && !gerandoRelatorio" (click)="export()" class="btn btn-primary">
-              <i class="fa fa-file-excel-o"></i> Exportar
-              Excel
-          </button>-->
 
-                <div *ngIf="gerandoRelatorio">
-                    <i class="fas fa-spinner fa-pulse"></i>Aguarde...
-                </div>
 
             </div>
 
@@ -27,17 +20,7 @@
                 <div class="col-md-8">
 
                 </div>
-                <div class="col-md-4">
-                    <select class="form-control" [(ngModel)]="status" (change)="clearEmail()">
-                        <option value="5">Todos </option>
 
-                        <option value="7">Aguardando validação de pagamento</option>
-                        <option value="6">Pagamento Válido</option>
-                        <option value="3">Deficientes</option>
-                        <option disabled="disabled">-----------------------</option>
-                        <option value="4">Trabalhos Submetidos</option>
-                    </select>
-                </div>
 
             </div>
 
@@ -55,7 +38,7 @@
                     (selected)="receiverSelectedUser($event)">
                 </app-inscritos-card>
 
-                <app-inscritos-data data-aos="fade-up" [subscribed]="subscribed" (update)="updateUser($event)"
+                <app-inscritos-data data-aos="fade-up" [subscribed]="subscribed"
                     *ngIf="subscribed && subscribed._id == userSelect">
                 </app-inscritos-data>
 

@@ -17,7 +17,7 @@ export class InscritosComponent implements OnInit {
   public textSearch;
   user;
   userSelect;
-
+  pageEvent;
   constructor(
     private cominduService: CominduService,
     public authService: AuthService,

@@ -20,6 +20,9 @@ module.exports = {
   postSend,
 
   getChats,
+  deletePost,
+  blockPost,
+  unblockPost,
   postChat,
 
   minhasComunidades,
@@ -73,9 +76,10 @@ async function minhasComunidades(id) {
 async function getComunidadesById(id) {
   return await Comunidade
     .findById(id)
-    .select("name content cor tags imagePathS3 posts.content posts.createAt posts._id isAtiva")
+    .select("name content cor tags imagePathS3 posts.content posts.createAt posts.blockComment posts._id isAtiva")
     .populate('subscribers.userId', 'socialname bio')
-    .populate('posts.user', 'socialname image');
+    .populate('posts.user', 'socialname image')
+    ;
 
 }
 
@@ -85,6 +89,46 @@ async function getChats(idComunidade, idPost) {
     //.select("posts.chats")
     .populate('posts.chats.user', 'socialname bio image')
 
+}
+
+async function deletePost(idComunidade, idPost) {
+  return await Comunidade.findOneAndUpdate(
+    { _id: idComunidade },
+    { $pull: { posts: { _id: idPost } } },
+    { new: true },
+  )
+}
+
+async function blockPost(idComunidade, idPost) {
+  return await Comunidade.findOneAndUpdate(
+    {
+      _id: idComunidade,
+      'posts._id': idPost
+    },
+    {
+      $set: {
+        "posts.$.blockComment": true
+      }
+    },
+    { new: true }
+
+  );
+}
+
+async function unblockPost(idComunidade, idPost) {
+  return await Comunidade.findOneAndUpdate(
+    {
+      _id: idComunidade,
+      'posts._id': idPost
+    },
+    {
+      $set: {
+        "posts.$.blockComment": false
+      }
+    },
+    { new: true }
+
+  );
 }
 
 async function listAdmins() {
