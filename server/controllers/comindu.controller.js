@@ -24,6 +24,8 @@ module.exports = {
   blockPost,
   unblockPost,
   postChat,
+  deleteChat,
+
 
   minhasComunidades,
 
@@ -154,6 +156,14 @@ async function postChat(comunidade, post, userId, body) {
   }, {
     new: true
   });
+
+}
+
+async function deleteChat(comunidade, post, idChat) {
+  return await Comunidade.findOneAndUpdate(
+    { _id: comunidade, "posts._id": post },
+    { $pull: { "posts.$.chats": { _id: idChat } } }
+  )
 
 }
 

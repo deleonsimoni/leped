@@ -20,6 +20,7 @@ export class ComunidadeCominduComponent implements OnInit {
   chatSend;
   postSelect;
   chats;
+  idTimer;
 
   constructor(
     private cominduService: CominduService,
@@ -37,6 +38,18 @@ export class ComunidadeCominduComponent implements OnInit {
     this.authService.getUser().subscribe(user => {
       this.user = user;
     });
+
+    this.idTimer = setInterval(() => {
+      if (this.postSelect && this.idComunidade) {
+        this.getChat(this.postSelect, this.idComunidade);
+      }
+    }, 50 * 1000);
+  }
+
+  ngOnDestroy() {
+    if (this.idTimer) {
+      clearInterval(this.idTimer);
+    }
   }
 
   public inscrever() {
@@ -152,6 +165,20 @@ export class ComunidadeCominduComponent implements OnInit {
       });
   }
 
+  public deleteChat(idChat) {
+    this.carregando = true;
+    this.cominduService.deleteChat(idChat, this.postSelect, this.idComunidade)
+      .subscribe((res: any) => {
+        this.carregando = false;
+        this.toastr.success('Comentário excluido com sucesso!', 'Feito');
+        this.chatSend = "";
+        this.getChat(this.postSelect, this.idComunidade);
+      }, err => {
+        this.carregando = false;
+        this.toastr.error('Ocorreu um erro ao cadastrar comentário', 'Atenção: ');
+
+      });
+  }
 
 
   public sendPost() {

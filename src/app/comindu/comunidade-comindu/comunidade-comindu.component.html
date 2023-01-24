@@ -91,20 +91,24 @@
 
                                         </div>
                                         <div class='cardFooter'>
-                                            <button mat-button color="basic"
+                                            <button mat-button color="basic" *ngIf="!post.blockComment"
                                                 (click)="getChat(post._id, comunidade._id)"><i style="color: white;"
                                                     title="Interagir"
                                                     class="bi bi-chat-left-text-fill fa-2x"></i></button>
 
+                                            <button mat-button color="basic" *ngIf="post.blockComment"><i
+                                                    style="color: white;" title="Post bloqueado para comentários"
+                                                    class="bi bi-lock-fill fa-2x"></i></button>
+
                                             <button *ngIf="user.isAdmin && !post.blockComment" mat-button color="basic"
                                                 (click)="blokChat(post._id, comunidade._id)"><i
                                                     style="color: rgb(214, 0, 0);" title="Bloquear comentários"
-                                                    class="bi bi-x-octagon fa-2x"></i></button>
+                                                    class="bi bi-shield-lock-fill fa-2x"></i></button>
 
                                             <button *ngIf="user.isAdmin && post.blockComment" mat-button color="basic"
                                                 (click)="unblokChat(post._id, comunidade._id)"><i
                                                     style="color: rgb(57, 255, 7);" title="Liberar Comentários"
-                                                    class="bi bi bi-check-circle-fill fa-2x"></i></button>
+                                                    class="bi bi bi-unlock-fill fa-2x"></i></button>
 
                                             <button *ngIf="user.isAdmin" mat-button color="basic"
                                                 (click)="deletePost(post._id, comunidade._id)"><i
@@ -114,34 +118,36 @@
                                         </div>
                                         <ul *ngIf="postSelect && postSelect == post._id"
                                             class="comments-list reply-list">
-                                            <li>
-                                                <!-- Avatar 
+                                            <li *ngFor="let chat of chats">
+                                                <!-- Avatar -->
                                                 <div class="comment-avatar"><img
-                                                        src="http://i9.photobucket.com/albums/a88/creaticode/avatar_2_zps7de12f8b.jpg"
-                                                        alt=""></div>-->
+                                                        src="{{chat.user?.image | imagePathComplement}}" alt="">
+                                                </div>
                                                 <!-- Contenedor del Comentario -->
                                                 <div class="comment-box">
                                                     <div class="comment-head">
-                                                        <h6 class="comment-name"><a
-                                                                href="http://creaticode.com/blog">Lorena
-                                                                Rojero</a></h6>
-                                                        <span>hace 10 minutos</span>
-                                                        <!--<i class="fa fa-reply"></i>
-                                                        <i class="fa fa-heart"></i>-->
+                                                        <h6 class="comment-name"> @{{chat.user.socialname}}</h6>
+                                                        <span>{{chat.createAt | timeSocial}}</span>
+                                                        <i *ngIf="user.isAdmin || user._id == chat.user._id"
+                                                            (click)="deleteChat(chat._id)" class="fa fa-trash"
+                                                            title="Excluir comentário"></i>
                                                     </div>
                                                     <div class="comment-content">
-                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit
-                                                        omnis animi
-                                                        et iure laudantium vitae, praesentium optio, sapiente distinctio
-                                                        illo?
+                                                        {{chat.message}}
                                                     </div>
                                                 </div>
                                             </li>
                                             <div class="comment-push">
-                                                <button mat-raised-button color="primary" style="width: 100px;"
-                                                    class="btn text-center" (click)="sendChat()">Comentar</button>
-                                                <textarea maxlength="124" placeholder="Deixe seu comentário..."
-                                                    cols="20" type="text" [(ngModel)]="chatSend"></textarea>
+                                                <div class="row">
+
+                                                    <button mat-raised-button color="primary"
+                                                        class="btn text-center col-2"
+                                                        (click)="sendChat()">Comentar</button>
+                                                    <textarea maxlength="124" class="col-10"
+                                                        placeholder="Deixe seu comentário..." cols="20" type="text"
+                                                        [(ngModel)]="chatSend"></textarea>
+
+                                                </div>
                                             </div>
 
                                         </ul>

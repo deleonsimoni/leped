@@ -77,6 +77,10 @@ export class CominduService {
     return this.http.post(`/api/comindu/comunidade/${idComunidade}/postChat/${idPost}/chat`, { post: post });
   }
 
+  deleteChat(idChat, idPost, idComunidade) {
+    return this.http.delete(`/api/comindu/comunidade/${idComunidade}/postChat/${idPost}/chat/${idChat}`);
+  }
+
   inscrever(id) {
     return this.http.post(`/api/comindu/subscribe/${id}`, {});
   }

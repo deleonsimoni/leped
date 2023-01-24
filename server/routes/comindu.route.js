@@ -33,6 +33,10 @@ router.post('/comunidade/:comunidade/postChat/:post/chat', [passport.authenticat
     session: false
 }), requireAdmin, fileUpload()], asyncHandler(postChat));
 
+router.delete('/comunidade/:comunidade/postChat/:post/chat/:idChat', [passport.authenticate('jwt', {
+    session: false
+}), requireAdmin, fileUpload()], asyncHandler(deleteChat));
+
 router.post('/comunidade', [passport.authenticate('jwt', {
     session: false
 }), requireAdmin, fileUpload()], asyncHandler(insertComunidade));
@@ -95,6 +99,11 @@ async function ativarComunidade(req, res) {
 
 async function postChat(req, res) {
     let response = await cominduCtrl.postChat(req.params.comunidade, req.params.post, req.user._id, req.body);
+    res.json(response);
+}
+
+async function deleteChat(req, res) {
+    let response = await cominduCtrl.deleteChat(req.params.comunidade, req.params.post, req.params.idChat);
     res.json(response);
 }
 

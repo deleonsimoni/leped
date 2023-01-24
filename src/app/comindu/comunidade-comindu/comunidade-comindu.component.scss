@@ -595,34 +595,6 @@ h1 em {
 }
 
 
-/**
- * Oscuro: #283035
- * Azul: #03658c
- * Detalle: #c7cacb
- * Fondo: #dee1e3
- ----------------------------------*/
-* {
-    margin: 0;
-    padding: 0;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
-a {
-    color: #03658c;
-    text-decoration: none;
-}
-
-ul {
-    list-style-type: none;
-}
-
-body {
-    font-family: 'Roboto', Arial, Helvetica, Sans-serif, Verdana;
-    background: #dee1e3;
-}
-
 /** ====================
 * Lista de Comentarios
 =======================*/
@@ -837,7 +809,7 @@ body {
 
 .comment-push {
     background: #FFF;
-    width: 100%;
+    width: 100vh;
 }
 
 .comment-box .comment-name.by-author,
