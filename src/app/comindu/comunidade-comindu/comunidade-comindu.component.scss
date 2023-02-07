@@ -29,7 +29,7 @@ h1 em {
     text-transform: uppercase;
     width: 160px;
     text-align: center;
-    margin: auto;
+    margin-left: 10px;
     white-space: nowrap;
     padding-bottom: 13px;
 }
@@ -808,8 +808,24 @@ h1 em {
 }
 
 .comment-push {
-    background: #FFF;
     width: 100vh;
+}
+
+.custom-textarea {
+    outline: none;
+    resize: none;
+    border-right: 0;
+}
+
+.count-div {
+    height: 34px;
+    color: white;
+    font-size: 14px;
+    border-left: 0;
+}
+
+.display-flex {
+    display: flex
 }
 
 .comment-box .comment-name.by-author,

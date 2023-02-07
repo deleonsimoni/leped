@@ -55,10 +55,12 @@ h1 em {
     margin-bottom: 0.25em;
 }
 
+.comindu-title h2 {
+    font-family: revert !important;
+    margin-top: 30px;
+    font-size: 60px;
 
-
-
-
+}
 
 .mat-card-header.purple {
     color: white;
@@ -76,4 +78,19 @@ h1 em {
 
 .mat-card-content {
     padding: 5px;
+}
+
+::ng-deep .mat-icon {
+    height: 48px !important;
+    width: 48px !important;
+    font-size: 48px !important;
+}
+
+::ng-deep.buttons-class {
+    height: 160px !important;
+    width: 210px !important;
+    font-size: 48px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

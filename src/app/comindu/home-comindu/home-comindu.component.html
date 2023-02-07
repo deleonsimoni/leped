@@ -1,15 +1,12 @@
 <section id="chefs" class="chefs">
     <div class="container" data-aos="fade-up">
 
-        <div class="hero section-header" style="min-height: 0;">
+        <div class="hero section-header comindu-title" style="min-height: 0;">
             <h2>COM.INDU</h2>
         </div>
 
-        <div class="twelve" data-aos="fade-right">
-            <h1>Apresentação</h1>
-        </div>
 
-        <div style="text-align: justify;" class="mt-4 mb-4">
+        <div style="text-align: justify;" data-aos="flip-right" class="mt-2 mb-4">
             Plataforma criada para criar conexões e propagar conhecimentos da área de educação. A ideia principal do
             conceito da plataforma é compartilhar conhecimento entre as pessoas através de comunidades e informações
             contruídas no ensino. Acesse as comunidades e através delas conhecerá pessoas, conexões e conhecimentos.
@@ -38,22 +35,26 @@
             </div>
         </div>
 
+        Em Construção... Aguarde.
+
         <div *ngIf="user?.isAdmin || user?.icComprovanteValido">
-            <div class="row">
+            <div class="text-center row">
 
 
 
-                <div *ngIf="user" class="col-2 example-button-row">
+                <div *ngIf="user" class="col-4 example-button-row">
                     <a></a><button mat-raised-button color="accent" routerLink="/meu-indu">
                         <mat-icon>home</mat-icon> Meu com.indu
                     </button>
                 </div>
-                <div *ngIf="user?.isAdmin" class="col-2 example-button-row">
+
+                <div *ngIf="user?.isAdmin" class="col-4 example-button-row">
                     <a></a><button mat-raised-button color="accent" routerLink="/com-indu/admin/usuarios">
                         <mat-icon>home</mat-icon> Analisar Incrições
                     </button>
                 </div>
-                <div *ngIf="user?.isAdmin" class="col-2 example-button-row">
+
+                <div *ngIf="user?.isAdmin" class="col-4 example-button-row">
                     <button mat-raised-button color="primary" (click)="register()">
                         <mat-icon>mediation</mat-icon> Criar Comunidade
                     </button>
@@ -62,7 +63,7 @@
             </div>
 
 
-            <div>
+            <!--<div>
                 <mat-chip-list aria-label="Fish selection" class="p-2" data-aos="fade-right">
 
                     <mat-chip color="warn" selected *ngFor="let tag of tags">
@@ -71,12 +72,12 @@
 
                 </mat-chip-list>
 
-            </div>
+            </div>-->
 
-            <div>
+            <div class="mt-4">
                 <div class="row">
 
-                    <div *ngFor="let comunidade of comunidades" class="card-wrapper col-4">
+                    <div *ngFor="let comunidade of comunidades" class="card-wrapper col-12">
                         <mat-card style="cursor: pointer;" [routerLink]="['../comunidade-indu', comunidade._id]">
                             <mat-card-header class="purple" [style.background]="comunidade.cor">
                                 <button mat-button>

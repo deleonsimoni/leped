@@ -18,6 +18,7 @@ export class MeuCominduComponent implements OnInit {
   user;
   tags = [];
   image: FileList;
+  edit = false;
   @ViewChild('imageRender', { static: false }) imageRender: ElementRef;
 
 

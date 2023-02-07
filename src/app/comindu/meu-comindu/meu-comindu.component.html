@@ -21,15 +21,21 @@
                             </div>
                             <div class="about">
                                 <h5>bio</h5>
-                                <textarea rows="4" maxlength="220" placeholder="Escreva sua bio resumidamente" cols="20"
-                                    type="text" [(ngModel)]="bio"></textarea>
+                                <div *ngIf="!edit">{{bio}}</div>
+                                <textarea *ngIf="edit" rows="4" maxlength="220"
+                                    placeholder="Escreva sua bio resumidamente" cols="20" type="text"
+                                    [(ngModel)]="bio"></textarea>
                             </div>
                         </div>
                         <div class="row gutters">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="text-center">
 
-                                    <button mat-raised-button color="primary" (click)="updateProfile()">
+                                    <button *ngIf="!edit" mat-raised-button color="primary" (click)="edit = true">
+                                        <mat-icon>assignment_ind</mat-icon> Alterar
+                                    </button>
+
+                                    <button *ngIf="edit" mat-raised-button color="primary" (click)="updateProfile()">
                                         <mat-icon>assignment_ind</mat-icon> Atualizar Perfil
                                     </button>
                                 </div>
@@ -90,7 +96,8 @@
 
                                 </div>
                                 <div class="row">
-                                    <div *ngFor="let comunidade of comunidades?.comunidades" class="card-wrapper col-4">
+                                    <div *ngFor="let comunidade of comunidades?.comunidades"
+                                        class="card-wrapper col-12">
                                         <mat-card>
                                             <mat-card-header class="purple"
                                                 [style.background]="comunidade.idComunidade.cor">

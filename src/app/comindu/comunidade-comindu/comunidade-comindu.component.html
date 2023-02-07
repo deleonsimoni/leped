@@ -143,10 +143,13 @@
                                                     <button mat-raised-button color="primary"
                                                         class="btn text-center col-2"
                                                         (click)="sendChat()">Comentar</button>
-                                                    <textarea maxlength="124" class="col-10"
-                                                        placeholder="Deixe seu comentário..." cols="20" type="text"
+                                                    <textarea maxlength="124" class="col-8"
+                                                        placeholder="Deixe seu comentário..." cols="14" type="text"
                                                         [(ngModel)]="chatSend"></textarea>
-
+                                                    <div class="count-div">
+                                                        <div class="count-text">
+                                                            {{124 - chatSend?.length}} caracteres restantes</div>
+                                                    </div>
                                                 </div>
                                             </div>
 
