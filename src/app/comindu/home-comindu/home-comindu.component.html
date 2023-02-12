@@ -1,12 +1,29 @@
-<section id="chefs" class="chefs">
+<!--<section id="chefs" class="chefs">
     <div class="container" data-aos="fade-up">
 
         <div class="hero section-header comindu-title" style="min-height: 0;">
             <h2>COM.INDU</h2>
         </div>
-
+        <div class="twelve" data-aos="fade-right">
+            <h1><u>Apre</u>sentação</h1>
+        </div>
 
         <div style="text-align: justify;" data-aos="flip-right" class="mt-2 mb-4">
+            Conectado ao Leped/UFRJ, o Com.Indu é um grupo colaborativo de aprendizagem docente voltada para o
+            desenvolvimento profissional de professores iniciantes. Trata-se de um ambiente virtual de comunicação,
+            interação e compartilhamento de experiências sobre o trabalho docente, entre professores iniciantes e
+            experientes.
+            É constituído por fóruns temáticos - as comunidades - abertos para discussões por meio de chats e encontros
+            virtuais.
+            Os professores cadastrados podem inscrever-se nas comunidades de seu interesse para participar, trocar,
+            compartilhar
+            e acompanhar as discussões realizadas em cada uma delas. O Com.Indu reúne pesquisadores, professores
+            iniciantes e
+            experientes para interações múltiplas, desenvolvidas no tempo possível para cada participante, uma vez que
+            os
+            conteúdos ficam disponíveis de modo assíncrono, facilitando diferentes formas de acesso e partilha.
+            Participe!
+
             Plataforma criada para criar conexões e propagar conhecimentos da área de educação. A ideia principal do
             conceito da plataforma é compartilhar conhecimento entre as pessoas através de comunidades e informações
             contruídas no ensino. Acesse as comunidades e através delas conhecerá pessoas, conexões e conhecimentos.
@@ -17,9 +34,12 @@
         </div>
 
         <div style="text-align: justify;" class="mt-4 mb-4" *ngIf="!user?.icComprovanteValido">
-            Para participar das comunidade é necessário criar sua conta no botão "Cadastre-se Agora" e aguardar a
-            análise dos administradores.
-            Caso já possua uma conta aguarde a validação da mesma.
+            Para participar das comunidades é necessário criar sua conta no botão "CADASTRE-SE AGORA", tendo em mãos
+            um comprovante de seu exercício docente (contracheque, declaração, etc.) e aguardar a análise dos
+            administradores.
+            Caso já possua uma conta aguarde a validação dela.
+
+
         </div>
         <div class="row">
             <div *ngIf="!user" class="col-2 example-button-row">
@@ -62,8 +82,8 @@
 
             </div>
 
-
-            <!--<div>
+ESTAVA COMENTADO
+            <div>
                 <mat-chip-list aria-label="Fish selection" class="p-2" data-aos="fade-right">
 
                     <mat-chip color="warn" selected *ngFor="let tag of tags">
@@ -72,8 +92,8 @@
 
                 </mat-chip-list>
 
-            </div>-->
-
+            </div>
+FIM DO COMENTARIO
             <div class="mt-4">
                 <div class="row">
 
@@ -91,12 +111,13 @@
                                 <mat-divider></mat-divider>
                             </mat-card-content>
                             <mat-card-actions align="end" class="pb-2">
-
-                                <!--<button mat-raised-button color="accent"
+ESTAVA COMENTADO
+                                <button mat-raised-button color="accent"
                                 [routerLink]="['../comunidade-indu', comunidade._id]">ENTRAR</button>
                             <button mat-button color="basic"><i title="Compartilhar"
-                                    class="bi bi-share fa-2x"></i></button>-->
-                            </mat-card-actions>
+                                    class="bi bi-share fa-2x"></i></button>
+                FIM COMENTADO
+                                </mat-card-actions>
                         </mat-card>
                     </div>
 
@@ -106,4 +127,166 @@
         </div>
 
     </div>
+</section>-->
+
+
+<section id="hero" class="hero d-flex align-items-center section-bg" style="background-color: #fff;">
+    <div class="container">
+        <div class="row justify-content-between gy-5">
+
+            <!--  <h2 data-aos="fade-up">COM . INDU</h2>-->
+            <div class="row align-items-center" style="display: flex;width: 60%; text-align: center;">
+                <img src="../assets/img/comindu.jpg" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="300">
+            </div>
+            <div
+                class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start">
+                <!--   <div class="twelve" data-aos="fade-right">-->
+                <div class="row">
+                    <div class="col-lg-6 content">
+                        <h2 style="color: #304D63;">APRESENTAÇÃO</h2>
+                        <!-- <h1><u>COMUNIDADES</u></h1>-->
+                    </div>
+
+                    <div style="text-align: justify;" data-aos="flip-right" class="mt-2 mb-4">
+                        Conectado ao Leped/UFRJ, o Com.Indu é um grupo colaborativo de aprendizagem docente voltada para
+                        o
+                        desenvolvimento profissional de professores iniciantes. Trata-se de um ambiente virtual de
+                        comunicação,
+                        interação e compartilhamento de experiências sobre o trabalho docente, entre professores
+                        iniciantes
+                        e
+                        experientes.
+                        <br />
+                        <br />
+                        É constituído por fóruns temáticos - as comunidades - abertos para discussões por meio de chats
+                        e
+                        encontros
+                        virtuais.
+                        <br />
+                        <br />
+                        Os professores cadastrados podem inscrever-se nas comunidades de seu interesse para participar,
+                        trocar,
+                        compartilhar
+                        e acompanhar as discussões realizadas em cada uma delas.
+                        <br />
+                        <br />
+                        O Com.Indu reúne pesquisadores,
+                        professores
+                        iniciantes e
+                        experientes para interações múltiplas, desenvolvidas no tempo possível para cada participante,
+                        uma
+                        vez que
+                        os
+                        conteúdos ficam disponíveis de modo assíncrono, facilitando diferentes formas de acesso e
+                        partilha.
+                        <br />
+                        <br />
+                        Participe!
+                        <br />
+                        <br />
+
+                    </div>
+
+                </div>
+
+            </div>
+            <!--    <div class="col-lg-5 order-1 order-lg-2 text-center text-lg-start">
+                <img src="../assets/img/comindu.jpg" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="300">
+            </div>-->
+            <div
+                class="col-lg-10 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start">
+
+                <!--   <div class="twelve" data-aos="fade-right">-->
+
+                <div class="col-lg-6 content">
+                    <h2 style="color: #304D63;">COMUNIDADES</h2>
+                    <!-- <h1><u>COMUNIDADES</u></h1>-->
+
+
+                    <div style="text-align: justify;" data-aos="flip-right" class="mt-2 mb-4">
+                        Para participar das comunidades é necessário criar sua conta no botão "CADASTRE-SE", tendo
+                        em
+                        mãos
+                        um comprovante de seu exercício docente (contracheque, declaração, etc.) e aguardar a análise
+                        dos
+                        administradores.
+                        <br />
+                        Caso já possua uma conta aguarde a validação dela.
+                        <br />
+                        <br />
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+            <!--<div *ngIf="!user" class="col-2 example-button-row">-->
+            <div class="col-2 example-button-row">
+                <button class="btn-get-started" [routerLink]="['/auth/register']">
+                    <!--<mat-icon>accessibility_new</mat-icon>--> Cadastre-se
+                </button>
+            </div>
+
+            <!--<div *ngIf="!user" class="col-2 example-button-row">-->
+            <div class="col-2 example-button-row">
+                <button class="btn-get-started" [routerLink]="['/auth/login']">
+                    <!--   <mat-icon>login</mat-icon>--> Login
+                </button>
+            </div>
+        </div>
+        <div *ngIf="user?.isAdmin || user?.icComprovanteValido">
+            <div class="text-center row">
+
+
+
+                <div *ngIf="user" class="col-4 example-button-row">
+                    <a></a><button class="btn-comindu" routerLink="/meu-indu">
+                        <!--   <mat-icon>home</mat-icon>--> Meu com.indu
+                    </button>
+                </div>
+
+                <div *ngIf="user?.isAdmin" class="col-4 example-button-row">
+                    <a></a><button class="btn-comindu" routerLink="/com-indu/admin/usuarios">
+                        <!--<mat-icon>home</mat-icon>--> Analisar Incrições
+                    </button>
+                </div>
+
+                <div *ngIf="user?.isAdmin" class="col-4 example-button-row">
+                    <button class="btn-comindu" (click)="register()">
+                        <!--<mat-icon>mediation</mat-icon>--> Criar Comunidade
+                    </button>
+                </div>
+
+            </div>
+            <div class="mt-4">
+                <div class="row">
+
+                    <div *ngFor="let comunidade of comunidades" class="card-wrapper col-12">
+                        <mat-card style="cursor: pointer;" [routerLink]="['../comunidade-indu', comunidade._id]">
+                            <mat-card-header class="purple" [style.background]="comunidade.cor">
+                                <button mat-button>
+                                    <mat-card-title>{{comunidade.name | titlecase}}</mat-card-title>
+                                    <mat-card-subtitle><span *ngFor="let tag of comunidade.tags">{{tag}} + </span>
+                                    </mat-card-subtitle>
+                                </button>
+                            </mat-card-header>
+                            <mat-card-content>
+                                <p>{{comunidade.content}}</p>
+                                <mat-divider></mat-divider>
+                            </mat-card-content>
+                            <mat-card-actions align="end" class="pb-2">
+                            </mat-card-actions>
+                        </mat-card>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
 </section>
