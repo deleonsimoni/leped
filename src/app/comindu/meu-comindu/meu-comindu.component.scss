@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding-top: 40px;
     color: #2e323c;
-    background: #f5f6fa;
+    background: #ed8975;
     position: relative;
     height: 100%;
 }
@@ -33,7 +33,7 @@ body {
     margin: 0;
     font-size: 0.8rem;
     font-weight: 400;
-    color: #9fa8b9;
+    color: #080808;
 }
 
 .account-settings .about {
@@ -43,7 +43,7 @@ body {
 
 .account-settings .about h5 {
     margin: 0 0 15px 0;
-    color: #007ae1;
+    color: #080808;
 }
 
 .account-settings .about p {
@@ -56,12 +56,12 @@ body {
     -moz-border-radius: 2px;
     border-radius: 2px;
     font-size: .825rem;
-    background: #ffffff;
-    color: #2e323c;
+    background: #ed8975;
+    color: #304d63;
 }
 
 .card {
-    background: #ffffff;
+    background: #8fb9aa;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
@@ -83,7 +83,7 @@ body {
 }
 
 .twelve h1:before {
-    background-color: #c50000;
+    background-color: #ed8975;
     content: '';
     display: block;
     height: 3px;
@@ -92,7 +92,7 @@ body {
 }
 
 .twelve h1:after {
-    background-color: #bbff00;
+    background-color: #f2d096;
     content: '';
     display: block;
     position: absolute;
@@ -101,4 +101,14 @@ body {
     height: 3px;
     width: 75px;
     margin-bottom: 0.25em;
+}
+
+.btn-comindu {
+    background: #ed8975;
+    border: 0;
+    border-radius: 3px;
+    padding: 10px 30px;
+    color: #080808;
+    transition: 0.4s;
+    cursor: pointer;
 }

@@ -48,10 +48,10 @@
                         </mat-list-item>
 
                         <mat-list-item *ngIf="user">
-                            <button *ngIf="!isSubscribe()" mat-raised-button color="accent" class="btn coordinator-btn"
+                            <button *ngIf="!isSubscribe()" class="btn-comindu"
                                 (click)="inscrever()">Inscreva-se</button>
-                            <button *ngIf="isSubscribe()" mat-raised-button color="accent" class="btn coordinator-btn"
-                                (click)="desinscrever()">Cancelar Inscrição</button>
+                            <button *ngIf="isSubscribe()" class="btn-comindu" (click)="desinscrever()">Cancelar
+                                Inscrição</button>
                         </mat-list-item>
 
                     </mat-list>
@@ -64,7 +64,7 @@
                 </div>
                 <mat-chip-list aria-label="Fish selection" class="p-2" data-aos="fade-right">
 
-                    <mat-chip color="accent" selected *ngFor="let tag of comunidade?.tags">
+                    <mat-chip color="8fb9aa" selected *ngFor="let tag of comunidade?.tags">
                         #{{tag}}
                     </mat-chip>
 
@@ -168,8 +168,7 @@
                         <angular-editor [(ngModel)]="postSend" [config]="editorConfig" [placeholder]="'Descrição...'">
                         </angular-editor>
                         <div class="text-center" style="justify-content: center;">
-                            <button mat-raised-button color="accent" style="width: 500px;" class="btn text-center"
-                                (click)="sendPost()">Postar</button>
+                            <button class="btn-post" style="width: 500px;" (click)="sendPost()">Postar</button>
                         </div>
                     </div>
 

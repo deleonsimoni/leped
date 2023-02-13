@@ -5,7 +5,7 @@ h1 {
     font-family: "Verdana";
     font-weight: 300;
     font-size: 40px;
-    color: #ffffff;
+    color: #080808;
     -webkit-transition: all 0.4s ease 0s;
     -o-transition: all 0.4s ease 0s;
     transition: all 0.4s ease 0s;
@@ -861,4 +861,24 @@ h1 em {
     .reply-list .comment-box {
         width: 320px;
     }
+}
+
+.btn-comindu {
+    background: #8fb9aa;
+    border: 0;
+    border-radius: 3px;
+    padding: 10px 30px;
+    color: #080808;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.btn-post {
+    background: #ed8975;
+    border: 0;
+    border-radius: 3px;
+    padding: 10px 30px;
+    color: #080808;
+    transition: 0.4s;
+    cursor: pointer;
 }

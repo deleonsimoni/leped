@@ -31,12 +31,12 @@
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="text-center">
 
-                                    <button *ngIf="!edit" mat-raised-button color="primary" (click)="edit = true">
-                                        <mat-icon>assignment_ind</mat-icon> Alterar
+                                    <button *ngIf="!edit" class="btn-comindu" (click)="edit = true">
+                                        <!--  <mat-icon>assignment_ind</mat-icon>--> Alterar
                                     </button>
 
-                                    <button *ngIf="edit" mat-raised-button color="primary" (click)="updateProfile()">
-                                        <mat-icon>assignment_ind</mat-icon> Atualizar Perfil
+                                    <button *ngIf="edit" class="btn-comindu" (click)="updateProfile()">
+                                        <!-- <mat-icon>assignment_ind</mat-icon>--> Atualizar Perfil
                                     </button>
                                 </div>
                             </div>
@@ -99,8 +99,7 @@
                                     <div *ngFor="let comunidade of comunidades?.comunidades"
                                         class="card-wrapper col-12">
                                         <mat-card>
-                                            <mat-card-header class="purple"
-                                                [style.background]="comunidade.idComunidade.cor">
+                                            <mat-card-header class="card">
                                                 <button mat-button>
                                                     <mat-card-title>{{comunidade.idComunidade.name | titlecase}}
                                                     </mat-card-title>
@@ -116,8 +115,8 @@
                                             </mat-card-content>
                                             <mat-card-actions align="end" class="pb-2">
 
-                                                <button mat-raised-button color="accent"
-                                                    [routerLink]="['../comunidade-indu', comunidade.idComunidade._id]">ENTRAR</button>
+                                                <button class="btn-comindu" [routerLink]="['../comunidade-indu',
+                                                    comunidade.idComunidade._id]">ENTRAR</button>
 
                                             </mat-card-actions>
                                         </mat-card>
