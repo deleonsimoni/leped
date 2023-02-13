@@ -6,79 +6,73 @@
             <p>CHAT</p>
         </div>
 
+        <div class="example-button-row">
+
+        </div>
+
 
         <div class="wrapper">
+            <a class=" btn-book-a-table" routerLink="/home-indu"><button class="btn-comindu" routerLink="/com-indu">
+                    Voltar
+                </button></a>
             <div class="container">
-                <div class="left">
+
+                <div *ngIf="user?.isAdmin" class="left">
                     <div class="top">
                         <input type="text" placeholder="Pesquisar @" />
                         <a href="javascript:;" class="search"></a>
                     </div>
                     <ul class="people">
-                        <!--<li class="person" data-chat="person1">
-                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/thomas.jpg" alt="" />
-                            <span class="name">Thomas Bangalter</span>
-                            <span class="time">2:09 PM</span>
-                            <span class="preview">I was wondering...</span>
+
+                        <li (click)="selectChat(chat)" *ngFor="let chat of chats.chat" class="person"
+                            data-chat="person1">
+                            <img
+                                src="{{ chat.author.user.image ? (chat.author.user.image | imagePathComplement) : '../../../assets/img/placeholder-profile.png' }}" />
+                            <span class="name">{{chat?.author?.user?.email}}</span>
+                            <span class="time">{{chat.createAt | date: 'dd/MM/yyyy'}}</span>
+                            <span *ngIf="chat.icReply" class="preview">Respondido</span>
+                            <span *ngIf="!chat.icReply" class="preview">Aguardando Resposta</span>
                         </li>
-                        <li class="person" data-chat="person2">
-                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/dog.png" alt="" />
-                            <span class="name">Dog Woofson</span>
-                            <span class="time">1:44 PM</span>
-                            <span class="preview">I've forgotten how it felt before</span>
-                        </li>
-                        <li class="person" data-chat="person3">
-                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/louis-ck.jpeg" alt="" />
-                            <span class="name">Louis CK</span>
-                            <span class="time">2:09 PM</span>
-                            <span class="preview">But we’re probably gonna need a new carpet.</span>
-                        </li>
-                        <li class="person" data-chat="person4">
-                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/bo-jackson.jpg" alt="" />
-                            <span class="name">Bo Jackson</span>
-                            <span class="time">2:09 PM</span>
-                            <span class="preview">It’s not that bad...</span>
-                        </li>
-                        <li class="person" data-chat="person5">
-                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/michael-jordan.jpg" alt="" />
-                            <span class="name">Michael Jordan</span>
-                            <span class="time">2:09 PM</span>
-                            <span class="preview">Wasup for the third time like is
-                                you blind bitch</span>
-                        </li>
-                        <li class="person" data-chat="person6">
-                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/drake.jpg" alt="" />
-                            <span class="name">Drake</span>
-                            <span class="time">2:09 PM</span>
-                            <span class="preview">howdoyoudoaspace</span>
-                        </li>-->
+
+
                     </ul>
                 </div>
-                <div class="right">
-                    <div class="top"><span>To: <span class="name">Administradores</span></span></div>
-                    <!--<div class="chat" data-chat="person1">
-                        <div class="conversation-start">
-                            <span>Today, 6:48 AM</span>
-                        </div>
-                        <div class="bubble you">
-                            Hello,
-                        </div>
-                        <div class="bubble you">
-                            it's me.
-                        </div>
-                        <div class="bubble you">
-                            I was wondering...
-                        </div>
-                        <div class="bubble me">
-                            ... about who we used to be.
-                        </div>
-                    </div>-->
+                <div [ngClass]="{'right': user?.isAdmin, 'rightUser': !user?.isAdmin }">
+                    <div *ngIf="!user?.isAdmin" class="top"><span>Para: <span class="name">Administradores
+                                Com.indu</span></span></div>
+                    <div *ngIf="user?.isAdmin" class="top"><span>Para: <span class="name">{{userTo}}</span></span>
+                    </div>
 
+                    <div class="chat" data-chat="person1">
+
+
+                        <div *ngFor="let comment of comments?.chat; let i = index">
+
+                            <div *ngIf="i == 0" class="conversation-start">
+                                <span>{{comments.createAt | date: 'dd/MM/yyyy'}}
+                                </span>
+                            </div>
+
+                            <div [innerHTML]="parseContent(comment.content)"
+                                [ngClass]="comment?.publisher?.user.email != user.email ? 'bubble you' : 'bubble me'">
+                            </div>
+
+                        </div>
+
+
+
+
+                    </div>
                     <div class="write">
-                        <input type="text" />
-                        <a href="javascript:;" class="write-link send"></a>
+                        <input maxlength="240" [(ngModel)]="newComment" [ngModelOptions]="{standalone: true}"
+                            type="text" />
+
+                        <a style="cursor: pointer;" (click)="addNewComment()" class="write-link send"></a>
+                    </div>
+                    <br />
+                    <div class="writeCount">
+                        <span>{{240 - newComment?.length}} caracteres restantes</span>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
