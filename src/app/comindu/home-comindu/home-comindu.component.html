@@ -108,19 +108,26 @@
 
 
 
-                <div *ngIf="user" class="col-4 example-button-row">
+                <div *ngIf="user" class="col-3 example-button-row">
                     <a></a><button class="btn-comindu" routerLink="/meu-indu">
                         <!--   <mat-icon>home</mat-icon>--> Meu com.indu
                     </button>
                 </div>
 
-                <div *ngIf="user?.isAdmin" class="col-4 example-button-row">
+                <div *ngIf="user?.isAdmin" class="col-3 example-button-row">
                     <a></a><button class="btn-comindu" routerLink="/com-indu/admin/usuarios">
                         <!--<mat-icon>home</mat-icon>--> Analisar Incrições
                     </button>
                 </div>
 
-                <div *ngIf="user?.isAdmin" class="col-4 example-button-row">
+
+                <div *ngIf="user?.isAdmin" class="col-3 example-button-row">
+                    <a></a><button class="btn-comindu" routerLink="/com-indu/chat">
+                        <!--<mat-icon>home</mat-icon>--> Chat
+                    </button>
+                </div>
+
+                <div *ngIf="user?.isAdmin" class="col-3 example-button-row">
                     <button class="btn-comindu" (click)="register()">
                         <!--<mat-icon>mediation</mat-icon>--> Criar Comunidade
                     </button>

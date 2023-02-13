@@ -31,13 +31,18 @@
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="text-center">
 
-                                    <button *ngIf="!edit" class="btn-comindu" (click)="edit = true">
-                                        <!--  <mat-icon>assignment_ind</mat-icon>--> Alterar
+                                    <button *ngIf="!edit" class="btn-comindu mt-2" (click)="edit = true">
+                                        <!--  <mat-icon>assignment_ind</mat-icon>--> Alterar BIO
                                     </button>
 
-                                    <button *ngIf="edit" class="btn-comindu" (click)="updateProfile()">
-                                        <!-- <mat-icon>assignment_ind</mat-icon>--> Atualizar Perfil
+                                    <button *ngIf="edit" class="btn-comindu mt-2" (click)="updateProfile()">
+                                        <!-- <mat-icon>assignment_ind</mat-icon>--> Atualizar BIO
                                     </button>
+                                    <div class="example-button-row mt-2">
+                                        <a></a><button class="btn-comindu" routerLink="/com-indu/chat">
+                                            <!--<mat-icon>home</mat-icon>--> Fale Conosco
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -53,6 +53,7 @@ import { MeuCominduComponent } from './comindu/meu-comindu/meu-comindu.component
 import { InscritosComponent } from './comindu/admin/inscritos/inscritos.component';
 import { InscritosCardComponent } from './comindu/admin/inscritos-card/inscritos-card.component';
 import { InscritosDataComponent } from './comindu/admin/inscritos-data/inscritos-data.component';
+import { ChatCominduComponent } from './comindu/chat-comindu/chat-comindu.component';
 
 registerLocaleData(localePT);
 
@@ -111,6 +112,7 @@ export function appInitializerFactory(authService: AuthService) {
     InscritosComponent,
     InscritosCardComponent,
     InscritosDataComponent,
+    ChatCominduComponent,
 
   ],
   providers: [
