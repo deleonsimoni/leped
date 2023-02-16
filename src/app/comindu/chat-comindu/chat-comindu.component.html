@@ -19,8 +19,9 @@
 
                 <div *ngIf="user?.isAdmin" class="left">
                     <div class="top">
-                        <input type="text" placeholder="Pesquisar @" />
-                        <a href="javascript:;" class="search"></a>
+                        <input type="text" [(ngModel)]="emailFind" [ngModelOptions]="{standalone: true}"
+                            placeholder="Pesquisar email" />
+                        <a style="cursor: pointer;" (click)="finduserChat()" class="search"></a>
                     </div>
                     <ul class="people">
 

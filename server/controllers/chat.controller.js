@@ -1,4 +1,5 @@
 const Chat = require('../models/chat.model');
+const User = require('../models/user.model');
 
 const paginate = require("jw-paginate");
 
@@ -7,8 +8,33 @@ module.exports = {
   getChatAdmin,
   insertChat,
   updateChat,
-  getChatByID
+  getChatByID,
+  getUserChat,
+  postChatUserPrivate
 }
+
+
+async function getUserChat(email) {
+  let user = await User
+    .findOne({ email: email })
+    .select('email');
+
+  if (user) {
+    let chat = await Chat
+      .findOne({ 'author.user': user._id })
+
+    if (chat) {
+      return { code: 203, msg: 'Já existe uma conversa criada com este usuário' }
+    } else {
+      return user;
+    }
+
+  } else {
+    return null;
+  }
+
+}
+
 
 async function getChatByID(idChat) {
   return await Chat
@@ -67,6 +93,22 @@ async function getChatUser(idChat) {
       }
     })
 
+}
+
+async function postChatUserPrivate(mensagem, user, admin) {
+  let chat = {};
+  chat.author = {
+    user: user
+  };
+
+  chat.chat = [{
+    content: mensagem,
+    publisher: {
+      user: admin._id
+    }
+  }];
+
+  return await new Chat(chat).save();
 }
 
 async function insertChat(mensagem, user) {

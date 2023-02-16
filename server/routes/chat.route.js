@@ -3,6 +3,7 @@ const passport = require('passport');
 const chatCtrl = require('../controllers/chat.controller');
 const asyncHandler = require("express-async-handler");
 const router = express.Router();
+const requireAdmin = require('../middleware/require-admin');
 module.exports = router;
 
 
@@ -10,13 +11,22 @@ router.get('/chat', passport.authenticate('jwt', {
     session: false
 }), asyncHandler(getChat));
 
+router.get('/chat/getUser', [passport.authenticate('jwt', {
+    session: false
+}), requireAdmin], asyncHandler(getUserChat));
+
 router.post('/chat', passport.authenticate('jwt', {
     session: false
 }), asyncHandler(insertChat));
 
+router.post('/chat/postChatUserPrivate', [passport.authenticate('jwt', {
+    session: false
+}), requireAdmin], asyncHandler(postChatUserPrivate));
+
 router.put('/chat', passport.authenticate('jwt', {
     session: false
 }), asyncHandler(updateChat));
+
 
 
 async function getChat(req, res) {
@@ -31,8 +41,22 @@ async function getChat(req, res) {
     res.json(rep);
 }
 
-async function insertChat(req, res) {
+async function getUserChat(req, res) {
 
+    if (req.query.email) {
+        let rep = await chatCtrl.getUserChat(req.query.email);
+        res.json(rep);
+    } else {
+        res.json();
+    }
+}
+
+async function postChatUserPrivate(req, res) {
+    let rep = await chatCtrl.postChatUserPrivate(req.body.msg.mensagem, req.body.user._id, req.user);
+    res.json(rep);
+}
+
+async function insertChat(req, res) {
     let rep = await chatCtrl.insertChat(req.body.mensagem, req.user);
     res.json(rep);
 }

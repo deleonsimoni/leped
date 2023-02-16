@@ -17,6 +17,9 @@ export class ChatService {
     return this.httpClient.get(`${this.url}/chat?page=${pageChoose}`);
   }
 
+  public getUserChat(email): Observable<any> {
+    return this.httpClient.get(`${this.url}/chat/getUser?email=${email}`);
+  }
 
   public getChatbyID(id): Observable<any> {
     return this.httpClient.get(`${this.url}/chat?id=${id}`);
@@ -26,7 +29,14 @@ export class ChatService {
     return this.httpClient.post(`${this.url}/chat`, msg);
   }
 
+  public postChatUserPrivate(user, msg): Observable<any> {
+    return this.httpClient.post(`${this.url}/chat/postChatUserPrivate`, { user, msg });
+  }
+
   public putChat(id, msg): Observable<any> {
     return this.httpClient.put(`${this.url}/chat?id=${id}`, msg);
   }
+
+
+
 }
