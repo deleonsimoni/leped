@@ -18,6 +18,7 @@ import { HomeCominduComponent } from './comindu/home-comindu/home-comindu.compon
 import { ComunidadeCominduComponent } from './comindu/comunidade-comindu/comunidade-comindu.component';
 import { MeuCominduComponent } from './comindu/meu-comindu/meu-comindu.component';
 import { InscritosComponent } from './comindu/admin/inscritos/inscritos.component';
+import { ChatCominduComponent } from './comindu/chat-comindu/chat-comindu.component';
 
 const routes: Routes = [
   {
@@ -99,6 +100,11 @@ const routes: Routes = [
   {
     path: 'com-indu/admin/usuarios',
     component: InscritosComponent,
+    /*canActivate: [AuthGuard],*/
+  },
+  {
+    path: 'com-indu/chat',
+    component: ChatCominduComponent,
     /*canActivate: [AuthGuard],*/
   },
   {
