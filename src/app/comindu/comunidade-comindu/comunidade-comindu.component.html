@@ -64,7 +64,8 @@
                 </div>
                 <mat-chip-list aria-label="Fish selection" class="p-2" data-aos="fade-right">
 
-                    <mat-chip color="8fb9aa" selected *ngFor="let tag of comunidade?.tags">
+                    <mat-chip style="background-color: #8fb9aa; color: #080808" selected
+                        *ngFor="let tag of comunidade?.tags">
                         #{{tag}}
                     </mat-chip>
 
@@ -140,8 +141,8 @@
                                             <div class="comment-push">
                                                 <div class="row">
 
-                                                    <button mat-raised-button color="primary"
-                                                        class="btn text-center col-2"
+                                                    <button mat-raised-button style="color: #080808;"
+                                                        class="btn text-center col-2" style="background-color: #8fb9aa;"
                                                         (click)="sendChat()">Comentar</button>
                                                     <textarea maxlength="124" class="col-8"
                                                         placeholder="Deixe seu comentário..." cols="14" type="text"

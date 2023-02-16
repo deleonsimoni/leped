@@ -3,6 +3,8 @@
         <div class="row justify-content-between gy-5">
 
             <!--  <h2 data-aos="fade-up">COM . INDU</h2>-->
+
+
             <div class="row align-items-center" style="display: flex;width: 60%; text-align: center;">
                 <img src="../assets/img/comindu.jpg" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="300">
             </div>
@@ -26,18 +28,15 @@
                         e
                         experientes.
                         <br />
-                        <br />
                         É constituído por fóruns temáticos - as comunidades - abertos para discussões por meio de chats
                         e
                         encontros
                         virtuais.
                         <br />
-                        <br />
                         Os professores cadastrados podem inscrever-se nas comunidades de seu interesse para participar,
                         trocar,
                         compartilhar
                         e acompanhar as discussões realizadas em cada uma delas.
-                        <br />
                         <br />
                         O Com.Indu reúne pesquisadores,
                         professores
@@ -49,8 +48,12 @@
                         conteúdos ficam disponíveis de modo assíncrono, facilitando diferentes formas de acesso e
                         partilha.
                         <br />
-                        <br />
                         Participe!
+                        <br />
+                        <br />
+                        Coordenação: Professora Giseli Barreto da Cruz
+                        <br />
+                        Líder do Grupo de Estudos e Pesquisas em Didática e Formação de Professores - Geped/UFRJ/CNPq
 
 
                     </div>
@@ -88,19 +91,17 @@
         </div>
 
         <div class="row">
-            <div *ngIf="!user" class="col-2 example-button-row">
-                <div class="col-2 example-button-row">
-                    <button class="btn-get-started" [routerLink]="['/auth/register']">
-                        <!--<mat-icon>accessibility_new</mat-icon>--> Cadastre-se
-                    </button>
-                </div>
-            </div>
-            <div *ngIf="!user" class="col-2 example-button-row">
-                <div class="col-2 example-button-row">
-                    <button class="btn-get-started" [routerLink]="['/auth/login']">
-                        <!--   <mat-icon>login</mat-icon>--> Login
-                    </button>
-                </div>
+            <div *ngIf="!user" class="text-center">
+
+                <button class="btn-get-started" [routerLink]="['/auth/register']">
+                    <!--<mat-icon>accessibility_new</mat-icon>--> Cadastre-se
+                </button>
+
+
+                <button class="btn-comindu" [routerLink]="['/auth/login']">
+                    <!--   <mat-icon>login</mat-icon>--> Login
+                </button>
+
             </div>
         </div>
         <div *ngIf="user?.isAdmin || user?.icComprovanteValido">
@@ -154,20 +155,28 @@
                             <mat-card-header class="card">
                                 <button mat-button>
                                     <mat-card-title>{{comunidade.name | titlecase}}</mat-card-title>
-                                    <mat-card-subtitle *ngIf="user"><span *ngFor="let tag of comunidade.tags">{{tag}} +
+                                    <!--<mat-card-subtitle style="color: #304D63;" *ngIf="user"><span
+                                            *ngFor="let tag of comunidade.tags">{{tag}} +
                                         </span>
-                                    </mat-card-subtitle>
+                                    </mat-card-subtitle>-->
+                                    <mat-chip-list aria-label="Fish selection" class="p-2" data-aos="fade-right">
+
+                                        <mat-chip style="background-color: #8fb9aa; color: #080808" selected
+                                            *ngFor="let tag of comunidade?.tags">
+                                            #{{tag}}
+                                        </mat-chip>
+
+                                    </mat-chip-list>
                                 </button>
                             </mat-card-header>
-                            <mat-card-content *ngIf="user">
+                            <mat-card-content style="background-color: #f2d096" *ngIf="user">
                                 <p>{{comunidade.content}}</p>
                                 <mat-divider></mat-divider>
                             </mat-card-content>
                             <mat-card-actions *ngIf="user" align="end" class="pb-2">
                                 <button class="btn-comindu"
                                     [routerLink]="['../comunidade-indu', comunidade._id]">ENTRAR</button>
-                                <button mat-button color="basic"><i title="Compartilhar"
-                                        class="bi bi-share fa-2x"></i></button>
+
                             </mat-card-actions>
                         </mat-card>
                     </div>
