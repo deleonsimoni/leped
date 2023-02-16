@@ -1,12 +1,16 @@
-<section id="chefs" class="chefs">
+<section id="hero" class="hero">
     <div class="container" data-aos="fade-up">
 
         <div class="hero section-header" style="min-height: 0;">
             <h2>COM.INDU</h2>
         </div>
 
-        <div class="twelve" data-aos="fade-right">
-            <h1>Usuários</h1>
+
+
+        <div class="row">
+            <div class="col-lg-12 content">
+                <h1>Usuários</h1>
+            </div>
         </div>
 
         <div>
@@ -32,7 +36,7 @@
       </div>-->
             </div>
 
-            <div *ngFor="let subscribed of users; let i = index" [ngClass]="{'mb-3': users.length > 1}">
+            <div class="row" *ngFor="let subscribed of users; let i = index" [ngClass]="{'mb-3': users.length > 1}">
 
                 <app-inscritos-card data-aos="fade-up" [subscribed]="subscribed"
                     (selected)="receiverSelectedUser($event)">

@@ -96,13 +96,27 @@ h1 em {
 }
 
 .btn-get-started {
-    background: #8fb9aa;
+    background: #ed8975;
     border: 0;
     border-radius: 3px;
     padding: 10px 30px;
     color: #080808;
     transition: 0.4s;
     cursor: pointer;
+    text-align: center;
+    margin: 30px;
+}
+
+.btn-meu-comindu {
+    background: #f2d096;
+    border: 0;
+    border-radius: 3px;
+    padding: 10px 30px;
+    color: #080808;
+    transition: 0.4s;
+    cursor: pointer;
+    text-align: center;
+    margin: 30px;
 }
 
 .btn-comindu {
@@ -113,6 +127,8 @@ h1 em {
     color: #080808;
     transition: 0.4s;
     cursor: pointer;
+    text-align: center;
+    margin: 30px;
 }
 
 .card {
@@ -122,4 +138,5 @@ h1 em {
     border-radius: 5px;
     border: 0;
     margin-bottom: 1rem;
+
 }
