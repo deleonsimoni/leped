@@ -5,9 +5,14 @@
             <!--  <h2 data-aos="fade-up">COM . INDU</h2>-->
 
 
-            <div class="row align-items-center" style="display: flex;width: 60%; text-align: center;">
+            <div class="row align-items-center d-none d-md-block" style="display: flex;width: 60%; text-align: center;">
                 <img src="../assets/img/comindu.jpg" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="300">
             </div>
+
+            <div class="row align-items-center d-block d-md-none" style="display: flex; text-align: center;">
+                <img src="../assets/img/comindu.jpg" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="300">
+            </div>
+
             <div
                 class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start">
                 <!--   <div class="twelve" data-aos="fade-right">-->
@@ -104,31 +109,31 @@
 
             </div>
         </div>
-        <div *ngIf="user?.isAdmin || user?.icComprovanteValido">
-            <div class="text-center row">
+        <div>
+            <div *ngIf="user?.isAdmin || user?.icComprovanteValido" class="row">
 
 
 
-                <div *ngIf="user" class="col-3 example-button-row">
+                <div *ngIf="user" class="col-xs-6 col-lg-3 example-button-row">
                     <a></a><button class="btn-comindu" routerLink="/meu-indu">
                         <!--   <mat-icon>home</mat-icon>--> Meu com.indu
                     </button>
                 </div>
 
-                <div *ngIf="user?.isAdmin" class="col-3 example-button-row">
+                <div *ngIf="user?.isAdmin" class="col-xs-6 col-lg-3 example-button-row">
                     <a></a><button class="btn-comindu" routerLink="/com-indu/admin/usuarios">
                         <!--<mat-icon>home</mat-icon>--> Analisar Incrições
                     </button>
                 </div>
 
 
-                <div *ngIf="user?.isAdmin" class="col-3 example-button-row">
+                <div *ngIf="user?.isAdmin" class="col-xs-6 col-lg-3 example-button-row">
                     <a></a><button class="btn-comindu" routerLink="/com-indu/chat">
                         <!--<mat-icon>home</mat-icon>--> Chat
                     </button>
                 </div>
 
-                <div *ngIf="user?.isAdmin" class="col-3 example-button-row">
+                <div *ngIf="user?.isAdmin" class="col-xs-6 col-lg-3 example-button-row">
                     <button class="btn-comindu" (click)="register()">
                         <!--<mat-icon>mediation</mat-icon>--> Criar Comunidade
                     </button>
@@ -151,10 +156,11 @@
                 <div class="row">
                     <h2 style="color: #304D63;">Temas</h2>
                     <div *ngFor="let comunidade of comunidades" class="col-lg-6 content">
-                        <mat-card style="cursor: pointer;" [routerLink]="['../comunidade-indu', comunidade._id]">
+                        <mat-card>
                             <mat-card-header class="card">
                                 <button mat-button>
-                                    <mat-card-title>{{comunidade.name | titlecase}}</mat-card-title>
+                                    <mat-card-title title="{{comunidade.name}}" class="text-oneline">{{comunidade.name |
+                                        titlecase}}</mat-card-title>
                                     <!--<mat-card-subtitle style="color: #304D63;" *ngIf="user"><span
                                             *ngFor="let tag of comunidade.tags">{{tag}} +
                                         </span>
@@ -173,8 +179,8 @@
                                 <p>{{comunidade.content}}</p>
                                 <mat-divider></mat-divider>
                             </mat-card-content>
-                            <mat-card-actions *ngIf="user" align="end" class="pb-2">
-                                <button class="btn-comindu"
+                            <mat-card-actions *ngIf="user?.icComprovanteValido || user?.isAdmin" align="end">
+                                <button class="btn-entrar-comindu"
                                     [routerLink]="['../comunidade-indu', comunidade._id]">ENTRAR</button>
 
                             </mat-card-actions>

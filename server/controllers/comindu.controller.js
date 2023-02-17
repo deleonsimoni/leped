@@ -61,7 +61,7 @@ async function getTags() {
 }
 
 async function getComunidades(user) {
-  if (user.roles.includes('admin')) {
+  if (user?.roles?.includes('admin')) {
     return await Comunidade.find().select("name content cor tags isAtiva");
   } else {
     return await Comunidade.find({ isAtiva: true }).select("name content cor tags isAtiva");

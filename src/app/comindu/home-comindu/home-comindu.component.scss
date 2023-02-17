@@ -128,7 +128,26 @@ h1 em {
     transition: 0.4s;
     cursor: pointer;
     text-align: center;
-    margin: 30px;
+    margin: 6px;
+}
+
+.text-oneline {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: initial;
+}
+
+.btn-entrar-comindu {
+    background: #8fb9aa;
+    border: 0;
+    border-radius: 3px;
+    padding: 10px 30px;
+    color: #080808;
+    transition: 0.4s;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 10px;
+    margin-right: 20px;
 }
 
 .card {

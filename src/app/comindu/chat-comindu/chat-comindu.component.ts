@@ -14,7 +14,7 @@ export class ChatCominduComponent implements OnInit {
   user;
   carregando = false;
   comments;
-  chats = [];
+  chats: any = [];
   chatSelected;
   pager: any = {};
   newComment = null;

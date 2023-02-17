@@ -13,6 +13,10 @@ export class CominduService {
     return this.http.get(`/api/comindu/comunidades`);
   }
 
+  listComunidadesFree() {
+    return this.http.get(`/api/comindu/comunidades-free`);
+  }
+
   confirmComprovante(id) {
     return this.http.post(`/api/user/confirmComprovante/${id}`, {});
   }

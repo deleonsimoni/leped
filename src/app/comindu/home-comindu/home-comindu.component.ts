@@ -27,9 +27,13 @@ export class HomeCominduComponent implements OnInit {
 
   ngOnInit(): void {
     this.listarTags();
-    this.listAll().subscribe();
     this.authService.getUser().subscribe(user => {
       this.user = user;
+      if (user) {
+        this.listAll().subscribe();
+      } else {
+        this.listAllFree().subscribe();
+      }
     });
   }
 
@@ -48,6 +52,13 @@ export class HomeCominduComponent implements OnInit {
 
   private listAll(): Observable<any> {
     return this.cominduService.listComunidades()
+      .pipe(
+        map((comunidades: any) => this.comunidades = comunidades)
+      )
+  }
+
+  private listAllFree(): Observable<any> {
+    return this.cominduService.listComunidadesFree()
       .pipe(
         map((comunidades: any) => this.comunidades = comunidades)
       )

@@ -12,6 +12,9 @@ router.get('/tags', asyncHandler(getTags));
 router.get('/comunidades', passport.authenticate('jwt', {
     session: false
 }), asyncHandler(getComunidades));
+
+router.get('/comunidades-free', asyncHandler(getComunidades));
+
 router.get('/comunidadesById/:comunidade', asyncHandler(getComunidadesById));
 router.get('/comunidade/:comunidade/chats/:post', asyncHandler(getChats));
 router.post('/comunidade/:comunidade/chats/:post/block', asyncHandler(blockPost));
