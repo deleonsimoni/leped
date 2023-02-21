@@ -13,6 +13,7 @@ module.exports = {
   getComunidadesById,
 
   insertComunidade,
+  updateComunidade,
 
   subscribeComunidade,
   unsubscribeComunidade,
@@ -31,6 +32,8 @@ module.exports = {
 
   inativarComunidade,
   ativarComunidade,
+
+  deleteComunidade,
 
   listAdmins
 };
@@ -62,7 +65,8 @@ async function getTags() {
 
 async function getComunidades(user) {
   if (user?.roles?.includes('admin')) {
-    return await Comunidade.find().select("name content cor tags isAtiva");
+    return await Comunidade.find().select("name content cor tags isAtiva imagePathS3 owners")
+      .populate('owners', 'email');
   } else {
     return await Comunidade.find({ isAtiva: true }).select("name content cor tags isAtiva");
   }
@@ -167,6 +171,10 @@ async function deleteChat(comunidade, post, idChat) {
 
 }
 
+async function deleteComunidade(comunidade) {
+  return await Comunidade.findByIdAndDelete(comunidade);
+}
+
 async function getUserInscricoes(user) {
   return await Tag.find();
 }
@@ -202,6 +210,42 @@ async function insertComunidade(req, idUser) {
   }
 
   return "Ok";
+
+}
+
+async function updateComunidade(req, idUser) {
+  let form = JSON.parse(req.body.formulario);
+  form.user = idUser;
+  let retorno = { temErro: true };
+
+  if (req.files) {
+    let fileName = 'images/comindu/comunidades' + req.files.fileArray.name;
+    await S3Uploader.uploadBase64(fileName, req.files.fileArray.data)
+      .then(async fileData => {
+        console.log('Arquivos submetidos para AWS ' + fileName);
+        form.imagePathS3 = fileName;
+        retorno.temErro = false;
+
+        return await Comunidade.findOneAndUpdate({
+          _id: form._id
+        },
+          form, {
+          upsert: true
+        });
+      }, err => {
+        console.log('Erro ao enviar imagem para AWS: ' + fileName);
+        retorno.temErro = true;
+        retorno.mensagem = 'Servidor momentaneamente inoperante. Tente novamente mais tarde.';
+      });
+
+  } else {
+    return await Comunidade.findOneAndUpdate({
+      _id: form._id
+    },
+      form, {
+      upsert: true
+    });
+  }
 
 }
 

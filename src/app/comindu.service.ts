@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +44,10 @@ export class CominduService {
 
   inativarComunidade(id) {
     return this.http.post(`/api/comindu/inativarComunidade/${id}`, {});
+  }
+
+  deletarComunidade(id) {
+    return this.http.delete(`/api/comindu/comunidade/${id}`, {});
   }
 
   ativarComunidade(id) {
@@ -97,6 +102,17 @@ export class CominduService {
     }
     formData.append('formulario', JSON.stringify(form));
     return this.http.post(`/api/comindu/comunidade`, formData);
+  }
+
+  alterarComunidade(file: any, form): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('formulario', JSON.stringify(form));
+
+    if (file) {
+      formData.append('fileArray', file, `${file.name}`);
+    }
+
+    return this.http.put(`/api/comindu/comunidade`, formData);
   }
 
 }

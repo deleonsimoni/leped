@@ -29,8 +29,8 @@
                 <div class="form-group">
                     <mat-form-field style="display: block;" appearance="fill">
                         <mat-label>Administradores</mat-label>
-                        <mat-select formControlName="owners" multiple>
-                            <mat-option *ngFor="let admin of admins" [value]="admin._id">{{admin.email}}</mat-option>
+                        <mat-select formControlName="owners" multiple [compareWith]="compare">
+                            <mat-option *ngFor="let admin of admins" [value]="admin">{{admin.email}}</mat-option>
                         </mat-select>
                     </mat-form-field>
 

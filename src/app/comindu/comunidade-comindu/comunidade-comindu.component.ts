@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CominduService } from '@app/comindu.service';
 import { AuthService } from '@app/shared/services';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
@@ -26,6 +26,7 @@ export class ComunidadeCominduComponent implements OnInit {
     private cominduService: CominduService,
     private authService: AuthService,
     private toastr: ToastrService,
+    private router: Router,
     route: ActivatedRoute
   ) {
     route.params.subscribe(params => {
@@ -207,6 +208,19 @@ export class ComunidadeCominduComponent implements OnInit {
         .subscribe((res: any) => {
           this.carregando = false;
           this.getComunidade();
+        }, err => {
+          this.carregando = false;
+        });
+    }
+  }
+
+
+  deletarComunidade() {
+    if (confirm("Tem certeza que deseja excluir permanentemente essa comunidade?")) {
+      this.cominduService.deletarComunidade(this.comunidade._id)
+        .subscribe((res: any) => {
+          this.toastr.success("Comunidade excluida", "Sucesso");
+          this.router.navigate(['home-indu']);
         }, err => {
           this.carregando = false;
         });

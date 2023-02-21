@@ -5,11 +5,18 @@
             <p>COM.INDU</p>
             <div class="row">
                 <div *ngIf="user?.isAdmin && comunidade" class="example-button-row">
-                    <button *ngIf="comunidade.isAtiva" mat-raised-button color="warn" (click)="inativarComunidade()">
+                    <button class="col-2" *ngIf="comunidade.isAtiva" mat-raised-button color="warn"
+                        (click)="inativarComunidade()">
                         <mat-icon>auto_delete</mat-icon> Inativar Comunidade
                     </button>
-                    <button *ngIf="!comunidade.isAtiva" mat-raised-button color="primary" (click)="ativarComunidade()">
+                    <button class="col-2" *ngIf="!comunidade.isAtiva" mat-raised-button color="primary"
+                        (click)="ativarComunidade()">
                         <mat-icon>power</mat-icon> Ativar Comunidade
+                    </button>
+                    <br>
+                    <br>
+                    <button class="col-2" mat-raised-button color="warn" (click)="deletarComunidade()">
+                        <mat-icon>delete_forever</mat-icon> Excluir Comunidade
                     </button>
                 </div>
             </div>

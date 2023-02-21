@@ -38,6 +38,7 @@ export class RegisterCominduComponent implements OnInit {
 
     if (this.data.form != null) {
       this.fillForm(this.data.form);
+
     }
   }
 
@@ -69,12 +70,18 @@ export class RegisterCominduComponent implements OnInit {
 
   private fillForm(data: any): void {
     this.logo = this.pipeImage.transform(data.imagePathS3);
+    this.tags = this.data.form.tags;
 
     this.form.patchValue({
       name: data.name,
       content: data.content,
-      tags: data.tags
+      tags: data.tags,
+      owners: data.owners
     })
+  }
+
+  public compare(c1, c2): boolean {
+    return c1 && c2 ? c1._id === c2._id : false;
   }
 
   public getProfileImageCode(event: any): void {

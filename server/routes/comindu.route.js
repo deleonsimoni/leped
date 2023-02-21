@@ -40,9 +40,17 @@ router.delete('/comunidade/:comunidade/postChat/:post/chat/:idChat', [passport.a
     session: false
 }), requireAdmin, fileUpload()], asyncHandler(deleteChat));
 
+router.delete('/comunidade/:comunidade', [passport.authenticate('jwt', {
+    session: false
+}), requireAdmin,], asyncHandler(deleteComunidade));
+
 router.post('/comunidade', [passport.authenticate('jwt', {
     session: false
 }), requireAdmin, fileUpload()], asyncHandler(insertComunidade));
+
+router.put('/comunidade', [passport.authenticate('jwt', {
+    session: false
+}), requireAdmin, fileUpload()], asyncHandler(updateComunidade));
 
 router.post('/subscribe/:comunidade', passport.authenticate('jwt', {
     session: false
@@ -99,6 +107,10 @@ async function ativarComunidade(req, res) {
     res.json(response);
 }
 
+async function updateComunidade(req, res) {
+    let response = await cominduCtrl.updateComunidade(req, req.user._id);
+    res.json(response);
+}
 
 async function postChat(req, res) {
     let response = await cominduCtrl.postChat(req.params.comunidade, req.params.post, req.user._id, req.body);
@@ -107,6 +119,11 @@ async function postChat(req, res) {
 
 async function deleteChat(req, res) {
     let response = await cominduCtrl.deleteChat(req.params.comunidade, req.params.post, req.params.idChat);
+    res.json(response);
+}
+
+async function deleteComunidade(req, res) {
+    let response = await cominduCtrl.deleteComunidade(req.params.comunidade);
     res.json(response);
 }
 

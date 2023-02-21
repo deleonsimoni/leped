@@ -89,4 +89,18 @@ export class HomeCominduComponent implements OnInit {
       .subscribe();
   }
 
+  public edit(data: any): void {
+    this.openDialog(data)
+      .pipe(
+        switchMap(({ save, form, file }: any) =>
+          iif(() => save,
+            this.cominduService.alterarComunidade(file, { ...form, _id: data._id })
+              .pipe(switchMap(_ => this.listAll())),
+            of(null)
+          )
+        )
+      )
+      .subscribe();
+  }
+
 }

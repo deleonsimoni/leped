@@ -183,6 +183,9 @@
                                 <button class="btn-entrar-comindu"
                                     [routerLink]="['../comunidade-indu', comunidade._id]">ENTRAR</button>
 
+                                <button class="btn-entrar-comindu" *ngIf="user?.isAdmin"
+                                    (click)="edit(comunidade)">ALTERAR COMUNIDADE</button>
+
                             </mat-card-actions>
                         </mat-card>
                     </div>
