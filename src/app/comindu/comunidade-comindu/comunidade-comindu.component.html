@@ -4,6 +4,9 @@
         <div class="section-header">
             <p>COM.INDU</p>
             <div class="row">
+                <a class=" btn-book-a-table" routerLink="/home-indu"><button class="btn-comindu" routerLink="/com-indu">
+                        Voltar
+                    </button></a>
                 <div *ngIf="user?.isAdmin && comunidade" class="example-button-row">
                     <button class="col-2" *ngIf="comunidade.isAtiva" mat-raised-button color="warn"
                         (click)="inativarComunidade()">
@@ -39,8 +42,9 @@
                                 [popperPlacement]="'top'">
                                 <div class="user-avatar">
                                     <div matListItemLine style="cursor: pointer;">
-                                        <img *ngIf="user?.image" class="mr-2" src="{{user.image | imagePathComplement}}"
-                                            alt="Seu avatar" id="imageRender">
+                                        <img *ngIf="subscriber?.userId?.image" class="mr-2"
+                                            src="{{subscriber.userId.image | imagePathComplement}}" alt="Seu avatar"
+                                            id="imageRender">
                                         {{subscriber.userId.socialname}}
                                     </div>
 

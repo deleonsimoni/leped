@@ -14,6 +14,9 @@ export class LoginComponent {
   email: string | null = null;
   password: string | null = null;
   public loginForm: FormGroup;
+  changePassword;
+  novaSenha;
+  novaSenhaRepeat;
 
   constructor(
     private router: Router,
@@ -27,13 +30,38 @@ export class LoginComponent {
     });
   }
 
+  changePasswordAPI() {
+
+    if (this.novaSenhaRepeat && this.novaSenhaRepeat > 5
+      && this.novaSenha && this.novaSenha > 5
+      && this.novaSenha == this.novaSenhaRepeat) {
+      this.authService.changePassword(this.novaSenha)
+        .subscribe((res: any) => {
+          this.toastr.success('Bom te ver de novo', 'Bem-vindo :)');
+          this.router.navigateByUrl('/');
+        }, err => {
+          if (err.status === 401) {
+            this.toastr.error('Erro ao alterar senha', 'Erro: ');
+          }
+        });
+    } else {
+      this.toastr.warning("As senhas devem coincidir e possuir no minimo 6 caracteres", "Atenção");
+    }
+
+  }
+
   login(): void {
 
     if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value)
         .subscribe((res: any) => {
-          this.toastr.success('Bom te ver de novo', 'Bem-vindo :)');
-          this.router.navigateByUrl('/');
+          if (res.icAdminChangePassword) {
+            this.changePassword = true;
+
+          } else {
+            this.toastr.success('Bom te ver de novo', 'Bem-vindo :)');
+            this.router.navigateByUrl('/');
+          }
         }, err => {
           if (err.status === 401) {
             this.toastr.error('Email ou senha inválidos', 'Erro: ');

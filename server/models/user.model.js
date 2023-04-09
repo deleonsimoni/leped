@@ -44,6 +44,11 @@ const UserSchema = new mongoose.Schema(
       type: Boolean
     },
 
+    icAdminChangePassword: {
+      type: Boolean,
+      default: false
+    },
+
     address: {
       street: String,
       complement: String,

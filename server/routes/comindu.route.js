@@ -2,6 +2,7 @@ const express = require('express');
 const passport = require('passport');
 const asyncHandler = require('express-async-handler');
 const cominduCtrl = require('../controllers/comindu.controller');
+const userController = require('../controllers/user.controller');
 const requireAdmin = require('../middleware/require-admin');
 const fileUpload = require('express-fileupload');
 
@@ -34,7 +35,7 @@ router.get('/minhascomunidades', passport.authenticate('jwt', {
 
 router.post('/comunidade/:comunidade/postChat/:post/chat', [passport.authenticate('jwt', {
     session: false
-}), requireAdmin, fileUpload()], asyncHandler(postChat));
+}), fileUpload()], asyncHandler(postChat));
 
 router.delete('/comunidade/:comunidade/postChat/:post/chat/:idChat', [passport.authenticate('jwt', {
     session: false
@@ -72,10 +73,18 @@ router.post('/ativarComunidade/:comunidade', [passport.authenticate('jwt', {
     session: false
 }), requireAdmin], asyncHandler(ativarComunidade));
 
+router.post('/resetPassword', [passport.authenticate('jwt', {
+    session: false
+}), requireAdmin], asyncHandler(resetPassword));
+
 router.delete('/comunidade/:comunidade/chats/:post', [passport.authenticate('jwt', {
     session: false
 }), requireAdmin], asyncHandler(deletePost));
 
+async function resetPassword(req, res) {
+    let response = await userController.resetPassword(req.body._id, req.body.newPassword);
+    res.json(response);
+}
 
 async function getChats(req, res) {
     let response = await cominduCtrl.getChats(req.params.comunidade, req.params.post);

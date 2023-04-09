@@ -31,6 +31,10 @@ export class AuthService {
       );
   }
 
+  changePassword(senha: any) {
+    return this.http.post('/api/auth/changePassword', { senha: senha });
+  }
+
   register(form: any, comprovante: any): Observable<User> {
 
 

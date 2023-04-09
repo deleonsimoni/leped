@@ -6,12 +6,17 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CominduService {
+
   constructor(
     private http: HttpClient
   ) { }
 
   listComunidades() {
     return this.http.get(`/api/comindu/comunidades`);
+  }
+
+  resetPassword(_id: any, newPassword: any) {
+    return this.http.post(`/api/comindu/resetPassword`, { _id, newPassword });
   }
 
   listComunidadesFree() {

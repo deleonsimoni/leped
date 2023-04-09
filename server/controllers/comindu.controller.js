@@ -5,7 +5,6 @@ const Comunidade = require('../models/comunidade.model');
 const User = require('../models/user.model');
 const S3Uploader = require('./aws.controller');
 
-
 module.exports = {
   getUserInscricoes,
   getTags,
@@ -35,7 +34,9 @@ module.exports = {
 
   deleteComunidade,
 
-  listAdmins
+  listAdmins,
+
+
 };
 
 async function inativarComunidade(id) {
@@ -83,7 +84,7 @@ async function getComunidadesById(id) {
   return await Comunidade
     .findById(id)
     .select("name content cor tags imagePathS3 posts.content posts.createAt posts.blockComment posts._id isAtiva")
-    .populate('subscribers.userId', 'socialname bio')
+    .populate('subscribers.userId', 'socialname bio image')
     .populate('posts.user', 'socialname image')
     ;
 

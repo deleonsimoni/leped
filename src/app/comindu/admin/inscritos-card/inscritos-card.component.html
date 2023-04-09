@@ -3,6 +3,17 @@
         <div class="col-sm-3 border-right">
             <small>NOME</small>
             <h4>{{ subscribed.fullname.toUpperCase() }}</h4>
+
+            <br />
+            <small>RESETAR SENHA</small>
+            <div>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button (click)="resetSenha(subscribed)" type="button" class="btn btn-secondary">Resetar</button>
+                    <input type="text" [(ngModel)]="newPassword" [ngModelOptions]="{standalone: true}"
+                        placeholder="Digite a nova senha" />
+                </div>
+            </div>
+
         </div>
         <div class="col-sm-3 border-right">
             <small>EMAIL</small>

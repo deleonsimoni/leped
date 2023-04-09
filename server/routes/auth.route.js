@@ -10,6 +10,10 @@ const router = express.Router();
 module.exports = router;
 
 router.post('/register', [fileUpload()], asyncHandler(register), login);
+router.post('/changePassword', [passport.authenticate('jwt', {
+  session: false
+})], asyncHandler(changePassword));
+
 
 router.post(
   '/login',
@@ -17,6 +21,11 @@ router.post(
   login
 );
 router.get('/me', passport.authenticate('jwt', { session: false }), login);
+
+async function changePassword(req, res) {
+  let response = await userCtrl.changePassword(req.user._id, req.body.senha);
+  res.json(response);
+}
 
 async function register(req, res, next) {
   let user = await userCtrl.insert(req);

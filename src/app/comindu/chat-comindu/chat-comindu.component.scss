@@ -146,6 +146,8 @@ body {
             margin-left: -1px;
             border-right: 1px solid #e6e6e6;
             border-left: 1px solid #e6e6e6;
+            overflow-y: scroll;
+            max-height: 500px;
 
             .person {
                 position: relative;

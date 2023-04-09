@@ -2,7 +2,32 @@
   <div class="container login-content">
     <div class="row justify-content-center">
       <div class="col-md-8 col-sm-10 col-lg-6">
-        <div class="box">
+
+        <div class="box" *ngIf="changePassword">
+          <div class="section-header">
+            <h2>Alterar Senha</h2>
+          </div>
+          <div class="form-row justify-content-center">
+            <div class="form-group col-md-12">
+              <input type="text" name="senhaChange" class="form-control" id="senhaChange" placeholder="Senha"
+                [(ngModel)]="novaSenha" />
+            </div>
+            <div class="form-group col-md-12">
+              <input type="text" name="senhaChange" class="form-control" id="senhaChange" placeholder="Senha"
+                [(ngModel)]="novaSenhaRepeat" />
+            </div>
+          </div>
+
+          <div class="row justify-content-center mb-2">
+            <button (click)="changePasswordAPI()" mat-raised-button color="primary">
+              Alterar Senha <mat-icon>badge</mat-icon>
+            </button>
+
+          </div>
+
+        </div>
+
+        <div class="box" *ngIf="!changePassword">
           <div class="section-header">
             <h2>Login</h2>
           </div>
