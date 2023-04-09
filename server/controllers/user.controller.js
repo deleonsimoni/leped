@@ -18,7 +18,9 @@ module.exports = {
   updateBio,
   getUsers,
   negarComprovante,
-  confirmComprovante
+  confirmComprovante,
+  resetPassword,
+  changePassword
 };
 
 async function confirmComprovante(id) {
@@ -66,6 +68,32 @@ async function getUsers(req) {
     usersFound,
     pager,
   };
+}
+
+async function changePassword(idUser, password) {
+
+  var hashedPassword = bcrypt.hashSync(password, 10);
+
+  return await User.findOneAndUpdate({
+    _id: idUser
+  },
+    { hashedPassword, icAdminChangePassword: false }, {
+    upsert: true
+  });
+
+}
+
+
+async function resetPassword(idUser, password) {
+  var hashedPassword = bcrypt.hashSync(password, 10);
+
+  return await User.findOneAndUpdate({
+    _id: idUser
+  },
+    { hashedPassword, icAdminChangePassword: true }, {
+    upsert: true
+  });
+
 }
 
 async function insert(req) {
