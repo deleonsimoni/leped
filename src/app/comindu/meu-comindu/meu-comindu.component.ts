@@ -60,9 +60,11 @@ export class MeuCominduComponent implements OnInit {
         this.bio = res.bio;
         if (this.comunidades.comunidades.length > 0) {
           this.comunidades.comunidades.forEach(element => {
-            element.idComunidade.tags.forEach(tag => {
-              this.tags.push(tag);
-            })
+            if (element.idComunidade) {
+              element.idComunidade.tags.forEach(tag => {
+                this.tags.push(tag);
+              })
+            }
           });
         }
       }, err => {
