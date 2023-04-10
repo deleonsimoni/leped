@@ -55,7 +55,7 @@ async function getUsers(req) {
   usersFound = await User.find(search)
 
     .sort({
-      createdAt: -1,
+      fullname: 1,
     })
     .skip(pageSize * page - pageSize)
     .limit(pageSize);
