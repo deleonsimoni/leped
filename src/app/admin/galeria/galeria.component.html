@@ -9,7 +9,7 @@
             (change)="setGalleryImage($event, index)" (click)="canSelect($event, index)" />
         </div>
         <ng-container *ngIf="index > 0 && theresNewPhoto">
-          <a class="profile__delete" (click)="deleteImage(picture)">Deletar</a>
+          <a class="profile__delete" (click)="deleteImage(picture)">{{ 'comum.deletar' | translate }}</a>
         </ng-container>
       </div>
     </div>
@@ -18,8 +18,8 @@
   <div class="row justify-content-center" mat-dialog-actions>
     <div class="col-md-6">
       <div class="action" [ngClass]="{ 'action--disable': !theresNewPhoto }">
-        <a class="btn btn-primary action__btn" (click)="unselectedImage()">Cancelar</a>
-        <button class="btn btn-primary action__btn" type="button" (click)="saveImages()">Salvar</button>
+        <a class="btn btn-primary action__btn" (click)="unselectedImage()">{{ 'comum.cancelar' | translate }}</a>
+        <button class="btn btn-primary action__btn" type="button" (click)="saveImages()">{{ 'comum.salvar' | translate }}</button>
       </div>
     </div>
   </div>

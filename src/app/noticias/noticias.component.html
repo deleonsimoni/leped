@@ -2,7 +2,7 @@
     <div class="container" data-aos="fade-up">
 
         <div class="page-header mt-2">
-            <h1 id="timeline">Notícias</h1>
+            <h1 id="timeline">{{ 'comum.noticias' | translate }}</h1>
         </div>
 
         <mat-card *ngFor="let noticia of noticias" class="example-card m-4">
@@ -19,7 +19,7 @@
 
                     <div class="">
                         <p [innerHTML]="noticia.content  | truncateString:[500, '...']"></p><a
-                            (click)="visualizar(noticia)" class="linkLEPED">LEIA MAIS</a>
+                            (click)="visualizar(noticia)" class="linkLEPED">{{ 'comum.leia' | translate | uppercase }}</a>
                     </div>
                 </div>
 

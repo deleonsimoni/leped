@@ -4,7 +4,7 @@
     <a routerLink="/" class="logo d-flex align-items-center me-auto me-lg-0">
       <!-- Uncomment the line below if you also wish to use an image logo -->
       <img src="assets/img/leped-logo.png"
-        alt="LEPED - Laboratório de Estudos e Pesquisas em Didática e Formação de Professores">
+      alt="LEPED - {{ 'comum.leped' | translate }}">
     </a>
 
     <nav id="navbar" class="navbar">
@@ -19,15 +19,15 @@
         <li><a routerLink="/geprod">GEPROD</a></li>
         <li><a routerLink="/gedoc">GEDOC</a></li>
         <li><a routerLink="/gecult" (click)="navbar.toggle()">GECULT</a></li>
-        <li><a routerLink="/eventos">Eventos</a></li>
+        <li><a routerLink="/eventos">{{ 'comum.eventos' | translate }}</a></li>
         <li><a routerLink="/noticias">Notícias</a></li>
-        <li><a *ngIf="!user" routerLink="/auth/login">Login</a></li>
-        <li><a *ngIf="!user" routerLink="/auth/register">Cadastre-se</a></li>
+        <li><a *ngIf="!user" routerLink="/auth/login">{{ 'header.login' | translate }}</a></li>
+        <li><a *ngIf="!user" routerLink="/auth/register">{{ 'header.cadastro' | translate }}</a></li>
 
 
         <li><a *ngIf="user?.isAdmin || user?.isGeped || user?.isGeprod || user?.isGedoc"
-            routerLink="/admin">Administrador</a></li>
-        <li><a *ngIf="user" (click)="logout()">Sair</a></li>
+            routerLink="/admin">{{ 'header.administrador' | translate }}</a></li>
+        <li><a *ngIf="user" (click)="logout()">{{ 'header.sair' | translate }}</a></li>
 
         <!--<li class="dropdown"><a href="#"><span>Drop Down</span> <i
               class="bi bi-chevron-down dropdown-indicator"></i></a>

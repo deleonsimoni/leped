@@ -1,6 +1,7 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, APP_INITIALIZER, LOCALE_ID } from '@angular/core';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 import { SharedModule } from './shared/shared.module';
 
@@ -18,7 +19,7 @@ import { NoticiasComponent } from './noticias/noticias.component';
 import { HistoricoComponent } from './historico/historico.component';
 import { LinhasPesquisaComponent } from './linhas-pesquisa/linhas-pesquisa.component';
 import { APP_BASE_HREF } from '@angular/common';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { FooterComponent } from './footer/footer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SobreComponent } from './sobre/sobre.component';
@@ -80,6 +81,13 @@ export function appInitializerFactory(authService: AuthService) {
     MatChipsModule,
     MatListModule,
     ColorPickerModule,
+    TranslateModule.forRoot({
+      loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
+      }
+    }),
     NgxPopperModule.forRoot(),
 
 
@@ -139,3 +147,6 @@ export function appInitializerFactory(authService: AuthService) {
   bootstrap: [AppComponent],
 })
 export class AppModule { }
+export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
+  return new TranslateHttpLoader(http);
+}

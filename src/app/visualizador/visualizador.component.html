@@ -3,7 +3,7 @@
 
         <div class="page-header mt-2">
             <h1 id="timeline">{{item.title}}</h1>
-            <p class="linkLEPED" (click)="voltar()"> Voltar </p>
+            <p class="linkLEPED" (click)="voltar()"> {{ 'comum.voltar' | translate }} </p>
         </div>
 
 
@@ -17,7 +17,7 @@
 
                         </p>
                         <p class="card-text" *ngIf="item.externalLink">
-                            <a target="_blank" href="{{item.externalLink}}">Acesse aqui</a>
+                            <a target="_blank" href="{{item.externalLink}}">{{ 'comum.acesseAqui' | translate }}</a>
                         </p>
 
 

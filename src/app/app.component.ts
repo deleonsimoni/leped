@@ -6,6 +6,7 @@ import { merge, Observable } from 'rxjs';
 
 import { User } from './shared/interfaces';
 import { AuthService } from './shared/services';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -23,11 +24,16 @@ export class AppComponent {
   constructor(
     private domSanitizer: DomSanitizer,
     private matIconRegistry: MatIconRegistry,
-    private authService: AuthService
+    private authService: AuthService,
+    private translate: TranslateService
   ) {
+    translate.setDefaultLang('br');
+    translate.use('br');
     this.registerSvgIcons();
   }
-
+  useLanguage(language: string): void {
+    this.translate.use(language);
+  }
   registerSvgIcons() {
     [
       'close',

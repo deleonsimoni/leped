@@ -70,15 +70,15 @@
             <div class="tabset">
 
                 <input type="radio" name="tabset" id="tab1" aria-controls="quemSomos" checked>
-                <label for="tab1">Quem Somos</label>
+                <label for="tab1">{{ 'comum.quemSomos' | translate }}</label>
 
-                <input (click)="getPesquisas('gedoc', 1)" type="radio" name="tabset" id="tab2" aria-controls="projetos">
-                <label for="tab2">Pesquisas</label>
+                <input (click)="getPesquisas('geped', 1)" type="radio" name="tabset" id="tab2" aria-controls="projetos">
+                <label for="tab2">{{ 'tabelacao.titulos.pesquisas' | translate }}</label>
 
 
-                <input type="radio" (click)="getExtensaoEnsino('gedoc', 2)" name="tabset" id="tab3"
+                <input type="radio" (click)="getExtensaoEnsino('geped', 2)" name="tabset" id="tab3"
                     aria-controls="ensino">
-                <label for="tab3">Ensino e Extensão</label>
+                <label for="tab3">{{ 'tabelacao.titulos.ensinoEx' | translate }}</label>
 
                 <!--<input type="radio" name="tabset" id="tab4" aria-controls="extensao">
                 <label for="tab4">Extensão</label>
@@ -86,12 +86,12 @@
                 <input type="radio" name="tabset" id="tab5" aria-controls="pibid">
                 <label for="tab5">PIBID</label>-->
                 <input type="radio" name="tabset" id="tab6" aria-controls="publicacoes">
-                <label for="tab6" (click)="getTeses();publicacao = 'dissertacao'">Publicações</label>
+                <label for="tab6" (click)="getTeses();publicacao = 'dissertacao'">{{ 'comum.publicacoes' | translate }}</label>
                 <!--<input type="radio" name="tabset" id="tab7" aria-controls="painel">
                 <label for="tab7">Galeria</label>-->
 
                 <input type="radio" name="tabset" id="tab8" aria-controls="contato">
-                <label for="tab8">Contato</label>
+                <label for="tab8">{{ 'contato.titulo' | translate }}</label>
 
                 <div class="tab-panels">
 
@@ -105,7 +105,7 @@
                         <div class="container" data-aos="fade-up">
 
                             <div class="section-header">
-                                <p>Participantes atuais</p>
+                                <p>{{ 'tabelacao.partAtual' | translate }}</p>
 
                             </div>
                             <section id="chefs" class="chefs">
@@ -151,7 +151,7 @@
                         <div class="container" data-aos="fade-up">
 
                             <div class="section-header">
-                                <p>Parcerias Institucionais</p>
+                                <p>{{ 'tabelacao.parcIntt' | translate }}</p>
 
                             </div>
 
@@ -188,12 +188,12 @@
                     <section id="projetos" class="tab-panel">
                         <div class="tabset2">
 
-                            <button type="button" (click)="getPesquisas('gedoc', 1);pesquisas = 'Pesquisas Realizadas'"
-                                class="btn btn-primary m-3">Pesquisas realizadas</button>
+                            <button type="button" (click)="getPesquisas('geped', 1);pesquisas = 'Pesquisas Realizadas'"
+                                class="btn btn-primary m-3">{{ 'tabelacao.butao.pescReal' | translate }}</button>
 
 
-                            <button type="button" (click)="getPesquisas('gedoc', 2);pesquisas = 'Em Andamento'"
-                                class="btn btn-primary m-3">Pesquisas em andamento</button>
+                            <button type="button" (click)="getPesquisas('geped', 2);pesquisas = 'Em Andamento'"
+                                class="btn btn-primary m-3">{{ 'tabelacao.butao.pescAnda' | translate }}</button>
 
 
                         </div>
@@ -204,18 +204,18 @@
                             <p *ngFor="let pesquisa of pesquisasServer.pesquisas" style="text-align: justify;">
                                 <strong>{{pesquisa.titleResearch}} </strong>
                                 <br />
-                                <strong>Coordenação:</strong> {{pesquisa.coordination}}
+                                <strong>{{ 'comum.coordenacao' | translate }}:</strong> {{pesquisa.coordination}}
                                 <br />
-                                <strong>Período:</strong> {{pesquisa.period}}<br /> <br />
-                                <strong>Resumo:</strong>
+                                <strong>{{ 'comum.periodo' | translate }}:</strong> {{pesquisa.period}}<br /> <br />
+                                <strong>{{ 'comum.resumo' | translate }}:</strong>
                                 <span [innerHTML]="pesquisa.resume"></span>
                                 <br /> <br />
 
-                                <strong>Financiamento:</strong> {{pesquisa.financing}}
+                                <strong>{{ 'comum.financiamento' | translate }}:</strong> {{pesquisa.financing}}
 
                                 <br /> <br />
 
-                                <strong>Publicações:</strong> <br /> <br />
+                                <strong>{{ 'comum.publicacoes' | translate }}:</strong> <br /> <br />
                                 <span [innerHTML]="pesquisa.researchLink"></span>
 
 
@@ -229,103 +229,71 @@
                     </section>
 
                     <section id="ensino" class="tab-panel">
-                        <div class="tabset2">
+                        <h4> {{ 'tabelacao.titulos.ensinoEx' | translate }}</h4><br />
+                        <div *ngFor="let extensao of extensaoEnsino?.extensaoEnsino">
+                            {{ 'comum.titulo' | translate }}: {{extensao.title}} <br />
+                            {{ 'comum.tipo' | translate }}: {{extensao.type}}<br />
+                            <a style="color:#499acd" target="_blank" href="{{extensao.link}}">
+                                {{ 'tabelacao.zelda' | translate }} </a>
+                            <br />
+                            <iframe *ngIf="extensao.linkYoutube" [src]="sanitizeVideo(extensao.linkYoutube)" width="560"
+                                height="315" style="border: none; overflow: hidden;" scrolling="no" frameborder="0"
+                                allowTransparency="true" allowFullScreen="true" allowfullscreen></iframe>
 
-                            <button type="button" (click)="getExtensaoEnsino('gedoc', 1);extensaoEnsino = 'Realizados'"
-                                class="btn btn-primary m-3">Ensino e Extensão realizados</button>
-
-
-                            <button type="button"
-                                (click)="getExtensaoEnsino('gedoc', 2);extensaoEnsino = 'Em Andamento'"
-                                class="btn btn-primary m-3">Ensino e Extensão em andamento</button>
-
-
-                        </div>
-                        <div id="realizado" class="tabset2" *ngIf="extensaoEnsinoServer">
                             <br />
                             <br />
-                            <h4> {{extensaoEnsino}}</h4>
-                            <p *ngFor="let extensao of extensaoEnsinoServer.extensaoEnsino"
-                                style="text-align: justify;">
-
-                                <!--  <div *ngFor="let extensao of extensaoEnsino?.extensaoEnsino">-->
-                                <strong>Título:</strong> {{extensao.title}} <br />
-                                <strong>Tipo:</strong> {{extensao.type}}<br />
-                                <strong>Coordenação:</strong> {{extensao.coordination}}
-                                <br />
-                                <strong>Período: </strong> {{extensao.date}}<br /> <br />
-                                <strong>Resumo: </strong>
-                                <span [innerHTML]="extensao.resume"></span>
-                                <br /> <br />
-
-                                <strong>Financiamento:</strong> {{extensao.financing}}
-
-                                <br /> <br />
-
-                                <strong>Publicações:</strong> <br /> <br />
-                                <span [innerHTML]="extensao.researchLink"></span>
-                                <a style="color:#499acd" target="_blank" href="{{extensao.link}}">
-                                    Link de acesso </a>
-                                <br />
-                                <iframe [src]="sanitizeVideo(extensao.linkYoutube)" width="560" height="315"
-                                    style="border: none; overflow: hidden;" scrolling="no" frameborder="0"
-                                    allowTransparency="true" allowFullScreen="true" allowfullscreen></iframe>
-
-                                <br />
-                                <br />
 
                         </div>
                     </section>
+
                     <section id="publicacoes" class="tab-panel">
 
                         <div class="tabset3">
 
                             <button type="button" (click)="getTeses();publicacao = 'dissertacao'"
-                                class="btn btn-primary m-4">TCC, Dissertações e Teses</button>
+                                class="btn btn-primary m-4">{{ 'tabelacao.butao.tcc' | translate }}</button>
 
                             <button type="button" (click)="getArtigos();publicacao = 'artigos'"
-                                class="btn btn-primary m-4">Artigos
-                                Científicos</button>
+                                class="btn btn-primary m-4">{{ 'tabelacao.butao.artigo' | translate }}</button>
 
                             <button type="button" (click)="getLivros();publicacao = 'livros'"
-                                class="btn btn-primary m-4">Livros</button>
+                                class="btn btn-primary m-4">{{ 'comum.livros' | translate }}</button>
 
                             <button type="button" (click)="getCapitulos();publicacao = 'caplivros'"
-                                class="btn btn-primary m-4">Capítulo de
-                                Livros</button>
+                                class="btn btn-primary m-4">{{ 'tabelacao.butao.capLivro' | translate }}</button>
 
                         </div>
 
                         <div id="dissertacao" class="tabset3" *ngIf="publicacao == 'dissertacao'">
-                            <h4> TCC, Dissertações e Teses</h4>
+                            <h4> {{ 'tabelacao.butao.tcc' | translate }}</h4>
 
                             <div *ngFor="let tese of teses?.teses">
 
-                                Categoria: {{tese.categoryId}}
+                                {{ 'comum.categoria' | translate }}: {{tese.categoryId}}
                                 <br />
 
-                                Título:
+                                {{ 'comum.titulo' | translate }}: {{tese.categoryId}}:
                                 <a style="color:#499acd" target="_blank" href="{{tese.linkTesis}}">
                                     {{tese.titleTesis}} </a>
 
                                 <br />
-                                Autor: {{tese.authorTesis}} <br />
-                                Data de defesa: {{tese.dateTesis}}<br /><br />
+                                {{ 'comum.autor' | translate }}: {{tese.authorTesis}} <br />
+                                {{ 'comum.dataDef' | translate }}: {{tese.dateTesis}}<br /><br />
                             </div>
 
 
                         </div>
 
                         <div id="artigos" class="tabset3" *ngIf="publicacao == 'artigos'">
-                            <h4> Artigos</h4>
+                            <h4> {{ 'comum.artigos' | translate }}</h4>
 
                             <div *ngFor="let artigo of artigos?.artigos">
                                 <strong>{{artigo.titleArticle}}.</strong><br />
-                                <strong> Autor(es):</strong><br />
+                                <strong> {{ 'comum.autor' | translate }}(es):</strong><br />
                                 {{artigo.authorsArticle}}<br />
-                                <strong>Periódico:</strong> {{artigo.journalArticle}}<br />
-                                <strong>Disponível em: </strong> <a style="color:#499acd" target="_blank"
-                                    href="{{artigo.linkArticle}}">Clique aqui para acessar</a>
+                                <strong>{{ 'comum.periodico' | translate }}:</strong> {{artigo.journalArticle}}<br />
+                                <strong>{{ 'tabelacao.disponivel' | translate }}: </strong> <a style="color:#499acd" target="_blank"
+                                    href="{{artigo.linkArticle}}">{{ 'tabelacao.link' | translate }}</a>
                                 <br /><br />
                             </div>
 
@@ -333,7 +301,7 @@
                         </div>
 
                         <div id="livros" class="tabset3" *ngIf="publicacao == 'livros'">
-                            <h4>Livros</h4>
+                            <h4>{{ 'comum.livros' | translate }}</h4>
 
 
 
@@ -356,7 +324,7 @@
                                             <p><b>{{livro.titleBook}}</b></p>
                                             <div style="text-align: justify; text-justify: inter-word;" class="mb-4">
                                                 <p>{{livro.authorsBook}}</p>
-                                                <p><a href="{{livro.linkBook}}" target="_blank">+ Saiba mais</a></p>
+                                                <p><a href="{{livro.linkBook}}" target="_blank">+ {{ 'comum.saibaMais' | translate }}</a></p>
 
                                             </div>
                                         </div>
@@ -370,22 +338,22 @@
                         </div>
 
                         <div id="caplivros" class="tabset3" *ngIf="publicacao == 'caplivros'">
-                            <h4> Capítulos de livros</h4>
+                            <h4> {{ 'tabelacao.butao.capLivro' | translate }}</h4>
 
                             <p *ngFor="let capitulo of capitulos?.capitulos" style="text-align: justify;"> <br />
 
                                 <strong>{{capitulo.titleChapter}}</strong> <br />
-                                <strong> Autor(es): </strong><br />
+                                <strong> {{ 'comum.autor' | translate }}(es): </strong><br />
                                 {{capitulo.authorsChapter}}<br />
-                                <strong>Livro: </strong>{{capitulo.titleBook}}<br />
-                                <strong>Organizador(es): </strong><br />
+                                <strong>{{ 'comum.livros' | translate }}: </strong>{{capitulo.titleBook}}<br />
+                                <strong>{{ 'comum.organizador' | translate }}(es): </strong><br />
                                 {{capitulo.eds}}<br />
-                                <strong>Editora: </strong>{{capitulo.publisher}}<br />
-                                <strong>Edição: </strong>{{capitulo.edition}}<br />
-                                <strong>Local: </strong>{{capitulo.location}}<br />
-                                <strong>Volume: </strong>{{capitulo.vol}}<br />
-                                <strong>Páginas: </strong>{{capitulo.pages}}<br />
-                                <strong>Ano: </strong>{{capitulo.year}}<br /><br />
+                                <strong>{{ 'comum.editora' | translate }}: </strong>{{capitulo.publisher}}<br />
+                                <strong>{{ 'comum.edicao' | translate }}: </strong>{{capitulo.edition}}<br />
+                                <strong>{{ 'comum.local' | translate }}: </strong>{{capitulo.location}}<br />
+                                <strong>{{ 'comum.volume' | translate }}: </strong>{{capitulo.vol}}<br />
+                                <strong>{{ 'comum.paginas' | translate }}: </strong>{{capitulo.pages}}<br />
+                                <strong>{{ 'comum.ano' | translate }}: </strong>{{capitulo.year}}<br /><br />
                             </p>
 
 
@@ -399,7 +367,7 @@
                             <div class="container" data-aos="fade-up">
 
                                 <div class="section-header">
-                                    <h1>Contato</h1>
+                                    <h1>{{ 'contato.titulo' | translate }}</h1>
 
                                 </div>
 
@@ -415,7 +383,7 @@
                                         <div class="info-item  d-flex align-items-center">
                                             <i class="icon bi bi-map flex-shrink-0"></i>
                                             <div>
-                                                <h3>Endereço</h3>
+                                                <h3>{{ 'contato.endereco' | translate }}</h3>
                                                 <p>UFRJ Praia vermelha</p>
                                             </div>
                                         </div>
@@ -426,7 +394,7 @@
                                             <i class="icon bi bi-envelope flex-shrink-0"></i>
                                             <div>
                                                 <h3>Email</h3>
-                                                <p>gedoc.feufrj@gmail.com</p>
+                                                <p>geped.feufrj@gmail.com</p>
                                             </div>
                                         </div>
                                     </div><!-- End Info Item -->
@@ -436,9 +404,9 @@
                                         <div class="info-item  d-flex align-items-center">
                                             <i class="icon bi bi-share flex-shrink-0"></i>
                                             <div>
-                                                <h3>Horários</h3>
-                                                <div><strong>Segunda-Sexta:</strong> 9AM - 20PM;
-                                                    <strong>Domingo:</strong> Fechado
+                                                <h3>{{ 'contato.horarios' | translate }}</h3>
+                                                <div><strong>{{ 'contato.segSex' | translate }}:</strong> 9AM - 20PM;
+                                                    <strong>{{ 'contato.domingo' | translate }}:</strong> {{ 'contato.fechado' | translate }}
                                                 </div>
                                             </div>
                                         </div>
@@ -469,9 +437,9 @@
                                     <div class="my-3">
                                         <div class="loading">Loading</div>
                                         <div class="error-message"></div>
-                                        <div class="sent-message">Mensagem enviada. Obrigado!</div>
+                                        <div class="sent-message">{{ 'contato.mensagem' | translate }}</div>
                                     </div>
-                                    <div class="text-center"><button type="submit">Enviar mensagem</button></div>
+                                    <div class="text-center"><button type="submit">{{ 'contato.enviar' | translate }}</button></div>
                                 </form>
                                 <!--End Contact Form -->
 
@@ -492,7 +460,8 @@
 
         <div class="section-header">
 
-            <p><span>nossa galeria</span></p>
+            
+            <p><span>{{ 'comum.galeria' | translate }}</span></p>
         </div>
 
         <div class="gallery-slider swiper">

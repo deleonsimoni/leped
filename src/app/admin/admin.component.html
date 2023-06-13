@@ -4,9 +4,9 @@
             <div class="offset-md-1 col-md-10">
                 <div class="box">
                     <div class="section-header">
-                        <h2>Olá, {{user.fullname.split(' ').slice(-1).join(' ')}}</h2>
+                        <h2>{{ 'comum.ola' | translate }}, {{user.fullname.split(' ').slice(-1).join(' ')}}</h2>
 
-                        <h2>Painel Gerencial - LEPED</h2>
+                        <h2>{{ 'adimim.painel' | trasnlate }} - LEPED</h2>
                     </div>
 
                     <div [ngClass]="{'section-header': menu.length > 1}">

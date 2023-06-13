@@ -24,6 +24,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { CustomComponentsModule } from './components/custom-components.module';
 import { CustomDialogsModule } from './dialogs/custom-dialogs.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   exports: [
@@ -51,7 +52,8 @@ import { CustomDialogsModule } from './dialogs/custom-dialogs.module';
     MatPaginatorModule,
     MatNativeDateModule,
     CustomComponentsModule,
-    CustomDialogsModule
+    CustomDialogsModule,
+    TranslateModule
   ],
   providers: [
     MatDatepickerModule,

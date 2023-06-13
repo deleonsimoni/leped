@@ -2,7 +2,7 @@
     <div class="container" data-aos="fade-up">
 
         <div class="page-header mt-2">
-            <h1 id="timeline">Eventos</h1>
+            <h1 id="timeline">{{ 'comum.eventos' | translate }}</h1>
         </div>
 
 
@@ -17,9 +17,9 @@
                         <p class="card-text" *ngIf="evento.subTitle">{{evento.subTitle}}</p>
                         <h5 class="card-date" *ngIf="evento.period">{{evento.period}}</h5>
                         <h5 class="card-date" *ngIf="evento.externalLink"><a href="{{evento.externalLink}}"
-                                target="_blank">Mais informações</a></h5>
+                                target="_blank">{{ 'comum.maisInfo' | translate }}</a></h5>
                         <h5 class="card-date" *ngIf="evento.content"><a class="linkLEPED" (click)="visualizar(evento)"
-                                target="_blank">Acervo</a></h5>
+                                target="_blank">{{ 'comum.acervo' | translate }}</a></h5>
 
                     </div>
                 </div>
