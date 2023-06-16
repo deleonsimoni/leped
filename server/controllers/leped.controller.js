@@ -7,7 +7,7 @@ const Eventos = require('../models/evento.model');
 const Galeria = require('../models/galeria.model');
 const GrupoPesquisa = require('../models/grupo-pesquisa.model');
 const S3Uploader = require('./aws.controller');
-
+const quemsomosTranslate = require('../translate/quemsomos.json');
 
 module.exports = {
   montarHomeLeped,
@@ -56,11 +56,17 @@ async function montarHomeLeped() {
   return response;
 }
 
-async function getQuemSomos() {
-  return await QuemSomos.find()
-    .sort({
-      createAt: -1
-    });
+async function getQuemSomos(locale) {
+
+  if (locale == 'us') {
+    return quemsomosTranslate;
+  } else {
+    return await QuemSomos.find()
+      .sort({
+        createAt: -1
+      });
+  }
+
 }
 
 async function insertQuemSomos(req, idUser) {

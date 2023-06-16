@@ -86,7 +86,8 @@
                 <input type="radio" name="tabset" id="tab5" aria-controls="pibid">
                 <label for="tab5">PIBID</label>-->
                 <input type="radio" name="tabset" id="tab6" aria-controls="publicacoes">
-                <label for="tab6" (click)="getTeses();publicacao = 'dissertacao'">{{ 'comum.publicacoes' | translate }}</label>
+                <label for="tab6" (click)="getTeses();publicacao = 'dissertacao'">{{ 'comum.publicacoes' | translate
+                    }}</label>
                 <!--<input type="radio" name="tabset" id="tab7" aria-controls="painel">
                 <label for="tab7">Galeria</label>-->
 
@@ -230,7 +231,7 @@
 
                     <section id="ensino" class="tab-panel">
                         <h4> {{ 'tabelacao.titulos.ensinoEx' | translate }}</h4><br />
-                        <div *ngFor="let extensao of extensaoEnsino?.extensaoEnsino">
+                        <div *ngFor="let extensao of extensaoEnsinoServer?.extensaoEnsino">
                             {{ 'comum.titulo' | translate }}: {{extensao.title}} <br />
                             {{ 'comum.tipo' | translate }}: {{extensao.type}}<br />
                             <a style="color:#499acd" target="_blank" href="{{extensao.link}}">
@@ -292,8 +293,8 @@
                                 <strong> {{ 'comum.autor' | translate }}(es):</strong><br />
                                 {{artigo.authorsArticle}}<br />
                                 <strong>{{ 'comum.periodico' | translate }}:</strong> {{artigo.journalArticle}}<br />
-                                <strong>{{ 'tabelacao.disponivel' | translate }}: </strong> <a style="color:#499acd" target="_blank"
-                                    href="{{artigo.linkArticle}}">{{ 'tabelacao.link' | translate }}</a>
+                                <strong>{{ 'tabelacao.disponivel' | translate }}: </strong> <a style="color:#499acd"
+                                    target="_blank" href="{{artigo.linkArticle}}">{{ 'tabelacao.link' | translate }}</a>
                                 <br /><br />
                             </div>
 
@@ -324,7 +325,8 @@
                                             <p><b>{{livro.titleBook}}</b></p>
                                             <div style="text-align: justify; text-justify: inter-word;" class="mb-4">
                                                 <p>{{livro.authorsBook}}</p>
-                                                <p><a href="{{livro.linkBook}}" target="_blank">+ {{ 'comum.saibaMais' | translate }}</a></p>
+                                                <p><a href="{{livro.linkBook}}" target="_blank">+ {{ 'comum.saibaMais' |
+                                                        translate }}</a></p>
 
                                             </div>
                                         </div>
@@ -406,7 +408,8 @@
                                             <div>
                                                 <h3>{{ 'contato.horarios' | translate }}</h3>
                                                 <div><strong>{{ 'contato.segSex' | translate }}:</strong> 9AM - 20PM;
-                                                    <strong>{{ 'contato.domingo' | translate }}:</strong> {{ 'contato.fechado' | translate }}
+                                                    <strong>{{ 'contato.domingo' | translate }}:</strong> {{
+                                                    'contato.fechado' | translate }}
                                                 </div>
                                             </div>
                                         </div>
@@ -434,7 +437,7 @@
 
         <div class="section-header">
 
-            
+
             <p><span>{{ 'comum.galeria' | translate }}</span></p>
         </div>
 

@@ -7,6 +7,7 @@ import { tap, pluck, catchError } from 'rxjs/operators';
 import { User } from '@app/shared/interfaces';
 
 import { TokenStorage } from './token.storage';
+import { LepedService } from '../leped.service';
 
 interface AuthResponse {
   token: string;
@@ -17,7 +18,10 @@ interface AuthResponse {
 export class AuthService {
   private user$ = new BehaviorSubject<User | null>(null);
 
-  constructor(private http: HttpClient, private tokenStorage: TokenStorage) { }
+  constructor(
+    private http: HttpClient,
+    private tokenStorage: TokenStorage,
+    private lepedService: LepedService) { }
 
   login(form: any): Observable<User> {
     return this.http
@@ -92,7 +96,7 @@ export class AuthService {
 
   getAuthorizationHeaders() {
     const token: string | null = this.tokenStorage.getToken() || '';
-    return { Authorization: `Bearer ${token}` };
+    return { Authorization: `Bearer ${token}`, 'locale': this.lepedService.localeVar || 'BR' };
   }
 
   /**

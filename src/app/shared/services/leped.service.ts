@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class LepedService {
 
+  localeVar;
+
   constructor(
     private http: HttpClient
   ) { }

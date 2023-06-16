@@ -94,7 +94,7 @@ router.delete('/noticia/:id', [passport.authenticate('jwt', {
 
 
 async function getQuemSomos(req, res) {
-    let response = await lepedCtrl.getQuemSomos();
+    let response = await lepedCtrl.getQuemSomos(req.headers.locale);
     res.json(response);
 }
 

@@ -9,17 +9,20 @@ import {
 import { Observable } from 'rxjs';
 
 import { AuthService } from '@app/shared/services';
+import { LepedService } from '@app/shared/services/leped.service';
 
 @Injectable()
 export class AuthHeaderInterceptor implements HttpInterceptor {
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService
+  ) { }
 
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     req = req.clone({
-      setHeaders: this.authService.getAuthorizationHeaders(),
+      setHeaders: this.authService.getAuthorizationHeaders()
     });
 
     return next.handle(req);
