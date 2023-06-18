@@ -72,11 +72,12 @@
                 <input type="radio" name="tabset" id="tab1" aria-controls="quemSomos" checked>
                 <label for="tab1">{{ 'comum.quemSomos' | translate }}</label>
 
-                <input (click)="getPesquisas('geped', 1)" type="radio" name="tabset" id="tab2" aria-controls="projetos">
+                <input (click)="getPesquisas('geprod', 1)" type="radio" name="tabset" id="tab2"
+                    aria-controls="projetos">
                 <label for="tab2">{{ 'tabelacao.titulos.pesquisas' | translate }}</label>
 
 
-                <input type="radio" (click)="getExtensaoEnsino('geped', 2)" name="tabset" id="tab3"
+                <input type="radio" (click)="getExtensaoEnsino('geprod', 2)" name="tabset" id="tab3"
                     aria-controls="ensino">
                 <label for="tab3">{{ 'tabelacao.titulos.ensinoEx' | translate }}</label>
 
@@ -86,7 +87,8 @@
                 <input type="radio" name="tabset" id="tab5" aria-controls="pibid">
                 <label for="tab5">PIBID</label>-->
                 <input type="radio" name="tabset" id="tab6" aria-controls="publicacoes">
-                <label for="tab6" (click)="getTeses();publicacao = 'dissertacao'">{{ 'comum.publicacoes' | translate }}</label>
+                <label for="tab6" (click)="getTeses();publicacao = 'dissertacao'">{{ 'comum.publicacoes' | translate
+                    }}</label>
                 <!--<input type="radio" name="tabset" id="tab7" aria-controls="painel">
                 <label for="tab7">Galeria</label>-->
 
@@ -188,11 +190,11 @@
                     <section id="projetos" class="tab-panel">
                         <div class="tabset2">
 
-                            <button type="button" (click)="getPesquisas('geped', 1);pesquisas = 'Pesquisas Realizadas'"
+                            <button type="button" (click)="getPesquisas('geprod', 1);pesquisas = 'Pesquisas Realizadas'"
                                 class="btn btn-primary m-3">{{ 'tabelacao.butao.pescReal' | translate }}</button>
 
 
-                            <button type="button" (click)="getPesquisas('geped', 2);pesquisas = 'Em Andamento'"
+                            <button type="button" (click)="getPesquisas('geprod', 2);pesquisas = 'Em Andamento'"
                                 class="btn btn-primary m-3">{{ 'tabelacao.butao.pescAnda' | translate }}</button>
 
 
@@ -292,8 +294,8 @@
                                 <strong> {{ 'comum.autor' | translate }}(es):</strong><br />
                                 {{artigo.authorsArticle}}<br />
                                 <strong>{{ 'comum.periodico' | translate }}:</strong> {{artigo.journalArticle}}<br />
-                                <strong>{{ 'tabelacao.disponivel' | translate }}: </strong> <a style="color:#499acd" target="_blank"
-                                    href="{{artigo.linkArticle}}">{{ 'tabelacao.link' | translate }}</a>
+                                <strong>{{ 'tabelacao.disponivel' | translate }}: </strong> <a style="color:#499acd"
+                                    target="_blank" href="{{artigo.linkArticle}}">{{ 'tabelacao.link' | translate }}</a>
                                 <br /><br />
                             </div>
 
@@ -324,7 +326,8 @@
                                             <p><b>{{livro.titleBook}}</b></p>
                                             <div style="text-align: justify; text-justify: inter-word;" class="mb-4">
                                                 <p>{{livro.authorsBook}}</p>
-                                                <p><a href="{{livro.linkBook}}" target="_blank">+ {{ 'comum.saibaMais' | translate }}</a></p>
+                                                <p><a href="{{livro.linkBook}}" target="_blank">+ {{ 'comum.saibaMais' |
+                                                        translate }}</a></p>
 
                                             </div>
                                         </div>
@@ -406,7 +409,8 @@
                                             <div>
                                                 <h3>{{ 'contato.horarios' | translate }}</h3>
                                                 <div><strong>{{ 'contato.segSex' | translate }}:</strong> 9AM - 20PM;
-                                                    <strong>{{ 'contato.domingo' | translate }}:</strong> {{ 'contato.fechado' | translate }}
+                                                    <strong>{{ 'contato.domingo' | translate }}:</strong> {{
+                                                    'contato.fechado' | translate }}
                                                 </div>
                                             </div>
                                         </div>
@@ -414,7 +418,7 @@
 
                                 </div>
 
-                                
+
                                 <!--End Contact Form -->
 
                             </div>
