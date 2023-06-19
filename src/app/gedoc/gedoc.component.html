@@ -72,11 +72,11 @@
                 <input type="radio" name="tabset" id="tab1" aria-controls="quemSomos" checked>
                 <label for="tab1">{{ 'comum.quemSomos' | translate }}</label>
 
-                <input (click)="getPesquisas('geped', 1)" type="radio" name="tabset" id="tab2" aria-controls="projetos">
+                <input (click)="getPesquisas('gedoc', 1)" type="radio" name="tabset" id="tab2" aria-controls="projetos">
                 <label for="tab2">{{ 'tabelacao.titulos.pesquisas' | translate }}</label>
 
 
-                <input type="radio" (click)="getExtensaoEnsino('geped', 2)" name="tabset" id="tab3"
+                <input type="radio" (click)="getExtensaoEnsino('gedoc', 2)" name="tabset" id="tab3"
                     aria-controls="ensino">
                 <label for="tab3">{{ 'tabelacao.titulos.ensinoEx' | translate }}</label>
 
@@ -189,11 +189,11 @@
                     <section id="projetos" class="tab-panel">
                         <div class="tabset2">
 
-                            <button type="button" (click)="getPesquisas('geped', 1);pesquisas = 'Pesquisas Realizadas'"
+                            <button type="button" (click)="getPesquisas('gedoc', 1);pesquisas = 'Pesquisas Realizadas'"
                                 class="btn btn-primary m-3">{{ 'tabelacao.butao.pescReal' | translate }}</button>
 
 
-                            <button type="button" (click)="getPesquisas('geped', 2);pesquisas = 'Em Andamento'"
+                            <button type="button" (click)="getPesquisas('gedoc', 2);pesquisas = 'Em Andamento'"
                                 class="btn btn-primary m-3">{{ 'tabelacao.butao.pescAnda' | translate }}</button>
 
 
