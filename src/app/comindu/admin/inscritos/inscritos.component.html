@@ -9,12 +9,12 @@
 
         <div class="row">
             <div class="col-lg-12 content">
-                <h1>Usuários</h1>
+                <h1>{{ 'comIndu.usuario' | translate }}</h1>
             </div>
         </div>
 
         <div>
-            <div *ngIf="pager.totalItems">Total de {{ pager.totalItems }} usuários
+            <div *ngIf="pager.totalItems">{{ 'comIndu.totalD' | translate }} {{ pager.totalItems }} {{ 'comIndu.usuario' | translate }}
 
 
 

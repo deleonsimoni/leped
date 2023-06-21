@@ -1,11 +1,11 @@
 <div class="work-content">
     <div class="section first">
-        <h6>Dados pessoais</h6>
+        <h6>{{ 'form.dadosPessoais' | translate }}</h6>
     </div>
 
     <div class="row align-items-center">
         <div class="col-6 mb-6">
-            <strong>Nome Social</strong>
+            <strong>{{ 'form.nomeSocial' | translate }}</strong>
             <p>{{ subscribed.socialname ? subscribed.socialname : '-----' }}</p>
         </div>
         <div class="col-6 mb-6">
@@ -23,42 +23,42 @@
 
     <div class="row align-items-center">
         <div class="col-sm-4 mb-2">
-            <strong>Telefone</strong>
+            <strong>{{ 'form.telefone' | translate }}</strong>
             <p>{{ subscribed.phones.telephone ? subscribed.phones.telephone : '-----' }}</p>
         </div>
         <div class="col-sm-4 mb-2">
-            <strong>Celular</strong>
+            <strong>{{ 'form.celular' | translate }}</strong>
             <p>{{ subscribed.phones.cellphone ? subscribed.phones.cellphone : '-----' }}</p>
         </div>
         <div class="col-sm-4 mb-2">
-            <strong>Data de inscrição</strong>
+            <strong>{{ 'form.dataCria' | translate }}</strong>
             <p>{{ subscribed.createdAt | date: 'dd/MM/yyyy' }}</p>
         </div>
     </div>
     <div class="row align-items-center">
         <div class="col-12">
-            <strong>Código Postal</strong>
+            <strong>{{ 'form.codigoPostal' | translate }}</strong>
             <p *ngIf="subscribed.address">{{ subscribed?.address?.zip | cep }}</p>
         </div>
         <div class="col-12">
-            <strong>Rua</strong>
+            <strong>{{ 'form.rua' | translate }}</strong>
             <p>{{ subscribed?.address?.street ? subscribed.address.street : '-----' }} - {{ subscribed?.address?.num ?
                 subscribed.address.num : '-----' }}</p>
         </div>
         <div class="col-6">
-            <strong>Bairro</strong>
+            <strong>{{ 'form.bairro' | translate }}</strong>
             <p>{{ subscribed?.address?.district ? subscribed.address.district : '-----' }}</p>
         </div>
         <div class="col-6">
-            <strong>Cidade</strong>
+            <strong>{{ 'form.cidade' | translate }}</strong>
             <p>{{ subscribed?.address?.city ? subscribed.address.city : '-----' }}</p>
         </div>
         <div class="col-6">
-            <strong>Estado</strong>
+            <strong>{{ 'form.estado' | translate }}</strong>
             <p>{{ subscribed?.address?.state ? subscribed.address.state : '-----' }}</p>
         </div>
         <div class="col-6">
-            <strong>País</strong>
+            <strong>{{ 'form.pais' | translate }}</strong>
             <p>{{ subscribed?.address?.country ? subscribed.address.country : '-----' }}</p>
         </div>
 
@@ -68,7 +68,7 @@
 
 
         <div *ngIf="subscribed.comprovanteProfessorPath" class="col-12">
-            <strong>Download Comprovante:</strong>
+            <strong>Download {{ 'comIndu.comprovante' | translate }}:</strong>
             <p><a href="{{ baixarComprovante(subscribed.comprovanteProfessorPath) }}" target="_blank">Clique aqui</a>
             </p>
         </div>

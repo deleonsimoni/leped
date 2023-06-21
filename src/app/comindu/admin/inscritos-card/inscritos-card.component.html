@@ -1,14 +1,14 @@
 <div class="card-works">
     <div class="row">
         <div class="col-sm-3 border-right">
-            <small>NOME</small>
+            <small>{{ 'comIndu.nome' | translate | uppercase }}</small>
             <h4>{{ subscribed.fullname.toUpperCase() }}</h4>
 
             <br />
-            <small>RESETAR SENHA</small>
+            <small>{{ 'comIndu.resetSenha' | translate | uppercase }}</small>
             <div>
                 <div class="btn-group" role="group" aria-label="Basic example">
-                    <button (click)="resetSenha(subscribed)" type="button" class="btn btn-secondary">Resetar</button>
+                    <button (click)="resetSenha(subscribed)" type="button" class="btn btn-secondary">{{ 'comIndu.resetar' | translate }}</button>
                     <input type="text" [(ngModel)]="newPassword" [ngModelOptions]="{standalone: true}"
                         placeholder="Digite a nova senha" />
                 </div>
@@ -21,11 +21,10 @@
         </div>
 
         <div class="col-sm-3 border-right">
-            <small>COMPROVANTE</small>
+            <small>{{ 'comIndu.comprovante' | translate | uppercase }}</small>
             <h4><a style="color: #304d63;" href="{{ baixarComprovante(subscribed.comprovanteProfessorPath) }}">
-                    Clique
-                    para
-                    Baixar</a></h4>
+                {{ 'comIndu.click' | translate }}
+            </a></h4>
         </div>
 
 
@@ -35,19 +34,19 @@
 
                 <div class="col-sm-12">
                     <small>STATUS</small>
-                    <h4>{{ subscribed.icComprovanteValido ? 'Comprovante Válido' : 'Aguardando Comprovação'}}</h4>
+                    <h4>{{ subscribed.icComprovanteValido ? 'comIndu.comVal' : 'comIndu.comAgu' | translate }}</h4>
                     <br />
-                    <small>VALIDAR</small>
+                    <small>{{ 'comIndu.validar' | translate | uppercase }}</small>
                     <div>
                         <div class="btn-group" role="group" aria-label="Basic example">
                             <button (click)="confirmComprovante(subscribed)"
                                 [ngStyle]="{'background-color: green;color:white':  subscribed.icComprovanteValido, 'background-color: white;color: black': subscribed.icComprovanteValido}"
                                 type="button" [ngClass]="{'btn btn-success': subscribed.icComprovanteValido}"
-                                class="btn">Sim</button>
+                                class="btn">{{ 'comum.sim' | translate }}</button>
                             <button (click)="negarComprovante(subscribed)"
                                 [ngStyle]="{'background-color: red;color:white':  !subscribed.icComprovanteValido, 'background-color: white;color: black': subscribed.icComprovanteValido}"
                                 type="button" [ngClass]="{'btn btn-danger': !subscribed.icComprovanteValido}"
-                                class="btn">Não</button>
+                                class="btn">{{ 'comum.nao' | translate }}</button>
                         </div>
                     </div>
                 </div>

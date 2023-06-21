@@ -14,14 +14,14 @@
         <div class="wrapper">
             <a class=" col-xs-6 col-lg-3 example-button-row" routerLink="/home-indu"><button class="btn-comindu"
                     routerLink="/com-indu">
-                    Voltar
+                    {{ 'comum.voltar' | translate }}
                 </button></a>
             <div class="container">
 
                 <div *ngIf="user?.isAdmin" class="left">
                     <div class="top">
                         <input type="text" [(ngModel)]="emailFind" [ngModelOptions]="{standalone: true}"
-                            placeholder="Pesquisar email" />
+                            placeholder="{{ 'form.pescEmail' | translate }}" />
                         <a style="cursor: pointer;" (click)="finduserChat()" class="search"></a>
                     </div>
                     <ul class="people">
@@ -32,17 +32,17 @@
                                 src="{{ chat.author.user.image ? (chat.author.user.image | imagePathComplement) : '../../../assets/img/placeholder-profile.png' }}" />
                             <span class="name">{{chat?.author?.user?.email}}</span>
                             <span class="time">{{chat.createAt | date: 'dd/MM/yyyy'}}</span>
-                            <span *ngIf="chat.icReply" class="preview">Respondido</span>
-                            <span *ngIf="!chat.icReply" class="preview">Aguardando Resposta</span>
+                            <span *ngIf="chat.icReply" class="preview">{{ 'comIndu.respo' | translate }}</span>
+                            <span *ngIf="!chat.icReply" class="preview">{{ 'comIndu.respoAgu' | translate }}</span>
                         </li>
 
 
                     </ul>
                 </div>
                 <div [ngClass]="{'right': user?.isAdmin, 'rightUser': !user?.isAdmin }">
-                    <div *ngIf="!user?.isAdmin" class="top"><span>Para: <span class="name">Administradores
+                    <div *ngIf="!user?.isAdmin" class="top"><span>{{ 'comIndu.para' | translate }}: <span class="name">{{ 'comIndu.adm' | translate }}
                                 Com.indu</span></span></div>
-                    <div *ngIf="user?.isAdmin" class="top"><span>Para: <span class="name">{{userTo}}</span></span>
+                    <div *ngIf="user?.isAdmin" class="top"><span>{{ 'comIndu.para' | translate }}: <span class="name">{{userTo}}</span></span>
                     </div>
 
                     <div class="chat" data-chat="person1">
@@ -73,7 +73,7 @@
                     </div>
                     <br />
                     <div class="writeCount">
-                        <span>{{240 - newComment?.length}} caracteres restantes</span>
+                        <span>{{240 - newComment?.length}} {{ 'comIndu.caracRes' | translate }}</span>
                     </div>
                 </div>
             </div>
