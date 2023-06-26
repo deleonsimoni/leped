@@ -135,7 +135,7 @@ async function deleteCoordenadoras(req, res) {
 
 
 async function getEventos(req, res) {
-    let response = await lepedCtrl.getEventos();
+    let response = await lepedCtrl.getEventos(req.headers.locale);
     res.json(response);
 }
 

@@ -50,9 +50,9 @@ export class HeaderComponent {
 
   changeSelectedCountryCode(value: string): void {
 
-    this.translate.use(value);
     this.selectedCountryCode = value;
     this.lepedService.localeVar = value;
+    this.translate.use(value);
 
   }
 }

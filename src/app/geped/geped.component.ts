@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GepedService } from '@app/shared/services/geped.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-geped',
@@ -21,12 +22,16 @@ export class GepedComponent implements OnInit {
 
   constructor(
     private gepedService: GepedService,
-    private _sanitizer: DomSanitizer
+    private _sanitizer: DomSanitizer,
+    private translate: TranslateService
 
   ) { }
 
   ngOnInit(): void {
     this.listAll();
+    this.translate.onLangChange.subscribe((event) => {
+      this.listAll();
+    });
   }
 
   public listAll() {
@@ -72,7 +77,20 @@ export class GepedComponent implements OnInit {
 
     this.gepedService.listPesquisa(type, typePesquisa)
       .subscribe((res: any) => {
-        this.pesquisasServer = res[0];
+        if (res.length > 1) {
+          this.pesquisasServer = { pesquisas: res };
+        } else {
+          this.pesquisasServer = res[0];
+        }
+
+        if (typePesquisa) {
+          if (typePesquisa == 1) {
+            this.pesquisasServer.pesquisas = this.pesquisasServer.pesquisas.filter(p => p.icPesquisa == 'Realizada')
+          } else {
+            this.pesquisasServer.pesquisas = this.pesquisasServer.pesquisas.filter(p => p.icPesquisa == 'Em Andamento')
+          }
+        }
+
       }, err => {
         console.log(err);
       });
@@ -83,7 +101,11 @@ export class GepedComponent implements OnInit {
 
     this.gepedService.listExtensaoEnsino(type, typeExtensao)
       .subscribe((res: any) => {
-        this.extensaoEnsino = res[0];
+        if (res.length > 1) {
+          this.extensaoEnsino = { extensaoEnsino: res };
+        } else {
+          this.extensaoEnsino = res[0];
+        }
       }, err => {
         console.log(err);
       });

@@ -8,6 +8,7 @@ const Galeria = require('../models/galeria.model');
 const GrupoPesquisa = require('../models/grupo-pesquisa.model');
 const S3Uploader = require('./aws.controller');
 const quemsomosTranslate = require('../translate/quemsomos.json');
+const eventoTranslate = require('../translate/evento.json');
 
 module.exports = {
   montarHomeLeped,
@@ -195,11 +196,15 @@ async function updateCoordenadoras(req, idUser) {
   }
 }
 
-async function getEventos() {
-  return await Eventos.find()
-    .sort({
-      createAt: -1
-    });
+async function getEventos(locale) {
+  if (locale == 'us') {
+    return eventoTranslate;
+  } else {
+    return await Eventos.find()
+      .sort({
+        createAt: -1
+      });
+  }
 }
 
 async function insertEventos(req, idUser) {

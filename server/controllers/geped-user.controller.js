@@ -1,6 +1,9 @@
 
 const GrupoPesquisa = require('../models/grupo-pesquisa.model');
-const S3Uploader = require('./aws.controller');
+const quemsomosTranslate = require('../translate/gepedQuemSomos.json');
+const ensinoExtensaoTranslate = require('../translate/ensinoExtensao.json');
+const pesquisasTranslate = require('../translate/pesquisasRealizadas.json');
+
 
 
 
@@ -19,21 +22,35 @@ module.exports = {
 
 async function getHome(req) {
 
-  return await GrupoPesquisa.find({ type: req.query.type })
-    .select('title subTitle content imagePathS3 facebook youtube instagram twitter galeria participantes parceiros')
-    .sort({
-      'createAt': -1
-    });
+  if (req.headers.locale == 'us' && req.query.type == 'geped') {
+    return quemsomosTranslate;
+  } else {
+    return await GrupoPesquisa.find({ type: req.query.type })
+      .select('title subTitle content imagePathS3 facebook youtube instagram twitter galeria participantes parceiros')
+      .sort({
+        'createAt': -1
+      });
+  }
+
+
 }
 
 async function getPesquisa(req) {
-  let tipo = req.query.typePesquisa == 1 ? 'Realizada' : 'Em Andamento'
-  return await GrupoPesquisa.aggregate([
-    { $match: { type: req.query.type } },
-    { $unwind: '$pesquisas' },
-    { $match: { 'pesquisas.icPesquisa': tipo } },
-    { $sort: { 'pesquisas.ordem': -1 } },
-    { $group: { _id: '$_id', pesquisas: { $push: '$pesquisas' } } }]);
+
+  if (req.headers.locale == 'us' && req.query.type == 'geped') {
+    return pesquisasTranslate;
+  } else {
+    let tipo = req.query.typePesquisa == 1 ? 'Realizada' : 'Em Andamento'
+    return await GrupoPesquisa.aggregate([
+      { $match: { type: req.query.type } },
+      { $unwind: '$pesquisas' },
+      { $match: { 'pesquisas.icPesquisa': tipo } },
+      { $sort: { 'pesquisas.ordem': -1 } },
+      { $group: { _id: '$_id', pesquisas: { $push: '$pesquisas' } } }]);
+  }
+
+
+
 
 }
 
@@ -52,11 +69,16 @@ async function getExtensaoEnsino(req) {
 
   }
   else {
-    return await GrupoPesquisa.aggregate([
-      { $match: { type: req.query.type } },
-      { $unwind: '$extensaoEnsino' },
-      { $sort: { 'extensaoEnsino.createAt': -1 } },
-      { $group: { _id: '$_id', extensaoEnsino: { $push: '$extensaoEnsino' } } }]);
+
+    if (req.headers.locale == 'us' && req.query.type == 'geped') {
+      return ensinoExtensaoTranslate;
+    } else {
+      return await GrupoPesquisa.aggregate([
+        { $match: { type: req.query.type } },
+        { $unwind: '$extensaoEnsino' },
+        { $sort: { 'extensaoEnsino.createAt': -1 } },
+        { $group: { _id: '$_id', extensaoEnsino: { $push: '$extensaoEnsino' } } }]);
+    }
 
   }
 
