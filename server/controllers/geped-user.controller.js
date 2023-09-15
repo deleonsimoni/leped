@@ -98,8 +98,7 @@ async function getArtigos(req) {
   return await GrupoPesquisa.aggregate([
     { $match: { type: req.query.type } },
     { $unwind: '$artigos' },
-    { $sort: { 'artigos.ordem': -1 } },
-    { $group: { _id: '$_id', artigos: { $push: '$artigos' } } }]);
+    { $group: { _id: '$_id', artigos: { $push: '$artigos' } } }])
 }
 
 async function getCapitulos(req) {

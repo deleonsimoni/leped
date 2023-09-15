@@ -97,6 +97,10 @@ export class GepedComponent implements OnInit {
 
   }
 
+  public ordenarArray(array) {
+    return array.reverse();
+  }
+
   public getExtensaoEnsino(type, typeExtensao) {
 
     this.gepedService.listExtensaoEnsino(type, typeExtensao)
@@ -117,6 +121,7 @@ export class GepedComponent implements OnInit {
     this.gepedService.getArtigo('geped')
       .subscribe((res: any) => {
         this.artigos = res[0];
+        this.artigos.artigos = this.ordenarArray(this.artigos.artigos);
       }, err => {
         console.log(err);
       });
