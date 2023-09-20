@@ -97,8 +97,19 @@ export class GepedComponent implements OnInit {
 
   }
 
-  public ordenarArray(array) {
-    return array.reverse();
+  public ordenarArtigos(array) {
+
+    array.map(artigo => {
+
+      if (artigo.journalArticle.endsWith('.')) {
+        artigo.ano = artigo.journalArticle.replace(/.$/, "").slice(-4)
+      } else {
+        artigo.ano = artigo.journalArticle.slice(-4)
+      }
+
+    })
+
+    return array.sort(function (a, b) { return b.ano - a.ano });
   }
 
   public getExtensaoEnsino(type, typeExtensao) {
@@ -121,7 +132,7 @@ export class GepedComponent implements OnInit {
     this.gepedService.getArtigo('geped')
       .subscribe((res: any) => {
         this.artigos = res[0];
-        this.artigos.artigos = this.ordenarArray(this.artigos.artigos);
+        this.artigos.artigos = this.ordenarArtigos(this.artigos.artigos);
       }, err => {
         console.log(err);
       });
